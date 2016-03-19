@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApplicationFramework_DemoTool", "src\ModernApplicationFramework_DemoTool\ModernApplicationFramework_DemoTool\ModernApplicationFramework_DemoTool.csproj", "{B888A0AB-20AF-4D14-866F-E4941C3302A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApplicationFramework_DemoTool", "src\Demos\MAF_DemoTool\ModernApplicationFramework_DemoTool.csproj", "{B888A0AB-20AF-4D14-866F-E4941C3302A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{E3E5F0EA-6F57-4C1E-94E8-E978AA2516B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B888A0AB-20AF-4D14-866F-E4941C3302A9} = {E3E5F0EA-6F57-4C1E-94E8-E978AA2516B6}
 	EndGlobalSection
 EndGlobal
