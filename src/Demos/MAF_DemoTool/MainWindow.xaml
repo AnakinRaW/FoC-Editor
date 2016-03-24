@@ -4,9 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mafc="http://modern.framework.com/controls"
+        xmlns:modernApplicationFrameworkTestAppDock="clr-namespace:ModernApplicationFrameworkTestAppDock"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <mafc:DockingManager x:Name="Manager" AllowMixedOrientation="True">
+            <mafc:LayoutRoot>
+                <mafc:LayoutPanel Orientation="Horizontal">
+                    <mafc:LayoutAnchorablePane DockWidth="100">
+                        <mafc:LayoutAnchorable x:Name="WinFormsWindow"  ContentId="WinFormsWindow" Title="WinForms Window" ToolTip="My WinForms Tool" CanHide="False" CanClose="False" >
+                            <StackPanel>
+                                <Button>Button</Button>
+                            </StackPanel>
+                        </mafc:LayoutAnchorable>
+                    </mafc:LayoutAnchorablePane>
+                    <mafc:LayoutDocumentPaneGroup>
+                        <mafc:LayoutDocumentPane>
+                            <mafc:LayoutDocument Title="Test">
+                                <Grid Background="White">
+                                    <modernApplicationFrameworkTestAppDock:ColorEditor></modernApplicationFrameworkTestAppDock:ColorEditor>
+                                </Grid>
+                            </mafc:LayoutDocument>
+                        </mafc:LayoutDocumentPane>
+                    </mafc:LayoutDocumentPaneGroup>
+                </mafc:LayoutPanel>
+                <mafc:LayoutRoot.LeftSide>
+                    <mafc:LayoutAnchorSide>
+                        <mafc:LayoutAnchorGroup>
+                            <mafc:LayoutAnchorable Title="AutoHide1 Content" ContentId="AutoHide1Content" >
+								<Grid>
+								</Grid>
+                            </mafc:LayoutAnchorable>
+                            <mafc:LayoutAnchorable Title="AutoHide2 Content" ContentId="AutoHide2Content">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBox/>
+                                    <TextBox/>
+                                </StackPanel>
+                            </mafc:LayoutAnchorable>
+                        </mafc:LayoutAnchorGroup>
+                    </mafc:LayoutAnchorSide>
+                </mafc:LayoutRoot.LeftSide>
+            </mafc:LayoutRoot>
+        </mafc:DockingManager>
     </Grid>
 </mafc:MainWindow>
+
