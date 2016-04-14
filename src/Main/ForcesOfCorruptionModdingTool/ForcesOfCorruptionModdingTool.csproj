@@ -36,8 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>eaw.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ModernApplicationFramework">
@@ -86,6 +85,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ProductConfiguration.cs" />
+    <Compile Include="Configuration\SystemConfiguration.cs" />
+    <Compile Include="Configuration\UsedSoftwareInformation.cs" />
+    <Compile Include="Modules\AboutDialog\AboutDialog.xaml.cs">
+      <DependentUpon>AboutDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AboutDialog\Commands\ShowDialogCommandDefinition.cs" />
+    <Compile Include="Modules\AboutDialog\MenuDefinitions.cs" />
     <Compile Include="Modules\MainWindow\ViewModels\DockingMainWindowViewModel.cs" />
     <Compile Include="Modules\Startup\Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -122,6 +129,18 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="Resources\splash.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="eaw.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Modules\AboutDialog\AboutDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\moddingToolBanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

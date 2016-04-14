@@ -1,0 +1,69 @@
+﻿<mafc:DialogWindow x:Class="ForcesOfCorruptionModdingTool.Modules.AboutDialog.AboutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mafc="http://modern.framework.com/controls"
+        xmlns:configuration="clr-namespace:ForcesOfCorruptionModdingTool.Configuration"
+        mc:Ignorable="d" MinWidth="640" MaxHeight="580" MaxWidth="780" ShowInTaskbar="false"
+                   WindowStartupLocation="CenterOwner" ResizeMode="NoResize" 
+                   Title="About Forces of Corruption Modding Tool"
+                   DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <mafc:DialogWindow.Resources>
+        <DataTemplate x:Key="ProductInfoTemplateKey" DataType="{x:Type configuration:UsedSoftwareInformation}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3,0,10,0">
+                    <TextBlock.Text>
+                        <Binding Path="Name"/>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock x:Uid="TextBlock_2" Foreground="#FF666666">
+                    <TextBlock.Text>
+                        <Binding Path="Creator"/>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </mafc:DialogWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Top" Source="../../Resources/moddingToolBanner.png" Stretch="Uniform" Height="100"/>
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" MinWidth="175"/>
+                <ColumnDefinition Width="Auto" MinWidth="100"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="1" Margin="3,20,3,3">
+                <TextBlock Text="{Binding ProductName, Mode=OneTime}"/>
+                <TextBlock Text="{Binding ProductVersion, Mode=OneTime}"/>
+                <TextBlock Text="{Binding Distributers, Mode=OneTime}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="3,20,3,3">
+                <TextBlock Text="{Binding RuntimeName, Mode=OneTime}"/>
+                <TextBlock Text="{Binding RuntimeVersion, Mode=OneTime}"/>
+                <TextBlock Text="{Binding RuntimeOwner, Mode=OneTime}"/>
+            </StackPanel>
+            <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="3,3,3,10" MinHeight="10">Used Software:</TextBlock>
+            <ListBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="3" TabIndex="2"
+                     ItemTemplate="{StaticResource ProductInfoTemplateKey}" ItemsSource="{Binding UsedSoftware, Mode=OneTime}">
+            </ListBox>
+            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" TextWrapping="Wrap" Text="{Binding InfoMessage, Mode=OneTime}"/>
+            <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Vertical" VerticalAlignment="Bottom">
+                <Button Content="OK" IsDefault="True" IsCancel="True" MinHeight="23" Margin="3"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</mafc:DialogWindow>
+
