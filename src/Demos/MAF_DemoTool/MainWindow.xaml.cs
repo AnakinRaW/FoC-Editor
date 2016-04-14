@@ -35,7 +35,6 @@ namespace ModernApplicationFramework_DemoTool
 
 
             m.Items.Add(mi);
-            ((MainWindowViewModel)DataContext).MenuHostViewModel.Menu = m;
         }
     }
 }
