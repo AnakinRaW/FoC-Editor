@@ -1,10 +1,11 @@
-﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
+﻿using System.ComponentModel;
+using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
 {
-    public interface IModdingToolWorkspace : IProjectHandler
+    public interface IModdingToolWorkspace : IProjectHandler, INotifyPropertyChanged
     {
         IModProject CurrentProject { get; }
 

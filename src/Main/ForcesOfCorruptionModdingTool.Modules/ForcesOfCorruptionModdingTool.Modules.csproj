@@ -78,6 +78,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForcesOfCorruptionModdingTool.EditorCore\ForcesOfCorruptionModdingTool.EditorCore.csproj">
+      <Project>{f098fc86-6636-421a-91eb-e47fb31b4285}</Project>
+      <Name>ForcesOfCorruptionModdingTool.EditorCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

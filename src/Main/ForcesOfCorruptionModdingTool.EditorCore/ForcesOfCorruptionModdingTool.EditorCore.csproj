@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ModernApplicationFramework">
+      <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +51,8 @@
     <Compile Include="Project\IModProject.cs" />
     <Compile Include="Project\IProject.cs" />
     <Compile Include="Project\Project.cs" />
+    <Compile Include="Project\ProjectInformation.cs" />
+    <Compile Include="Project\SupportedProjectDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workspace\IModdingToolWorkspace.cs" />
     <Compile Include="Workspace\IWorkspace.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using ForcesOfCorruptionModdingTool.EditorCore.Project;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
 {
@@ -13,9 +14,9 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
 
         event EventHandler ProjectClosed;
 
-        void LoadProject();
+        void LoadProject(ProjectInformation information);
 
-        void CreateProject();
+        void CreateProject(ProjectInformation information);
 
         void CloseProject();
     }

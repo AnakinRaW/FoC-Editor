@@ -95,6 +95,15 @@
     <Compile Include="Modules\AboutDialog\MenuDefinitions.cs" />
     <Compile Include="Modules\MainWindow\ViewModels\DockingMainWindowViewModel.cs" />
     <Compile Include="Modules\Startup\Module.cs" />
+    <Compile Include="Modules\Workspace\Commands\CloseProjectCommandDefinition.cs" />
+    <Compile Include="Modules\Workspace\Commands\NewProjectCommandDefinition.cs" />
+    <Compile Include="Modules\Workspace\MenuDefinition.cs" />
+    <Compile Include="Modules\Workspace\ModdingToolWorkspace.cs" />
+    <Compile Include="ProjectDefinitions\EmptyFocProjectDefinition.cs" />
+    <Compile Include="ProjectDefinitions\ProjectItemPresenter.xaml.cs">
+      <DependentUpon>ProjectItemPresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -138,6 +147,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ProjectDefinitions\ProjectItemPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons\NewProject.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\moddingToolBanner.png" />
@@ -151,6 +168,9 @@
       <Project>{857e707b-3c52-43c2-86be-33f29bc9a46d}</Project>
       <Name>ForcesOfCorruptionModdingTool.Modules</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\focProjectEmpty.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

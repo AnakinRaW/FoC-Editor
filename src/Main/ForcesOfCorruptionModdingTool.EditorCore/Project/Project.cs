@@ -5,22 +5,33 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Project
 {
     public abstract class Project : IProject
     {
-        protected Project(string filePath)
+        protected Project(ProjectInformation information)
         {
-            if (filePath == null)
-                throw new ArgumentNullException(nameof(filePath));
+            if (information == null)
+                throw new ArgumentNullException(nameof(information));
 
-            if (!File.Exists(filePath))
+            if (!Directory.Exists(information.ProjectPath))
                 try
                 {
-                    File.Create(filePath);
+                    Directory.CreateDirectory(information.ProjectPath);
                 }
                 catch (Exception)
                 {
-                    throw new IOException("Could not create: " + filePath);
+                    throw new IOException("Could not create: " + information.ProjectPath);
                 }
-            FilePath = filePath;
-            Name = Path.GetFileNameWithoutExtension(filePath);
+
+            if (!File.Exists(information.ProjectPath))
+                try
+                {
+                    Directory.CreateDirectory(information.ProjectPath);
+                }
+                catch (Exception)
+                {
+                    throw new IOException("Could not create: " + information.ProjectPath);
+                }
+            Name = information.Name;
+            FilePath = Path.Combine(information.ProjectPath, information.Name);
+
         }
 
         public abstract void Dispose();

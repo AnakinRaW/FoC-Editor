@@ -7,5 +7,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Project
         IMod Mod { get; set; }
 
         void CreateMod();
+
+        void LoadMod();
     }
 }
