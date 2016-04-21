@@ -2,7 +2,7 @@
 
 namespace ForcesOfCorruptionModdingTool.Configuration
 {
-    public static class SystemConfiguration
+    public static class MachineConfiguration
     {
         public static string RuntimeName => "Microsoft .NET Framework";
 

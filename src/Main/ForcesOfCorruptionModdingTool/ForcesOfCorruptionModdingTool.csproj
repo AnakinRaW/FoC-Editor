@@ -85,8 +85,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\IFirstStartConfigModel.cs" />
     <Compile Include="Configuration\ProductConfiguration.cs" />
-    <Compile Include="Configuration\SystemConfiguration.cs" />
+    <Compile Include="Configuration\MachineConfiguration.cs" />
     <Compile Include="Configuration\UsedSoftwareInformation.cs" />
     <Compile Include="Games\EawGame.cs" />
     <Compile Include="Games\FocGame.cs" />
@@ -103,6 +105,10 @@
     <Compile Include="Modules\Workspace\Commands\NewProjectCommandDefinition.cs" />
     <Compile Include="Modules\Workspace\MenuDefinition.cs" />
     <Compile Include="Modules\Workspace\ModdingToolWorkspace.cs" />
+    <Compile Include="Configuration\ViewModles\FirstStartConfigViewModel.cs" />
+    <Compile Include="Configuration\Views\FirstStartConfigView.xaml.cs">
+      <DependentUpon>FirstStartConfigView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProjectDefinitions\EmptyFocProjectDefinition.cs" />
     <Compile Include="ProjectDefinitions\ProjectItemPresenter.xaml.cs">
       <DependentUpon>ProjectItemPresenter.xaml</DependentUpon>
@@ -151,6 +157,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Configuration\Views\FirstStartConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProjectDefinitions\ProjectItemPresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +195,7 @@
   <ItemGroup>
     <Resource Include="Resources\Patches\Eaw\GAMECONSTANTS.XML" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

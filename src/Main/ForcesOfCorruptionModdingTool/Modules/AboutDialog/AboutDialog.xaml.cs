@@ -20,11 +20,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.AboutDialog
 
         public string Distributers => ProductConfiguration.Contributers.Aggregate((a, b) => a + ", " + b);
 
-        public string RuntimeName => SystemConfiguration.RuntimeName;
+        public string RuntimeName => MachineConfiguration.RuntimeName;
 
-        public string RuntimeVersion => SystemConfiguration.RuntimeVersion;
+        public string RuntimeVersion => MachineConfiguration.RuntimeVersion;
 
-        public string RuntimeOwner => SystemConfiguration.RuntimeOwner;
+        public string RuntimeOwner => MachineConfiguration.RuntimeOwner;
 
         public IEnumerable<UsedSoftwareInformation> UsedSoftware => ProductConfiguration.UsedSoftware;
 
