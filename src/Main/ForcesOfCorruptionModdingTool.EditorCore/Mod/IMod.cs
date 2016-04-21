@@ -4,7 +4,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
 {
     public interface IMod : INotifyPropertyChanged
     {
-        string Name { get; set; }
+        //TODO: Add a setter later
+        string Name { get; }
 
         bool CorrectInstalled { get; }
 
