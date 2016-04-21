@@ -88,6 +88,10 @@
     <Compile Include="Configuration\ProductConfiguration.cs" />
     <Compile Include="Configuration\SystemConfiguration.cs" />
     <Compile Include="Configuration\UsedSoftwareInformation.cs" />
+    <Compile Include="Games\EawGame.cs" />
+    <Compile Include="Games\FocGame.cs" />
+    <Compile Include="Games\GameFactory.cs" />
+    <Compile Include="Games\SteamGame.cs" />
     <Compile Include="Modules\AboutDialog\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
@@ -171,6 +175,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\focProjectEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Patches\FocSteam\GAMECONSTANTS.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Patches\FocSteam\GRAPHICDETAILS.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Patches\Eaw\GAMECONSTANTS.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

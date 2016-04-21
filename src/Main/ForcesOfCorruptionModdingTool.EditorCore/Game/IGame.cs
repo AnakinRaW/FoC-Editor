@@ -21,6 +21,11 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         IEnumerable<IMod> Mods { get; }
 
         /// <summary>
+        /// Returns the name of the Game
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Checks whether the game is installed 
         /// </summary>
         /// <returns>status of game existence</returns>
@@ -36,6 +41,13 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         /// Installs the latests hot fixes from PG
         /// </summary>
         void Patch();
+
+
+        /// <summary>
+        /// Checks if the game has the latest patch installed
+        /// </summary>
+        /// <returns>returns if patched or not</returns>
+        bool IsPatched();
 
         /// <summary>
         /// Deletes a mod

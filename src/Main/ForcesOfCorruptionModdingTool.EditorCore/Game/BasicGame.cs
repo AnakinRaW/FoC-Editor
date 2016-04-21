@@ -25,6 +25,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         public string GameDirectory { get; }
         public abstract string SaveGameDirectrory { get; }
         public abstract IEnumerable<IMod> Mods { get; protected set; }
+        public abstract string Name { get; }
+
         public bool Exists()
         {
             var result = File.Exists(Path.Combine(GameDirectory, ExeFileName));
@@ -42,6 +44,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         public abstract void StartGame(GameLaunchArguments arguments);
 
         public abstract void Patch();
+
+        public abstract bool IsPatched();
 
         public void DeleteMod(IMod mod)
         {
