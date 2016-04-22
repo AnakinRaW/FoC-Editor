@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.IO;
-using System.Linq;
-using System.Windows.Input;
-using ForcesOfCorruptionModdingTool.EditorCore.Game;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Games;
@@ -15,13 +9,18 @@ using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Commands;
 using ModernApplicationFramework.Core.Themes;
 using ModernApplicationFramework.Dialoges;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Windows.Input;
 
 namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
 {
     [Export(typeof(IFirstStartConfigModel))]
     public class FirstStartConfigViewModel : Screen, IFirstStartConfigModel
     {
-
         private const string DefaultModSearchPath = @"Mods\Source";
 
         private readonly ThemeManager _manager;
@@ -176,7 +175,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
         private void Start()
         {
             _manager.SaveTheme(SelectedTheme.Name);
-            _workspace.Game = IsSteam ? (IGame) new SteamGame(GamePath) : new FocGame(GamePath);
+            _workspace.Game = IsSteam ? (IGame)new SteamGame(GamePath) : new FocGame(GamePath);
             _workspace.SourceMod = new Mod(SourcePath);
 
             Settings.Default.GamePath = GamePath;
