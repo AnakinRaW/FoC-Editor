@@ -39,7 +39,6 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
             _manager = manager;
             _workspace = workspace;
             _dialogProvider = dialogProvider;
-            SelectedTheme = Themes.FirstOrDefault(x => x.GetType() == _manager.GetCurrentTheme().GetType());
         }
 
         public IEnumerable<Theme> Themes => _manager.Themes;

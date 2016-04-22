@@ -53,8 +53,13 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
             }
             catch (Exception ex) when (ex is GameNotFoundException || ex is ModNotFoundException)
             {
-                _dialogProvider.Alert(ex.Message + "\r\n\r\nThis error can happen if you have moved the Game/Mod to a different location. "
+                _dialogProvider.Alert(ex.Message
+                                      + "\r\n\r\nThis error can happen if you have moved the Game/Mod to a different location. "
                                       + "\r\nPlease relocate it in the settings");
+            }
+            catch (Exception e)
+            {
+                _dialogProvider.Alert(e.Message);
             }
         }
     }
