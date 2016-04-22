@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using ForcesOfCorruptionModdingTool.Configuration;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
+using ForcesOfCorruptionModdingTool.EditorCore.Helpers;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
-using ForcesOfCorruptionModdingTool.EditorCore.RegistryHelper;
 using ForcesOfCorruptionModdingTool.Properties;
 
 namespace ForcesOfCorruptionModdingTool.Games
@@ -33,16 +34,19 @@ namespace ForcesOfCorruptionModdingTool.Games
 
         public override void StartGame(GameLaunchArguments arguments)
         {
+            if (arguments == null)
+                throw new ArgumentNullException(nameof(arguments));
+
             var startInfo = new ProcessStartInfo
             {
-                FileName = RegistryHelper.GetValueFromKey(RegistryRootTypes.HkCurrentUser, "Software\\Valve\\Steam", "SteamExe").ToString()
+                FileName = SteamHelper.SteamInstallPath
             };
 
-            arguments.GameArguments = "-applaunch 32470 swfoc";
+            arguments.GameArguments = "-applaunch "  + GameConfiguration.FocSteamAppId + " swfoc";
 
             startInfo.Arguments = arguments.ToString();
 
-            string str = Directory.GetParent(new DirectoryInfo(Directory.GetCurrentDirectory()).FullName).FullName;
+            string str = Directory.GetParent(new DirectoryInfo(GameDirectory).FullName).FullName;
 
             if (!Exists())
                 throw new GameExceptions("The game is not installed correctly");

@@ -1,10 +1,11 @@
 ﻿using ModernApplicationFramework.Core.Themes;
 using System.Collections.Generic;
 using System.Windows.Input;
+using ModernApplicationFramework.Caliburn.Interfaces;
 
 namespace ForcesOfCorruptionModdingTool.Configuration
 {
-    public interface IFirstStartConfigModel
+    public interface IFirstStartConfigModel : IScreen
     {
         IEnumerable<Theme> Themes { get; }
 

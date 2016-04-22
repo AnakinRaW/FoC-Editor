@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
+using ForcesOfCorruptionModdingTool.Properties;
 using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.MVVM.Interfaces;
@@ -31,6 +33,14 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
         protected override void OnViewAttached(object view, object context)
         {
             base.OnViewAttached(view, context);
+
+            //Re-show the first start screen
+            if ((Keyboard.Modifiers & ModifierKeys.Shift) > 0)
+            {
+                Settings.Default.FirstStart = true;
+                Settings.Default.Save();
+            }
+
             var configManager = new Configuration.ConfigurationManager();
             if (!configManager.DoStartupConfiguration())
             {

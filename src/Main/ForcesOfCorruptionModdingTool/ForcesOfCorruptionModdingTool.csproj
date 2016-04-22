@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\GameConfiguration.cs" />
     <Compile Include="Configuration\IFirstStartConfigModel.cs" />
     <Compile Include="Configuration\ProductConfiguration.cs" />
     <Compile Include="Configuration\MachineConfiguration.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Games\FocGame.cs" />
     <Compile Include="Games\GameFactory.cs" />
     <Compile Include="Games\SteamGame.cs" />
+    <Compile Include="Mods\ModFactory.cs" />
     <Compile Include="Modules\AboutDialog\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
@@ -105,7 +107,7 @@
     <Compile Include="Modules\Workspace\Commands\NewProjectCommandDefinition.cs" />
     <Compile Include="Modules\Workspace\MenuDefinition.cs" />
     <Compile Include="Modules\Workspace\ModdingToolWorkspace.cs" />
-    <Compile Include="Configuration\ViewModles\FirstStartConfigViewModel.cs" />
+    <Compile Include="Configuration\ViewModels\FirstStartConfigViewModel.cs" />
     <Compile Include="Configuration\Views\FirstStartConfigView.xaml.cs">
       <DependentUpon>FirstStartConfigView.xaml</DependentUpon>
     </Compile>

@@ -22,5 +22,41 @@ namespace ForcesOfCorruptionModdingTool.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstStart {
+            get {
+                return ((bool)(this["FirstStart"]));
+            }
+            set {
+                this["FirstStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GamePath {
+            get {
+                return ((string)(this["GamePath"]));
+            }
+            set {
+                this["GamePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SourceModPath {
+            get {
+                return ((string)(this["SourceModPath"]));
+            }
+            set {
+                this["SourceModPath"] = value;
+            }
+        }
     }
 }

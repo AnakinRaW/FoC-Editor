@@ -33,6 +33,7 @@
     <Reference Include="ModernApplicationFramework">
       <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +52,7 @@
     <Compile Include="Game\GameType.cs" />
     <Compile Include="Game\IGame.cs" />
     <Compile Include="HashProvider\HashProvider.cs" />
+    <Compile Include="Helpers\SteamHelper.cs" />
     <Compile Include="Mod\ModExceptions.cs" />
     <Compile Include="Mod\IMod.cs" />
     <Compile Include="Mod\Mod.cs" />
