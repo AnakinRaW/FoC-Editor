@@ -15,6 +15,8 @@ using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
 using System.Windows.Input;
+using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
+using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 
 namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
 {
@@ -165,7 +167,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
                     return;
                 SourcePath = ModFactory.CreateMod(Path.Combine(GamePath, DefaultModSearchPath)).ModRootDirectory;
             }
-            catch (ModExceptions)
+            catch (ModNotFoundException)
             {
                 _dialogProvider.ShowMessage("Was not able to find a the source mod which comes along with the map editor.\r\n" +
                                 "If you have installed the source mod somewhere else, please enter the correct path manually.");
@@ -180,6 +182,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
 
             Settings.Default.GamePath = GamePath;
             Settings.Default.SourceModPath = SourcePath;
+            Settings.Default.IsGameSteam = IsSteam;
             Settings.Default.Save();
 
             TryClose(true);

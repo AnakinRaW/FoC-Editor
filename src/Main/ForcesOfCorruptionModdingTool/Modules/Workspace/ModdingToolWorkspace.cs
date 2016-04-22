@@ -18,6 +18,9 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
     public class ModdingToolWorkspace : ModuleBase, IModdingToolWorkspace
     {
         private readonly IOutput _output;
+        private IMod _sourceMod;
+        private IModProject _currentProject;
+        private IGame _game;
 
         public event EventHandler ProjectLoaded;
 
@@ -54,9 +57,48 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             OnProjectClosed();
         }
 
-        public IModProject CurrentProject { get; private set; }
-        public IMod SourceMod { get; set; }
-        public IGame Game { get; set; }
+        public event EventHandler ProjectChanged;
+        public event EventHandler SourceModChanged;
+        public event EventHandler GameChanged;
+
+        public IModProject CurrentProject
+        {
+            get { return _currentProject; }
+            private set
+            {
+                if (Equals(value, _currentProject))
+                    return;
+                _currentProject = value;
+                OnPropertyChanged();
+                OnProjectChanged();
+            }
+        }
+
+        public IMod SourceMod
+        {
+            get { return _sourceMod; }
+            set
+            {
+                if (Equals(value, _sourceMod))
+                    return;
+                _sourceMod = value;
+                OnPropertyChanged();
+                OnSourceModChanged();
+            }
+        }
+
+        public IGame Game
+        {
+            get { return _game; }
+            set
+            {
+                if (Equals(value, _game))
+                    return;
+                _game = value;
+                OnPropertyChanged();
+                OnGameChanged();
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -79,6 +121,23 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         protected virtual void OnProjectClosed()
         {
             ProjectClosed?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnProjectChanged()
+        {
+            ProjectChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnSourceModChanged()
+        {
+            SourceModChanged?.Invoke(this, EventArgs.Empty);
+            _output.AppendLine($"Source Mod at: {SourceMod.ModRootDirectory}");
+        }
+
+        protected virtual void OnGameChanged()
+        {
+            GameChanged?.Invoke(this, EventArgs.Empty);
+            _output.AppendLine($"Game at: {Game.GameDirectory}");
         }
     }
 }

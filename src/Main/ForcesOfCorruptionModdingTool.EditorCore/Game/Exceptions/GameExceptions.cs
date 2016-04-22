@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ForcesOfCorruptionModdingTool.EditorCore.Game
+namespace ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions
 {
     public class GameExceptions : Exception
     {

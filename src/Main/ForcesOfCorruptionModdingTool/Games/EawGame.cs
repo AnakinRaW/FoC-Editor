@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
+using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.Properties;
@@ -47,7 +48,7 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
             catch (Exception)
             {
-                //ignored
+                throw new GameStartException("Could not start the Game");
             }
         }
 
@@ -62,7 +63,7 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
             catch (Exception)
             {
-                throw new GameExceptions($"Could not patch: {Name}");
+                throw new GamePatchException($"Could not patch: {Name}");
             }
         }
 

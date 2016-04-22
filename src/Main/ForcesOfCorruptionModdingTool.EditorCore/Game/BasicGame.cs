@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using ForcesOfCorruptionModdingTool.EditorCore.Extensions;
+using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Game
@@ -18,7 +19,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         {
             GameDirectory = gameDirectory;
             if (!Exists())
-                throw new GameExceptions("The game does not exists at the given location");
+                throw new GameNotFoundException("The game does not exists at the given location");
         }
 
 

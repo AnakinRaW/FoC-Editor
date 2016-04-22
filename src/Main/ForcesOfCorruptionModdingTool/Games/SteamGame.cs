@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using ForcesOfCorruptionModdingTool.Configuration;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
+using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Helpers;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
@@ -76,7 +77,7 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
             catch (Exception)
             {
-                // Ignored
+                throw new GamePatchException($"Could not patch: {Name}");
             }
         }
 

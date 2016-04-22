@@ -22,7 +22,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.DialogProvider
         public void Alert(string message)
         {
             MessageBox.Show(message, "Forces of Corruption Modding Editor", MessageBoxButton.OK,
-                MessageBoxImage.Warning, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBoxImage.Error, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
         }
 
         public void Inform(string message)

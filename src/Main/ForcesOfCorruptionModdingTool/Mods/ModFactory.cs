@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
+using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
+using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 
 namespace ForcesOfCorruptionModdingTool.Mods
 {
@@ -19,7 +21,7 @@ namespace ForcesOfCorruptionModdingTool.Mods
             if (!Directory.Exists(Path.Combine(game.GameDirectory, "Mods")))
                 throw new GameExceptions("The Game does not have any mods");
             if (!Directory.Exists(Path.Combine(game.GameDirectory, "Mods", name)))
-                throw new GameExceptions($"The Game does not have a mod named: {name} installed.");
+                throw new ModNotFoundException($"The Game does not have a mod named: {name} installed.");
 
             return new Mod(Path.Combine(game.GameDirectory, "Mods", name));
         }

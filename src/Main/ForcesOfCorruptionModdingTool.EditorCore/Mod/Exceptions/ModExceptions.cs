@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
+namespace ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions
 {
     public class ModExceptions : Exception
     {

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
+using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
 {

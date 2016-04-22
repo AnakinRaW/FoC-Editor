@@ -58,5 +58,17 @@ namespace ForcesOfCorruptionModdingTool.Properties {
                 this["SourceModPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsGameSteam {
+            get {
+                return ((bool)(this["IsGameSteam"]));
+            }
+            set {
+                this["IsGameSteam"] = value;
+            }
+        }
     }
 }
