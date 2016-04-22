@@ -1,8 +1,9 @@
-﻿using ForcesOfCorruptionModdingTool.Configuration;
-using ForcesOfCorruptionModdingTool.EditorCore.Game;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.RegistryHelper;
 using System;
 using System.IO;
+using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
+using static ForcesOfCorruptionModdingTool.Configuration.GameConfiguration;
 using static ForcesOfCorruptionModdingTool.EditorCore.Helpers.SteamHelper;
 
 namespace ForcesOfCorruptionModdingTool.Games
@@ -14,25 +15,77 @@ namespace ForcesOfCorruptionModdingTool.Games
         /// </summary>
         /// <param name="type">Game-type to check</param>
         /// <returns>Return an instance of the game</returns>
-        public static IGame FindGame(GameType type)
+        public static IGame CreateGame(GameType type)
         {
             switch (type)
             {
                 case GameType.EmpireAtWar:
-                    return FindEaw();
+                    return CreateEaw();
 
                 case GameType.ForcesOfCorruption:
-                    return FindFoc();
+                    return CreateFoc();
 
                 case GameType.Steam:
-                    return FindSteam();
+                    return CreateSteam();
 
                 case GameType.FocOrSteam:
-                    return FindFocOrSteam();
+                    return CreateFocOrSteam();
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
+        }
+
+        public static IGame CreateGame(GameType type, string path)
+        {
+            switch (type)
+            {
+                case GameType.EmpireAtWar:
+                    return CreateEaw(path);
+
+                case GameType.ForcesOfCorruption:
+                    return CreateFoc(path);
+
+                case GameType.Steam:
+                    return CreateSteam(path);
+
+                case GameType.FocOrSteam:
+                    return CreateFocOrSteam(path);
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
+
+        private static IGame CreateFocOrSteam(string path)
+        {
+            if (!FindGame(GameType.FocOrSteam, path))
+                throw new GameNotFoundException();
+            if (new DirectoryInfo(path).Name == FoCSteamFolderName
+                && new DirectoryInfo(Directory.GetParent(path).FullName).Name == SteamEawFolderName)
+                return CreateSteam(path);
+            return CreateFoc(path);
+
+        }
+
+        private static IGame CreateSteam(string path)
+        {
+            if (!FindGame(GameType.FocOrSteam, path))
+                throw new GameNotFoundException();
+            return new SteamGame(path);
+        }
+
+        private static IGame CreateFoc(string path)
+        {
+            if (!FindGame(GameType.FocOrSteam, path))
+                throw new GameNotFoundException();
+            return new FocGame(path);
+        }
+
+        // ReSharper disable once UnusedParameter.Local
+        private static IGame CreateEaw(string path)
+        {
+            throw new NotSupportedException("Empire at War is currently not supported.");
         }
 
         /// <summary>
@@ -56,6 +109,21 @@ namespace ForcesOfCorruptionModdingTool.Games
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
+        }
+
+
+        /// <summary>
+        /// Gets the type of a game
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
+        public static GameType GetGameType(IGame game)
+        {
+            if (game is EawGame)
+                return GameType.EmpireAtWar;
+            if (game is FocGame)
+                return GameType.ForcesOfCorruption;
+            return GameType.Steam;
         }
 
         private static bool FindFocOrSteam(string directoryPath)
@@ -85,32 +153,32 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        private static IGame FindFocOrSteam()
+        private static IGame CreateFocOrSteam()
         {
             if (!IsSteamInstalled)
-                return FindFoc();
-            if (!IsSteamAppInstalled(GameConfiguration.FocSteamAppId))
-                return FindFoc();
-            var path = Path.Combine(GetFocInstallPath(), "corruption");
-            return new SteamGame(path);
+                return CreateFoc();
+            if (!IsSteamAppInstalled(FocSteamAppId))
+                return CreateFoc();
+            return CreateSteam();
         }
 
         private static string GetFocInstallPath()
         {
-            return RegistryHelper.GetValueFromKey(RegistryRootTypes.HkLocalMachine, GameConfiguration.FocRegistryPath, "InstallPath").ToString();
+            return RegistryHelper.GetValueFromKey(RegistryRootTypes.HkLocalMachine, FocRegistryPath, "InstallPath").ToString();
         }
 
-        private static IGame FindSteam()
+        private static IGame CreateSteam()
         {
-            throw new NotImplementedException();
+            var path = Path.Combine(GetFocInstallPath(), "corruption");
+            return new SteamGame(path);
         }
 
-        private static IGame FindFoc()
+        private static IGame CreateFoc()
         {
-            throw new NotImplementedException();
+            return new FocGame(GetFocInstallPath());
         }
 
-        private static IGame FindEaw()
+        private static IGame CreateEaw()
         {
             throw new NotSupportedException("Empire at War is currently not supported.");
         }

@@ -29,12 +29,17 @@ namespace ForcesOfCorruptionModdingTool.Modules.Startup
         public override void Initialize()
         {
             DockingHostViewModel.ShowFloatingWindowsInTaskbar = true;
-            _output.AppendLine("Started successfully");
-            _output.AppendLine($"Welcome, {Environment.UserName}");
+            _output.AppendLine("Shell loaded successfully");
 
             DockingHostViewModel.ActiveDocumentChanged += (sender, e) => RefreshInspector();
             RefreshInspector();
             DockingHostViewModel.ShowTool<IOutput>();
+        }
+
+        public override void PostInitialize()
+        {
+            base.PostInitialize();
+            _output.AppendLine($"Welcome, {Environment.UserName}");
         }
 
         private void RefreshInspector()

@@ -111,6 +111,10 @@
     <Compile Include="Configuration\Views\FirstStartConfigView.xaml.cs">
       <DependentUpon>FirstStartConfigView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Workspace\ViewModels\WorkspaceSettingsViewModel.cs" />
+    <Compile Include="Modules\Workspace\Views\WorkspaceSettingsView.xaml.cs">
+      <DependentUpon>WorkspaceSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProjectDefinitions\EmptyFocProjectDefinition.cs" />
     <Compile Include="ProjectDefinitions\ProjectItemPresenter.xaml.cs">
       <DependentUpon>ProjectItemPresenter.xaml</DependentUpon>
@@ -160,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Configuration\Views\FirstStartConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Workspace\Views\WorkspaceSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

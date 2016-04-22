@@ -139,7 +139,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
         {
             try
             {
-                var game = GameFactory.FindGame(GameType.FocOrSteam);
+                var game = GameFactory.CreateGame(GameType.FocOrSteam);
                 GamePath = game.GameDirectory;
 
                 if (game is SteamGame)

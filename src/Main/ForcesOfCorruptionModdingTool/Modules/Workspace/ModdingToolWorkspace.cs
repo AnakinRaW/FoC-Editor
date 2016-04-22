@@ -137,7 +137,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         protected virtual void OnGameChanged()
         {
             GameChanged?.Invoke(this, EventArgs.Empty);
-            _output.AppendLine($"Game at: {Game.GameDirectory}");
+            _output.AppendLine($"Game at: {Game.GameDirectory} of Type: {Game.GetType().Name}");
         }
     }
 }
