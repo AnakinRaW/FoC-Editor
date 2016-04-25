@@ -45,6 +45,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 
             vm.ItemPresenter = new ProjectItemPresenter { ItemSource = _definitions };
 
+            //var projectDefinition = SelectedItem as ISupportedProjectDefinition;
+            //return projectDefinition == null
+            //    ? null
+            //    : new ProjectInformation(name, path, projectDefinition);
+
             vm.DisplayName = "New Project";
 
             vm.Path = _workspace.Game?.GameDirectory;
