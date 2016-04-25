@@ -4,6 +4,8 @@ using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
+using ModernApplicationFramework.Caliburn;
 
 namespace ForcesOfCorruptionModdingTool.Mods
 {
@@ -52,6 +54,35 @@ namespace ForcesOfCorruptionModdingTool.Mods
             {
                 return false;
             }
+        }
+
+
+
+        /// <summary>
+        /// Checks whether the path of a mod is/will be in a given game
+        /// </summary>
+        /// <param name="path">path to the mod</param>
+        /// <param name="game">game to check against</param>
+        /// <returns>state whether the mod is part of the game</returns>
+        public static bool CheckModPathInGame(string path, IGame game)
+        {
+            if (game == null)
+                throw new GameNotFoundException("The game could not be found");
+            return path.Contains(Path.Combine(game.GameDirectory, "Mods"));
+        }
+
+
+        /// <summary>
+        /// Checks whether the path of a mod is/will be in the workspace game
+        /// </summary>
+        /// <param name="path">path to the mod</param>
+        /// <returns>state whether the mod is part of the workspace game</returns>
+        public static bool CheckModPathInGame(string path)
+        {
+            var game = IoC.Get<IModdingToolWorkspace>().Game;
+            if (game == null)
+                throw new GameNotFoundException("The game could not be found");
+            return CheckModPathInGame(path, game);
         }
 
     }

@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ModernApplicationFramework.Core.Events;
 using ModernApplicationFramework.Interfaces.Utilities;
 using ModernApplicationFramework.MVVM.Annotations;
@@ -84,14 +85,14 @@ namespace ForcesOfCorruptionModdingTool.ProjectDefinitions
         }
 
         public bool UsesNameProperty => true;
-        public bool UsesPathProperty => false;
+        public bool UsesPathProperty => true;
 
         public object CreateResult(string name, string path)
         {
-            var fileArgument = SelectedItem as ISupportedFileDefinition;
+            var fileArgument = SelectedItem as ISupportedProjectDefinition;
             return fileArgument == null
                 ? null
-                : new NewFileCommandArguments(name, fileArgument.FileType.FileExtension, fileArgument.PrefferedEditor);
+                : new ProjectInformation(name, path, fileArgument);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
