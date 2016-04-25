@@ -19,7 +19,7 @@ namespace ForcesOfCorruptionModdingTool.ProjectDefinitions
         public string PresetElementName => "NewMod";
         public int SortOrder => 1;
 
-        public void PrepareProject(Project project)
+        public void PostPrepareProject(Project project)
         {
         }
     }

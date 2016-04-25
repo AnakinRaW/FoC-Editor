@@ -30,15 +30,25 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Project
                     throw new IOException("Could not create: " + information.ProjectPath);
                 }
             Name = information.Name;
-            FilePath = Path.Combine(information.ProjectPath, information.Name);
-
+            FullPath = Path.Combine(information.ProjectPath, information.Name);
         }
 
-        public abstract void Dispose();
+        ~Project()
+        {
+            Dispose(false);
+        }
+
+        protected abstract void Dispose(bool disposing);
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         public string Name { get; set; }
 
-        public string FilePath { get; set; }
+        public string FullPath { get; set; }
 
         public abstract void Export();
 

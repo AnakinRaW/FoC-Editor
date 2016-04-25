@@ -1,15 +1,16 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.Composition;
-using System.Runtime.CompilerServices;
-using ForcesOfCorruptionModdingTool.Annotations;
+﻿using ForcesOfCorruptionModdingTool.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
+using ForcesOfCorruptionModdingTool.Mods;
 using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.Composition;
+using System.Runtime.CompilerServices;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {
@@ -18,15 +19,9 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
     public class ModdingToolWorkspace : ModuleBase, IModdingToolWorkspace
     {
         private readonly IOutput _output;
-        private IMod _sourceMod;
         private IModProject _currentProject;
         private IGame _game;
-
-        public event EventHandler ProjectLoaded;
-
-        public event EventHandler ProjectCreated;
-
-        public event EventHandler ProjectClosed;
+        private IMod _sourceMod;
 
         [ImportingConstructor]
         public ModdingToolWorkspace(IOutput output)
@@ -34,20 +29,28 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             _output = output;
         }
 
-        public override void Initialize()
-        {
-            _output.AppendLine("Workspace initialized");
-        }
+        public event EventHandler ProjectLoaded;
 
+        public event EventHandler ProjectCreated;
+
+        public event EventHandler ProjectClosed;
 
         public void LoadProject(ProjectInformation information)
         {
-
+            //Since this is not requested that often we will delay this.
+            // It will be possible however to import a mod
+            throw new NotImplementedException();
         }
 
         public void CreateProject(ProjectInformation information)
         {
-            throw new NotImplementedException();
+            CurrentProject = new ModProject(information);
+
+            // If the project is inside the workspace game add the mod to the game, do nothing if it is not.
+            if (ModFactory.CheckModPathInGame(CurrentProject.Mod.ModRootDirectory))
+                Game.AddMod(CurrentProject.Mod);
+
+            OnProjectCreated();
         }
 
         public void CloseProject()
@@ -58,7 +61,9 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         }
 
         public event EventHandler ProjectChanged;
+
         public event EventHandler SourceModChanged;
+
         public event EventHandler GameChanged;
 
         public IModProject CurrentProject
@@ -102,10 +107,34 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public override void Initialize()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            _output.AppendLine("Workspace initialized");
+        }
+
+        protected virtual void OnGameChanged()
+        {
+            GameChanged?.Invoke(this, EventArgs.Empty);
+            _output.AppendLine($"Game at: {Game.GameDirectory} of Type: {Game.GetType().Name}");
+        }
+
+        protected virtual void OnProjectChanged()
+        {
+            ProjectChanged?.Invoke(this, EventArgs.Empty);
+            if (CurrentProject != null)
+                _output.AppendLine($"New Mod-Project in workspace: {CurrentProject.Mod.Name}");
+        }
+
+        protected virtual void OnProjectClosed()
+        {
+            ProjectClosed?.Invoke(this, EventArgs.Empty);
+            _output.AppendLine("Closed Mod-Project");
+        }
+
+        protected virtual void OnProjectCreated()
+        {
+            ProjectCreated?.Invoke(this, EventArgs.Empty);
+            _output.AppendLine($"Created new Mod-Project: {CurrentProject.Mod.Name}");
         }
 
         protected virtual void OnProjectLoaded()
@@ -113,31 +142,16 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             ProjectLoaded?.Invoke(this, EventArgs.Empty);
         }
 
-        protected virtual void OnProjectCreated()
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            ProjectCreated?.Invoke(this, EventArgs.Empty);
-        }
-
-        protected virtual void OnProjectClosed()
-        {
-            ProjectClosed?.Invoke(this, EventArgs.Empty);
-        }
-
-        protected virtual void OnProjectChanged()
-        {
-            ProjectChanged?.Invoke(this, EventArgs.Empty);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected virtual void OnSourceModChanged()
         {
             SourceModChanged?.Invoke(this, EventArgs.Empty);
             _output.AppendLine($"Source Mod at: {SourceMod.ModRootDirectory}");
-        }
-
-        protected virtual void OnGameChanged()
-        {
-            GameChanged?.Invoke(this, EventArgs.Empty);
-            _output.AppendLine($"Game at: {Game.GameDirectory} of Type: {Game.GetType().Name}");
         }
     }
 }

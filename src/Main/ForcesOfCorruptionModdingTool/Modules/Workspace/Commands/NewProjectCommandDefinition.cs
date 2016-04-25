@@ -47,37 +47,46 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 
         private void CreateNewProject()
         {
-            var vm = (INewElementDialogModel)IoC.GetInstance(typeof(INewElementDialogModel), null);
-
-            vm.ItemPresenter = new ProjectItemPresenter { ItemSource = _definitions };
-            vm.DisplayName = "New Project";
-
-            if (_workspace.Game.GameDirectory != null)
-                vm.Path = Path.Combine(_workspace.Game.GameDirectory, "Mods");
-
-            var windowManager = IoC.Get<IWindowManager>();
-            if (windowManager.ShowDialog(vm) != true)
-                return;
-
-            var pi = vm.ResultData as ProjectInformation;
-            if (pi == null)
-                return;
-
-
-            if (!ModFactory.CheckModPathInGame(pi.ProjectPath))
+            while (true)
             {
-                var result =
-                    _dialogProvider.Ask(
-                        "The chosen Mod project path does not match the general convention on how to setup a mod.\r\n"
-                        + "The suggested path would be in you primary games directory inside the 'Mods' folder\r\n\r\n"
-                        + @"Example: C:\ProgramFiles\LucasArts\Star Wars Empire At War Forces of Corruption\Mods"
-                        + "\r\n\r\nYou can however keep this path, but some features, like starting the mod will not work.\r\n"
-                        + "Do you want to continue ?", MessageBoxButton.YesNo);
-                if (result)
-                    return;
-            }
+                var vm = (INewElementDialogModel) IoC.GetInstance(typeof(INewElementDialogModel), null);
 
-            _workspace.CreateProject(pi);
+                vm.ItemPresenter = new ProjectItemPresenter {ItemSource = _definitions};
+                vm.DisplayName = "New Project";
+
+                if (_workspace.Game.GameDirectory != null)
+                    vm.Path = Path.Combine(_workspace.Game.GameDirectory, "Mods");
+
+                var windowManager = IoC.Get<IWindowManager>();
+                if (windowManager.ShowDialog(vm) != true)
+                    return;
+
+                var pi = vm.ResultData as ProjectInformation;
+                if (pi == null)
+                    return;
+
+                if (Directory.Exists(Path.Combine(pi.ProjectPath, pi.Name)))
+                {
+                    _dialogProvider.Alert("The given name is already being used. Please chose another name.");
+                    continue;
+                }
+
+
+                if (!ModFactory.CheckModPathInGame(pi.ProjectPath))
+                {
+                    var result =
+                        _dialogProvider.Ask(
+                            "The chosen Mod project path does not match the general convention on how to setup a mod.\r\n"
+                            + "The suggested path would be in you primary games directory inside the 'Mods' folder\r\n\r\n"
+                            + @"Example: C:\ProgramFiles\LucasArts\Star Wars Empire At War Forces of Corruption\Mods"
+                            + "\r\n\r\nYou can however keep this path, but some features, like starting the mod will not work.\r\n"
+                            + "Do you want to continue ?", MessageBoxButton.YesNo);
+                    if (result)
+                        continue;
+                }
+                _workspace.CreateProject(pi);
+                break;
+            }
         }
 
         private static bool CanCreateNewProject()

@@ -111,6 +111,7 @@
     <Compile Include="Configuration\Views\FirstStartConfigView.xaml.cs">
       <DependentUpon>FirstStartConfigView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Workspace\ModProject.cs" />
     <Compile Include="Modules\Workspace\ViewModels\WorkspaceSettingsViewModel.cs" />
     <Compile Include="Modules\Workspace\Views\WorkspaceSettingsView.xaml.cs">
       <DependentUpon>WorkspaceSettingsView.xaml</DependentUpon>

@@ -6,7 +6,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Project
     {
         string Name { get; set; }
 
-        string FilePath { get; set; }
+        string FullPath { get; set; }
 
         void Export();
 

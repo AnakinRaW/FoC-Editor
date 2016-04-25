@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 
@@ -9,6 +8,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Extensions
     {
         public static IEnumerable<T> Add<T>(this IEnumerable<T> list, T value)
         {
+            if (list == null)
+                list = new List<T>();
             var newList = list.ToList();
             newList.Add(value);
             return new List<T>(newList);

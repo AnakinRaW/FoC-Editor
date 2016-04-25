@@ -1,4 +1,9 @@
-﻿using System;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Project;
+using ModernApplicationFramework.Core.Events;
+using ModernApplicationFramework.Interfaces.Utilities;
+using ModernApplicationFramework.MVVM.Annotations;
+using ModernApplicationFramework.MVVM.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,22 +14,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using ForcesOfCorruptionModdingTool.EditorCore.Project;
-using ModernApplicationFramework.Core.Events;
-using ModernApplicationFramework.Interfaces.Utilities;
-using ModernApplicationFramework.MVVM.Annotations;
-using ModernApplicationFramework.MVVM.Core.CommandArguments;
-using ModernApplicationFramework.MVVM.Interfaces;
 
 namespace ForcesOfCorruptionModdingTool.ProjectDefinitions
 {
-
     public partial class ProjectItemPresenter : IExtensionDialogItemPresenter, INotifyPropertyChanged
     {
         private IEnumerable<IExtensionDefinition> _itemSource;
 
         private EventHandler<ItemDoubleClickedEventArgs> _itemDoubleClicked;
-
 
         public event EventHandler<ItemDoubleClickedEventArgs> ItemDoubledClicked
         {
@@ -92,7 +89,7 @@ namespace ForcesOfCorruptionModdingTool.ProjectDefinitions
             var fileArgument = SelectedItem as ISupportedProjectDefinition;
             return fileArgument == null
                 ? null
-                : new ProjectInformation(name, path, fileArgument);
+                : new ProjectInformation(ProjectInformationType.Create, name, path, fileArgument);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -137,9 +134,11 @@ namespace ForcesOfCorruptionModdingTool.ProjectDefinitions
                 case 0:
                     newList = ItemSource.OrderBy(x => x.SortOrder);
                     break;
+
                 case 1:
                     newList = ItemSource.OrderBy(x => x.Name);
                     break;
+
                 default:
                     newList = ItemSource.OrderByDescending(x => x.Name);
                     break;
@@ -179,5 +178,4 @@ namespace ForcesOfCorruptionModdingTool.ProjectDefinitions
             return base.CreateInstance(provider, objectType, argTypes, args);
         }
     }
-
 }

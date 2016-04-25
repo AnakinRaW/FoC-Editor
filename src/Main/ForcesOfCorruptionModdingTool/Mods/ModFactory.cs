@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using ForcesOfCorruptionModdingTool.EditorCore.Game;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ModernApplicationFramework.Caliburn;
+using System;
+using System.IO;
 
 namespace ForcesOfCorruptionModdingTool.Mods
 {
@@ -39,6 +39,16 @@ namespace ForcesOfCorruptionModdingTool.Mods
         }
 
         /// <summary>
+        /// Creates relevant File system structure for a mod at the given path
+        /// </summary>
+        /// <param name="path">Path to build up</param>
+        public static void BuildUpMod(string path)
+        {
+            if (!Directory.Exists(Path.Combine(path, "Data")))
+                Directory.CreateDirectory(Path.Combine(path, "Data"));
+        }
+
+        /// <summary>
         /// Checks whether a mod exists a the given path
         /// </summary>
         /// <param name="path">path to check</param>
@@ -47,6 +57,7 @@ namespace ForcesOfCorruptionModdingTool.Mods
         {
             try
             {
+                // ReSharper disable once ObjectCreationAsStatement
                 new Mod(path);
                 return true;
             }
@@ -55,8 +66,6 @@ namespace ForcesOfCorruptionModdingTool.Mods
                 return false;
             }
         }
-
-
 
         /// <summary>
         /// Checks whether the path of a mod is/will be in a given game
@@ -71,7 +80,6 @@ namespace ForcesOfCorruptionModdingTool.Mods
             return path.Contains(Path.Combine(game.GameDirectory, "Mods"));
         }
 
-
         /// <summary>
         /// Checks whether the path of a mod is/will be in the workspace game
         /// </summary>
@@ -84,6 +92,5 @@ namespace ForcesOfCorruptionModdingTool.Mods
                 throw new GameNotFoundException("The game could not be found");
             return CheckModPathInGame(path, game);
         }
-
     }
 }

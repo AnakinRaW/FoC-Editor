@@ -64,6 +64,7 @@
     <Compile Include="Project\IProject.cs" />
     <Compile Include="Project\Project.cs" />
     <Compile Include="Project\ProjectInformation.cs" />
+    <Compile Include="Project\ProjectInformationType.cs" />
     <Compile Include="Project\SupportedProjectDefinition.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
