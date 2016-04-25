@@ -15,6 +15,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -104,7 +119,9 @@
     <Compile Include="Modules\MainWindow\ViewModels\DockingMainWindowViewModel.cs" />
     <Compile Include="Modules\Startup\Module.cs" />
     <Compile Include="Modules\Workspace\Commands\CloseProjectCommandDefinition.cs" />
+    <Compile Include="Modules\Workspace\Commands\ImportModCommandDefinition.cs" />
     <Compile Include="Modules\Workspace\Commands\NewProjectCommandDefinition.cs" />
+    <Compile Include="Modules\Workspace\Exceptions\ImportCanceledException.cs" />
     <Compile Include="Modules\Workspace\MenuDefinition.cs" />
     <Compile Include="Modules\Workspace\ModdingToolWorkspace.cs" />
     <Compile Include="Configuration\ViewModels\FirstStartConfigViewModel.cs" />
@@ -116,6 +133,7 @@
     <Compile Include="Modules\Workspace\Views\WorkspaceSettingsView.xaml.cs">
       <DependentUpon>WorkspaceSettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Workspace\WorkspaceHelper.cs" />
     <Compile Include="ProjectDefinitions\EmptyFocProjectDefinition.cs" />
     <Compile Include="ProjectDefinitions\ProjectItemPresenter.xaml.cs">
       <DependentUpon>ProjectItemPresenter.xaml</DependentUpon>
@@ -180,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Icons\ImportMod.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\moddingToolBanner.png" />
@@ -206,7 +228,18 @@
   <ItemGroup>
     <Resource Include="Resources\Patches\Eaw\GAMECONSTANTS.XML" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

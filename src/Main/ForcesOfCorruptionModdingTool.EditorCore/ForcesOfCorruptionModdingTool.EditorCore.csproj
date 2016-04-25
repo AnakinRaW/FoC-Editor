@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="FileSystem\FileSystemHelper.cs" />
     <Compile Include="Game\BasicGame.cs" />
     <Compile Include="Game\Exceptions\GameStartException.cs" />
     <Compile Include="Game\Exceptions\GamePatchException.cs" />

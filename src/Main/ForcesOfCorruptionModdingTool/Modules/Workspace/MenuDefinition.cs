@@ -12,6 +12,9 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         public static MenuItemDefinition NewProject = new MenuItemDefinition<NewProjectCommandDefinition>("New Project", 1, SubMenuNew);
 
         [Export]
+        public static MenuItemDefinition ImportMod = new MenuItemDefinition<ImportModCommandDefinition>("Import existing mod", 2, SubMenuOpen);
+
+        [Export]
         public static MenuItemDefinition CloseActiveDocument = new MenuItemDefinition<CloseProjectCommandDefinition>("Close Document", 3, FileMenu);
         
     }

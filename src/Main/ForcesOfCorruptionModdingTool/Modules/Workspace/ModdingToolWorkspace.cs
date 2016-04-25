@@ -6,6 +6,7 @@ using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;
+using ForcesOfCorruptionModdingTool.Modules.Workspace.Exceptions;
 using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
@@ -14,6 +15,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
@@ -51,12 +53,14 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public void CreateProject(ProjectInformation information)
         {
-            if (!ValidateInformation(information))
+            if (!WorkspaceHelper.ValidateInformation(information))
             {
                 IoC.Get<NewProjectCommandDefinition>().Command.Execute(null);
                 return;
             }
 
+            if (CurrentProject != null)
+                CloseProject();
             CurrentProject = new ModProject(information);
 
             // If the project is inside the workspace game add the mod to the game, do nothing if it is not.
@@ -64,26 +68,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                 Game.AddMod(CurrentProject.Mod);
 
             OnProjectCreated();
-        }
-
-        private bool ValidateInformation(ProjectInformation information)
-        {
-            if (Directory.Exists(Path.Combine(information.ProjectPath, information.Name)))
-            {
-                _dialogProvider.Alert("The given name is already being used. Please chose another name.");
-                return false;
-            }
-
-            if (ModFactory.CheckModPathInGame(information.ProjectPath))
-                return true;
-            var result =
-                _dialogProvider.Ask(
-                    "The chosen Mod project path does not match the general convention on how to setup a mod.\r\n"
-                    + "The suggested path would be in you primary games directory inside the 'Mods' folder\r\n\r\n"
-                    + @"Example: C:\ProgramFiles\LucasArts\Star Wars Empire At War Forces of Corruption\Mods"
-                    + "\r\n\r\nYou can however keep this path, but some features, like starting the mod will not work.\r\n"
-                    + "Do you want to continue ?", MessageBoxButton.YesNo);
-            return !result;
         }
 
         public void CloseProject()
@@ -140,7 +124,41 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public void ImportMod(string path)
         {
-            throw new NotImplementedException();
+            if (CurrentProject != null)
+                CloseProject();
+
+            if (!WorkspaceHelper.ValidateImportPath(path))
+                return;
+
+            try
+            {
+                var modLocation = AskToMoveIfRequired(path);
+
+                //TODO: Create a ModProject from path and add mod to game
+            }
+            catch (ImportCanceledException)
+            {
+                _output.AppendLine("Import Canceled by user");
+            }
+            
+        }
+
+        private string AskToMoveIfRequired(string path)
+        {
+            if (ModFactory.CheckModPathInGame(path))
+                return path;
+            if (Game.Mods != null && Game.Mods.Any(x => x.Name == new DirectoryInfo(path).Name))
+                return path;
+            var result = _dialogProvider.Ask("The selected mod is not installed in the game the editor uses.\r\n\r\n" +
+                                "Do you want to move the files ? ", MessageBoxButton.YesNo);
+            if (result)
+                return path;
+
+            var newPath = Path.Combine(Game.GameDirectory, "Mods", new DirectoryInfo(path).Name);
+
+            if (WorkspaceHelper.MoveFiles(path, newPath))
+                throw new ImportCanceledException();
+            return newPath;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
