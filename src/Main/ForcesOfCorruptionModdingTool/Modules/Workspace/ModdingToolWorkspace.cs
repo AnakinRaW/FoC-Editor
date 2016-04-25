@@ -4,13 +4,18 @@ using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Mods;
+using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
+using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;
+using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
+using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {
@@ -22,10 +27,12 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         private IModProject _currentProject;
         private IGame _game;
         private IMod _sourceMod;
+        private readonly IDialogProvider _dialogProvider;
 
         [ImportingConstructor]
-        public ModdingToolWorkspace(IOutput output)
+        public ModdingToolWorkspace(IOutput output, IDialogProvider dialogProvider)
         {
+            _dialogProvider = dialogProvider;
             _output = output;
         }
 
@@ -44,6 +51,12 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public void CreateProject(ProjectInformation information)
         {
+            if (!ValidateInformation(information))
+            {
+                IoC.Get<NewProjectCommandDefinition>().Command.Execute(null);
+                return;
+            }
+
             CurrentProject = new ModProject(information);
 
             // If the project is inside the workspace game add the mod to the game, do nothing if it is not.
@@ -51,6 +64,26 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                 Game.AddMod(CurrentProject.Mod);
 
             OnProjectCreated();
+        }
+
+        private bool ValidateInformation(ProjectInformation information)
+        {
+            if (Directory.Exists(Path.Combine(information.ProjectPath, information.Name)))
+            {
+                _dialogProvider.Alert("The given name is already being used. Please chose another name.");
+                return false;
+            }
+
+            if (ModFactory.CheckModPathInGame(information.ProjectPath))
+                return true;
+            var result =
+                _dialogProvider.Ask(
+                    "The chosen Mod project path does not match the general convention on how to setup a mod.\r\n"
+                    + "The suggested path would be in you primary games directory inside the 'Mods' folder\r\n\r\n"
+                    + @"Example: C:\ProgramFiles\LucasArts\Star Wars Empire At War Forces of Corruption\Mods"
+                    + "\r\n\r\nYou can however keep this path, but some features, like starting the mod will not work.\r\n"
+                    + "Do you want to continue ?", MessageBoxButton.YesNo);
+            return !result;
         }
 
         public void CloseProject()
@@ -103,6 +136,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                 OnPropertyChanged();
                 OnGameChanged();
             }
+        }
+
+        public void ImportMod(string path)
+        {
+            throw new NotImplementedException();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

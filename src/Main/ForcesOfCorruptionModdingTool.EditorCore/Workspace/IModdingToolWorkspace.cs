@@ -20,5 +20,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
         IMod SourceMod { get; set; }
 
         IGame Game { get; set; }
+
+        void ImportMod(string path);
     }
 }
