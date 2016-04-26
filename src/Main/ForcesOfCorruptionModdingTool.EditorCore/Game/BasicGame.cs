@@ -74,7 +74,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
             Mods = Mods.Add(mod);
         }
 
-        public abstract IEnumerable<IMod> FindMods();
+        public abstract IEnumerable<IMod> FindMods(bool instantiate = true);
+
 
         public void ClearDataFolder()
         {

@@ -110,6 +110,7 @@
     <Compile Include="Games\FocGame.cs" />
     <Compile Include="Games\GameFactory.cs" />
     <Compile Include="Games\SteamGame.cs" />
+    <Compile Include="Games\SteamHelper.cs" />
     <Compile Include="Mods\ModFactory.cs" />
     <Compile Include="Modules\AboutDialog\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>

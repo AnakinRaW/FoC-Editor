@@ -10,9 +10,14 @@ using ForcesOfCorruptionModdingTool.Properties;
 
 namespace ForcesOfCorruptionModdingTool.Games
 {
-    public class FocGame : BasicGame
+    public sealed class FocGame : BasicGame
     {
-        public FocGame(string gameDirectory) : base(gameDirectory) {}
+        public FocGame(string gameDirectory, bool fullInstantiate = true) : base(gameDirectory)
+        {
+            if (!fullInstantiate)
+                return;
+            Mods = FindMods();
+        }
         protected override string GameconstantsUpdateHash => "4306d0c45d103cd11ff6743d1c3d9366";
         protected override string GraphicdetailsUpdateHash => "4d7e140887fc1dd52f47790a6e20b5c5";
         protected override string ExeFileName => "swfoc.exe";
@@ -86,7 +91,7 @@ namespace ForcesOfCorruptionModdingTool.Games
             return true;
         }
 
-        public override IEnumerable<IMod> FindMods()
+        public override IEnumerable<IMod> FindMods(bool instantiate = true)
         {
             throw new NotImplementedException();
         }

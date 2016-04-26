@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using static ForcesOfCorruptionModdingTool.Configuration.GameConfiguration;
-using static ForcesOfCorruptionModdingTool.EditorCore.Helpers.SteamHelper;
+using static ForcesOfCorruptionModdingTool.Games.SteamHelper;
 
 namespace ForcesOfCorruptionModdingTool.Games
 {
@@ -130,8 +130,8 @@ namespace ForcesOfCorruptionModdingTool.Games
         {
             try
             {
-                new FocGame(directoryPath);
-                new SteamGame(directoryPath);
+                new FocGame(directoryPath, false);
+                new SteamGame(directoryPath, false);
                 return true;
             }
             catch (Exception)
@@ -157,9 +157,7 @@ namespace ForcesOfCorruptionModdingTool.Games
         {
             if (!IsSteamInstalled)
                 return CreateFoc();
-            if (!IsSteamAppInstalled(FocSteamAppId))
-                return CreateFoc();
-            return CreateSteam();
+            return !IsSteamAppInstalled(FocSteamAppId) ? CreateFoc() : CreateSteam();
         }
 
         private static string GetFocInstallPath()

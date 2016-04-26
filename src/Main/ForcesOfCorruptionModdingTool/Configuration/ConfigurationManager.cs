@@ -28,8 +28,8 @@ namespace ForcesOfCorruptionModdingTool.Configuration
             if (!GameFactory.FindGame(GameType.FocOrSteam, Settings.Default.GamePath))
                 throw new GameNotFoundException("Game could not be loaded.");
             workspace.Game = Settings.Default.IsGameSteam
-                ? (IGame)new SteamGame(Settings.Default.GamePath)
-                : new FocGame(Settings.Default.GamePath);
+                ? GameFactory.CreateGame(GameType.Steam, Settings.Default.GamePath)
+                : GameFactory.CreateGame(GameType.ForcesOfCorruption, Settings.Default.GamePath);
 
             if (!ModFactory.FindMod(Settings.Default.SourceModPath))
                 throw new ModNotFoundException("Source Mod could not be loaded.");

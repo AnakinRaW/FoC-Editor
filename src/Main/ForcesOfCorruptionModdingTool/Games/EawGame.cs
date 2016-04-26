@@ -79,9 +79,9 @@ namespace ForcesOfCorruptionModdingTool.Games
             return true;
         }
 
-        public override IEnumerable<IMod> FindMods()
+        public override IEnumerable<IMod> FindMods(bool instantiate = true)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException("EaW is not supported");
         }
     }
 }

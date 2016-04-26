@@ -100,7 +100,9 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.ViewModels
 
         public void Apply()
         {
-            _workspace.Game = IsSteam ? (IGame)new SteamGame(GamePath) : new FocGame(GamePath);
+            _workspace.Game = IsSteam
+                ? GameFactory.CreateGame(GameType.Steam, GamePath)
+                : GameFactory.CreateGame(GameType.ForcesOfCorruption, GamePath);
             _workspace.SourceMod = ModFactory.CreateMod(SourcePath);
 
             Settings.Default.GamePath = GamePath;

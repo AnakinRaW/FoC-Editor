@@ -56,7 +56,6 @@
     <Compile Include="Game\GameType.cs" />
     <Compile Include="Game\IGame.cs" />
     <Compile Include="HashProvider\HashProvider.cs" />
-    <Compile Include="Helpers\SteamHelper.cs" />
     <Compile Include="Mod\Exceptions\ModNotFoundException.cs" />
     <Compile Include="Mod\Exceptions\ModExceptions.cs" />
     <Compile Include="Mod\IMod.cs" />

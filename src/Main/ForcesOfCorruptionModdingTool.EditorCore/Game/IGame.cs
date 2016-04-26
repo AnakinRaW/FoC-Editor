@@ -65,8 +65,9 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         /// <summary>
         /// Finds mods for the game
         /// </summary>
-        /// <returns>Returns a list of game mods</returns>
-        IEnumerable<IMod> FindMods();
+        /// <param name="instantiate">Specifies whether the mods should instantiated or not</param>
+        /// <returns>Returns a list all mods of the game</returns>
+        IEnumerable<IMod> FindMods(bool instantiate = true);
 
 
         /// <summary>

@@ -7,15 +7,20 @@ using ForcesOfCorruptionModdingTool.Configuration;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
-using ForcesOfCorruptionModdingTool.EditorCore.Helpers;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.Properties;
 
 namespace ForcesOfCorruptionModdingTool.Games
 {
-    public class SteamGame : BasicGame
+    public sealed class SteamGame : BasicGame
     {
-        public SteamGame(string gameDirectory) : base(gameDirectory) {}
+        public SteamGame(string gameDirectory, bool fullInstantiate = true) : base(gameDirectory)
+        {
+            if (!fullInstantiate)
+                return;
+            Mods = FindMods();
+        }
+
         protected override string GameconstantsUpdateHash => "4306d0c45d103cd11ff6743d1c3d9366";
         protected override string GraphicdetailsUpdateHash => "4d7e140887fc1dd52f47790a6e20b5c5";
         protected override string ExeFileName => "swfoc.exe";
@@ -94,7 +99,7 @@ namespace ForcesOfCorruptionModdingTool.Games
             return true;
         }
 
-        public override IEnumerable<IMod> FindMods()
+        public override IEnumerable<IMod> FindMods(bool instantiate = true)
         {
             throw new NotImplementedException();
         }
