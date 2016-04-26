@@ -1,0 +1,31 @@
+﻿<mafc:ToolBar x:Class="ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar.WorkspaceToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mafc="http://modern.framework.com/controls">
+
+    <mafc:ToolBar.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Resources/Icons/LaunchGame.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type mafc:Button}">
+                <Setter Property="MinWidth" Value="22"/>
+            </Style>
+        </ResourceDictionary>
+    </mafc:ToolBar.Resources>
+
+    <mafc:ComboBox SelectedIndex="0" IsEditable="False" IsReadOnly="True">
+        <mafc:ComboBoxItem Content="{Binding Workspace.Game.Name}"/>
+    </mafc:ComboBox>
+    <mafc:CheckBox Margin="5,0,0,0" IsChecked="{Binding IsWindowMode}" Content="Window Mode" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                   FlowDirection="RightToLeft"/>
+    <Separator Margin="5,0,0,0"/>
+    <mafc:ComboBox Margin="5,0,0,0" ItemsSource="{Binding ItemSource}" SelectedItem="{Binding SelectedMod, Mode=TwoWay}" SelectedIndex="0">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Name}" />
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </mafc:ComboBox>
+    <mafc:IconTextButton Icon="{StaticResource LaunchGameIcon}" Margin="5,0,0,0" Command="{Binding LaunchCommand}">Launch</mafc:IconTextButton>
+</mafc:ToolBar>

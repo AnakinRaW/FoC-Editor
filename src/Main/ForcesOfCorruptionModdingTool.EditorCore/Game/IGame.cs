@@ -1,9 +1,10 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Game
 {
-    public interface IGame
+    public interface IGame : INotifyPropertyChanged
     {
         /// <summary>
         /// Stores the directory containing the main executable file
@@ -24,6 +25,11 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         /// Returns the name of the Game
         /// </summary>
         string Name { get; }
+
+        /// <summary>
+        /// Tells if the game has a running instance
+        /// </summary>
+        bool IsRunning { get; }
 
         /// <summary>
         /// Checks whether the game is installed 

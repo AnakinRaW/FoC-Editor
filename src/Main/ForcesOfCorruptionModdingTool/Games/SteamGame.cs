@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using ForcesOfCorruptionModdingTool.Configuration;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
+using ForcesOfCorruptionModdingTool.EditorCore.Windows.ProcessManager;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Properties;
 
@@ -40,31 +40,28 @@ namespace ForcesOfCorruptionModdingTool.Games
         public override IEnumerable<IMod> Mods { get; protected set; }
         public override string Name => "Forces of Corruption (Steam)";
 
-        public override void StartGame(GameLaunchArguments arguments)
+        public override async void StartGame(GameLaunchArguments arguments)
         {
-            if (arguments == null)
-                throw new ArgumentNullException(nameof(arguments));
-
-            var startInfo = new ProcessStartInfo
-            {
-                FileName = SteamHelper.SteamInstallPath
-            };
-
-            arguments.GameArguments = "-applaunch "  + GameConfiguration.FocSteamAppId + " swfoc";
-
-            startInfo.Arguments = arguments.ToString();
-
-            string str = Directory.GetParent(new DirectoryInfo(GameDirectory).FullName).FullName;
-
             if (!Exists())
                 throw new GameExceptions("The game is not installed correctly");
 
-            File.Move(str + "\\runme.dat", str + "\\tmp.runme.dat.tmp");
-            File.Copy(str + "\\runm2.dat", str + "\\runme.dat");
-            Process.Start(startInfo);
-            Thread.Sleep(2000);
-            File.Delete(str + "\\runme.dat");
-            File.Move(str + "\\tmp.runme.dat.tmp", str + "\\runme.dat");
+            if (arguments == null)
+                throw new ArgumentNullException(nameof(arguments));
+
+            arguments.GameArguments = "-applaunch "  + GameConfiguration.FocSteamAppId + " swfoc";
+
+            var process = new Process
+            {
+                StartInfo =
+                {
+                    FileName = SteamHelper.SteamInstallPath,
+                    Arguments = arguments.ToString(),
+                }
+            };
+            await SteamHelper.StartSteamGame(this, process);
+            IsRunning = true;
+            var pm = new ProcessManager("swfoc");
+            pm.PropertyChanged += Pm_PropertyChanged;
         }
 
         public override void Patch()
@@ -114,6 +111,16 @@ namespace ForcesOfCorruptionModdingTool.Games
                 catch (ModExceptions) {}
             }
             return mods;
+        }
+
+        private void Pm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != nameof(IsRunning))
+                return;
+            if (((ProcessManager)sender).IsRunning)
+                return;
+            IsRunning = false;
+            ((ProcessManager)sender).Dispose();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace ForcesOfCorruptionModdingTool.EditorCore.FileSystem
+namespace ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem
 {
     //http://stackoverflow.com/questions/2947300/copy-a-directory-to-a-different-drive
     public static class FileSystemHelper

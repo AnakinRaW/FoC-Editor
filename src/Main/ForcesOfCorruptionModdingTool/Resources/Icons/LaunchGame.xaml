@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Viewbox Width="16" Height="16" x:Key="LaunchGameIcon">
+        <Rectangle Width="16" Height="16">
+            <Rectangle.Fill>
+                <DrawingBrush>
+                    <DrawingBrush.Drawing>
+                        <DrawingGroup>
+                            <DrawingGroup.Children>
+                                <GeometryDrawing Brush="Transparent" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                <GeometryDrawing Brush="Transparent" Geometry="F1M2.9997,-0.000199999999999534L2.9997,15.9998 13.6677,7.9998z" />
+                                <GeometryDrawing Brush="#FF378A33" Geometry="F1M4,2L4,14 11.999,8z M6,6L8.667,8 6,10z" />
+                                <GeometryDrawing Brush="#FF378A33" Geometry="F1M9.667,8L6,10 6,6z" />
+                            </DrawingGroup.Children>
+                        </DrawingGroup>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Viewbox>
+</ResourceDictionary>

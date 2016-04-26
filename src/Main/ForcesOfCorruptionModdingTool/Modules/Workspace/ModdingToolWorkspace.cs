@@ -202,7 +202,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             if (ModFactory.CheckModPathInGame(path))
                 return path;
             if (Game.Mods != null && Game.Mods.Any(x => x.Name == new DirectoryInfo(path).Name))
+            {
+                _dialogProvider.Inform("The selected mod is not installed in the game the editor uses." +
+                                       "\r\nSome features like starting the mod might not work in this case.");
                 return path;
+            }
             var result = _dialogProvider.Ask("The selected mod is not installed in the game the editor uses." +
                                              "\r\nSome features like starting the mod might not work in this case.\r\n\r\n" +
                                              "Do you want to move the files to the game ? ", MessageBoxButton.YesNo);

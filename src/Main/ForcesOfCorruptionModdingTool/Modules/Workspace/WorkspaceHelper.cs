@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
-using ForcesOfCorruptionModdingTool.EditorCore.FileSystem;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
+using ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;

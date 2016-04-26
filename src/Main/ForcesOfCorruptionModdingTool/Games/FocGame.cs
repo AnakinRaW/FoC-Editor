@@ -7,6 +7,7 @@ using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
+using ForcesOfCorruptionModdingTool.EditorCore.Windows.ProcessManager;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Properties;
 
@@ -52,11 +53,24 @@ namespace ForcesOfCorruptionModdingTool.Games
             try
             {
                 process.Start();
+                IsRunning = true;
+                var pm = new ProcessManager(process);
+                pm.PropertyChanged += Pm_PropertyChanged;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new GameStartException("Could not start the game");
+                throw new GameStartException($"Could not start the game: {e.Message}");
             }
+        }
+
+        private void Pm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != nameof(IsRunning))
+                return;
+            if (((ProcessManager)sender).IsRunning)
+                return;
+            IsRunning = false;
+            ((ProcessManager)sender).Dispose();
         }
 
         public override void Patch()
