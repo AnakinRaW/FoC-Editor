@@ -30,6 +30,8 @@ namespace ForcesOfCorruptionModdingTool.Games
         public override IEnumerable<IMod> Mods { get; protected set; }
         public override string Name => "Empire at War";
 
+        public override GameProcessData GameProcessData => new GameProcessData();
+
         public override void StartGame(GameLaunchArguments arguments)
         {
             var process = new Process

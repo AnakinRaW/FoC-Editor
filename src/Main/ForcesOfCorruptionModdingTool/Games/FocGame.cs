@@ -7,7 +7,6 @@ using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
-using ForcesOfCorruptionModdingTool.EditorCore.Windows.ProcessManager;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Properties;
 
@@ -17,6 +16,7 @@ namespace ForcesOfCorruptionModdingTool.Games
     {
         public FocGame(string gameDirectory, bool fullInstantiate = true) : base(gameDirectory)
         {
+            GameProcessData = new GameProcessData();
             if (!fullInstantiate)
                 return;
             Mods = FindMods();
@@ -38,6 +38,8 @@ namespace ForcesOfCorruptionModdingTool.Games
         public override IEnumerable<IMod> Mods { get; protected set; }
         public override string Name => "Forces of Corruption";
 
+        public override GameProcessData GameProcessData { get; }
+
         public override void StartGame(GameLaunchArguments arguments)
         {
             var process = new Process
@@ -52,25 +54,13 @@ namespace ForcesOfCorruptionModdingTool.Games
             };
             try
             {
-                process.Start();
-                IsRunning = true;
-                var pm = new ProcessManager(process);
-                pm.PropertyChanged += Pm_PropertyChanged;
+                GameProcessData.Process = process;
+                GameProcessData.StartProcess();
             }
             catch (Exception e)
             {
                 throw new GameStartException($"Could not start the game: {e.Message}");
             }
-        }
-
-        private void Pm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != nameof(IsRunning))
-                return;
-            if (((ProcessManager)sender).IsRunning)
-                return;
-            IsRunning = false;
-            ((ProcessManager)sender).Dispose();
         }
 
         public override void Patch()

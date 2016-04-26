@@ -64,6 +64,33 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
 
         public ICommand LaunchCommand => new CommandWrapper(Launch, CanLaunch);
 
+        public ICommand StopCommand => new CommandWrapper(Stop, CanStop);
+
+        public ICommand RestartCommand => new CommandWrapper(Restart, CanRestart);
+
+        private void Restart()
+        {
+            StopCommand.Execute(null);
+            LaunchCommand.Execute(null);
+        }
+
+        private bool CanRestart()
+        {
+            if (Workspace.Game == null)
+                return false;
+            return Workspace.Game.GameProcessData.IsProcessRunning;
+        }
+
+        private bool CanStop()
+        {
+            return Workspace.Game?.GameProcessData?.Process != null;
+        }
+
+        private void Stop()
+        {
+            Workspace.Game?.GameProcessData?.Process.Kill();
+        }
+
         private void Launch()
         {
             var gla = new GameLaunchArguments();
@@ -76,8 +103,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
 
         private bool CanLaunch()
         {
-            if (Workspace.Game != null && Workspace.Game.IsRunning)
-                return false;
             return _selectedMod == null || ModFactory.CheckModPathInGame(_selectedMod.ModRootDirectory);
         }
     }

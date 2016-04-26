@@ -108,6 +108,14 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
             if (dialog.ShowDialog() != true)
                 return;
             GamePath = dialog.SelectedPath;
+            try
+            {
+                IsSteam = GameFactory.GetGameType(GameFactory.CreateGame(GameType.FocOrSteam, GamePath)) == GameType.Steam;
+            }
+            catch (Exception)
+            {
+                //Ignored
+            }
         }
 
         private void BrowseSource()

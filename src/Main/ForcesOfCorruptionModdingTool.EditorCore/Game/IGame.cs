@@ -27,12 +27,12 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         string Name { get; }
 
         /// <summary>
-        /// Tells if the game has a running instance
+        /// Contains Data of the Process
         /// </summary>
-        bool IsRunning { get; }
+        GameProcessData GameProcessData { get; }
 
         /// <summary>
-        /// Checks whether the game is installed 
+        /// Checks whether the game is installed
         /// </summary>
         /// <returns>status of game existence</returns>
         bool Exists();
@@ -48,7 +48,6 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         /// </summary>
         void Patch();
 
-
         /// <summary>
         /// Checks if the game has the latest patch installed
         /// </summary>
@@ -60,7 +59,6 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         /// </summary>
         /// <param name="mod">Mod to delete</param>
         void DeleteMod(IMod mod);
-
 
         /// <summary>
         /// Adds a mod
@@ -74,7 +72,6 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         /// <param name="instantiate">Specifies whether the mods should instantiated or not</param>
         /// <returns>Returns a list all mods of the game</returns>
         IEnumerable<IMod> FindMods(bool instantiate = true);
-
 
         /// <summary>
         /// Clears the root Data folder to default

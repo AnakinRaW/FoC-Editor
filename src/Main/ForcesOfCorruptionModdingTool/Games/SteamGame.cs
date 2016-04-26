@@ -8,9 +8,9 @@ using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
-using ForcesOfCorruptionModdingTool.EditorCore.Windows.ProcessManager;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Properties;
+using static ForcesOfCorruptionModdingTool.EditorCore.Windows.Processes.ProcessHelper;
 
 namespace ForcesOfCorruptionModdingTool.Games
 {
@@ -18,6 +18,7 @@ namespace ForcesOfCorruptionModdingTool.Games
     {
         public SteamGame(string gameDirectory, bool fullInstantiate = true) : base(gameDirectory)
         {
+            GameProcessData = new GameProcessData();
             if (!fullInstantiate)
                 return;
             Mods = FindMods();
@@ -40,6 +41,8 @@ namespace ForcesOfCorruptionModdingTool.Games
         public override IEnumerable<IMod> Mods { get; protected set; }
         public override string Name => "Forces of Corruption (Steam)";
 
+        public override GameProcessData GameProcessData { get; }
+
         public override async void StartGame(GameLaunchArguments arguments)
         {
             if (!Exists())
@@ -56,12 +59,11 @@ namespace ForcesOfCorruptionModdingTool.Games
                 {
                     FileName = SteamHelper.SteamInstallPath,
                     Arguments = arguments.ToString(),
-                }
+                },
             };
+
             await SteamHelper.StartSteamGame(this, process);
-            IsRunning = true;
-            var pm = new ProcessManager("swfoc");
-            pm.PropertyChanged += Pm_PropertyChanged;
+            GameProcessData.Process = FindProcess("swfoc");
         }
 
         public override void Patch()
@@ -111,16 +113,6 @@ namespace ForcesOfCorruptionModdingTool.Games
                 catch (ModExceptions) {}
             }
             return mods;
-        }
-
-        private void Pm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName != nameof(IsRunning))
-                return;
-            if (((ProcessManager)sender).IsRunning)
-                return;
-            IsRunning = false;
-            ((ProcessManager)sender).Dispose();
         }
     }
 }

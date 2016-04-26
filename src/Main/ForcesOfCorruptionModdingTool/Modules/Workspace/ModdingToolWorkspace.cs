@@ -18,8 +18,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
 using SourceChangedEventArgs = ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs.SourceChangedEventArgs;
+using ToolBar = ModernApplicationFramework.Controls.ToolBar;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {

@@ -1,23 +1,21 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.CompilerServices;
-using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Extensions;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Game
 {
     public abstract class BasicGame : IGame
     {
-        private bool _isRunning;
         protected abstract string GameconstantsUpdateHash { get; }
 
         protected abstract string GraphicdetailsUpdateHash { get; }
 
         protected abstract string ExeFileName { get; }
-
 
         protected BasicGame(string gameDirectory)
         {
@@ -26,23 +24,12 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
                 throw new GameNotFoundException("The game does not exists at the given location");
         }
 
-
         public string GameDirectory { get; }
         public abstract string SaveGameDirectrory { get; }
         public abstract IEnumerable<IMod> Mods { get; protected set; }
         public abstract string Name { get; }
 
-        public bool IsRunning
-        {
-            get { return _isRunning; }
-            protected set
-            {
-                if (value == _isRunning)
-                    return;
-                _isRunning = value;
-                OnPropertyChanged();
-            }
-        }
+        public abstract GameProcessData GameProcessData { get; }
 
         public bool Exists()
         {
@@ -91,7 +78,6 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
         }
 
         public abstract IEnumerable<IMod> FindMods(bool instantiate = true);
-
 
         public void ClearDataFolder()
         {
