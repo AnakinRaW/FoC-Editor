@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Properties;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
@@ -18,6 +19,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
     {
 #pragma warning disable 649
         [Import] private IDialogProvider _dialogProvider;
+        [Import] private IModdingToolWorkspace _workspace;
 #pragma warning restore 649
 
         static DockingMainWindowViewModel()
@@ -33,6 +35,21 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
             StatusBar.ModeText = "Ready";
             ActiveIcon = new BitmapImage(new Uri("pack://application:,,,/ForcesOfCorruptionModdingTool;component/Resources/Icons/eawActive.png"));
             PassiveIcon = new BitmapImage(new Uri("pack://application:,,,/ForcesOfCorruptionModdingTool;component/Resources/Icons/eawInactive.png"));
+
+            _workspace.ProjectClosed += _workspace_ProjectClosed;
+            _workspace.ProjectChanged += _workspace_ProjectChanged;
+        }
+
+        private void _workspace_ProjectChanged(object sender, EventArgs e)
+        {
+            StatusBar.Mode = 1;
+            // TODO add proper event args StatusBar.InformationTextC = e.
+        }
+
+        private void _workspace_ProjectClosed(object sender, EventArgs e)
+        {
+            StatusBar.Mode = 3;
+            StatusBar.InformationTextC = string.Empty;
         }
 
         protected override void OnViewAttached(object view, object context)

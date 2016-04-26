@@ -3,6 +3,7 @@
     public enum ProjectInformationType
     {
         Create,
-        Open
+        Open,
+        Import
     }
 }

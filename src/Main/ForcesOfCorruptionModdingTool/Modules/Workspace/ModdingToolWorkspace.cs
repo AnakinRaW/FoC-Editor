@@ -1,4 +1,11 @@
-﻿using ForcesOfCorruptionModdingTool.Annotations;
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using ForcesOfCorruptionModdingTool.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
@@ -11,13 +18,6 @@ using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Composition;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Windows;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {
@@ -25,11 +25,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
     [Export(typeof(IModdingToolWorkspace))]
     public class ModdingToolWorkspace : ModuleBase, IModdingToolWorkspace
     {
+        private readonly IDialogProvider _dialogProvider;
         private readonly IOutput _output;
         private IModProject _currentProject;
         private IGame _game;
         private IMod _sourceMod;
-        private readonly IDialogProvider _dialogProvider;
 
         [ImportingConstructor]
         public ModdingToolWorkspace(IOutput output, IDialogProvider dialogProvider)
@@ -43,39 +43,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         public event EventHandler ProjectCreated;
 
         public event EventHandler ProjectClosed;
-
-        public void LoadProject(ProjectInformation information)
-        {
-            //Since this is not requested that often we will delay this.
-            // It will be possible however to import a mod
-            throw new NotImplementedException();
-        }
-
-        public void CreateProject(ProjectInformation information)
-        {
-            if (!WorkspaceHelper.ValidateInformation(information))
-            {
-                IoC.Get<NewProjectCommandDefinition>().Command.Execute(null);
-                return;
-            }
-
-            if (CurrentProject != null)
-                CloseProject();
-            CurrentProject = new ModProject(information);
-
-            // If the project is inside the workspace game add the mod to the game, do nothing if it is not.
-            if (ModFactory.CheckModPathInGame(CurrentProject.Mod.ModRootDirectory))
-                Game.AddMod(CurrentProject.Mod);
-
-            OnProjectCreated();
-        }
-
-        public void CloseProject()
-        {
-            CurrentProject?.Dispose();
-            CurrentProject = null;
-            OnProjectClosed();
-        }
 
         public event EventHandler ProjectChanged;
 
@@ -122,6 +89,39 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             }
         }
 
+        public void LoadProject(ProjectInformation information)
+        {
+            //Since this is not requested that often we will delay this.
+            // It will be possible however to import a mod
+            throw new NotImplementedException();
+        }
+
+        public void CreateProject(ProjectInformation information)
+        {
+            if (!WorkspaceHelper.ValidateInformation(information))
+            {
+                IoC.Get<NewProjectCommandDefinition>().Command.Execute(null);
+                return;
+            }
+
+            if (CurrentProject != null)
+                CloseProject();
+            CurrentProject = new ModProject(information);
+
+            // If the project is inside the workspace game add the mod to the game, do nothing if it is not.
+            if (ModFactory.CheckModPathInGame(CurrentProject.Mod.ModRootDirectory))
+                Game.AddMod(CurrentProject.Mod);
+
+            OnProjectCreated();
+        }
+
+        public void CloseProject()
+        {
+            CurrentProject?.Dispose();
+            CurrentProject = null;
+            OnProjectClosed();
+        }
+
         public void ImportMod(string path)
         {
             if (CurrentProject != null)
@@ -133,32 +133,15 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             try
             {
                 var modLocation = AskToMoveIfRequired(path);
-
-                //TODO: Create a ModProject from path and add mod to game
+                var information = new ProjectInformation(ProjectInformationType.Import, modLocation, null);
+                CurrentProject = new ModProject(information);
+                if (ModFactory.CheckModPathInGame(CurrentProject.Mod.ModRootDirectory))
+                    Game.AddMod(CurrentProject.Mod);
             }
             catch (ImportCanceledException)
             {
                 _output.AppendLine("Import Canceled by user");
             }
-            
-        }
-
-        private string AskToMoveIfRequired(string path)
-        {
-            if (ModFactory.CheckModPathInGame(path))
-                return path;
-            if (Game.Mods != null && Game.Mods.Any(x => x.Name == new DirectoryInfo(path).Name))
-                return path;
-            var result = _dialogProvider.Ask("The selected mod is not installed in the game the editor uses.\r\n\r\n" +
-                                "Do you want to move the files ? ", MessageBoxButton.YesNo);
-            if (result)
-                return path;
-
-            var newPath = Path.Combine(Game.GameDirectory, "Mods", new DirectoryInfo(path).Name);
-
-            if (WorkspaceHelper.MoveFiles(path, newPath))
-                throw new ImportCanceledException();
-            return newPath;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -178,7 +161,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         {
             ProjectChanged?.Invoke(this, EventArgs.Empty);
             if (CurrentProject != null)
-                _output.AppendLine($"New Mod-Project in workspace: {CurrentProject.Mod.Name}");
+                _output.AppendLine($"New Mod-Project in workspace: {CurrentProject.Name}");
         }
 
         protected virtual void OnProjectClosed()
@@ -190,7 +173,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         protected virtual void OnProjectCreated()
         {
             ProjectCreated?.Invoke(this, EventArgs.Empty);
-            _output.AppendLine($"Created new Mod-Project: {CurrentProject.Mod.Name}");
+            _output.AppendLine($"Created new Mod-Project: {CurrentProject.Name}");
         }
 
         protected virtual void OnProjectLoaded()
@@ -208,6 +191,25 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         {
             SourceModChanged?.Invoke(this, EventArgs.Empty);
             _output.AppendLine($"Source Mod at: {SourceMod.ModRootDirectory}");
+        }
+
+        private string AskToMoveIfRequired(string path)
+        {
+            if (ModFactory.CheckModPathInGame(path))
+                return path;
+            if (Game.Mods != null && Game.Mods.Any(x => x.Name == new DirectoryInfo(path).Name))
+                return path;
+            var result = _dialogProvider.Ask("The selected mod is not installed in the game the editor uses." +
+                                             "\r\nSome features like starting the mod might not work in this case.\r\n\r\n" +
+                                             "Do you want to move the files to the game ? ", MessageBoxButton.YesNo);
+            if (result)
+                return path;
+
+            var newPath = Path.Combine(Game.GameDirectory, "Mods", new DirectoryInfo(path).Name);
+
+            if (WorkspaceHelper.MoveFiles(path, newPath))
+                throw new ImportCanceledException();
+            return newPath;
         }
     }
 }

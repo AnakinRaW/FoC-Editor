@@ -12,7 +12,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {
     public static class WorkspaceHelper
     {
-
         private static readonly IDialogProvider DialogProvider = IoC.Get<IDialogProvider>();
 
         public static bool ValidateImportPath(string path)
@@ -29,12 +28,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             var wd = new WaitDialog
             {
                 MessageText = "Moving Files...",
-                Title = Configuration.ProductConfiguration.ProductName
+                Title = Configuration.ProductConfiguration.ProductName,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Owner = Application.Current.MainWindow
             };
-            wd.ShowDialog(() =>
-            {
-                FileSystemHelper.CopyFolder(path, newPath);
-            });
+            wd.ShowDialog(() => { FileSystemHelper.CopyFolder(path, newPath); });
             return wd.ActionWasAborted;
         }
 

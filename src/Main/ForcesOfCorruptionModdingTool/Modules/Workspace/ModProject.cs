@@ -11,16 +11,31 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public ModProject(ProjectInformation information) : base(information)
         {
-            if (information.Type == ProjectInformationType.Create)
-                CreateMod();
-            else
-                LoadMod();
+            InternalCreatProject(information);
 
             //TODO Create and save an project file as ProjectName.modproj TODO
             //This will be done sometime later
 
             // Do post preparations
-            information.Definition.PostPrepareProject(this);
+            information.Definition?.PostPrepareProject(this);
+        }
+
+        private void InternalCreatProject(ProjectInformation information)
+        {
+            switch (information.Type)
+            {
+                case ProjectInformationType.Create:
+                    CreateMod();
+                    break;
+                case ProjectInformationType.Open:
+                    LoadMod();
+                    break;
+                case ProjectInformationType.Import:
+                    ImportMod();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public override void Export()
@@ -41,6 +56,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             ModFactory.BuildUpMod(FullPath);
 
             // Instantiate the mod.
+            Mod = ModFactory.CreateMod(FullPath);
+        }
+
+        private void ImportMod()
+        {
             Mod = ModFactory.CreateMod(FullPath);
         }
 

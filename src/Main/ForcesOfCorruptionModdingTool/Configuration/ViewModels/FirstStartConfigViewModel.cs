@@ -1,5 +1,4 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
-using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Games;
 using ForcesOfCorruptionModdingTool.Mods;
@@ -13,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
-using System.Linq;
 using System.Windows.Input;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
@@ -177,7 +175,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
         {
             _manager.SaveTheme(SelectedTheme.Name);
             _workspace.Game = IsSteam ? (IGame)new SteamGame(GamePath) : new FocGame(GamePath);
-            _workspace.SourceMod = new Mod(SourcePath);
+            _workspace.SourceMod = ModFactory.CreateMod(SourcePath);
 
             Settings.Default.GamePath = GamePath;
             Settings.Default.SourceModPath = SourcePath;

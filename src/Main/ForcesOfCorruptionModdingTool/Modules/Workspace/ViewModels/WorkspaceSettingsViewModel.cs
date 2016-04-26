@@ -1,5 +1,4 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
-using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Games;
 using ForcesOfCorruptionModdingTool.Mods;
@@ -102,7 +101,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.ViewModels
         public void Apply()
         {
             _workspace.Game = IsSteam ? (IGame)new SteamGame(GamePath) : new FocGame(GamePath);
-            _workspace.SourceMod = new Mod(SourcePath);
+            _workspace.SourceMod = ModFactory.CreateMod(SourcePath);
 
             Settings.Default.GamePath = GamePath;
             Settings.Default.SourceModPath = SourcePath;

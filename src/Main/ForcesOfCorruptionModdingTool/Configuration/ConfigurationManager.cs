@@ -33,7 +33,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration
 
             if (!ModFactory.FindMod(Settings.Default.SourceModPath))
                 throw new ModNotFoundException("Source Mod could not be loaded.");
-            workspace.SourceMod = new Mod(Settings.Default.SourceModPath);
+            workspace.SourceMod = ModFactory.CreateMod(Settings.Default.SourceModPath);
             return true;
         }
 

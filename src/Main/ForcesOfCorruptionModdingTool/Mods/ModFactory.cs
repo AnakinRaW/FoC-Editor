@@ -58,7 +58,7 @@ namespace ForcesOfCorruptionModdingTool.Mods
             try
             {
                 // ReSharper disable once ObjectCreationAsStatement
-                new Mod(path);
+                new Mod(path, false);
                 return true;
             }
             catch (Exception)

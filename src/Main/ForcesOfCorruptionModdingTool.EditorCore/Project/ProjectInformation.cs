@@ -1,4 +1,6 @@
-﻿namespace ForcesOfCorruptionModdingTool.EditorCore.Project
+﻿using System.IO;
+
+namespace ForcesOfCorruptionModdingTool.EditorCore.Project
 {
     public class ProjectInformation
     {
@@ -8,6 +10,16 @@
             ProjectPath = projectPath;
             Name = name;
             Definition = definition;
+        }
+
+        public ProjectInformation(ProjectInformationType type, string fullPath, ISupportedProjectDefinition definition)
+        {
+            Type = type;
+            Definition = definition;
+
+            Name = new DirectoryInfo(fullPath).Name;
+            ProjectPath = Directory.GetParent(fullPath).FullName;
+
         }
 
         public ProjectInformationType Type { get; }

@@ -8,13 +8,12 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
 {
     public class Mod : IMod
     {
-
         private string _name;
         private bool _usesAiXml;
         private bool _usesRootScripts;
         private bool _usesCustomMultiplayerMaps;
 
-        public Mod(string modDirectory)
+        public Mod(string modDirectory, bool shallFullInstantiate = true)
         {
             ModRootDirectory = modDirectory;
             if (!CorrectInstalled)
@@ -65,8 +64,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
             {
                 if (_usesAiXml == value)
                     return;
-                _usesAiXml = value; 
-                OnPropertyChanged();          
+                _usesAiXml = value;
+                OnPropertyChanged();
             }
         }
 
