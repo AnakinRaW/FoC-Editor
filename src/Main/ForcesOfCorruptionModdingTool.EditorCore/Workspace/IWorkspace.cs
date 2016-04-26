@@ -1,5 +1,6 @@
 ﻿using System;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
 {
@@ -8,11 +9,11 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
     /// </summary>
     public interface IProjectHandler
     {
-        event EventHandler ProjectLoaded;
+        event EventHandler<ProjectLoadedEventArgs> ProjectLoaded;
 
-        event EventHandler ProjectCreated;
+        event EventHandler<ProjectCreatedEventArgs> ProjectCreated;
 
-        event EventHandler ProjectClosed;
+        event EventHandler<ProjectClosedEventArgs> ProjectClosed;
 
         /// <summary>
         /// Loads an existing Project

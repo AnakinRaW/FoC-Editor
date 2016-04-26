@@ -70,6 +70,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryHelper\RegistryHelper.cs" />
     <Compile Include="RegistryHelper\RegistryRootTypes.cs" />
+    <Compile Include="Workspace\EventArgs\ProjectChangedEventArgs.cs" />
+    <Compile Include="Workspace\EventArgs\ProjectClosedEventArgs.cs" />
+    <Compile Include="Workspace\EventArgs\ProjectCreatedEventArgs.cs" />
+    <Compile Include="Workspace\EventArgs\ProjectLoadedEventArgs.cs" />
+    <Compile Include="Workspace\EventArgs\SourceChangedEventArgs.cs" />
+    <Compile Include="Workspace\EventArgs\GameChangedEventArgs.cs" />
     <Compile Include="Workspace\IModdingToolWorkspace.cs" />
     <Compile Include="Workspace\IWorkspace.cs" />
   </ItemGroup>

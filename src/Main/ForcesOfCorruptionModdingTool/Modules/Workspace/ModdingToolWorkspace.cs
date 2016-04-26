@@ -18,6 +18,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
+using SourceChangedEventArgs = ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs.SourceChangedEventArgs;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {
@@ -38,17 +40,17 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             _output = output;
         }
 
-        public event EventHandler ProjectLoaded;
+        public event EventHandler<ProjectLoadedEventArgs> ProjectLoaded;
 
-        public event EventHandler ProjectCreated;
+        public event EventHandler<ProjectCreatedEventArgs> ProjectCreated;
 
-        public event EventHandler ProjectClosed;
+        public event EventHandler<ProjectClosedEventArgs> ProjectClosed;
 
-        public event EventHandler ProjectChanged;
+        public event EventHandler<ProjectChangedEventArgs> ProjectChanged;
 
-        public event EventHandler SourceModChanged;
+        public event EventHandler<SourceChangedEventArgs> SourceModChanged;
 
-        public event EventHandler GameChanged;
+        public event EventHandler<GameChangedEventArgs> GameChanged;
 
         public IModProject CurrentProject
         {
@@ -57,9 +59,10 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             {
                 if (Equals(value, _currentProject))
                     return;
+                var oldValue = _currentProject;
                 _currentProject = value;
                 OnPropertyChanged();
-                OnProjectChanged();
+                OnProjectChanged(new ProjectChangedEventArgs(value, oldValue));
             }
         }
 
@@ -72,7 +75,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                     return;
                 _sourceMod = value;
                 OnPropertyChanged();
-                OnSourceModChanged();
+                OnSourceModChanged(new SourceChangedEventArgs(value));
             }
         }
 
@@ -85,7 +88,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                     return;
                 _game = value;
                 OnPropertyChanged();
-                OnGameChanged();
+                OnGameChanged(new GameChangedEventArgs(value));
             }
         }
 
@@ -112,14 +115,15 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             if (ModFactory.CheckModPathInGame(CurrentProject.Mod.ModRootDirectory))
                 Game.AddMod(CurrentProject.Mod);
 
-            OnProjectCreated();
+            OnProjectCreated(new ProjectCreatedEventArgs(CurrentProject));
         }
 
         public void CloseProject()
         {
             CurrentProject?.Dispose();
+            var oldProject = CurrentProject;
             CurrentProject = null;
-            OnProjectClosed();
+            OnProjectClosed(new ProjectClosedEventArgs(oldProject));
         }
 
         public void ImportMod(string path)
@@ -151,34 +155,34 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             _output.AppendLine("Workspace initialized");
         }
 
-        protected virtual void OnGameChanged()
+        protected virtual void OnGameChanged(GameChangedEventArgs e)
         {
-            GameChanged?.Invoke(this, EventArgs.Empty);
-            _output.AppendLine($"Game at: {Game.GameDirectory} of Type: {Game.GetType().Name}");
+            GameChanged?.Invoke(this, e);
+            _output.AppendLine($"Game at: {e.Game?.GameDirectory} of Type: {e.Game?.GetType().Name}");
         }
 
-        protected virtual void OnProjectChanged()
+        protected virtual void OnProjectChanged(ProjectChangedEventArgs e)
         {
-            ProjectChanged?.Invoke(this, EventArgs.Empty);
+            ProjectChanged?.Invoke(this, e);
             if (CurrentProject != null)
                 _output.AppendLine($"New Mod-Project in workspace: {CurrentProject.Name}");
         }
 
-        protected virtual void OnProjectClosed()
+        protected virtual void OnProjectClosed(ProjectClosedEventArgs e)
         {
-            ProjectClosed?.Invoke(this, EventArgs.Empty);
+            ProjectClosed?.Invoke(this, e);
             _output.AppendLine("Closed Mod-Project");
         }
 
-        protected virtual void OnProjectCreated()
+        protected virtual void OnProjectCreated(ProjectCreatedEventArgs e)
         {
-            ProjectCreated?.Invoke(this, EventArgs.Empty);
+            ProjectCreated?.Invoke(this, e);
             _output.AppendLine($"Created new Mod-Project: {CurrentProject.Name}");
         }
 
-        protected virtual void OnProjectLoaded()
+        protected virtual void OnProjectLoaded(ProjectLoadedEventArgs e)
         {
-            ProjectLoaded?.Invoke(this, EventArgs.Empty);
+            ProjectLoaded?.Invoke(this, e);
         }
 
         [NotifyPropertyChangedInvocator]
@@ -187,10 +191,10 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected virtual void OnSourceModChanged()
+        protected virtual void OnSourceModChanged(SourceChangedEventArgs e)
         {
-            SourceModChanged?.Invoke(this, EventArgs.Empty);
-            _output.AppendLine($"Source Mod at: {SourceMod.ModRootDirectory}");
+            SourceModChanged?.Invoke(this, e);
+            _output.AppendLine($"Source Mod at: {e.Mod?.ModRootDirectory}");
         }
 
         private string AskToMoveIfRequired(string path)

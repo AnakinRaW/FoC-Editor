@@ -3,17 +3,18 @@ using System.ComponentModel;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
 {
     public interface IModdingToolWorkspace : IProjectHandler, INotifyPropertyChanged
     {
 
-        event EventHandler ProjectChanged;
+        event EventHandler<ProjectChangedEventArgs> ProjectChanged;
 
-        event EventHandler SourceModChanged;
+        event EventHandler<SourceChangedEventArgs> SourceModChanged;
 
-        event EventHandler GameChanged;
+        event EventHandler<GameChangedEventArgs> GameChanged;
 
         /// <summary>
         /// Contains the current project

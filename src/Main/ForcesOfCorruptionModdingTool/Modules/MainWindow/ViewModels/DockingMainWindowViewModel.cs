@@ -45,18 +45,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
             _workspace.ProjectChanged += _workspace_ProjectChanged;
         }
 
-        private void _workspace_ProjectChanged(object sender, EventArgs e)
-        {
-            StatusBar.Mode = 1;
-            // TODO add proper event args StatusBar.InformationTextC = e.
-        }
-
-        private void _workspace_ProjectClosed(object sender, EventArgs e)
-        {
-            StatusBar.Mode = 3;
-            StatusBar.InformationTextC = string.Empty;
-        }
-
         protected override void OnViewAttached(object view, object context)
         {
             base.OnViewAttached(view, context);
@@ -85,6 +73,18 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
             {
                 _dialogProvider.Alert(e.Message);
             }
+        }
+
+        private void _workspace_ProjectChanged(object sender, EditorCore.Workspace.EventArgs.ProjectChangedEventArgs e)
+        {
+            StatusBar.Mode = 1;
+            StatusBar.InformationTextC = e.NewProject?.Name;
+        }
+
+        private void _workspace_ProjectClosed(object sender, EditorCore.Workspace.EventArgs.ProjectClosedEventArgs e)
+        {
+            StatusBar.Mode = 3;
+            StatusBar.InformationTextC = string.Empty;
         }
     }
 }
