@@ -166,9 +166,9 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
                     return;
                 SourcePath = ModFactory.CreateMod(Path.Combine(GamePath, DefaultModSearchPath)).ModRootDirectory;
             }
-            catch (ModNotFoundException)
+            catch (ModExceptions)
             {
-                _dialogProvider.ShowMessage("Was not able to find a the source mod which comes along with the map editor.\r\n" +
+                _dialogProvider.ShowMessage("Was not able to find the source mod which comes along with the map editor.\r\n" +
                                 "If you have installed the source mod somewhere else, please enter the correct path manually.");
             }
         }
