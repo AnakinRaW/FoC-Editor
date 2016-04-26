@@ -59,13 +59,14 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
             Mod = ModFactory.CreateMod(FullPath);
         }
 
-        private void ImportMod()
+        public void ImportMod()
         {
             Mod = ModFactory.CreateMod(FullPath);
         }
 
         public void LoadMod()
         {
+            //Maybe Load and Import are the same at the end ...
             throw new NotImplementedException();
         }
 

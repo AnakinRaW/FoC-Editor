@@ -1,9 +1,9 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ModernApplicationFramework.Commands;
+using ModernApplicationFramework.Dialoges;
 using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
-using ModernApplicationFramework.Dialoges;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 {
@@ -12,8 +12,10 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
     public class ImportModCommandDefinition : CommandDefinition
     {
 #pragma warning disable 649
+
         [Import]
         private IModdingToolWorkspace _workspace;
+
 #pragma warning restore 649
 
         public override bool CanShowInMenu => true;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
@@ -11,6 +6,11 @@ using ForcesOfCorruptionModdingTool.Properties;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Views;
+using System;
+using System.ComponentModel.Composition;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
 {
@@ -18,8 +18,13 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
     public class DockingMainWindowViewModel : ModernApplicationFramework.MVVM.ViewModels.DockingMainWindowViewModel
     {
 #pragma warning disable 649
-        [Import] private IDialogProvider _dialogProvider;
-        [Import] private IModdingToolWorkspace _workspace;
+
+        [Import]
+        private IDialogProvider _dialogProvider;
+
+        [Import]
+        private IModdingToolWorkspace _workspace;
+
 #pragma warning restore 649
 
         static DockingMainWindowViewModel()

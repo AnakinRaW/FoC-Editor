@@ -1,6 +1,5 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
-using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Games;
@@ -45,6 +44,8 @@ namespace ForcesOfCorruptionModdingTool.Configuration
             var windowManager = IoC.Get<IWindowManager>();
             if (windowManager.ShowDialog(fc) != true)
                 return false;
+
+            //TODO: Currently we do not support mods which use the games data folder. We need to handle that however later
 
             Settings.Default.FirstStart = false;
             Settings.Default.Save();

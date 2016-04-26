@@ -1,11 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.Composition;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using ForcesOfCorruptionModdingTool.Annotations;
+﻿using ForcesOfCorruptionModdingTool.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
@@ -18,6 +11,13 @@ using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {

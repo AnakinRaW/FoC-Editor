@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Extensions
 {
-    public static class IEnumerableExtensions
+    public static class EnumerableExtensions
     {
         public static IEnumerable<T> Add<T>(this IEnumerable<T> list, T value)
         {

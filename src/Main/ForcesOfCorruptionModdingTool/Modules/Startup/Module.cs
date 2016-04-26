@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using ModernApplicationFramework.MVVM.Core;
+﻿using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.InspectorTool;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Startup
 {

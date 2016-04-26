@@ -15,7 +15,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.DialogProvider
         public bool Ask(string message, MessageBoxButton button)
         {
             MessageBoxResult result = MessageBox.Show(message, "Forces of Corruption Modding Editor?", button,
-                MessageBoxImage.None, MessageBoxResult.Yes, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBoxImage.Question, MessageBoxResult.Yes, MessageBoxOptions.DefaultDesktopOnly);
             return result.HasFlag(MessageBoxResult.OK);
         }
 

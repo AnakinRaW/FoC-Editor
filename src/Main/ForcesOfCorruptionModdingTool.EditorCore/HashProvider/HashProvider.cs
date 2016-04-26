@@ -45,11 +45,11 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.HashProvider
             return GetStringHash(MerkleTree);
         }
 
-
-        private string Trim(byte[] hash)
+        private static string Trim(byte[] hash)
         {
             return BitConverter.ToString(hash).Replace("-", "").ToLower();
         }
+
         private string MerkleTree { get; set; }
     }
 }

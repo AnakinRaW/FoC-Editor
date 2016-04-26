@@ -114,7 +114,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.ViewModels
         public bool CanApply()
         {
             string message = $"Error at {Path + "\\" + Name}\r\n\r\n";
-            bool result = true;
+            var result = true;
             if (!GameFactory.FindGame(GameType.FocOrSteam, GamePath))
             {
                 message += "The given Game Path does not contain a valid game\r\n";

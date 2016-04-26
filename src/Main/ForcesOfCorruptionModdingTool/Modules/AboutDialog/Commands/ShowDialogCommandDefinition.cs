@@ -23,7 +23,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.AboutDialog.Commands
             Command = new CommandWrapper(ShowDialog, () => true);
         }
 
-        private void ShowDialog()
+        private static void ShowDialog()
         {
             new AboutDialog().ShowDialog();
         }

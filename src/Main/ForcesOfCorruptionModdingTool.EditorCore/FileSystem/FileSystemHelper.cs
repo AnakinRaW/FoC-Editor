@@ -2,6 +2,7 @@
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.FileSystem
 {
+    //http://stackoverflow.com/questions/2947300/copy-a-directory-to-a-different-drive
     public static class FileSystemHelper
     {
         public static void CopyAll(DirectoryInfo source, DirectoryInfo target)
@@ -11,13 +12,13 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.FileSystem
                 Directory.CreateDirectory(target.FullName);
 
             // Copy each file into it’s new directory.
-            foreach (FileInfo fi in source.GetFiles())
+            foreach (var fi in source.GetFiles())
                 fi.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
 
             // Copy each subdirectory using recursion.
-            foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
+            foreach (var diSourceSubDir in source.GetDirectories())
             {
-                DirectoryInfo nextTargetSubDir =
+                var nextTargetSubDir =
                     target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir);
             }
@@ -32,18 +33,22 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.FileSystem
         {
             if (!Directory.Exists(destFolder))
                 Directory.CreateDirectory(destFolder);
-            string[] files = Directory.GetFiles(sourceFolder);
-            foreach (string file in files)
+            var files = Directory.GetFiles(sourceFolder);
+            foreach (var file in files)
             {
-                string name = Path.GetFileName(file);
-                string dest = Path.Combine(destFolder, name);
+                var name = Path.GetFileName(file);
+                if (name == null)
+                    continue;
+                var dest = Path.Combine(destFolder, name);
                 File.Copy(file, dest);
             }
-            string[] folders = Directory.GetDirectories(sourceFolder);
-            foreach (string folder in folders)
+            var folders = Directory.GetDirectories(sourceFolder);
+            foreach (var folder in folders)
             {
-                string name = Path.GetFileName(folder);
-                string dest = Path.Combine(destFolder, name);
+                var name = Path.GetFileName(folder);
+                if (name == null)
+                    continue;
+                var dest = Path.Combine(destFolder, name);
                 CopyFolder(folder, dest);
             }
         }
