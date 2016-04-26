@@ -8,6 +8,8 @@ using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.HashProvider;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
+using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
+using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Properties;
 
 namespace ForcesOfCorruptionModdingTool.Games
@@ -101,7 +103,17 @@ namespace ForcesOfCorruptionModdingTool.Games
 
         public override IEnumerable<IMod> FindMods(bool instantiate = true)
         {
-            throw new NotImplementedException();
+            var dirs = Directory.GetDirectories(Path.Combine(GameDirectory, "Mods"));
+            var mods = new List<IMod>();
+            foreach (var dir in dirs)
+            {
+                try
+                {
+                    mods.Add(ModFactory.CreateMod(this, new DirectoryInfo(dir).Name, instantiate));
+                }
+                catch (ModExceptions) {}
+            }
+            return mods;
         }
     }
 }

@@ -17,25 +17,27 @@ namespace ForcesOfCorruptionModdingTool.Mods
         /// </summary>
         /// <param name="game">the game to check</param>
         /// <param name="name">the name of the mod</param>
+        /// <param name="fullInstantiate">specifies if the mod shall be full instantiated </param>
         /// <returns>returns an instance of the mod</returns>
-        public static IMod CreateMod(IGame game, string name)
+        public static IMod CreateMod(IGame game, string name, bool fullInstantiate = true)
         {
             if (!Directory.Exists(Path.Combine(game.GameDirectory, "Mods")))
                 throw new GameExceptions("The Game does not have any mods");
             if (!Directory.Exists(Path.Combine(game.GameDirectory, "Mods", name)))
                 throw new ModNotFoundException($"The Game does not have a mod named: {name} installed.");
 
-            return new Mod(Path.Combine(game.GameDirectory, "Mods", name));
+            return new Mod(Path.Combine(game.GameDirectory, "Mods", name), fullInstantiate);
         }
 
         /// <summary>
         /// Creates an mod instance from a given path
         /// </summary>
         /// <param name="path">root directory of the mod</param>
+        /// <param name="fullInstantiate">specifies if the mod shall be full instantiated </param>
         /// <returns>returns an instance of the mod</returns>
-        public static IMod CreateMod(string path)
+        public static IMod CreateMod(string path, bool fullInstantiate = true)
         {
-            return new Mod(path);
+            return new Mod(path, fullInstantiate);
         }
 
         /// <summary>

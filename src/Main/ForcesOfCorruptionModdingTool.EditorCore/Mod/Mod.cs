@@ -17,7 +17,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
         {
             ModRootDirectory = modDirectory;
             if (!CorrectInstalled)
-                throw new ModExceptions("The Mod is not installed correctly.");
+                throw new ModExceptions($"The Mod is not installed correctly: {modDirectory}");
 
             _name = new DirectoryInfo(ModRootDirectory).Name;
         }
