@@ -27,7 +27,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
             if (Windowed)
                 result += " WINDOWED";
             if (Mod != null)
-                result += $" MODPATH={Mod.Name}";
+                result += $@" MODPATH=Mods\{Mod.Name}";
             if (!string.IsNullOrEmpty(Language))
                 result += $" LANGUAGE={Language}";
             return result;
