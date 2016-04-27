@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mafc="http://modern.framework.com/controls"
              MinHeight="430" MinWidth="660" ResizeMode="CanResize" MaxHeight="430" Height="430" Width="700"
-                   Background="{x:Static SystemColors.ControlBrush}">
+                   Background="{x:Static SystemColors.ControlBrush}" ShowInTaskbar="True">
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

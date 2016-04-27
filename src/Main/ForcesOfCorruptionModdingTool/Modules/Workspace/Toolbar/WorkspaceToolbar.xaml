@@ -26,7 +26,7 @@
     <mafc:CheckBox Margin="5,0,0,0" IsChecked="{Binding IsWindowMode}" Content="Window Mode" VerticalAlignment="Center" VerticalContentAlignment="Center"
                    FlowDirection="RightToLeft" IsEnabled="{Binding Workspace.Game.GameProcessData.IsProcessRunning, Converter={StaticResource InverseBoolConverter}}"/>
     <Separator Margin="5,0,0,0"/>
-    <mafc:ComboBox Margin="5,0,0,0" ItemsSource="{Binding ItemSource}" SelectedItem="{Binding SelectedMod, Mode=TwoWay}" SelectedIndex="0"
+    <mafc:ComboBox Margin="5,0,0,0" ItemsSource="{Binding InstalledMods}" SelectedItem="{Binding SelectedMod, Mode=TwoWay}" SelectedIndex="0"
                    IsEnabled="{Binding Workspace.Game.GameProcessData.IsProcessRunning, Converter={StaticResource InverseBoolConverter}}">
         <ComboBox.ItemTemplate>
             <DataTemplate>

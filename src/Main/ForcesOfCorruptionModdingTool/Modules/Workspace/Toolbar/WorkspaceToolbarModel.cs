@@ -11,9 +11,9 @@ using ModernApplicationFramework.ViewModels;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
 {
-    public class WorkspaceToolbarModel : ViewModelBase
+    public class WorkspaceToolbarModel : ViewModelBase, IGameLauncher
     {
-        private IEnumerable<IMod> _itemSource;
+        private IEnumerable<IMod> _installedMods;
         private IMod _selectedMod;
 
         static WorkspaceToolbarModel()
@@ -29,20 +29,20 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
 
         private void Workspace_ProjectChanged(object sender, EditorCore.Workspace.EventArgs.ProjectChangedEventArgs e)
         {
-            ItemSource = e.NewProject == null ? new List<IMod>() : new List<IMod> {((ModProject)e.NewProject).Mod};
+            InstalledMods = e.NewProject == null ? new List<IMod>() : new List<IMod> {((ModProject)e.NewProject).Mod};
             SelectedMod = ((ModProject) e.NewProject)?.Mod;
         }
 
         public IModdingToolWorkspace Workspace => IoC.Get<IModdingToolWorkspace>();
 
-        public IEnumerable<IMod> ItemSource
+        public IEnumerable<IMod> InstalledMods
         {
-            get { return _itemSource; }
+            get { return _installedMods; }
             set
             {
-                if (Equals(value, _itemSource))
+                if (Equals(value, _installedMods))
                     return;
-                _itemSource = value;
+                _installedMods = value;
                 OnPropertyChanged();
             }
         }

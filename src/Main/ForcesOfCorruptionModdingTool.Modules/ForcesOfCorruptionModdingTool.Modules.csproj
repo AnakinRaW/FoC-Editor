@@ -39,6 +39,13 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ModernApplicationFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernApplicationFramework.MVVM">
+      <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.MVVM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -58,6 +65,13 @@
   <ItemGroup>
     <Compile Include="DialogProvider\DialogProvider.cs" />
     <Compile Include="DialogProvider\IDialogProvider.cs" />
+    <Compile Include="ModLauncher\IModLauncher.cs" />
+    <Compile Include="ModLauncher\MenuDefinitions.cs" />
+    <Compile Include="ModLauncher\ModLauncherView.xaml.cs">
+      <DependentUpon>ModLauncherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModLauncher\ModLauncherViewModel.cs" />
+    <Compile Include="ModLauncher\OpenModLauncherCommandDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +100,12 @@
       <Project>{f098fc86-6636-421a-91eb-e47fb31b4285}</Project>
       <Name>ForcesOfCorruptionModdingTool.EditorCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ModLauncher\ModLauncherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
