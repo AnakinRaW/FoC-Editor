@@ -32,6 +32,11 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Workspace
         IGame Game { get; set; }
 
         /// <summary>
+        /// Holds game the current GameLaunchArguments
+        /// </summary>
+        GameLaunchArguments WorkspaceLaunchArguments { get; set; }
+
+        /// <summary>
         /// Creates a project from an existing mod
         /// </summary>
         /// <param name="path"></param>

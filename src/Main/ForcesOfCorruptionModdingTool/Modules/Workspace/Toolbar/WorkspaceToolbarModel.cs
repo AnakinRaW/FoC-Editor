@@ -3,10 +3,11 @@ using System.Windows.Input;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
-using ForcesOfCorruptionModdingTool.Mods;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
+using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;
 using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
-using ModernApplicationFramework.Commands;
+using ModernApplicationFramework.Commands.Service;
 using ModernApplicationFramework.ViewModels;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
@@ -14,6 +15,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
     public class WorkspaceToolbarModel : ViewModelBase, IGameLauncher
     {
         private IEnumerable<IMod> _installedMods;
+        private bool _isWindowMode;
         private IMod _selectedMod;
 
         static WorkspaceToolbarModel()
@@ -28,11 +30,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
             IsWindowMode = true;
         }
 
-        private void Workspace_ProjectChanged(object sender, EditorCore.Workspace.EventArgs.ProjectChangedEventArgs e)
-        {
-            InstalledMods = e.NewProject == null ? new List<IMod>() : new List<IMod> {((ModProject)e.NewProject).Mod};
-            SelectedMod = ((ModProject) e.NewProject)?.Mod;
-        }
+        public ICommand RestartCommand
+            => IoC.Get<ICommandService>().GetCommandDefinition(typeof(RestartWorkspaceGameCommandDefinition)).Command;
+
+        public ICommand StopCommand
+            => IoC.Get<ICommandService>().GetCommandDefinition(typeof(StopWorkspaceGameCommandDefinition)).Command;
 
         public IModdingToolWorkspace Workspace => IoC.Get<IModdingToolWorkspace>();
 
@@ -59,54 +61,38 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
                     return;
                 _selectedMod = value;
                 OnPropertyChanged();
+                UpdateLaunchArguments();
             }
         }
 
-        public bool IsWindowMode { get; set; }
-
-
-        public ICommand LaunchCommand => new CommandWrapper(Launch, CanLaunch);
-
-        public ICommand StopCommand => new CommandWrapper(Stop, CanStop);
-
-        public ICommand RestartCommand => new CommandWrapper(Restart, CanRestart);
-
-        private void Restart()
+        public bool IsWindowMode
         {
-            StopCommand.Execute(null);
-            LaunchCommand.Execute(null);
+            get { return _isWindowMode; }
+            set
+            {
+                _isWindowMode = value;
+                UpdateLaunchArguments();
+            }
         }
 
-        private bool CanRestart()
+
+        public ICommand LaunchCommand
+            => IoC.Get<ICommandService>().GetCommandDefinition(typeof(StartWorkspaceGameCommandDefinition)).Command;
+
+        public void UpdateLaunchArguments()
         {
-            if (Workspace.Game == null)
-                return false;
-            return Workspace.Game.GameProcessData.IsProcessRunning;
+            var gla = new GameLaunchArguments
+            {
+                Mod = SelectedMod,
+                Windowed = IsWindowMode
+            };
+            Workspace.WorkspaceLaunchArguments = gla;
         }
 
-        private bool CanStop()
+        private void Workspace_ProjectChanged(object sender, ProjectChangedEventArgs e)
         {
-            return Workspace.Game?.GameProcessData?.Process != null;
-        }
-
-        private void Stop()
-        {
-            Workspace.Game?.GameProcessData?.Process.Kill();
-        }
-
-        private void Launch()
-        {
-            var gla = new GameLaunchArguments();
-            if (_selectedMod != null)
-                gla.Mod = _selectedMod;
-            if (IsWindowMode)
-                gla.Windowed = true;
-            Workspace.Game.StartGame(gla);
-        }
-
-        private bool CanLaunch()
-        {
-            return _selectedMod == null || ModFactory.CheckModPathInGame(_selectedMod.ModRootDirectory);
+            InstalledMods = e.NewProject == null ? new List<IMod>() : new List<IMod> {((ModProject) e.NewProject).Mod};
+            SelectedMod = ((ModProject) e.NewProject)?.Mod;
         }
     }
 }

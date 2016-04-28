@@ -1,8 +1,16 @@
-﻿using ForcesOfCorruptionModdingTool.Annotations;
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using ForcesOfCorruptionModdingTool.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;
@@ -11,17 +19,7 @@ using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Core;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Composition;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Controls;
-using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
 using SourceChangedEventArgs = ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs.SourceChangedEventArgs;
-using ToolBar = ModernApplicationFramework.Controls.ToolBar;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 {
@@ -34,6 +32,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
         private IModProject _currentProject;
         private IGame _game;
         private IMod _sourceMod;
+        private GameLaunchArguments _workspaceLaunchArguments;
 
         [ImportingConstructor]
         public ModdingToolWorkspace(IOutput output, IDialogProvider dialogProvider)
@@ -91,6 +90,18 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                 _game = value;
                 OnPropertyChanged();
                 OnGameChanged(new GameChangedEventArgs(value));
+            }
+        }
+
+        public GameLaunchArguments WorkspaceLaunchArguments
+        {
+            get { return _workspaceLaunchArguments; }
+            set
+            {
+                if (Equals(value, _workspaceLaunchArguments))
+                    return;
+                _workspaceLaunchArguments = value;
+                OnPropertyChanged();
             }
         }
 
@@ -210,7 +221,8 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
                 return path;
             }
             var result = _dialogProvider.Ask("The selected mod is not installed in the game the editor uses." +
-                                             "\r\nSome features like starting the mod might not work in this case.\r\n\r\n" +
+                                             "\r\nSome features like starting the mod might not work in this case.\r\n\r\n"
+                                             +
                                              "Do you want to move the files to the game ? ", MessageBoxButton.YesNo);
             if (result)
                 return path;
