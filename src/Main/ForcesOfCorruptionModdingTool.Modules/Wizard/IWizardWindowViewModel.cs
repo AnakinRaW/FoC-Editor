@@ -1,9 +1,11 @@
-﻿using ModernApplicationFramework.Caliburn.Conductor;
-using ModernApplicationFramework.Caliburn.Interfaces;
+﻿using ModernApplicationFramework.Caliburn.Interfaces;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Wizard
 {
-    public interface IWizardWindowViewModel : IConductor , IScreen
+    public interface IWizardWindowViewModel : IScreen
     {
+        IWizardPage ActivePage { get; set; }
+
+        IWizardPage FirstPage { get; set; }
     }
 }

@@ -94,6 +94,7 @@
     <Compile Include="Wizard\Views\WizardWindowView.xaml.cs">
       <DependentUpon>WizardWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wizard\WizardPage.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
