@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
 {
@@ -34,5 +35,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
         /// Specifies whether a mod has custom maps in the games data directory
         /// </summary>
         bool UsesCustomMultiplayerMaps { get; set; }
+
+        Uri IconSource { get; }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
@@ -20,6 +22,15 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
                 throw new ModExceptions($"The Mod is not installed correctly: {modDirectory}");
 
             _name = new DirectoryInfo(ModRootDirectory).Name;
+
+            if (!shallFullInstantiate)
+                return;
+
+            var icon = Directory.GetFiles(ModRootDirectory, "*.ico", SearchOption.TopDirectoryOnly).FirstOrDefault();
+            if (icon == null)
+                IconSource = null;
+            else
+                IconSource = new Uri(icon);
         }
 
 
@@ -92,6 +103,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
                 OnPropertyChanged();
             }
         }
+
+        public Uri IconSource { get; }
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -25,6 +25,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
         public WorkspaceToolbarModel()
         {
             Workspace.ProjectChanged += Workspace_ProjectChanged;
+            IsWindowMode = true;
         }
 
         private void Workspace_ProjectChanged(object sender, EditorCore.Workspace.EventArgs.ProjectChangedEventArgs e)
@@ -46,6 +47,8 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Toolbar
                 OnPropertyChanged();
             }
         }
+
+        public string Language { get; set; }
 
         public IMod SelectedMod
         {

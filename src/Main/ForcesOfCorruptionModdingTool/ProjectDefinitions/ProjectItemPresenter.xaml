@@ -23,8 +23,7 @@
             		Value="{DynamicResource DetailViewDataTemplate}"/>
             </Style>
 
-            <DataTemplate x:Key="DetailViewDataTemplate" x:Uid="DetailViewDataTemplateUid"
-                    DataType="{x:Type utilities:IExtensionDefinition}">
+            <DataTemplate x:Key="DetailViewDataTemplate" DataType="{x:Type utilities:IExtensionDefinition}">
                 <DataTemplate.Resources>
                     <Style x:Key="TileToolTipStyle" TargetType="{x:Type TextBlock}">
                         <Setter Property="MaxWidth" Value="300"/>
@@ -32,25 +31,25 @@
                     </Style>
                 </DataTemplate.Resources>
                 <mafc:ScrollViewer HorizontalScrollBarVisibility="Disabled" Focusable="false" VerticalScrollBarVisibility="Auto">
-                    <Grid x:Uid="DetailGridUid" Margin="4,0,4,0">
+                    <Grid Margin="4,0,4,0">
                         <Grid.RowDefinitions>
                             <RowDefinition x:Uid="RowDefinition_5" Height="Auto" MinHeight="135"/>
                             <RowDefinition x:Uid="RowDefinition_6" Height="*"/>
                         </Grid.RowDefinitions>
-                        <StackPanel x:Uid="StackPanel_7" Grid.Row="0" VerticalAlignment="Top" Orientation="Vertical" Margin="8,3,8,0">
-                            <StackPanel x:Uid="StackPanel_12" Orientation="Horizontal" Margin="0,3,0,0">
-                                <TextBlock x:Uid="TextBlock_13" Text="Type:" FontWeight="Bold" Margin="0,0,0,0"/>
-                                <TextBlock x:Uid="TextBlock_ptype" Margin="8,0,0,0" AutomationProperties.AutomationId="TemplateProjectType"
+                        <StackPanel Grid.Row="0" VerticalAlignment="Top" Orientation="Vertical" Margin="8,3,8,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                <TextBlock Text="Type:" FontWeight="Bold" Margin="0,0,0,0"/>
+                                <TextBlock Margin="8,0,0,0" AutomationProperties.AutomationId="TemplateProjectType"
             						Text="{Binding Name}" AutomationProperties.Name="{Binding Name}">
                                     <TextBlock.ToolTip>
-                                        <TextBlock x:Uid="TextBlock_1003" Style="{StaticResource TileToolTipStyle}" Text="{Binding Name}"/>
+                                        <TextBlock Style="{StaticResource TileToolTipStyle}" Text="{Binding Name}"/>
                                     </TextBlock.ToolTip>
             					</TextBlock>
                             </StackPanel>
-                            <TextBlock x:Uid="TextBlock_15" TextWrapping="WrapWithOverflow" Margin="0,8,0,0" TextTrimming="WordEllipsis"
+                            <TextBlock TextWrapping="WrapWithOverflow" Margin="0,8,0,0" TextTrimming="WordEllipsis"
             					Text="{Binding Description}">
                                 <TextBlock.ToolTip>
-                                    <TextBlock x:Uid="TextBlock_1004" Style="{StaticResource TileToolTipStyle}" Text="{Binding Description}"/>
+                                    <TextBlock Style="{StaticResource TileToolTipStyle}" Text="{Binding Description}"/>
                                 </TextBlock.ToolTip>
             				</TextBlock>
                         </StackPanel>
@@ -102,7 +101,13 @@
 					Loaded="FrameworkElement_OnLoaded" SizeChanged="_listView_OnSizeChanged" 
 					SelectionChanged="ListView_OnSelectionChanged" x:Name="ListView"
 					ItemContainerStyle="{DynamicResource ListViewItemStyle}" MouseDoubleClick="ListView_OnMouseDoubleClick"
-					FocusVisualStyle="{x:Null}" ItemsSource="{Binding ItemSource}"/>
+					FocusVisualStyle="{x:Null}" ItemsSource="{Binding ItemSource}">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource NoGridViewHeader}">
+                            <GridViewColumn CellTemplate="{StaticResource IExtensionDefinitionViewTemplate}" Header="Name"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
             <Border Grid.Row="1" Grid.Column="1" Background="{DynamicResource {x:Static themes:EnvironmentColors.GlobalBackgroundColor}}" Margin="1,0,0,0" BorderThickness="0">
                 <ContentControl Focusable="False" Style="{StaticResource DetailPaneStyle}"

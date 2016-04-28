@@ -12,6 +12,8 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
 
         bool IsWindowMode { get; set; }
 
+        string Language { get; set; }
+
         IMod SelectedMod { get; set; }
     }
 }

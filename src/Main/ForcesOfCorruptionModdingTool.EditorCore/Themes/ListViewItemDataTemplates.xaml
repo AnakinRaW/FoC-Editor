@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mod="clr-namespace:ForcesOfCorruptionModdingTool.EditorCore.Mod">
+
+    <DataTemplate x:Key="IModViewTemplate" DataType="{x:Type mod:IMod}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="38"/>
+                
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TextBlock" Grid.Column="0" Margin="8,0,0,0" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Text="{Binding Name}"
+                           ToolTip="{Binding Name}"/>
+            <Image Grid.Column="2" x:Name="Image" Height="32" Width="32" 
+                   StretchDirection="DownOnly" HorizontalAlignment="Right" Stretch="Uniform" Margin="0,2,4,2" Source="{Binding IconSource}"/>
+
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Name}" Value="{x:Null}">
+                <Setter TargetName="TextBlock" Property="Text" Value="Forces of Corruption"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+
+    </DataTemplate>
+
+</ResourceDictionary>
