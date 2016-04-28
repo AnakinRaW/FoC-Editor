@@ -40,7 +40,8 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public override void Export()
         {
-            throw new NotImplementedException();
+            var manager = new ExportManager.ExportManager(this);
+            manager.StartExportWizard();
         }
 
         public override void Save()

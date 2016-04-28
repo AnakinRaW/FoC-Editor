@@ -16,6 +16,12 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         [Export]
         public static MenuItemDefinition CloseActiveDocument = new MenuItemDefinition<CloseProjectCommandDefinition>("Close Document", 3, FileMenu);
-        
+
+        [Export]
+        public static MenuItemDefinition ExportSeparator = new MenuItemDefinition("Separator", 100, FileMenu, true);
+
+        [Export]
+        public static MenuItemDefinition ExportProject = new MenuItemDefinition<ExportProjectCommandDefinition>("Export Project", 100, FileMenu);
+
     }
 }

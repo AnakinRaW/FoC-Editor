@@ -119,6 +119,7 @@
     <Compile Include="Modules\AboutDialog\MenuDefinitions.cs" />
     <Compile Include="Modules\MainWindow\ViewModels\DockingMainWindowViewModel.cs" />
     <Compile Include="Modules\Startup\Module.cs" />
+    <Compile Include="Modules\Workspace\Commands\ExportProjectCommandDefinition.cs" />
     <Compile Include="Modules\Workspace\Commands\RestartWorkspaceGameCommandDefinition.cs" />
     <Compile Include="Modules\Workspace\Commands\StopWorkspaceGameCommandDefinition.cs" />
     <Compile Include="Modules\Workspace\Commands\StartWorkspaceGameCommandDefinition.cs" />
