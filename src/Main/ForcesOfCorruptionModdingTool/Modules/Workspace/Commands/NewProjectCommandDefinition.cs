@@ -1,6 +1,5 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
-using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.ProjectDefinitions;
 using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
@@ -25,9 +24,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 
         [ImportMany]
         private ISupportedProjectDefinition[] _definitions;
-
-        [Import]
-        private IDialogProvider _dialogProvider;
 
 #pragma warning restore 649
 
