@@ -19,6 +19,8 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
 
             var wizard = IoC.Get<IWizardWindowViewModel>();
             wizard.DisplayName = "Export Wizard";
+            wizard.HeadingText = $"Export '{Project?.Mod?.Name}'";
+            wizard.Description = "This wizard will help you export your mod into a .zip file";
 
             var wm = IoC.Get<IWindowManager>();
             wm.ShowDialog(wizard);
