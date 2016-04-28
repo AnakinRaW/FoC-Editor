@@ -39,6 +39,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\Libraries\DotNetZip\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="ModernApplicationFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.dll</HintPath>
@@ -68,6 +71,16 @@
     <Compile Include="ExportManager\ExportManager.cs" />
     <Compile Include="ExportManager\ExportSettings.cs" />
     <Compile Include="ExportManager\IExportManager.cs" />
+    <Compile Include="ExportManager\Pages\IExportSettingsGeneral.cs" />
+    <Compile Include="ExportManager\Pages\IExportSettingsModifier.cs" />
+    <Compile Include="ExportManager\Pages\IExportSettingsPublishFiles.cs" />
+    <Compile Include="ExportManager\Pages\Views\ExportSettingsPublishFiles.xaml.cs">
+      <DependentUpon>ExportSettingsPublishFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExportManager\Pages\Views\ExportSettingsViewGeneral.xaml.cs">
+      <DependentUpon>ExportSettingsViewGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExportManager\WizardWindowViewModel.cs" />
     <Compile Include="ModLauncher\IModLauncher.cs" />
     <Compile Include="ModLauncher\MenuDefinitions.cs" />
     <Compile Include="ModLauncher\ModLauncherView.xaml.cs">
@@ -112,6 +125,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ExportManager\Pages\Views\ExportSettingsPublishFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExportManager\Pages\Views\ExportSettingsViewGeneral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ModLauncher\ModLauncherView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

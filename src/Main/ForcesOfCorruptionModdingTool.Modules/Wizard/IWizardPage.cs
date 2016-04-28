@@ -1,11 +1,13 @@
-﻿namespace ForcesOfCorruptionModdingTool.Modules.Wizard
+﻿using System.ComponentModel;
+
+namespace ForcesOfCorruptionModdingTool.Modules.Wizard
 {
-    public interface IWizardPage
+    public interface IWizardPage : INotifyPropertyChanged
     {
         /// <summary>
         /// The name of the page. Will appear on the window
         /// </summary>
-        string Name { get; }
+        string DisplayName { get; }
 
         /// <summary>
         /// Reference to the next page

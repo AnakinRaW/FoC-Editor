@@ -1,5 +1,5 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Project;
-using ForcesOfCorruptionModdingTool.Modules.Wizard;
+using ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages.Views;
 using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
 
@@ -13,17 +13,17 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
             Project = project;
         }
 
-
         public void StartExportWizard()
         {
-
-            var wizard = IoC.Get<IWizardWindowViewModel>();
+            var wizard = IoC.Get<Wizard.ViewModels.WizardWindowViewModel>();
             wizard.DisplayName = "Export Wizard";
             wizard.HeadingText = $"Export '{Project?.Mod?.Name}'";
             wizard.Description = "This wizard will help you export your mod into a .zip file";
+            wizard.FirstPage = new ExportSettingsViewGeneral((IExportWizard)wizard, null);
 
             var wm = IoC.Get<IWindowManager>();
-            wm.ShowDialog(wizard);
+            if (wm.ShowDialog(wizard) != true)
+                return;
 
         }
 

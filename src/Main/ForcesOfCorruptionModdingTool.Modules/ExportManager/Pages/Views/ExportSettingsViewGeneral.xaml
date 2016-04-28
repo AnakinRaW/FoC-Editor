@@ -1,0 +1,70 @@
+﻿<wizard:WizardPage x:Class="ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages.Views.ExportSettingsViewGeneral"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:wizard="clr-namespace:ForcesOfCorruptionModdingTool.Modules.Wizard"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="600"
+                   DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid Background="{x:Static SystemColors.ControlLightBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0,14,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MinWidth="120" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Mod location:" Margin="7,0,0,0" />
+            <TextBox Grid.Column="1" VerticalContentAlignment="Center" Text="{Binding SourceLocation, Mode=TwoWay}" IsReadOnly="True" />
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,6,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MinWidth="120" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Target location:" Margin="7,0,0,0" />
+            <TextBox Grid.Column="1" Text="{Binding TargetLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
+            <Button Grid.Column="2" Content="Brwose..." Margin="14,0,6,0" MinWidth="85" Padding="6,2,6,2" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Command="{Binding BrowseCommand}" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0,24,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MinWidth="120" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Compression mode:" Margin="7,0,0,0" />
+            <ComboBox Grid.Column="1" HorizontalAlignment="Left" MinWidth="150" 
+                      ItemsSource="{Binding ComplressionLevels}" SelectedItem="{Binding SelectedCompression}" 
+                      VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="0" Margin="0,24,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MinWidth="120" />
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Column="1" HorizontalAlignment="Left" MinWidth="150" Content="Encrypt File" IsChecked="{Binding Encrypt}"/>
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.Column="0" Margin="0,6,0,0" IsEnabled="{Binding Encrypt}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="130" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MinWidth="120" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Password:" Margin="7,0,0,0" />
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" MinWidth="150" Text="{Binding Password}" VerticalContentAlignment="Center"/>
+        </Grid>
+    </Grid>
+</wizard:WizardPage>

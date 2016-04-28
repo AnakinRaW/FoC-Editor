@@ -25,7 +25,7 @@
             <StackPanel Grid.Column="0" Orientation="Vertical" Margin="12,6,12,3">
                 <TextBlock TextWrapping="Wrap" FontSize="18" Text="{Binding HeadingText}"/>
                 <TextBlock TextWrapping="Wrap" Margin="0,3,0,0" Text="{Binding Description}"/>
-                <TextBlock TextWrapping="Wrap" Margin="0,3,0,0" Text="{Binding ActivePage.Name}" FontWeight="Bold"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,3,0,0" Text="{Binding ActivePage.DisplayName}" FontWeight="Bold"/>
             </StackPanel>
         </Grid>
         <ContentControl Grid.Row="1" Content="{Binding ActivePage}"/>
