@@ -20,7 +20,8 @@ namespace ForcesOfCorruptionModdingTool.Configuration
             new UsedSoftwareInformation("AvalonDock", "Xceed"),
             new UsedSoftwareInformation("ModernApplicationFramework", "AnakinSklavenwalker"),
             new UsedSoftwareInformation(".NET Framework", "Microsoft"),
-            new UsedSoftwareInformation("Visual Studio Image Library 2015", "Microsoft")
+            new UsedSoftwareInformation("Visual Studio Image Library 2015", "Microsoft"),
+            new UsedSoftwareInformation("DotNetZip", "Xceed")
         };
     }
 }
