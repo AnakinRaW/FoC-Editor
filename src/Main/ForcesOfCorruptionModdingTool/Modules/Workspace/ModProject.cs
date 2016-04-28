@@ -52,7 +52,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace
 
         public void CreateMod()
         {
-            // Build up the FileSystem (TODO)
             ModFactory.BuildUpMod(FullPath);
 
             // Instantiate the mod.

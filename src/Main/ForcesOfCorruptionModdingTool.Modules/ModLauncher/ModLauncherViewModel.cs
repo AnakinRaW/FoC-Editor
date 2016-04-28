@@ -133,7 +133,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
             public bool UsesCustomMultiplayerMaps { get; set; }
 
             public Uri IconSource
-                => new Uri("/ForcesOfCorruptionModdingTool.Modules;component/foc.ico", UriKind.Relative);
+                => new Uri("/ForcesOfCorruptionModdingTool.Modules;component/Resources/Icons/foc.ico", UriKind.Relative);
         }
     }
 }
