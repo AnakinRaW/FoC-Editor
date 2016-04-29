@@ -4,9 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
@@ -28,7 +26,8 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
 
         public ModLauncherViewModel()
         {
-            InstalledMods = new List<IMod> {new EmptyMod()}.Concat(Workspace.Game.Mods);
+            UpdateModList();
+            Workspace.GameChanged += (sender, args) => UpdateModList();
         }
 
         public IModdingToolWorkspace Workspace => IoC.Get<IModdingToolWorkspace>();
@@ -119,6 +118,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
         private void Lvc_ItemDoubledClicked(object sender, ItemDoubleClickedEventArgs e)
         {
             LaunchCommand.Execute(null);
+        }
+
+        private void UpdateModList()
+        {
+            InstalledMods = new List<IMod> { new EmptyMod() }.Concat(Workspace.Game.Mods);
         }
 
         //Used to add a null mod which make the launcher start the vanilla game.
