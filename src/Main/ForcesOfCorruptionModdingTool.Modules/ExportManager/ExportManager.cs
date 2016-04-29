@@ -9,6 +9,7 @@ using ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages.Vie
 using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.Controls;
+using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
 
 namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
@@ -16,6 +17,9 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
     public class ExportManager : IExportManager
     {
         private readonly IOutput _output = IoC.Get<IOutput>();
+        private readonly IDockingMainWindowViewModel _mainWindow = IoC.Get<IDockingMainWindowViewModel>();
+
+
         public IModProject Project { get; }
         public ExportManager(IModProject project)
         {
@@ -43,6 +47,8 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
 
         public void Export(ExportSettings settings)
         {
+            _mainWindow.StatusBar.Mode = 4;
+            _mainWindow.StatusBar.ModeText = "Started Export";
             _output.AppendLine($"1>------ Export Started: Project: {Project.Name}");
             CreateModPublishFiles(settings);
             try
@@ -56,6 +62,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
                 else
                     _output.AppendLine($"1>------ Export Error: {e.Message}");
                 return;
+            }
+            finally
+            {
+                _mainWindow.StatusBar.ModeText = "Ready";
+                _mainWindow.StatusBar.RestoreMode();
             }
             _output.AppendLine($"1>------ Export Finished: Project: {Project.Name}");
         }

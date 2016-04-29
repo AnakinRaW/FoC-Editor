@@ -3,12 +3,17 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
+using ModernApplicationFramework.Caliburn;
+using ModernApplicationFramework.MVVM.Interfaces;
 using static ForcesOfCorruptionModdingTool.EditorCore.Windows.Processes.ProcessHelper;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Game
 {
     public class GameProcessData : INotifyPropertyChanged
     {
+
+        private readonly IDockingMainWindowViewModel _mainWindow = IoC.Get<IDockingMainWindowViewModel>();
+
         public GameProcessData()
         {
             IsProcessRunning = false;
@@ -23,6 +28,16 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
                     return;
                 _isProcessRunning = value;
                 OnPropertyChanged();
+                if (_isProcessRunning)
+                {
+                    Execute.OnUiThread(() =>_mainWindow.StatusBar.ModeText = "Game Running");
+                    _mainWindow.StatusBar.Mode = 2;
+                }
+                else
+                {
+                    _mainWindow.StatusBar.RestoreMode();
+                    Execute.OnUiThread(() => _mainWindow.StatusBar.ModeText = "Ready");
+                }
             }
         }
 

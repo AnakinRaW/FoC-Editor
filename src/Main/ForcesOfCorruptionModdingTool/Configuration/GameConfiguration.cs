@@ -6,6 +6,8 @@
 
         public static readonly string FocSteamAppId = "32472";
 
+        public static readonly string FocProcessName = "swfoc";
+
         public static readonly string FoCSteamFolderName = "corruption";
 
         public static readonly string SteamEawFolderName = "Star Wars Empire at War";

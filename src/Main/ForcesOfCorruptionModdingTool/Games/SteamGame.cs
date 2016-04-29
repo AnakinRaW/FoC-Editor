@@ -63,7 +63,7 @@ namespace ForcesOfCorruptionModdingTool.Games
             };
 
             await SteamHelper.StartSteamGame(this, process);
-            GameProcessData.Process = FindProcess("swfoc");
+            GameProcessData.Process = FindProcess(GameConfiguration.FocProcessName);
         }
 
         public override void Patch()

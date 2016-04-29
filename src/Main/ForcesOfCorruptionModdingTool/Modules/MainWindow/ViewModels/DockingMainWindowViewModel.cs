@@ -33,11 +33,14 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
                 typeof(DockingMainWindowView).Namespace);
         }
 
+        private string _defaultTitle;
+
         protected override void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
             Window.Title = "Forces of Corruption Modding Tool";
             StatusBar.ModeText = "Ready";
+            _defaultTitle = Window.Title;
             ActiveIcon = new BitmapImage(new Uri("pack://application:,,,/ForcesOfCorruptionModdingTool;component/Resources/Icons/eawActive.png"));
             PassiveIcon = new BitmapImage(new Uri("pack://application:,,,/ForcesOfCorruptionModdingTool;component/Resources/Icons/eawInactive.png"));
 
@@ -79,12 +82,14 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
         {
             StatusBar.Mode = 1;
             StatusBar.InformationTextC = e.NewProject?.Name;
+            Window.Title += $" - {e.NewProject?.Name}";
         }
 
         private void _workspace_ProjectClosed(object sender, EditorCore.Workspace.EventArgs.ProjectClosedEventArgs e)
         {
             StatusBar.Mode = 3;
             StatusBar.InformationTextC = string.Empty;
+            Window.Title = _defaultTitle;
         }
     }
 }
