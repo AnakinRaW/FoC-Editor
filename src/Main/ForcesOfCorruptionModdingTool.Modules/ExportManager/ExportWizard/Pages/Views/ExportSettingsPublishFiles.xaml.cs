@@ -3,7 +3,7 @@ using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Modules.Wizard;
 using ModernApplicationFramework.Caliburn;
 
-namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages.Views
+namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages.Views
 {
     public partial class ExportSettingsPublishFiles : IExportSettingsPublishFiles
     {
@@ -22,11 +22,10 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages.Views
 
         private void SetupControls()
         {
-            if (File.Exists(Path.Combine(_workspace.CurrentProject.Mod.ModRootDirectory, "readme.txt")))
-            {
-                CreateReadme = true;
-                ReadmeText = File.ReadAllText(Path.Combine(_workspace.CurrentProject.Mod.ModRootDirectory, "readme.txt"));
-            }
+            if (!File.Exists(Path.Combine(_workspace.CurrentProject.Mod.ModRootDirectory, "readme.txt")))
+                return;
+            CreateReadme = true;
+            ReadmeText = File.ReadAllText(Path.Combine(_workspace.CurrentProject.Mod.ModRootDirectory, "readme.txt"));
         }
 
         public override string DisplayName => "Add Additional Information";

@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\Libraries\DotNetZip\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="ModernApplicationFramework">
       <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernApplicationFramework.MVVM">
+      <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.MVVM.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernApplicationFramework.MVVM.Modules">
+      <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.MVVM.Modules.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -47,11 +56,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\NullBooleanConverter.cs" />
     <Compile Include="Converters\NullInverseBooleanConverter.cs" />
     <Compile Include="Converters\NullVisibilityConverter.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Game\GameProcessData.cs" />
     <Compile Include="Game\IGameLauncher.cs" />
+    <Compile Include="Windows\FileSystem\Compression\CompressSettings.cs" />
+    <Compile Include="Windows\FileSystem\Compression\FileCompression.cs" />
     <Compile Include="Windows\FileSystem\FileSystemHelper.cs" />
     <Compile Include="Game\BasicGame.cs" />
     <Compile Include="Game\Exceptions\GameStartException.cs" />

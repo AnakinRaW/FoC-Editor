@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem
 {
@@ -51,6 +53,48 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem
                 var dest = Path.Combine(destFolder, name);
                 CopyFolder(folder, dest);
             }
+        }
+
+
+        //http://stackoverflow.com/questions/5617320/given-full-path-check-if-path-is-subdirectory-of-some-other-path-or-otherwise
+        public static bool PathIsInDirectory(string fullPath, string path)
+        {
+            string normalizedPath = Path.GetFullPath(path.Replace('/', '\\')
+            .WithEnding("\\"));
+
+            string normalizedBaseDirPath = Path.GetFullPath(fullPath.Replace('/', '\\')
+                .WithEnding("\\"));
+
+            return normalizedPath.StartsWith(normalizedBaseDirPath, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string WithEnding([CanBeNull] this string str, string ending)
+        {
+            if (str == null)
+                return ending;
+
+            var result = str;
+
+            // Right() is 1-indexed, so include these cases
+            // * Append no characters
+            // * Append up to N characters, where N is ending length
+            for (var i = 0; i <= ending.Length; i++)
+            {
+                var tmp = result + ending.Right(i);
+                if (tmp.EndsWith(ending))
+                    return tmp;
+            }
+
+            return result;
+        }
+
+        private static string Right([NotNull] this string value, int length)
+        {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+            if (length < 0)
+                throw new ArgumentOutOfRangeException(nameof(length), length, "Length is less than zero");
+            return length < value.Length ? value.Substring(value.Length - length) : value;
         }
     }
 }

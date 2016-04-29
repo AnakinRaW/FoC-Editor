@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.Composition;
 using ModernApplicationFramework.Caliburn.Platform.Xaml;
 
-namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
+namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard
 {
     [Export(typeof(Wizard.ViewModels.WizardWindowViewModel))]
+    [Export(typeof(IExportWizard))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class WizardWindowViewModel : Wizard.ViewModels.WizardWindowViewModel, IExportWizard
     {
@@ -19,10 +20,5 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
         }
 
         public ExportSettings ExportSettings { get; }
-    }
-
-    public interface IExportWizard
-    {
-        ExportSettings ExportSettings { get;}
     }
 }

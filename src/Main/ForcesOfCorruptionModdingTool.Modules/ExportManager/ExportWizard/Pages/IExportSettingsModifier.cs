@@ -1,4 +1,4 @@
-﻿namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages
+﻿namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages
 {
     public interface IExportSettingsModifier
     {

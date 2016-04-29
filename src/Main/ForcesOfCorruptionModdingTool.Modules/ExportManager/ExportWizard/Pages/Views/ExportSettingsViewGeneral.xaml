@@ -1,11 +1,16 @@
-﻿<wizard:WizardPage x:Class="ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages.Views.ExportSettingsViewGeneral"
+﻿<wizard:WizardPage x:Class="ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages.Views.ExportSettingsViewGeneral"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:wizard="clr-namespace:ForcesOfCorruptionModdingTool.Modules.Wizard"
+             xmlns:converters="clr-namespace:ForcesOfCorruptionModdingTool.EditorCore.Converters;assembly=ForcesOfCorruptionModdingTool.EditorCore"
              mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="600"
                    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <wizard:WizardPage.Resources>
+        <converters:NullInverseBooleanConverter x:Key="NullBooleanConverter"/>
+    </wizard:WizardPage.Resources>
+    
     <Grid Background="{x:Static SystemColors.ControlLightBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -24,19 +29,27 @@
             <TextBox Grid.Column="1" VerticalContentAlignment="Center" Text="{Binding SourceLocation, Mode=TwoWay}" IsReadOnly="True" />
         </Grid>
 
-        <Grid Grid.Row="1" Margin="0,6,0,0">
+        <Grid Grid.Row="1" Margin="0,12,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="130" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" MinWidth="120" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="Target location:" Margin="7,0,0,0" />
-            <TextBox Grid.Column="1" Text="{Binding TargetLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
+            <TextBox x:Name="Folder" Grid.Column="1" Text="{Binding TargetLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     VerticalContentAlignment="Center"/>
+            <Popup PlacementTarget="{Binding ElementName=Folder}" Placement="Bottom"
+                   IsOpen="{Binding ErrorText, Converter={StaticResource NullBooleanConverter}}" AllowsTransparency="True"
+                   HorizontalOffset="{Binding PopupPositionY, Mode=TwoWay}">
+                <Border Margin="1">
+                    <TextBlock Background="Transparent" Foreground="Black" Text="{Binding ErrorText}"/>
+                </Border>
+            </Popup>
             <Button Grid.Column="2" Content="Brwose..." Margin="14,0,6,0" MinWidth="85" Padding="6,2,6,2" VerticalAlignment="Center"
                     HorizontalAlignment="Left" Command="{Binding BrowseCommand}" />
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="0" Margin="0,24,0,0">
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0,50,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="130" />
                 <ColumnDefinition Width="*" />
@@ -48,7 +61,7 @@
                       VerticalContentAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.Row="3" Grid.Column="0" Margin="0,24,0,0">
+        <Grid Grid.Row="3" Grid.Column="0" Margin="0,12,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="130" />
                 <ColumnDefinition Width="*" />

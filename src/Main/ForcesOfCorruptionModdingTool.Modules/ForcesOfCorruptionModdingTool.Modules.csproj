@@ -49,6 +49,9 @@
     <Reference Include="ModernApplicationFramework.MVVM">
       <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.MVVM.dll</HintPath>
     </Reference>
+    <Reference Include="ModernApplicationFramework.MVVM.Modules">
+      <HintPath>..\..\Libraries\ModernApplicationFramework\ModernApplicationFramework.MVVM.Modules.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -68,19 +71,21 @@
   <ItemGroup>
     <Compile Include="DialogProvider\DialogProvider.cs" />
     <Compile Include="DialogProvider\IDialogProvider.cs" />
+    <Compile Include="ExportManager\Exceptions\ExportCanceledException.cs" />
     <Compile Include="ExportManager\ExportManager.cs" />
     <Compile Include="ExportManager\ExportSettings.cs" />
     <Compile Include="ExportManager\IExportManager.cs" />
-    <Compile Include="ExportManager\Pages\IExportSettingsGeneral.cs" />
-    <Compile Include="ExportManager\Pages\IExportSettingsModifier.cs" />
-    <Compile Include="ExportManager\Pages\IExportSettingsPublishFiles.cs" />
-    <Compile Include="ExportManager\Pages\Views\ExportSettingsPublishFiles.xaml.cs">
+    <Compile Include="ExportManager\ExportWizard\IExportWizard.cs" />
+    <Compile Include="ExportManager\ExportWizard\Pages\IExportSettingsGeneral.cs" />
+    <Compile Include="ExportManager\ExportWizard\Pages\IExportSettingsModifier.cs" />
+    <Compile Include="ExportManager\ExportWizard\Pages\IExportSettingsPublishFiles.cs" />
+    <Compile Include="ExportManager\ExportWizard\Pages\Views\ExportSettingsPublishFiles.xaml.cs">
       <DependentUpon>ExportSettingsPublishFiles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExportManager\Pages\Views\ExportSettingsViewGeneral.xaml.cs">
+    <Compile Include="ExportManager\ExportWizard\Pages\Views\ExportSettingsViewGeneral.xaml.cs">
       <DependentUpon>ExportSettingsViewGeneral.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExportManager\WizardWindowViewModel.cs" />
+    <Compile Include="ExportManager\ExportWizard\WizardWindowViewModel.cs" />
     <Compile Include="ModLauncher\IModLauncher.cs" />
     <Compile Include="ModLauncher\MenuDefinitions.cs" />
     <Compile Include="ModLauncher\ModLauncherView.xaml.cs">
@@ -125,11 +130,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ExportManager\Pages\Views\ExportSettingsPublishFiles.xaml">
+    <Page Include="ExportManager\ExportWizard\Pages\Views\ExportSettingsPublishFiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExportManager\Pages\Views\ExportSettingsViewGeneral.xaml">
+    <Page Include="ExportManager\ExportWizard\Pages\Views\ExportSettingsViewGeneral.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

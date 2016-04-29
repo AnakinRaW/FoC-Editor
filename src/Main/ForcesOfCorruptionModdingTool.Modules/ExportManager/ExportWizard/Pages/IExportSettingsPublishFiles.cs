@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages
+namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages
 {
     public interface IExportSettingsPublishFiles : IExportSettingsModifier, INotifyPropertyChanged
     {

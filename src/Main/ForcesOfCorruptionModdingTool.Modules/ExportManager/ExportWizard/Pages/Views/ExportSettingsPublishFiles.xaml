@@ -1,4 +1,4 @@
-﻿<wizard:WizardPage x:Class="ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages.Views.ExportSettingsPublishFiles"
+﻿<wizard:WizardPage x:Class="ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages.Views.ExportSettingsPublishFiles"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -18,7 +18,7 @@
         <TextBlock Grid.Row="1" Margin="0,3,0,0" MaxWidth="450" HorizontalAlignment="Left" TextWrapping="Wrap" Text="If you used the cedit manager (will be added later), you can automatically generate a credits.txt file."></TextBlock>
 
         <CheckBox Grid.Row="2" Content="Create Readme" Margin="0,24,0,0" IsChecked="{Binding CreateReadme, Mode=TwoWay}"/>
-        <TextBox Grid.Row="3" Margin="0,3,0,0" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" IsEnabled="{Binding CreateReadme, Mode=TwoWay}" Text="{Binding ReadmeText, Mode=TwoWay}"/>
+        <TextBox Grid.Row="3" Margin="0,3,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" IsEnabled="{Binding CreateReadme, Mode=TwoWay}" Text="{Binding ReadmeText, Mode=TwoWay}"/>
         <TextBlock Grid.Row="4" TextWrapping="Wrap" Margin="0,3,0,0" FontSize="10">If you already have a readme file created and the check mark is not ticked the file will NOT be deleted.</TextBlock>
     </Grid>
 </wizard:WizardPage>

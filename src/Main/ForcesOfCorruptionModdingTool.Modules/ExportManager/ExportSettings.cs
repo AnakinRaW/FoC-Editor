@@ -1,14 +1,15 @@
-﻿using Ionic.Zlib;
+﻿using ForcesOfCorruptionModdingTool.EditorCore.Mod;
+using Ionic.Zlib;
 
 namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
 {
     public class ExportSettings
     {
-        public string SourceLocation { get; set; }
+        public IMod Mod { get; set; }
 
         public string ExportPath { get; set; }
 
-        public CompressionLevel CompressionMode { get; set; }
+        public CompressionLevel CompressionLevel { get; set; }
 
         public string Password { get; set; }
 

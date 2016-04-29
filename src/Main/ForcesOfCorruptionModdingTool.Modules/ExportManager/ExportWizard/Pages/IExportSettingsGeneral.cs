@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.Pages
+namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages
 {
     public interface IExportSettingsGeneral : IExportSettingsModifier, INotifyPropertyChanged
     {

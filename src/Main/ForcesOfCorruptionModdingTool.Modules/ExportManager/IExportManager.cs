@@ -19,5 +19,17 @@ namespace ForcesOfCorruptionModdingTool.Modules.ExportManager
         /// </summary>
         /// <param name="settings">Settings to export the project</param>
         void Export(ExportSettings settings);
+
+        /// <summary>
+        /// Creates the readme and credit files when specified in the settings
+        /// </summary>
+        /// <param name="settings"></param>
+        void CreateModPublishFiles(ExportSettings settings);
+
+        /// <summary>
+        /// Exports with given settings
+        /// </summary>
+        /// <param name="settings"></param>
+        void ExportAsZip(ExportSettings settings);
     }
 }
