@@ -1,8 +1,8 @@
-﻿using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
-using ModernApplicationFramework.Commands;
-using System;
+﻿using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
+using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
+using ModernApplicationFramework.Commands;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 {
@@ -11,13 +11,19 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
     {
 #pragma warning disable 649
 
-        [Import]
-        private IModdingToolWorkspace _workspace;
+        [Import] private IModdingToolWorkspace _workspace;
 
 #pragma warning restore 649
 
+        public ExportProjectCommandDefinition()
+        {
+            Command = new MultiKeyGestureCommandWrapper(ExportProject, CanExportProject, new MultiKeyGesture(new []{Key.E, Key.M}, ModifierKeys.Control));
+        }
+
         public override bool CanShowInMenu => true;
         public override bool CanShowInToolbar => true;
+
+        public override ICommand Command { get; }
         public override string IconId => null;
 
         public override Uri IconSource => null;
@@ -25,13 +31,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
         public override string Name => "Export Project";
         public override string Text => Name;
         public override string ToolTip => "Export current project to a mod archive";
-
-        public override ICommand Command { get; }
-
-        public ExportProjectCommandDefinition()
-        {
-            Command = new CommandWrapper(ExportProject, CanExportProject);
-        }
 
         private bool CanExportProject()
         {
