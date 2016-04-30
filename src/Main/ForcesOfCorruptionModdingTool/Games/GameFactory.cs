@@ -145,7 +145,10 @@ namespace ForcesOfCorruptionModdingTool.Games
 
         private static IGame CreateSteam()
         {
-            var path = Path.Combine(GetFocInstallPath(), "corruption");
+            var root = GetFocInstallPath();
+            if (root == null)
+                throw new GameNotFoundException();
+            var path = Path.Combine(root, "corruption");
             return new SteamGame(path);
         }
 
@@ -178,7 +181,14 @@ namespace ForcesOfCorruptionModdingTool.Games
 
         private static string GetFocInstallPath()
         {
-            return RegistryHelper.GetValueFromKey(RegistryRootTypes.HkLocalMachine, FocRegistryPath, "InstallPath").ToString();
+            try
+            {
+                return RegistryHelper.GetValueFromKey(RegistryRootTypes.HkLocalMachine, FocRegistryPath, "InstallPath").ToString();
+            }
+            catch (Exception)
+            {
+                throw new GameNotFoundException();
+            }           
         }
     }
 }

@@ -38,6 +38,7 @@ namespace ForcesOfCorruptionModdingTool.Configuration
 
         private static bool DoFirstStartConfiguration()
         {
+
             var fc = IoC.Get<IFirstStartConfigModel>();
             fc.DisplayName = "First Start Configuration";
 

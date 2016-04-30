@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,9 +18,17 @@ namespace ForcesOfCorruptionModdingTool.Games
         public static string SteamInstallPath
             => RegistryHelper.GetValueFromKey(RegistryRootTypes.HkCurrentUser, "Software\\Valve\\Steam", "SteamExe").ToString();
 
-        public static bool IsSteamAppInstalled(string appId) =>
-            RegistryHelper.GetValueFromKey(RegistryRootTypes.HkCurrentUser, "Software\\Valve\\Steam\\Apps\\" + appId, "Installed")
-                .ToString() == "1";
+        public static bool IsSteamAppInstalled(string appId)
+        {
+            try
+            {
+                return RegistryHelper.GetValueFromKey(RegistryRootTypes.HkCurrentUser, "Software\\Valve\\Steam\\Apps\\" + appId, "Installed").ToString() == "1";
+            }
+            catch (Exception)
+            {
+                return false;
+            }                      
+        }
 
         public static async Task StartSteamGame(IGame game, Process process)
         {
