@@ -1,4 +1,5 @@
-﻿using ForcesOfCorruptionModdingTool.EditorCore.Mod;
+﻿using System;
+using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -6,6 +7,9 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
 {
     public interface IGame : INotifyPropertyChanged
     {
+
+        event EventHandler ModsChaned;
+
         /// <summary>
         /// Stores the directory containing the main executable file
         /// </summary>

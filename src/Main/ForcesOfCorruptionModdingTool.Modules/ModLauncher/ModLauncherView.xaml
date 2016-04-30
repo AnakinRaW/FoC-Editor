@@ -31,13 +31,22 @@
         <ListView x:Name="ListView" Grid.Row="1" ItemsSource="{Binding InstalledMods}" SelectedItem="{Binding SelectedMod, Mode=TwoWay}"
                   Loaded="FrameworkElement_OnLoaded" SizeChanged="FrameworkElement_OnSizeChanged" MouseDoubleClick="Control_OnMouseDoubleClick"
                   SelectionChanged="ListView_OnSelectionChanged"
-                  Style="{DynamicResource ListViewStyle}" SelectionMode="Single" 
-                  ItemContainerStyle="{DynamicResource ListViewItemStyle}">
+                  Style="{DynamicResource ListViewStyle}" SelectionMode="Single">
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource NoGridViewHeader}">
                     <GridViewColumn CellTemplate="{StaticResource IModViewTemplate}" Header="Name"/>
                 </GridView>
             </ListView.View>
+            <ListView.Resources>
+                <mafc:ContextMenu x:Key="ItemContextMenu">
+                    <mafc:MenuItem Header="TODO"/>
+                </mafc:ContextMenu>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyle}">
+                    <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
         <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
             <Grid.RowDefinitions>

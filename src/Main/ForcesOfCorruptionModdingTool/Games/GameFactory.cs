@@ -57,37 +57,6 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        private static IGame CreateFocOrSteam(string path)
-        {
-            if (!FindGame(GameType.FocOrSteam, path))
-                throw new GameNotFoundException();
-            if (new DirectoryInfo(path).Name == FoCSteamFolderName
-                && new DirectoryInfo(Directory.GetParent(path).FullName).Name == SteamEawFolderName)
-                return CreateSteam(path);
-            return CreateFoc(path);
-
-        }
-
-        private static IGame CreateSteam(string path)
-        {
-            if (!FindGame(GameType.FocOrSteam, path))
-                throw new GameNotFoundException();
-            return new SteamGame(path);
-        }
-
-        private static IGame CreateFoc(string path)
-        {
-            if (!FindGame(GameType.FocOrSteam, path))
-                throw new GameNotFoundException();
-            return new FocGame(path);
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private static IGame CreateEaw(string path)
-        {
-            throw new NotSupportedException("Empire at War is currently not supported.");
-        }
-
         /// <summary>
         /// Checks whether a game of given type is installed at the specified path
         /// </summary>
@@ -126,18 +95,58 @@ namespace ForcesOfCorruptionModdingTool.Games
             return GameType.Steam;
         }
 
-        private static bool FindFocOrSteam(string directoryPath)
+        // ReSharper disable once UnusedParameter.Local
+        private static IGame CreateEaw(string path)
         {
-            try
-            {
-                new FocGame(directoryPath, false);
-                new SteamGame(directoryPath, false);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            throw new NotSupportedException("Empire at War is currently not supported.");
+        }
+
+        private static IGame CreateEaw()
+        {
+            throw new NotSupportedException("Empire at War is currently not supported.");
+        }
+
+        private static IGame CreateFoc(string path)
+        {
+            if (!FindGame(GameType.FocOrSteam, path))
+                throw new GameNotFoundException();
+            return new FocGame(path);
+        }
+
+        private static IGame CreateFoc()
+        {
+            return new FocGame(GetFocInstallPath());
+        }
+
+        private static IGame CreateFocOrSteam(string path)
+        {
+            if (!FindGame(GameType.FocOrSteam, path))
+                throw new GameNotFoundException();
+            if (new DirectoryInfo(path).Name == FoCSteamFolderName
+                && new DirectoryInfo(Directory.GetParent(path).FullName).Name == SteamEawFolderName)
+                return CreateSteam(path);
+            return CreateFoc(path);
+
+        }
+
+        private static IGame CreateFocOrSteam()
+        {
+            if (!IsSteamInstalled)
+                return CreateFoc();
+            return !IsSteamAppInstalled(FocSteamAppId) ? CreateFoc() : CreateSteam();
+        }
+
+        private static IGame CreateSteam(string path)
+        {
+            if (!FindGame(GameType.FocOrSteam, path))
+                throw new GameNotFoundException();
+            return new SteamGame(path);
+        }
+
+        private static IGame CreateSteam()
+        {
+            var path = Path.Combine(GetFocInstallPath(), "corruption");
+            return new SteamGame(path);
         }
 
         private static bool FindEaw(string directoryPath)
@@ -153,32 +162,23 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        private static IGame CreateFocOrSteam()
+        private static bool FindFocOrSteam(string directoryPath)
         {
-            if (!IsSteamInstalled)
-                return CreateFoc();
-            return !IsSteamAppInstalled(FocSteamAppId) ? CreateFoc() : CreateSteam();
+            try
+            {
+                new FocGame(directoryPath, false);
+                new SteamGame(directoryPath, false);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private static string GetFocInstallPath()
         {
             return RegistryHelper.GetValueFromKey(RegistryRootTypes.HkLocalMachine, FocRegistryPath, "InstallPath").ToString();
-        }
-
-        private static IGame CreateSteam()
-        {
-            var path = Path.Combine(GetFocInstallPath(), "corruption");
-            return new SteamGame(path);
-        }
-
-        private static IGame CreateFoc()
-        {
-            return new FocGame(GetFocInstallPath());
-        }
-
-        private static IGame CreateEaw()
-        {
-            throw new NotSupportedException("Empire at War is currently not supported.");
         }
     }
 }

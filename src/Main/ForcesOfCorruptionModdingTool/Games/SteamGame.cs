@@ -24,9 +24,8 @@ namespace ForcesOfCorruptionModdingTool.Games
             Mods = FindMods();
         }
 
-        protected override string GameconstantsUpdateHash => "4306d0c45d103cd11ff6743d1c3d9366";
-        protected override string GraphicdetailsUpdateHash => "4d7e140887fc1dd52f47790a6e20b5c5";
-        protected override string ExeFileName => "swfoc.exe";
+        public override GameProcessData GameProcessData { get; }
+        public override string Name => "Forces of Corruption (Steam)";
 
         public override string SaveGameDirectrory
         {
@@ -38,32 +37,37 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        public override IEnumerable<IMod> Mods { get; protected set; }
-        public override string Name => "Forces of Corruption (Steam)";
+        protected override string ExeFileName => "swfoc.exe";
 
-        public override GameProcessData GameProcessData { get; }
+        protected override string GameconstantsUpdateHash => "4306d0c45d103cd11ff6743d1c3d9366";
+        protected override string GraphicdetailsUpdateHash => "4d7e140887fc1dd52f47790a6e20b5c5";
 
-        public override async void StartGame(GameLaunchArguments arguments)
+        public override IEnumerable<IMod> FindMods(bool instantiate = true)
         {
-            if (!Exists())
-                throw new GameExceptions("The game is not installed correctly");
-
-            if (arguments == null)
-                throw new ArgumentNullException(nameof(arguments));
-
-            arguments.GameArguments = "-applaunch "  + GameConfiguration.FocSteamAppId + " swfoc";
-
-            var process = new Process
+            var dirs = Directory.GetDirectories(Path.Combine(GameDirectory, "Mods"));
+            var mods = new List<IMod>();
+            foreach (var dir in dirs)
             {
-                StartInfo =
+                try
                 {
-                    FileName = SteamHelper.SteamInstallPath,
-                    Arguments = arguments.ToString(),
-                },
-            };
+                    mods.Add(ModFactory.CreateMod(this, new DirectoryInfo(dir).Name, instantiate));
+                }
+                catch (ModExceptions) {}
+            }
+            return mods;
+        }
 
-            await SteamHelper.StartSteamGame(this, process);
-            GameProcessData.Process = FindProcess("swfoc");
+        public override bool IsPatched()
+        {
+            if (!File.Exists(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") ||
+                !File.Exists(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML"))
+                return false;
+            var hashProvider = new HashProvider();
+            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") != GameconstantsUpdateHash)
+                return false;
+            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML") != GraphicdetailsUpdateHash)
+                return false;
+            return true;
         }
 
         public override void Patch()
@@ -87,32 +91,27 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        public override bool IsPatched()
+        public override async void StartGame(GameLaunchArguments arguments)
         {
-            if (!File.Exists(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") ||
-                !File.Exists(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML"))
-                return false;
-            var hashProvider = new HashProvider();
-            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") != GameconstantsUpdateHash)
-                return false;
-            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML") != GraphicdetailsUpdateHash)
-                return false;
-            return true;
-        }
+            if (!Exists())
+                throw new GameExceptions("The game is not installed correctly");
 
-        public override IEnumerable<IMod> FindMods(bool instantiate = true)
-        {
-            var dirs = Directory.GetDirectories(Path.Combine(GameDirectory, "Mods"));
-            var mods = new List<IMod>();
-            foreach (var dir in dirs)
+            if (arguments == null)
+                throw new ArgumentNullException(nameof(arguments));
+
+            arguments.GameArguments = "-applaunch "  + GameConfiguration.FocSteamAppId + " swfoc";
+
+            var process = new Process
             {
-                try
+                StartInfo =
                 {
-                    mods.Add(ModFactory.CreateMod(this, new DirectoryInfo(dir).Name, instantiate));
-                }
-                catch (ModExceptions) {}
-            }
-            return mods;
+                    FileName = SteamHelper.SteamInstallPath,
+                    Arguments = arguments.ToString(),
+                },
+            };
+
+            await SteamHelper.StartSteamGame(this, process);
+            GameProcessData.Process = FindProcess("swfoc");
         }
     }
 }
