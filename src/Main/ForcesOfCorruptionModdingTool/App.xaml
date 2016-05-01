@@ -1,7 +1,8 @@
 ﻿<Application x:Class="ForcesOfCorruptionModdingTool.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mvvm="clr-namespace:ModernApplicationFramework.MVVM;assembly=ModernApplicationFramework.MVVM">
+             xmlns:mvvm="clr-namespace:ModernApplicationFramework.MVVM;assembly=ModernApplicationFramework.MVVM"
+             DispatcherUnhandledException="App_OnDispatcherUnhandledException">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
