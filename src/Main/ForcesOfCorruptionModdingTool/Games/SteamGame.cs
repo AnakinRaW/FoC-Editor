@@ -38,7 +38,6 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        public override IEnumerable<IMod> Mods { get; protected set; }
         public override string Name => "Forces of Corruption (Steam)";
 
         public override GameProcessData GameProcessData { get; }
