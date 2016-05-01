@@ -3,7 +3,6 @@ using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Properties;
-using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Views;
 using System;
@@ -11,6 +10,7 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
 {

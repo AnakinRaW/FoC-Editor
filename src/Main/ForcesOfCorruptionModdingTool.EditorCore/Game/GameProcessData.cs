@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Annotations;
-using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Interfaces;
 using static ForcesOfCorruptionModdingTool.EditorCore.Windows.Processes.ProcessHelper;
 
@@ -30,13 +30,13 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Game
                 OnPropertyChanged();
                 if (_isProcessRunning)
                 {
-                    Execute.OnUiThread(() =>_mainWindow.StatusBar.ModeText = "Game Running");
+                    Execute.OnUIThread(() =>_mainWindow.StatusBar.ModeText = "Game Running");
                     _mainWindow.StatusBar.Mode = 2;
                 }
                 else
                 {
                     _mainWindow.StatusBar.RestoreMode();
-                    Execute.OnUiThread(() => _mainWindow.StatusBar.ModeText = "Ready");
+                    Execute.OnUIThread(() => _mainWindow.StatusBar.ModeText = "Ready");
                 }
             }
         }

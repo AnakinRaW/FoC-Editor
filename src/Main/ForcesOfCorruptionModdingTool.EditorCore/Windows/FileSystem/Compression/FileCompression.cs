@@ -1,6 +1,6 @@
 ﻿using System.Threading;
+using Caliburn.Micro;
 using Ionic.Zip;
-using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;
 
 namespace ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem.Compression

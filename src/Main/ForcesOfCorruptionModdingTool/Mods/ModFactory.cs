@@ -3,9 +3,9 @@ using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
-using ModernApplicationFramework.Caliburn;
 using System;
 using System.IO;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Mods
 {

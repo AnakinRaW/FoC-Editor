@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Modules.Wizard;
 using Ionic.Zlib;
 using Microsoft.Win32;
-using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Commands;
 using ModernApplicationFramework.Core.Utilities;
 

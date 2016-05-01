@@ -1,5 +1,5 @@
-﻿using ModernApplicationFramework.Caliburn.Interfaces;
-using System;
+﻿using System;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Wizard
 {

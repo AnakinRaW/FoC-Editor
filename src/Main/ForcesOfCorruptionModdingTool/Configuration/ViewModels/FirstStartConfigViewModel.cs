@@ -4,7 +4,6 @@ using ForcesOfCorruptionModdingTool.Games;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Properties;
-using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Commands;
 using ModernApplicationFramework.Core.Themes;
 using ModernApplicationFramework.Dialoges;
@@ -14,6 +13,7 @@ using System.ComponentModel.Composition;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
 namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels

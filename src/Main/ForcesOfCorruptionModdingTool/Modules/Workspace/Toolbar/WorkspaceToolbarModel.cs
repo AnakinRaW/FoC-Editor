@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Game;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace.EventArgs;
 using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;
-using ModernApplicationFramework.Caliburn;
-using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.Commands.Service;
 using ModernApplicationFramework.ViewModels;
 

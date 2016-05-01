@@ -1,7 +1,7 @@
 ﻿using System.IO;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Modules.Wizard;
-using ModernApplicationFramework.Caliburn;
 
 namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages.Views
 {

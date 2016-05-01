@@ -1,7 +1,7 @@
 ﻿using ModernApplicationFramework.Core.Themes;
 using System.Collections.Generic;
 using System.Windows.Input;
-using ModernApplicationFramework.Caliburn.Interfaces;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Configuration
 {

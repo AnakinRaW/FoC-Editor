@@ -5,9 +5,8 @@ using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.Games;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Properties;
-using ModernApplicationFramework.Caliburn;
-using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using System;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Configuration
 {

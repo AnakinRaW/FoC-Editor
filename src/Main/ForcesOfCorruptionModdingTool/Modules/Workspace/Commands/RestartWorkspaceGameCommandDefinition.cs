@@ -3,7 +3,7 @@ using ModernApplicationFramework.Commands;
 using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
-using ModernApplicationFramework.Caliburn;
+using Caliburn.Micro;
 using ModernApplicationFramework.Commands.Service;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands

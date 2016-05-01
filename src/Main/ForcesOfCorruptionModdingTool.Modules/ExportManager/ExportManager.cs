@@ -1,13 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem.Compression;
 using ForcesOfCorruptionModdingTool.Modules.ExportManager.Exceptions;
 using ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard;
 using ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard.Pages.Views;
-using ModernApplicationFramework.Caliburn;
-using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.Controls;
 using ModernApplicationFramework.MVVM.Interfaces;
 using ModernApplicationFramework.MVVM.Modules.OutputTool;

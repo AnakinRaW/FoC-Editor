@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Windows;
+using Caliburn.Micro;
 using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Windows.FileSystem;
 using ForcesOfCorruptionModdingTool.Mods;
 using ForcesOfCorruptionModdingTool.Modules.DialogProvider;
 using ForcesOfCorruptionModdingTool.Modules.Workspace.Commands;
-using ModernApplicationFramework.Caliburn;
 using ModernApplicationFramework.Controls;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace

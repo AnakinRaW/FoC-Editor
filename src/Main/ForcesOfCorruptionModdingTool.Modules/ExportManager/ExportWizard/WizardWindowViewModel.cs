@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.Composition;
-using ModernApplicationFramework.Caliburn.Platform.Xaml;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Modules.ExportManager.ExportWizard
 {

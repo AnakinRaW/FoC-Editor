@@ -1,8 +1,6 @@
 ﻿using ForcesOfCorruptionModdingTool.EditorCore.Project;
 using ForcesOfCorruptionModdingTool.EditorCore.Workspace;
 using ForcesOfCorruptionModdingTool.ProjectDefinitions;
-using ModernApplicationFramework.Caliburn;
-using ModernApplicationFramework.Caliburn.Platform.Xaml;
 using ModernApplicationFramework.Commands;
 using ModernApplicationFramework.MVVM.Interfaces;
 using System;
@@ -10,6 +8,7 @@ using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
 using System.Windows.Input;
+using Caliburn.Micro;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 {
