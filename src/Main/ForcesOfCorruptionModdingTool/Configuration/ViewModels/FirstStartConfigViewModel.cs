@@ -12,10 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using ForcesOfCorruptionModdingTool.EditorCore.Game.Exceptions;
 using ForcesOfCorruptionModdingTool.EditorCore.Mod.Exceptions;
-
 namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
 {
     [Export(typeof(IFirstStartConfigModel))]
@@ -153,12 +153,16 @@ namespace ForcesOfCorruptionModdingTool.Configuration.ViewModels
             catch (GameExceptions)
             {
                 _dialogProvider.ShowMessage("Was not able to find any game instance.\r\n" +
-                                "If you have installed the games, please enter the correct path manually.");
+                                            "If you have installed the games, please enter the correct path manually.");
             }
             catch (NotSupportedException)
             {
                 _dialogProvider.ShowMessage("We are sorry but game which was found is not supported.\r\n" +
-                                "If you have installed a supported game, please enter the correct path manually.");
+                                            "If you have installed a supported game, please enter the correct path manually.");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 

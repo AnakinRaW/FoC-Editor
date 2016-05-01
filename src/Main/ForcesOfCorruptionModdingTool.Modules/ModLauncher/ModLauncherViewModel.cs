@@ -28,6 +28,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
         {
             UpdateModList();
             Workspace.GameChanged += (sender, args) => UpdateModList();
+            Workspace.Game.ModsChaned += (sender, args) => UpdateModList();
         }
 
         public IModdingToolWorkspace Workspace => IoC.Get<IModdingToolWorkspace>();
@@ -122,7 +123,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
 
         private void UpdateModList()
         {
-            InstalledMods = new List<IMod> { new EmptyMod() }.Concat(Workspace.Game.Mods);
+            InstalledMods = new List<IMod> { new EmptyMod() }.Concat(Workspace.Game.Mods).OrderBy(x => x.Name);
         }
 
         //Used to add a null mod which make the launcher start the vanilla game.

@@ -21,9 +21,10 @@ namespace ForcesOfCorruptionModdingTool.Games
                 return;
             Mods = FindMods();
         }
-        protected override string GameconstantsUpdateHash => "4306d0c45d103cd11ff6743d1c3d9366";
-        protected override string GraphicdetailsUpdateHash => "4d7e140887fc1dd52f47790a6e20b5c5";
-        protected override string ExeFileName => "swfoc.exe";
+
+        public override GameProcessData GameProcessData { get; }
+
+        public override string Name => "Forces of Corruption";
 
         public override string SaveGameDirectrory
         {
@@ -35,32 +36,36 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        public override IEnumerable<IMod> Mods { get; protected set; }
-        public override string Name => "Forces of Corruption";
+        protected override string ExeFileName => "swfoc.exe";
+        protected override string GameconstantsUpdateHash => "4306d0c45d103cd11ff6743d1c3d9366";
+        protected override string GraphicdetailsUpdateHash => "4d7e140887fc1dd52f47790a6e20b5c5";
 
-        public override GameProcessData GameProcessData { get; }
-
-        public override void StartGame(GameLaunchArguments arguments)
+        public override IEnumerable<IMod> FindMods(bool instantiate = true)
         {
-            var process = new Process
+            var dirs = Directory.GetDirectories(Path.Combine(GameDirectory, "Mods"));
+            var mods = new List<IMod>();
+            foreach (var dir in dirs)
             {
-                StartInfo =
+                try
                 {
-                    FileName = GameDirectory + @"\swfoc.exe",
-                    Arguments = arguments.ToString(),
-                    WorkingDirectory = GameDirectory,
-                    UseShellExecute = false
+                    mods.Add(ModFactory.CreateMod(this, new DirectoryInfo(dir).Name, instantiate));
                 }
-            };
-            try
-            {
-                GameProcessData.Process = process;
-                GameProcessData.StartProcess();
+                catch (ModExceptions) { }
             }
-            catch (Exception e)
-            {
-                throw new GameStartException($"Could not start the game: {e.Message}");
-            }
+            return mods;
+        }
+
+        public override bool IsPatched()
+        {
+            if (!File.Exists(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") ||
+                !File.Exists(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML"))
+                return false;
+            var hashProvider = new HashProvider();
+            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") != GameconstantsUpdateHash)
+                return false;
+            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML") != GraphicdetailsUpdateHash)
+                return false;
+            return true;
         }
 
         public override void Patch()
@@ -84,32 +89,27 @@ namespace ForcesOfCorruptionModdingTool.Games
             }
         }
 
-        public override bool IsPatched()
+        public override void StartGame(GameLaunchArguments arguments)
         {
-            if (!File.Exists(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") ||
-                !File.Exists(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML"))
-                return false;
-            var hashProvider = new HashProvider();
-            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GAMECONSTANTS.XML") != GameconstantsUpdateHash)
-                return false;
-            if (hashProvider.GetFileHash(GameDirectory + @"Data\XML\GRAPHICDETAILS.XML") != GraphicdetailsUpdateHash)
-                return false;
-            return true;
-        }
-
-        public override IEnumerable<IMod> FindMods(bool instantiate = true)
-        {
-            var dirs = Directory.GetDirectories(Path.Combine(GameDirectory, "Mods"));
-            var mods = new List<IMod>();
-            foreach (var dir in dirs)
+            var process = new Process
             {
-                try
+                StartInfo =
                 {
-                    mods.Add(ModFactory.CreateMod(this, new DirectoryInfo(dir).Name, instantiate));
+                    FileName = GameDirectory + @"\swfoc.exe",
+                    Arguments = arguments.ToString(),
+                    WorkingDirectory = GameDirectory,
+                    UseShellExecute = false
                 }
-                catch (ModExceptions) { }
+            };
+            try
+            {
+                GameProcessData.Process = process;
+                GameProcessData.StartProcess();
             }
-            return mods;
+            catch (Exception e)
+            {
+                throw new GameStartException($"Could not start the game: {e.Message}");
+            }
         }
     }
 }
