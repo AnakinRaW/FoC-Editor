@@ -10,11 +10,10 @@ namespace ForcesOfCorruptionModdingTool
         {
             var ex = e.Exception;
             var exInner = ex.InnerException;
-            string msg = ex.Message + "\n\n" + ex.StackTrace + "\n\n" + "Inner Exception:\n" + exInner?.Message + "\n\n"
+            var msg = ex.Message + "\n\n" + ex.StackTrace + "\n\n" + "Inner Exception:\n" + exInner?.Message + "\n\n"
                          + exInner?.StackTrace;
             MessageBox.Show(msg, "Application Halted!", MessageBoxButton.OK);
             e.Handled = true;
-            Current.Shutdown();
         }
 
         private void App_OnStartup(object sender, StartupEventArgs e)
