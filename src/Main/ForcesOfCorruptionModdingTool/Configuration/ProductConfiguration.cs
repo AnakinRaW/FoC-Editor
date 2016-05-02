@@ -21,7 +21,8 @@ namespace ForcesOfCorruptionModdingTool.Configuration
             new UsedSoftwareInformation("ModernApplicationFramework", "AnakinSklavenwalker"),
             new UsedSoftwareInformation(".NET Framework", "Microsoft"),
             new UsedSoftwareInformation("Visual Studio Image Library 2015", "Microsoft"),
-            new UsedSoftwareInformation("DotNetZip", "Xceed")
+            new UsedSoftwareInformation("DotNetZip", "Xceed"),
+            new UsedSoftwareInformation("Save Game Defreezer", "Small_Pox, Fregge")
         };
     }
 }
