@@ -29,6 +29,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
             UpdateModList();
             Workspace.GameChanged += (sender, args) => UpdateModList();
             Workspace.Game.ModsChaned += (sender, args) => UpdateModList();
+            Language = string.Empty;
         }
 
         public IModdingToolWorkspace Workspace => IoC.Get<IModdingToolWorkspace>();
