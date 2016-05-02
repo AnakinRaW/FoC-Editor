@@ -1,21 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.SaveGame
 {
     public abstract class SaveGame : ISaveGameFile
     {
-        public void Dispose()
+        public static IEnumerable<ISaveGameFile> GetAllFilesFromDirectory(string path)
         {
-            throw new NotImplementedException();
+            if (!Directory.Exists(path))
+                throw new DirectoryNotFoundException();
+            foreach (var file in new DirectoryInfo(path).GetFiles())
+            {
+                if (file.Extension.Equals(".sav"))
+                {
+                    var sg = new RetailSaveGame();
+                    sg.Open(file.FullName);
+                    yield return sg;
+                }
+                else
+                {
+                    var sg = new SteamSaveGame();
+                    sg.Open(file.FullName);
+                    yield return sg;
+                }          
+            }
         }
 
-        public string FilePath { get; }
-        public string Name { get; }
-        public byte[] ByteArray { get; set; }
-        public abstract void Open();
+        public void Dispose()
+        {
+            ByteArray = null;
+        }
 
-        public abstract void Save();
+        public string FilePath { get; protected set; }
+        public abstract string Name { get; }
+        public byte[] ByteArray { get; set; }
+
+        public virtual void Open(string path)
+        {
+            if (!File.Exists(path))
+                throw new FileNotFoundException(nameof(path));
+            FilePath = path;
+            ByteArray = File.ReadAllBytes(path);
+        }
+
+        public virtual void Save(string path)
+        {
+            var writer = new BinaryWriter(File.OpenWrite(path));
+            writer.Write(ByteArray);
+            writer.Close();
+        }
 
         public List<UnitRef> GetAllUnitRefs()
         {

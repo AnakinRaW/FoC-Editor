@@ -85,6 +85,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Defreezer\Defreezer.cs" />
+    <Compile Include="Defreezer\IDefreezerViewModel.cs" />
+    <Compile Include="Defreezer\IDefreezerTool.cs" />
+    <Compile Include="Defreezer\MenuDefinitions.cs" />
+    <Compile Include="Defreezer\Commands\OpenDefreezerCommandDefinition.cs" />
+    <Compile Include="Defreezer\ViewModels\DefreezerViewModel.cs" />
+    <Compile Include="Defreezer\Views\DefreezerView.xaml.cs">
+      <DependentUpon>DefreezerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DialogProvider\DialogProvider.cs" />
     <Compile Include="DialogProvider\IDialogProvider.cs" />
     <Compile Include="ExportManager\Exceptions\ExportCanceledException.cs" />
@@ -141,12 +150,20 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForcesOfCorruptionModdingTool.AlomoEngine\ForcesOfCorruptionModdingTool.AlomoEngine.csproj">
+      <Project>{f6d91bd5-f78d-4e3d-9922-bf3177d86d65}</Project>
+      <Name>ForcesOfCorruptionModdingTool.AlomoEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ForcesOfCorruptionModdingTool.EditorCore\ForcesOfCorruptionModdingTool.EditorCore.csproj">
       <Project>{f098fc86-6636-421a-91eb-e47fb31b4285}</Project>
       <Name>ForcesOfCorruptionModdingTool.EditorCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Defreezer\Views\DefreezerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ExportManager\ExportWizard\Pages\Views\ExportSettingsPublishFiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +175,10 @@
     <Page Include="ModLauncher\ModLauncherView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons\Open_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Wizard\Views\WizardWindowView.xaml">
       <SubType>Designer</SubType>

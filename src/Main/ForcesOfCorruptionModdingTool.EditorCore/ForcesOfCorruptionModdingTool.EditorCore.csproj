@@ -123,6 +123,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForcesOfCorruptionModdingTool.AlomoEngine\ForcesOfCorruptionModdingTool.AlomoEngine.csproj">
+      <Project>{f6d91bd5-f78d-4e3d-9922-bf3177d86d65}</Project>
+      <Name>ForcesOfCorruptionModdingTool.AlomoEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

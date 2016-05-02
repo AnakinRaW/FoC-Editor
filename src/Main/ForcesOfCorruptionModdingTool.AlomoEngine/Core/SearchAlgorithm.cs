@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.SaveGame
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
 {
     public static class SearchAlgorithm
     {

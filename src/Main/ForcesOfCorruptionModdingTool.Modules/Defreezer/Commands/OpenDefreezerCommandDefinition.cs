@@ -4,19 +4,19 @@ using System.Windows.Input;
 using ModernApplicationFramework.Commands;
 using ModernApplicationFramework.MVVM.Interfaces;
 
-namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
+namespace ForcesOfCorruptionModdingTool.Modules.Defreezer
 {
     [Export(typeof(CommandDefinition))]
-    public class OpenModLauncherCommandDefinition : CommandDefinition
+    public class OpenDefreezerCommandDefinition : CommandDefinition
     {
 #pragma warning disable 649
         [Import]
         private IDockingMainWindowViewModel _shell;
 #pragma warning restore 649
 
-        public OpenModLauncherCommandDefinition()
+        public OpenDefreezerCommandDefinition()
         {
-            Command = new GestureCommandWrapper(Open, CanOpen, new KeyGesture(Key.M, ModifierKeys.Control | ModifierKeys.Alt));
+            Command = new MultiKeyGestureCommandWrapper(Open, CanOpen, new MultiKeyGesture(new []{Key.E, Key.D}, ModifierKeys.Control));
         }
 
         public override bool CanShowInMenu => true;
@@ -27,7 +27,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
 
         public override Uri IconSource => null;
 
-        public override string Name => "Mod Launcher";
+        public override string Name => "Save Game Defreezer";
         public override string Text => Name;
         public override string ToolTip => Name;
 
@@ -40,7 +40,7 @@ namespace ForcesOfCorruptionModdingTool.Modules.ModLauncher
 
         private void Open()
         {
-            _shell.DockingHost.ShowTool<IModLauncher>();
+            _shell.DockingHost.ShowTool<IDefreezerTool>();
         }
     }
 }

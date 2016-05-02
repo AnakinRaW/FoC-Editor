@@ -10,8 +10,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces
 
         byte[] ByteArray { get; set; }
 
-        void Open();
+        void Open(string path);
 
-        void Save();
+        void Save(string path);
     }
 }

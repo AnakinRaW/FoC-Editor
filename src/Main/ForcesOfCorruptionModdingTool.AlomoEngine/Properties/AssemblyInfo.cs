@@ -8,7 +8,7 @@ using System.Windows;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("ForcesOfCorruptionModdingTool.AlomoEngine")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This assembly provides data compatible with the alomo engine")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ForcesOfCorruptionModdingTool.AlomoEngine")]
