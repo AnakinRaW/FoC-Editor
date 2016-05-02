@@ -110,6 +110,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationManager.cs" />

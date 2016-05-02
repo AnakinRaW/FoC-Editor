@@ -71,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IEngineFile.cs" />
+    <Compile Include="Interfaces\IEngineObject.cs" />
+    <Compile Include="Interfaces\IGameEngineManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SaveGame\ISaveGameFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -82,9 +84,15 @@
     <Compile Include="SaveGame\SteamSaveGame.cs" />
     <Compile Include="SaveGame\UnitRef.cs" />
     <AppDesigner Include="Properties\" />
+    <Compile Include="XmlEngine\ObjectToXmlParser.cs" />
+    <Compile Include="XmlEngine\XmlToObjectParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EngineObjects\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

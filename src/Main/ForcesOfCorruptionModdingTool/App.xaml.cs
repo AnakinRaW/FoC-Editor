@@ -8,12 +8,17 @@ namespace ForcesOfCorruptionModdingTool
     {
         private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            //var ex = e.Exception;
+            //var exInner = ex.InnerException;
+            //var msg = ex.Message + "\n\n" + ex.StackTrace + "\n\n" + "Inner Exception:\n" + exInner?.Message + "\n\n"
+            //             + exInner?.StackTrace;
+            //MessageBox.Show(msg, "Application Halted!", MessageBoxButton.OK);
+            //e.Handled = true;
+            //Current.Shutdown();
+
             var ex = e.Exception;
-            var exInner = ex.InnerException;
-            var msg = ex.Message + "\n\n" + ex.StackTrace + "\n\n" + "Inner Exception:\n" + exInner?.Message + "\n\n"
-                         + exInner?.StackTrace;
-            MessageBox.Show(msg, "Application Halted!", MessageBoxButton.OK);
-            e.Handled = true;
+            MessageBox.Show(ex.UnwrapCompositionException().Message);
+
         }
 
         private void App_OnStartup(object sender, StartupEventArgs e)
