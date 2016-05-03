@@ -12,7 +12,6 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
     {
 #pragma warning disable 649
 
-        [Import]
         private IModdingToolWorkspace _workspace;
 
 #pragma warning restore 649
@@ -29,9 +28,17 @@ namespace ForcesOfCorruptionModdingTool.Modules.Workspace.Commands
 
         public override ICommand Command { get; }
 
-        public StartWorkspaceGameCommandDefinition()
+        [ImportingConstructor]
+        public StartWorkspaceGameCommandDefinition(IModdingToolWorkspace workspace)
         {
+            _workspace = workspace;
             Command = new GestureCommandWrapper(Launch, CanLaunch, new KeyGesture(Key.F5));
+            _workspace.GameChanged += _workspace_GameChanged;
+        }
+
+        private void _workspace_GameChanged(object sender, EditorCore.Workspace.EventArgs.GameChangedEventArgs e)
+        {
+            Command.CanExecute(null);
         }
 
         private bool CanLaunch()
