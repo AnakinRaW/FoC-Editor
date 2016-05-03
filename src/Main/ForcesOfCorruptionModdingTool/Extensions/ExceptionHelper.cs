@@ -3,9 +3,9 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 
-namespace ForcesOfCorruptionModdingTool
+namespace ForcesOfCorruptionModdingTool.Extensions
 {
-    public static class Test
+    public static class ExceptionHelper
     {
         /// <summary>
         /// Attempts to retrieve the real cause of a composition failure.

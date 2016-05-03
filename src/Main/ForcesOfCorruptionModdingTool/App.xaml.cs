@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Threading;
+using ForcesOfCorruptionModdingTool.Extensions;
 using Microsoft.Win32;
 
 namespace ForcesOfCorruptionModdingTool
@@ -8,21 +11,22 @@ namespace ForcesOfCorruptionModdingTool
     {
         private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            //var ex = e.Exception;
-            //var exInner = ex.InnerException;
-            //var msg = ex.Message + "\n\n" + ex.StackTrace + "\n\n" + "Inner Exception:\n" + exInner?.Message + "\n\n"
-            //             + exInner?.StackTrace;
-            //MessageBox.Show(msg, "Application Halted!", MessageBoxButton.OK);
-            //e.Handled = true;
-            //Current.Shutdown();
-
             var ex = e.Exception;
             MessageBox.Show(ex.UnwrapCompositionException().Message);
 
+            using (var writer = new StreamWriter(Path.Combine(Configuration.ProductConfiguration.AppdataPath, "Excpetions.txt"), true))
+            {
+                writer.WriteLine(ex.UnwrapCompositionException().Message);
+                writer.WriteLine(ex.UnwrapCompositionException().InnerException.Message);
+                writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+            }
+            Current.Shutdown();
         }
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
+            if (!Directory.Exists(Configuration.ProductConfiguration.AppdataPath))
+                Directory.CreateDirectory(Configuration.ProductConfiguration.AppdataPath);
             Get45Or451FromRegistry();
         }
 

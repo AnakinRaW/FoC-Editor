@@ -18,13 +18,11 @@ namespace ForcesOfCorruptionModdingTool.Modules.MainWindow.ViewModels
     public class DockingMainWindowViewModel : ModernApplicationFramework.MVVM.ViewModels.DockingMainWindowViewModel
     {
 #pragma warning disable 649
-
         [Import]
         private IDialogProvider _dialogProvider;
 
         [Import]
         private IModdingToolWorkspace _workspace;
-
 #pragma warning restore 649
 
         static DockingMainWindowViewModel()
