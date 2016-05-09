@@ -70,10 +70,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\StringExtensions.cs" />
     <Compile Include="Interfaces\IEngineFile.cs" />
     <Compile Include="Interfaces\IEngineObject.cs" />
     <Compile Include="Interfaces\IGameEngineManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SaveGame\ISaveGameFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -86,13 +92,26 @@
     <AppDesigner Include="Properties\" />
     <Compile Include="XmlEngine\ObjectToXmlParser.cs" />
     <Compile Include="XmlEngine\XmlToObjectParser.cs" />
+    <Compile Include="XmlEngine\XmlValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\Schemes\EngineObjects\Gameconstants.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Schemes\EngineObjects\GlobalEngineElements.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EngineObjects\" />
     <Folder Include="Managers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
