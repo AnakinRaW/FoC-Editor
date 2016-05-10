@@ -13,8 +13,16 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.SaveGame
                 if (ByteArray == null)
                     throw new NullReferenceException();
                 var reader = new BinaryReader(File.Open(FilePath, FileMode.Open));
+                reader.BaseStream.Position = 35;
+                var stringLength = reader.ReadBytes(2);
+
+                if (BitConverter.IsLittleEndian)
+                    Array.Reverse(stringLength);
+
+                var length = BitConverter.ToInt16(stringLength, 0)-2;
+
                 reader.BaseStream.Position = 37;
-                var name = Encoding.Unicode.GetString(reader.ReadBytes(500));
+                var name = Encoding.Unicode.GetString(reader.ReadBytes(length));
                 reader.Close();
                 return name;
             }
