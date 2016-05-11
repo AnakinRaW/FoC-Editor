@@ -1,8 +1,8 @@
-﻿using System;
+﻿using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
+using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Schema;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine
 {
@@ -44,7 +44,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine
             bool result;
             try
             {
-                var settings = new XmlReaderSettings {ValidationType = ValidationType.Schema};
+                var settings = new XmlReaderSettings { ValidationType = ValidationType.Schema };
                 settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation | XmlSchemaValidationFlags.ReportValidationWarnings;
                 settings.ValidationEventHandler += Settings_ValidationEventHandler;
                 if (SchemeFileStream != null)

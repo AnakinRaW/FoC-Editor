@@ -3,112 +3,109 @@
 
   <xs:simpleType name="EngineBoolean">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]|[Nn][Oo]|[Yy][Ee][Ss])\s*)"/>
+      <xs:pattern value="\s*(([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]|[Nn][Oo]|[Yy][Ee][Ss])\s*)" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="EngineARGB">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*((((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*){3}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))))\s*"/>
+      <xs:pattern value="\s*((((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*){3}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="EngineRGB">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*((((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))))\s*"/>
+      <xs:pattern value="\s*((((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="EngineRGBSpace">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*((((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]) \s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))))\s*"/>
+      <xs:pattern value="\s*((((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]) \s*){2}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="IntegerTupleWithSpaceTwo">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*)[Ff]? \s*){1}([-+]?([0-9]*)))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*)[Ff]? \s*){1}([-+]?([0-9]*)))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="IntegerTupleWithSpaceThree">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*)[Ff]? \s*){2}([-+]?([0-9]*)))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*)[Ff]? \s*){2}([-+]?([0-9]*)))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="IntegerTupleWithSpaceFour">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*)[Ff]? \s*){3}([-+]?([0-9]*)))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*)[Ff]? \s*){3}([-+]?([0-9]*)))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="EngineFloat">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*[-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?\s*"/>
+      <xs:pattern value="\s*[-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithCommaTwo">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){1}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){1}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithCommaThree">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){2}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){2}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithCommaFour">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){3}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){3}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithCommaFive">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){4}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){4}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithCommaSix">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){5}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){5}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithCommaTen">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){9}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?,\s*){9}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="FloatTupelWithSpaceThree">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]? \s*){2}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]? \s*){2}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="StringStringFloatTupelWithComma">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([A-Za-z0-9 _-]*,\s*){2}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*"/>
+      <xs:pattern value="\s*(((([A-Za-z0-9 _-]*,\s*){2}([-+]?([0-9]*\.[0-9]+|[0-9]+)[Ff]?))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="StringIntegerTupelWithComma">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([A-Za-z0-9 _-]*,\s*)([-+]?[0-9]*))))\s*"/>
+      <xs:pattern value="\s*(((([A-Za-z0-9 _-]*,\s*)([-+]?[0-9]*))))\s*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="StringFilePathTupelWithComma">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\s*(((([A-Za-z0-9 _-]*,\s*){1}(([\\]?[A-Za-z0-9 _-])*[\.][A-Za-z0-9 _-]*))))\s*"/>
+      <xs:pattern value="\s*(((([A-Za-z0-9 _-]*,\s*){1}(([\\]?[A-Za-z0-9 _-])*[\.][A-Za-z0-9 _-]*))))\s*" />
     </xs:restriction>
   </xs:simpleType>
-  
-  
-
 </xs:schema>
