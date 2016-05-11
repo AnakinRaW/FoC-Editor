@@ -27,7 +27,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             if (xmlNode != null)
                 Strategic_Queue_Tactical_Battles =
                     xmlNode
-                        .InnerText.TooEngineBoolean();
+                        .InnerText.ToEngineBoolean();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
 {
     public static class EngineConverters
     {
-        public static bool TooEngineBoolean(this string s)
+        public static bool ToEngineBoolean(this string s)
         {
             s = s.Replace(" ", string.Empty);
             string[] trueStrings = { "1", "yes", "true" };
