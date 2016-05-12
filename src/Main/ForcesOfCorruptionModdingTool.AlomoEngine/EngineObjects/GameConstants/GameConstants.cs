@@ -20,6 +20,10 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public ShipLoadVulnerabilityData ShipLoadVulnerabilityData { get; private set; }
 
+        public GalacticFleetMovementData GalacticFleetMovementData { get; private set; }
+
+        public ScreenEdgeScrollData ScreenEdgeScrollData { get; private set; }
+
         public override void Deserialize(XmlDocument document)
         {
             base.Deserialize(document);
@@ -37,6 +41,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             ShipLoadVulnerabilityData = new ShipLoadVulnerabilityData(this);
             ShipLoadVulnerabilityData.Deserialize(RootNode);
+
+            GalacticFleetMovementData = new GalacticFleetMovementData(this);
+            GalacticFleetMovementData.Deserialize(RootNode);
+
+            ScreenEdgeScrollData = new ScreenEdgeScrollData(this);
+            ScreenEdgeScrollData.Deserialize(RootNode);
         }
 
         public override void Deserialize(XmlElement node)
@@ -51,6 +61,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             RootNode = ObjectMaximumMultipliers.Serialize();
             RootNode = PlayerFactionData.Serialize();
             RootNode = ShipLoadVulnerabilityData.Serialize();
+            RootNode = GalacticFleetMovementData.Serialize();
+            RootNode = ScreenEdgeScrollData.Serialize();
             return RootNode;
         }
     }

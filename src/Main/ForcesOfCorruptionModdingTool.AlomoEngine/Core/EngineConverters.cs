@@ -32,5 +32,11 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
             s = s.Remove(s.Length - 1);
             return float.Parse(s, CultureInfo.InvariantCulture);
         }
+
+        public static int ToInteger(this string s)
+        {
+            s = s.Trim();
+            return int.Parse(s, CultureInfo.InvariantCulture);
+        }
     }
 }
