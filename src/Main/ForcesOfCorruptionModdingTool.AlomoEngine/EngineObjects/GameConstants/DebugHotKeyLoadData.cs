@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
@@ -8,14 +7,9 @@ using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class DebugHotKeyLoadData : IEngineObject
+    public class DebugHotKeyLoadData : EngineObject
     {
-        public DebugHotKeyLoadData(GameConstants parent)
-        {
-            if (parent == null)
-                throw new ArgumentNullException(nameof(parent));
-            Parent = parent;
-        }
+        public DebugHotKeyLoadData(IGameXmlFile parent) : base(parent) { }
 
         public List<string> Debug_Hot_Key_Load_Map { get; set; } = new List<string>();
 
@@ -23,10 +17,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public List<string> Debug_Hot_Key_Load_Campaign { get; set; } = new List<string>();
 
-        public string Description { get; set; }
-        public IGameXmlFile Parent { get; }
-
-        public XmlElement Serialize()
+        public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
 
@@ -39,7 +30,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             return node;
         }
 
-        public void Deserialize(XmlElement node)
+        public override void Deserialize(XmlElement node)
         {
             Description = node.GetCommentsInElementRange(null, nameof(Debug_Hot_Key_Load_Map));
 

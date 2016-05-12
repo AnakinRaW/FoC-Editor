@@ -72,9 +72,11 @@
   <ItemGroup>
     <Compile Include="Core\EngineConverters.cs" />
     <Compile Include="Core\StringExtensions.cs" />
+    <Compile Include="EngineObjects\EngineObject.cs" />
     <Compile Include="EngineObjects\GameConstants\DebugHotKeyLoadData.cs" />
     <Compile Include="EngineObjects\GameConstants\GameConstants.cs" />
     <Compile Include="EngineObjects\GameConstants\GameConstantsData.cs" />
+    <Compile Include="EngineObjects\GameConstants\ObjectMaximumMultipliers.cs" />
     <Compile Include="EngineObjects\GameXmlFile.cs" />
     <Compile Include="Interfaces\IEngineFile.cs" />
     <Compile Include="Interfaces\IEngineObject.cs" />
