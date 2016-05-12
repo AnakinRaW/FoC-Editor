@@ -6,7 +6,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces
     {
         string Description { get; set; }
 
-        void Serialize();
+        IGameXmlFile Parent { get; }
+
+        XmlElement Serialize();
 
         void Deserialize(XmlElement node);
     }

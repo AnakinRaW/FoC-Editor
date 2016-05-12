@@ -6,36 +6,36 @@ using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 {
-    public class GameConstants : IGameXmlFile
+    public class GameConstants : GameXmlFile
     {
-        public XmlElement RootNode { get; set; }
+        public GameConstants(IGameXmlFile parent) : base(parent) {}
+
+        public GameConstants() : base(null) {}
+
         public DebugHotKeyLoadData DebugHotKeyLoadData { get; protected set; }
 
         public GameConstantsData GameConstantsData { get; protected set; }
 
-
-        public string Description { get; set; }
-
-        public void Serialize()
+        public override void Deserialize(XmlDocument document)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Deserialize(XmlDocument document)
-        {
-            RootNode = document.DocumentElement;
-            DebugHotKeyLoadData = new DebugHotKeyLoadData();
+            base.Deserialize(document);
+            DebugHotKeyLoadData = new DebugHotKeyLoadData(this);
             DebugHotKeyLoadData.Deserialize(RootNode);
 
-            GameConstantsData = new GameConstantsData();
+            GameConstantsData = new GameConstantsData(this);
             GameConstantsData.Deserialize(RootNode);
         }
 
-        public void Deserialize(XmlElement node)
+        public override void Deserialize(XmlElement node)
         {
             throw new NotImplementedException();
         }
 
-        
+        public override XmlElement Serialize()
+        {
+            RootNode = DebugHotKeyLoadData.Serialize();
+            RootNode = GameConstantsData.Serialize();
+            return RootNode;
+        }
     }
 }

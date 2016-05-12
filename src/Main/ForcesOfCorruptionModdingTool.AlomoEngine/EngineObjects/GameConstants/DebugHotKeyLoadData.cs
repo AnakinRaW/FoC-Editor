@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
@@ -9,6 +10,13 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class DebugHotKeyLoadData : IEngineObject
     {
+        public DebugHotKeyLoadData(GameConstants parent)
+        {
+            if (parent == null)
+                throw new ArgumentNullException(nameof(parent));
+            Parent = parent;
+        }
+
         public List<string> Debug_Hot_Key_Load_Map { get; set; } = new List<string>();
 
         public List<string> Debug_Hot_Key_Load_Map_Script { get; set; } = new List<string>();
@@ -16,33 +24,30 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         public List<string> Debug_Hot_Key_Load_Campaign { get; set; } = new List<string>();
 
         public string Description { get; set; }
+        public IGameXmlFile Parent { get; }
 
-        public void Serialize()
+        public XmlElement Serialize()
         {
-            
+            var node = Parent.RootNode;
+
+            node.AddMultipleTagsFromValueList(nameof(Debug_Hot_Key_Load_Map), Debug_Hot_Key_Load_Map);
+
+            node.AddMultipleTagsFromValueList(nameof(Debug_Hot_Key_Load_Map_Script), Debug_Hot_Key_Load_Map_Script);
+
+            node.AddMultipleTagsFromValueList(nameof(Debug_Hot_Key_Load_Campaign), Debug_Hot_Key_Load_Campaign);
+
+            return node;
         }
 
         public void Deserialize(XmlElement node)
         {
             Description = node.GetCommentsInElementRange(null, nameof(Debug_Hot_Key_Load_Map));
 
-            var debug_Hot_Key_Load_Map = node.GetElementsByTagName(nameof(Debug_Hot_Key_Load_Map));
-            foreach (XmlNode element in debug_Hot_Key_Load_Map)
-            {
-                Debug_Hot_Key_Load_Map.Add(element.InnerText);
-            }
+            Debug_Hot_Key_Load_Map = node.GetValuesByTagName(nameof(Debug_Hot_Key_Load_Map));
 
-            var debug_Hot_Key_Load_Map_Script = node.GetElementsByTagName(nameof(Debug_Hot_Key_Load_Map_Script));
-            foreach (XmlNode element in debug_Hot_Key_Load_Map_Script)
-            {
-                Debug_Hot_Key_Load_Map_Script.Add(element.InnerText);
-            }
+            Debug_Hot_Key_Load_Map_Script = node.GetValuesByTagName(nameof(Debug_Hot_Key_Load_Map_Script));
 
-            var debug_Hot_Key_Load_Campaign = node.GetElementsByTagName(nameof(Debug_Hot_Key_Load_Campaign));
-            foreach (XmlNode element in debug_Hot_Key_Load_Campaign)
-            {
-                Debug_Hot_Key_Load_Campaign.Add(element.InnerText);
-            }
+            Debug_Hot_Key_Load_Campaign = node.GetValuesByTagName(nameof(Debug_Hot_Key_Load_Campaign));
         }
     }
 }

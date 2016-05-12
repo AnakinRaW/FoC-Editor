@@ -75,6 +75,7 @@
     <Compile Include="EngineObjects\GameConstants\DebugHotKeyLoadData.cs" />
     <Compile Include="EngineObjects\GameConstants\GameConstants.cs" />
     <Compile Include="EngineObjects\GameConstants\GameConstantsData.cs" />
+    <Compile Include="EngineObjects\GameXmlFile.cs" />
     <Compile Include="Interfaces\IEngineFile.cs" />
     <Compile Include="Interfaces\IEngineObject.cs" />
     <Compile Include="Interfaces\IGameEngineManager.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="SaveGame\UnitRef.cs" />
     <AppDesigner Include="Properties\" />
     <Compile Include="XmlEngine\ObjectToXmlParser.cs" />
-    <Compile Include="XmlEngine\XmlNodeExtensions.cs" />
+    <Compile Include="XmlEngine\XmlMethodes.cs" />
     <Compile Include="XmlEngine\XmlToObjectParser.cs" />
     <Compile Include="XmlEngine\XmlValidator.cs" />
   </ItemGroup>
