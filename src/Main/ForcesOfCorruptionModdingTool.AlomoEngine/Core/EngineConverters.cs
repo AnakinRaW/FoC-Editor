@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
@@ -21,6 +22,15 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
                 + string.Join(",", trueStrings)
                 + " and "
                 + string.Join(",", falseStrings));
+        }
+
+        public static double ToEngineFloat(this string s)
+        {
+            s = s.Trim();
+            if (!string.Equals(s[s.Length - 1].ToString(), "f", StringComparison.InvariantCultureIgnoreCase))
+                return double.Parse(s, CultureInfo.InvariantCulture);
+            s = s.Remove(s.Length - 1);
+            return float.Parse(s, CultureInfo.InvariantCulture);
         }
     }
 }

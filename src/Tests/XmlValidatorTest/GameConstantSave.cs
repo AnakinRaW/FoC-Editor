@@ -18,6 +18,8 @@ namespace XmlValidatorTest
             Gc.GameConstantsData.Strategic_Queue_Tactical_Battles = false;
             //Gc.DebugHotKeyLoadData.Debug_Hot_Key_Load_Map.Add("teststring");
             //Gc.DebugHotKeyLoadData.Debug_Hot_Key_Load_Map.RemoveAt(0);
+            Gc.ObjectMaximumMultipliers.Object_Max_Health_Multiplier_Land = 0;
+            Gc.PlayerFactionData.Enemy_Color.Blue = 255;
         }
 
         [TestMethod]

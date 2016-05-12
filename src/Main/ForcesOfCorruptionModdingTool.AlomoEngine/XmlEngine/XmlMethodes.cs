@@ -7,23 +7,6 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine
 {
     public static class XmlMethodes
     {
-        public static string GetCommentsInElementRange(this XmlNode node, string fromElementName, string toElementName)
-        {
-            var comment = string.Empty;
-            var reached = false;
-            foreach (XmlNode child in node.ChildNodes)
-            {
-                if (fromElementName != null &&  child.Name != nameof(fromElementName) && !reached)
-                    continue;
-                reached = true;
-                if (child.NodeType == XmlNodeType.Comment)
-                    comment += child.InnerText;
-                if (child.Name == nameof(toElementName))
-                    break;
-            }
-            return comment;
-        }
-
         public static XmlNode Last(this XmlNodeList list)
         {
             var count = list.Count - 1;
@@ -34,15 +17,25 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine
             return list.Item(count);
         }
 
-        public static XmlElement CreatElement(string name, string value)
+        public static XmlNode First(this XmlNodeList list)
         {
-            return null;
+            var count = list.Count - 1;
+            if (count < 0)
+                throw new IndexOutOfRangeException();
+            if (list.Item(count) == null)
+                throw new ArgumentOutOfRangeException();
+            return list.Item(0);
         }
 
-        public static List<string> GetValuesByTagName(this XmlElement node, string name)
+        public static List<string> GetValuesByNameFromMultipleTags(this XmlElement node, string name)
         {
             var elements = node.GetElementsByTagName(name);
             return (from XmlNode element in elements select element.InnerText).ToList();
+        }
+
+        public static string GetValueOfLastTagOfName(this XmlElement node, string name)
+        {
+            return  node.GetElementsByTagName(name).Last().InnerText;
         }
 
         public static void AddMultipleTagsFromValueList(this XmlElement node,string name ,List<string> list)
@@ -98,6 +91,11 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine
                 //Destroy the dummy
                 node.RemoveChild(dummy);
             }
+        }
+
+        public static void SetValueOfLastTagOfName(this XmlElement node, string name, string value)
+        {
+            node.GetElementsByTagName(name).Last().InnerText = value;
         }
     }
 }

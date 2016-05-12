@@ -18,18 +18,14 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
-            node.GetElementsByTagName(nameof(Strategic_Queue_Tactical_Battles)).Last().InnerText = Strategic_Queue_Tactical_Battles.ToString();
+            node.SetValueOfLastTagOfName(nameof(Strategic_Queue_Tactical_Battles), Strategic_Queue_Tactical_Battles.ToString());
             return node;
         }
 
         public override void Deserialize(XmlElement node)
         {
-            var strategic_Queue_Tactical_Battles = node.GetElementsByTagName(nameof(Strategic_Queue_Tactical_Battles));
-            var xmlNode = strategic_Queue_Tactical_Battles.Item(strategic_Queue_Tactical_Battles.Count-1);
-            if (xmlNode != null)
-                Strategic_Queue_Tactical_Battles =
-                    xmlNode
-                        .InnerText.ToEngineBoolean();
+            Strategic_Queue_Tactical_Battles =
+                node.GetValueOfLastTagOfName(nameof(Strategic_Queue_Tactical_Battles)).ToEngineBoolean();
         }
     }
 }

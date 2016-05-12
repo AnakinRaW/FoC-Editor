@@ -34,11 +34,11 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         {
             Description = node.GetCommentsInElementRange(null, nameof(Debug_Hot_Key_Load_Map));
 
-            Debug_Hot_Key_Load_Map = node.GetValuesByTagName(nameof(Debug_Hot_Key_Load_Map));
+            Debug_Hot_Key_Load_Map = node.GetValuesByNameFromMultipleTags(nameof(Debug_Hot_Key_Load_Map));
 
-            Debug_Hot_Key_Load_Map_Script = node.GetValuesByTagName(nameof(Debug_Hot_Key_Load_Map_Script));
+            Debug_Hot_Key_Load_Map_Script = node.GetValuesByNameFromMultipleTags(nameof(Debug_Hot_Key_Load_Map_Script));
 
-            Debug_Hot_Key_Load_Campaign = node.GetValuesByTagName(nameof(Debug_Hot_Key_Load_Campaign));
+            Debug_Hot_Key_Load_Campaign = node.GetValuesByNameFromMultipleTags(nameof(Debug_Hot_Key_Load_Campaign));
         }
     }
 }
