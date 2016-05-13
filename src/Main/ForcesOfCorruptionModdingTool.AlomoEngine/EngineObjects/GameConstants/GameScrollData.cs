@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
@@ -7,9 +9,9 @@ using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class ScreenEdgeScrollData : EngineObject
+    public class GameScrollData : EngineObject
     {
-        public ScreenEdgeScrollData(IGameXmlFile parent) : base(parent) {}
+        public GameScrollData(IGameXmlFile parent) : base(parent) {}
 
         public int Tactical_Edge_Scroll_Region { get; set; }
 
@@ -27,6 +29,14 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public int Strategic_Offscreen_Scroll_Region { get; set; }
 
+        public double Push_Scroll_Speed_Modifier { get; set; }
+
+        [Description("Acceleration on scrolling. The higher the number, the less acceleration will be evident")]
+        public double Scroll_Deceleration_Factor { get; set; }
+
+        [Description("Acceleration on scrolling. The higher the number, the less acceleration will be evident")]
+        public double Scroll_Acceleration_Factor { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -35,10 +45,15 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             node.SetValueOfLastTagOfName(nameof(Tactical_Max_Scroll_Speed), Tactical_Max_Scroll_Speed.ToString());
             node.SetValueOfLastTagOfName(nameof(Tactical_Min_Scroll_Speed), Tactical_Min_Scroll_Speed.ToString());
             node.SetValueOfLastTagOfName(nameof(Tactical_Offscreen_Scroll_Region), Tactical_Offscreen_Scroll_Region.ToString());
+
             node.SetValueOfLastTagOfName(nameof(Strategic_Edge_Scroll_Region), Strategic_Edge_Scroll_Region.ToString());
             node.SetValueOfLastTagOfName(nameof(Strategic_Max_Scroll_Speed), Strategic_Max_Scroll_Speed.ToString());
             node.SetValueOfLastTagOfName(nameof(Strategic_Min_Scroll_Speed), Strategic_Min_Scroll_Speed.ToString());
             node.SetValueOfLastTagOfName(nameof(Strategic_Offscreen_Scroll_Region), Strategic_Offscreen_Scroll_Region.ToString());
+
+            node.SetValueOfLastTagOfName(nameof(Push_Scroll_Speed_Modifier), Push_Scroll_Speed_Modifier.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Scroll_Deceleration_Factor), Scroll_Deceleration_Factor.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Scroll_Acceleration_Factor), Scroll_Acceleration_Factor.ToString(CultureInfo.InvariantCulture));
 
             return node;
         }
@@ -46,7 +61,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         public override void Deserialize(XmlElement node)
         {
             Description = node.GetCommentsOverElements(nameof(Tactical_Edge_Scroll_Region),
-                nameof(Strategic_Offscreen_Scroll_Region));
+                nameof(Scroll_Acceleration_Factor));
 
             Tactical_Edge_Scroll_Region =
                 node.GetValueOfLastTagOfName(nameof(Tactical_Edge_Scroll_Region)).ToInteger();
@@ -71,6 +86,15 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             Strategic_Offscreen_Scroll_Region =
                 node.GetValueOfLastTagOfName(nameof(Strategic_Offscreen_Scroll_Region)).ToInteger();
+
+            Push_Scroll_Speed_Modifier =
+                node.GetValueOfLastTagOfName(nameof(Push_Scroll_Speed_Modifier)).ToEngineFloat();
+
+            Scroll_Deceleration_Factor =
+                node.GetValueOfLastTagOfName(nameof(Scroll_Deceleration_Factor)).ToEngineFloat();
+
+            Scroll_Acceleration_Factor =
+                node.GetValueOfLastTagOfName(nameof(Scroll_Acceleration_Factor)).ToEngineFloat();
         }
     }
 }
