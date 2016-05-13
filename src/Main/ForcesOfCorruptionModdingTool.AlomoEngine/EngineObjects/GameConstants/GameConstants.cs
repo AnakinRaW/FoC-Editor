@@ -24,6 +24,15 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public GameScrollData GameScrollData { get; private set; }
 
+        public GalacticEconomyData GalacticEconomyData { get; private set; }
+
+        public PlanetaryCorruptionConstants PlanetaryCorruptionConstants { get; private set; }
+
+        public GalacticModeCamera GalacticModeCamera { get; private set; }
+
+        public GuiGameConstantsData GuiGameConstantsData { get; private set; }
+
+
         public override void Deserialize(XmlDocument document)
         {
             base.Deserialize(document);
@@ -47,6 +56,18 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             GameScrollData = new GameScrollData(this);
             GameScrollData.Deserialize(RootNode);
+
+            GalacticEconomyData = new GalacticEconomyData(this);
+            GalacticEconomyData.Deserialize(RootNode);
+
+            PlanetaryCorruptionConstants = new PlanetaryCorruptionConstants(this);
+            PlanetaryCorruptionConstants.Deserialize(RootNode);
+
+            GalacticModeCamera = new GalacticModeCamera(this);
+            GalacticModeCamera.Deserialize(RootNode);
+
+            GuiGameConstantsData = new GuiGameConstantsData(this);
+            GuiGameConstantsData.Deserialize(RootNode);
         }
 
         public override void Deserialize(XmlElement node)
@@ -63,6 +84,10 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             RootNode = ShipLoadVulnerabilityData.Serialize();
             RootNode = GalacticFleetMovementData.Serialize();
             RootNode = GameScrollData.Serialize();
+            RootNode = GalacticEconomyData.Serialize();
+            RootNode = PlanetaryCorruptionConstants.Serialize();
+            RootNode = GalacticModeCamera.Serialize();
+            RootNode = GuiGameConstantsData.Serialize();
             return RootNode;
         }
     }

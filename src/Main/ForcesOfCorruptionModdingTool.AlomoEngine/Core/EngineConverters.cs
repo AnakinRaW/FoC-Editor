@@ -27,16 +27,16 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
         public static double ToEngineFloat(this string s)
         {
             s = s.Trim();
-            if (!string.Equals(s[s.Length - 1].ToString(), "f", StringComparison.InvariantCultureIgnoreCase))
-                return double.Parse(s, CultureInfo.InvariantCulture);
-            s = s.Remove(s.Length - 1);
-            return float.Parse(s, CultureInfo.InvariantCulture);
+            if (string.Equals(s[s.Length - 1].ToString(), "f", StringComparison.InvariantCultureIgnoreCase))
+                s = s.Remove(s.Length - 1);
+            return double.Parse(s, CultureInfo.InvariantCulture);
         }
 
         public static int ToInteger(this string s)
         {
             s = s.Trim();
-            return int.Parse(s, CultureInfo.InvariantCulture);
+            var d = s.ToEngineFloat();
+            return Convert.ToInt32(d);
         }
     }
 }

@@ -87,5 +87,13 @@ namespace EngineConverterTest
             var s = ".1,5,4,3,2,1";
             Assert.AreEqual("0.1,5,4,3,2,1", EngineFloatTupel.CreateFromString(s).ToString());
         }
+
+        [TestMethod]
+        public void IntTest()
+        {
+            Assert.AreEqual(1, "1".ToInteger());
+            Assert.AreEqual(-1, "-1".ToInteger());
+            Assert.AreEqual(1, "1.0".ToInteger());
+        }
     }
 }
