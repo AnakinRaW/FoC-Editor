@@ -1,5 +1,4 @@
-﻿using System;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
+﻿using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -31,15 +30,15 @@ namespace EngineConverterTest
             Assert.AreEqual(0.05, "0.05".ToEngineFloat());
             Assert.AreEqual(-0.05, "-.05".ToEngineFloat());
 
-            Assert.AreEqual(-1.05f, "  -1.050000f  ".ToEngineFloat());
-            Assert.AreEqual(1.05f, "1.05f".ToEngineFloat());
-            Assert.AreEqual(0.05f, ".05f".ToEngineFloat());
+            Assert.AreEqual(-1.05, "  -1.050000f  ".ToEngineFloat());
+            Assert.AreEqual(1.05, "1.05f".ToEngineFloat());
+            Assert.AreEqual(0.05, ".05f".ToEngineFloat());
         }
 
         [TestMethod]
         public void ColorToStringTest()
         {
-            var color = new EngineColor(100, 100, 100, Byte.MaxValue);
+            var color = new EngineColor(100, 100, 100, byte.MaxValue);
 
             Assert.AreEqual("100, 100, 100, 255", color.ToString());
             Assert.AreEqual("100, 100, 100", color.ToString(false));
@@ -74,6 +73,19 @@ namespace EngineConverterTest
 
             Assert.AreEqual("111 111 111", color2.ToString(EngineSparators.Space, false));
             Assert.AreEqual("111 111 111 255", color2.ToString(EngineSparators.Space));
+        }
+
+        [TestMethod]
+        public void FloatTupelTest()
+        {
+            var t = new EngineFloatTupel(6, -0.1,0.1,3,4,5,6);
+
+            Assert.AreEqual("-0.1,0.1,3,4,5,6", t.ToString());
+            Assert.AreEqual("-0.1 0.1 3 4 5 6", t.ToString(EngineSparators.Space));
+            Assert.AreEqual("-0.1|0.1|3|4|5|6", t.ToString(EngineSparators.VerticalLine));
+
+            var s = ".1,5,4,3,2,1";
+            Assert.AreEqual("0.1,5,4,3,2,1", EngineFloatTupel.CreateFromString(s).ToString());
         }
     }
 }
