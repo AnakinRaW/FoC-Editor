@@ -95,5 +95,32 @@ namespace EngineConverterTest
             Assert.AreEqual(-1, "-1".ToInteger());
             Assert.AreEqual(1, "1.0".ToInteger());
         }
+
+
+        [TestMethod]
+        public void StringTupelTest()
+        {
+            var t = new EngineStringTupel(3, "1", "2", "3");
+
+            Assert.AreEqual("1,2,3", t.ToString());
+            Assert.AreEqual("1 2 3", t.ToString(EngineSparators.Space));
+            Assert.AreEqual("1|2|3", t.ToString(EngineSparators.VerticalLine));
+
+            var s = "Das Ist ein Test";
+            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(s).ToString());
+            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
+        }
+
+        [TestMethod]
+        public void HardPointImageTest()
+        {
+            var t = new HardPointTextureAssociation(HardPointType.HARD_POINT_ENGINE, "test");
+
+            Assert.AreEqual("HARD_POINT_ENGINE, test", t.ToString());
+
+
+            var s = " HARD_POINT_ENGINE  , test  ";
+            Assert.AreEqual("HARD_POINT_ENGINE, test", HardPointTextureAssociation.CreateFromString(s).ToString());
+        }
     }
 }

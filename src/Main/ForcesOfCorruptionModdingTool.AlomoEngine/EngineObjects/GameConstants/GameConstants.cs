@@ -32,6 +32,14 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public GuiGameConstantsData GuiGameConstantsData { get; private set; }
 
+        public AutoResolveData AutoResolveData { get; private set; }
+
+        public GameTypographyData GameTypographyData { get; private set; }
+
+        public RandomStoryGenerationData RandomStoryGenerationData { get; private set; }
+
+        public HardPointData HardPointData { get; private set; }
+
 
         public override void Deserialize(XmlDocument document)
         {
@@ -68,6 +76,18 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             GuiGameConstantsData = new GuiGameConstantsData(this);
             GuiGameConstantsData.Deserialize(RootNode);
+
+            AutoResolveData = new AutoResolveData(this);
+            AutoResolveData.Deserialize(RootNode);
+
+            GameTypographyData = new GameTypographyData(this);
+            GameTypographyData.Deserialize(RootNode);
+
+            RandomStoryGenerationData = new RandomStoryGenerationData(this);
+            RandomStoryGenerationData.Deserialize(RootNode);
+
+            HardPointData = new HardPointData(this);
+            HardPointData.Deserialize(RootNode);
         }
 
         public override void Deserialize(XmlElement node)
@@ -88,6 +108,10 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             RootNode = PlanetaryCorruptionConstants.Serialize();
             RootNode = GalacticModeCamera.Serialize();
             RootNode = GuiGameConstantsData.Serialize();
+            RootNode = AutoResolveData.Serialize();
+            RootNode = GameTypographyData.Serialize();
+            RootNode = RandomStoryGenerationData.Serialize();
+            RootNode = HardPointData.Serialize();
             return RootNode;
         }
     }

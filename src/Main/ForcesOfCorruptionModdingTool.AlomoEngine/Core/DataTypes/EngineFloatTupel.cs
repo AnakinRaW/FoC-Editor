@@ -29,11 +29,11 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
         {
             s = s.Trim();
             var list = s.Split(',').ToList();
-            if (list.Count == 0)
+            if (list.Count == 0 || list[0] == s)
                 list = s.Split(' ').ToList();
-            if (list.Count == 0)
+            if (list.Count == 0 || list[0] == s)
                 list = s.Split('|').ToList();
-            if (list.Count <= 0 )
+            if (list.Count <= 0 || list[0] == s)
                 throw new FormatException();
 
             return new EngineFloatTupel(list.Count, list.Select(value => value.ToEngineFloat()).ToArray());

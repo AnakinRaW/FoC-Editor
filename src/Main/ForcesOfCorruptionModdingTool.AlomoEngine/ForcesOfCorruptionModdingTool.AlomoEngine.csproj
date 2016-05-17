@@ -71,24 +71,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\DataTypes\EngineColor.cs" />
+    <Compile Include="Core\DataTypes\EngineStringTupel.cs" />
     <Compile Include="Core\DataTypes\EngineIntegerTupel.cs" />
     <Compile Include="Core\DataTypes\EngineFloatTupel.cs" />
     <Compile Include="Core\DataTypes\EngineSparators.cs" />
+    <Compile Include="Core\DataTypes\HardPointTextureAssociation.cs" />
+    <Compile Include="Core\DataTypes\HardPointType.cs" />
     <Compile Include="Core\EngineConverters.cs" />
     <Compile Include="Core\EventArgs\ColorChangedEventArgs.cs" />
     <Compile Include="Core\StringExtensions.cs" />
     <Compile Include="EngineObjects\EngineObject.cs" />
+    <Compile Include="EngineObjects\GameConstants\AutoResolveData.cs" />
     <Compile Include="EngineObjects\GameConstants\DebugHotKeyLoadData.cs" />
     <Compile Include="EngineObjects\GameConstants\GalacticEconomyData.cs" />
     <Compile Include="EngineObjects\GameConstants\GalacticFleetMovementData.cs" />
     <Compile Include="EngineObjects\GameConstants\GalacticModeCamera.cs" />
     <Compile Include="EngineObjects\GameConstants\GameConstants.cs" />
     <Compile Include="EngineObjects\GameConstants\GameConstantsData.cs" />
+    <Compile Include="EngineObjects\GameConstants\GameTypographyData.cs" />
     <Compile Include="EngineObjects\GameConstants\GuiGameConstantsData.cs" />
+    <Compile Include="EngineObjects\GameConstants\HardPointData.cs" />
     <Compile Include="EngineObjects\GameConstants\ObjectMaximumMultipliers.cs" />
     <Compile Include="EngineObjects\GameConstants\PlanetaryCorruptionConstants.cs" />
     <Compile Include="EngineObjects\GameConstants\PlayerFactionData.cs" />
     <Compile Include="EngineObjects\GameConstants\GameScrollData.cs" />
+    <Compile Include="EngineObjects\GameConstants\RandomStoryGenerationData.cs" />
     <Compile Include="EngineObjects\GameConstants\ShipLoadVulnerabilityData.cs" />
     <Compile Include="EngineObjects\GameXmlFile.cs" />
     <Compile Include="Interfaces\IEngineFile.cs" />

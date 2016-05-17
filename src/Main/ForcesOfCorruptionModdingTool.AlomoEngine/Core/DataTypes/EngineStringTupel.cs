@@ -4,28 +4,28 @@ using System.Linq;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
 {
-    public class EngineIntegerTupel
+    public class EngineStringTupel
     {
-        public EngineIntegerTupel(int size)
+        public EngineStringTupel(int size)
         {
             if (size <= 0)
                 throw new ArgumentOutOfRangeException();
             Size = size;
-            Data = new int[size];
+            Data = new string[size];
         }
 
-        public EngineIntegerTupel(int size, params int[] elements) : this(size)
+        public EngineStringTupel(int size, params string[] elements) : this(size)
         {
             if (elements.Length != size)
                 throw new ArgumentOutOfRangeException();
             Data = elements;
         }
 
-        public int[] Data { get; }
+        public string[] Data { get; }
 
         public int Size { get; }
 
-        public static EngineIntegerTupel CreateFromString(string s)
+        public static EngineStringTupel CreateFromString(string s)
         {
             s = s.Trim();
             var list = s.Split(',').ToList();
@@ -36,7 +36,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
             if (list.Count <= 0 || list[0] == s)
                 throw new FormatException();
 
-            return new EngineIntegerTupel(list.Count, list.Select(value => value.ToInteger()).ToArray());
+            return new EngineStringTupel(list.Count, list.ToArray());
         }
 
         public override string ToString()

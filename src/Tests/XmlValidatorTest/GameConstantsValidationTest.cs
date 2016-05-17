@@ -12,7 +12,7 @@ namespace XmlValidatorTest
         {
             var validator = new XmlValidator(ForcesOfCorruptionModdingTool.AlomoEngine.Properties.Resources.Gameconstants.ToStream());
 
-            Assert.IsTrue(validator.Validate(@"C:\Test\Gameconstants.xml"));
+            Assert.IsTrue(validator.Validate(@"C:\Test\Gameconstants1.xml"));
         }
     }
 }

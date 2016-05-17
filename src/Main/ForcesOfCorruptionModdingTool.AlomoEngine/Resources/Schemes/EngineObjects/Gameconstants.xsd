@@ -150,6 +150,7 @@
         <xs:element type="engine:EngineFloat" name="AutoResolveWinnerAttrition" />
         <xs:element type="engine:EngineFloat" name="Minimum_Tactical_Overrun_Time_In_Secs" />
         <xs:element type="engine:EngineFloat" name="Tactical_Overrun_Multiple" />
+        <xs:element type="engine:EngineFloat" name="Overrun_Auto_Resolve_Multiple" />
 
         <xs:element type="engine:EngineFloat" name="Space_Retreat_Allowed_Countdown_Seconds" />
         <xs:element type="engine:EngineFloat" name="Land_Retreat_Allowed_Countdown_Seconds" />
