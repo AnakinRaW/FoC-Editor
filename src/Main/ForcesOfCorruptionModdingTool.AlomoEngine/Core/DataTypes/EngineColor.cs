@@ -86,9 +86,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
         public static EngineColor CreateColorFromString(string s)
         {
             var list = s.Split(',').ToList();
-            if (list.Count == 0)
+            if (list.Count == 0 || list[0] == s)
                 list = s.Split(' ').ToList();
-            if (list.Count == 0)
+            if (list.Count == 0 || list[0] == s)
                 list = s.Split('|').ToList();
             if (list.Count < 3)
                 throw new FormatException();
