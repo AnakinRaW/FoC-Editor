@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Xml;
+using ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Behaviour;
+using ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Engine;
+using ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.GUI;
+using ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Objects;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
@@ -39,6 +43,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         public RandomStoryGenerationData RandomStoryGenerationData { get; private set; }
 
         public HardPointData HardPointData { get; private set; }
+
+        public FowData FowData { get; private set; }
+
+        public AiData AiData { get; private set; }
+
+        public PathFindingMovementData PathFindingMovementData { get; set; }
 
 
         public override void Deserialize(XmlDocument document)
@@ -88,6 +98,15 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             HardPointData = new HardPointData(this);
             HardPointData.Deserialize(RootNode);
+
+            FowData = new FowData(this);
+            FowData.Deserialize(RootNode);
+
+            AiData = new AiData(this);
+            AiData.Deserialize(RootNode);
+
+            PathFindingMovementData = new PathFindingMovementData(this);
+            PathFindingMovementData.Deserialize(RootNode);
         }
 
         public override void Deserialize(XmlElement node)
@@ -112,6 +131,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             RootNode = GameTypographyData.Serialize();
             RootNode = RandomStoryGenerationData.Serialize();
             RootNode = HardPointData.Serialize();
+            RootNode = FowData.Serialize();
+            RootNode = AiData.Serialize();
+            RootNode = PathFindingMovementData.Serialize();
             return RootNode;
         }
     }

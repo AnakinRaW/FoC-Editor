@@ -4,7 +4,7 @@ using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class DebugHotKeyLoadData : EngineObject

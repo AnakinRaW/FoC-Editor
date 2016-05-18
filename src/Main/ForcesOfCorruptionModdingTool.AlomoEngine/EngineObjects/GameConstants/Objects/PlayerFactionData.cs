@@ -6,7 +6,7 @@ using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class PlayerFactionData : EngineObject
@@ -26,11 +26,23 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         public EngineColor Enemy_Color { get; set; }
 
         public bool AIUsesFogOfWarGalactic { get; set; }
+
         public bool AIUsesFogOfWarSpace { get; set; }
+
         public bool AIUsesFogOfWarLand { get; set; }
+
         public bool SetupPhaseEnabled { get; set; }
+
         public bool ShowUnitAIPlanAttachment { get; set; }
+
         public double AITechLevelProductionTimeWeight { get; set; }
+
+        public string Good_Side_Name { get; set; }
+        public string Evil_Side_Name { get; set; }
+        public string Corrupt_Side_Name { get; set; }
+        public string Good_Side_Leader_Name { get; set; }
+        public string Evil_Side_Leader_Name { get; set; }
+        public string Corrupt_Side_Leader_Name { get; set; }
 
         public override XmlElement Serialize()
         {
@@ -48,6 +60,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             node.SetValueOfLastTagOfName(nameof(SetupPhaseEnabled), SetupPhaseEnabled.ToString());
             node.SetValueOfLastTagOfName(nameof(ShowUnitAIPlanAttachment), ShowUnitAIPlanAttachment.ToString());
             node.SetValueOfLastTagOfName(nameof(AITechLevelProductionTimeWeight), AITechLevelProductionTimeWeight.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Good_Side_Name), Good_Side_Name);
+            node.SetValueOfLastTagOfName(nameof(Evil_Side_Name), Evil_Side_Name);
+            node.SetValueOfLastTagOfName(nameof(Corrupt_Side_Name), Corrupt_Side_Name);
+            node.SetValueOfLastTagOfName(nameof(Good_Side_Leader_Name), Good_Side_Leader_Name);
+            node.SetValueOfLastTagOfName(nameof(Evil_Side_Leader_Name), Evil_Side_Leader_Name);
+            node.SetValueOfLastTagOfName(nameof(Corrupt_Side_Leader_Name), Corrupt_Side_Leader_Name);
             return node;
         }
 

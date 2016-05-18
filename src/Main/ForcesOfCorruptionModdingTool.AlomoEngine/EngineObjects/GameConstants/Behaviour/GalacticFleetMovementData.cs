@@ -3,7 +3,7 @@ using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GalacticFleetMovementData : EngineObject

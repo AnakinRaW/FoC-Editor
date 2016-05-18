@@ -6,7 +6,7 @@ using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AutoResolveData : EngineObject

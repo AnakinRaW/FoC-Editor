@@ -59,7 +59,7 @@ namespace EngineConverterTest
             Assert.AreEqual(100, color.Blue);
             Assert.AreEqual(byte.MaxValue, color.Alpha);
 
-            var s2 = "111, 111, 111";
+            var s2 = "111 111 111";
 
             var color2 = EngineColor.CreateColorFromString(s2);
 
