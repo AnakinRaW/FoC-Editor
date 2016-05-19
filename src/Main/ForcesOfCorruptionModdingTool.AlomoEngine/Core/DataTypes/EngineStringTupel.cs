@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
@@ -27,13 +28,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
 
         public static EngineStringTupel CreateFromString(string s)
         {
-            s = s.Trim();
-            var list = s.Split(',').ToList();
-            if (list.Count == 0 || list[0] == s)
-                list = s.Split(' ').ToList();
-            if (list.Count == 0 || list[0] == s)
-                list = s.Split('|').ToList();
-            if (list.Count <= 0 || list[0] == s)
+            var list = s.ToEngineList();
+            if (list.Count <= 0)
                 throw new FormatException();
 
             return new EngineStringTupel(list.Count, list.ToArray());

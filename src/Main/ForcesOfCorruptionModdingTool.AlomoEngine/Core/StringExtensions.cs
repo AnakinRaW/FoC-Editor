@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
 {
@@ -12,6 +15,19 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
             writer.Flush();
             stream.Position = 0;
             return stream;
+        }
+
+        public static List<string> ToEngineList(this string s)
+        {
+            s = s.Trim();
+            List<string> list;
+            if (s.Contains(","))
+                list = s.Split(',').ToList();
+            else if (s.Contains("|"))
+                list = s.Split('|').ToList();
+            else
+                list = s.Split(' ').ToList();
+            return list;
         }
     }
 }

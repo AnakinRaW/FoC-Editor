@@ -109,6 +109,17 @@ namespace EngineConverterTest
             var s = "Das Ist ein Test";
             Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(s).ToString());
             Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
+
+            var sa = "Das,Ist ,ein, Test";
+            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(s).ToString());
+            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
+
+            var sb = "Das|Ist  | ein | Test";
+            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(s).ToString());
+            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
+
+            var s1 = "Das";
+            Assert.AreEqual("Das", EngineStringTupel.CreateFromString(s1).ToString());
         }
 
         [TestMethod]

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Annotations;
@@ -85,11 +84,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
 
         public static EngineColor CreateColorFromString(string s)
         {
-            var list = s.Split(',').ToList();
-            if (list.Count == 0 || list[0] == s)
-                list = s.Split(' ').ToList();
-            if (list.Count == 0 || list[0] == s)
-                list = s.Split('|').ToList();
+            var list = s.ToEngineList();
             if (list.Count < 3)
                 throw new FormatException();
 
@@ -103,35 +98,73 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
             return new EngineColor(r,g,b,a);
         }
 
-        public string ToString(EngineSparators separator, bool showAlpha = true)
+        public static EngineColor CreateColorFromStringArgb(string s)
+        {
+            var list = s.ToEngineList();
+            if (list.Count < 4)
+                throw new FormatException();
+
+            var a = byte.Parse(list[0]);
+            var r = byte.Parse(list[1]);
+            var g = byte.Parse(list[2]);
+            var b = byte.Parse(list[3]);
+
+            return new EngineColor(r, g, b, a);
+        }
+
+        public string ToString(EngineSparators separator, bool showAlpha = true, bool showAlphaFirst = false)
         {
             string result;
-
-            switch (separator)
+            if (!showAlphaFirst)
             {
-                case EngineSparators.Comma:
-                    result = $"{Red}, {Green}, {Blue},";
-                    break;
-                case EngineSparators.Space:
-                    result = $"{Red} {Green} {Blue}";
-                    break;
-                case EngineSparators.VerticalLine:
-                    result = $"{Red} | {Green} | {Blue} |";
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(separator), separator, null);
+                switch (separator)
+                {
+                    case EngineSparators.Comma:
+                        result = $"{Red}, {Green}, {Blue},";
+                        break;
+                    case EngineSparators.Space:
+                        result = $"{Red} {Green} {Blue}";
+                        break;
+                    case EngineSparators.VerticalLine:
+                        result = $"{Red} | {Green} | {Blue} |";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(separator), separator, null);
+                }
+                if (showAlpha)
+                    result += $" {Alpha}";
+                else
+                    if (separator != EngineSparators.Space)
+                        result = result.Remove(result.Length - 1);
             }
-            if (showAlpha)
-                result += $" {Alpha}";
             else
-                if (separator != EngineSparators.Space)
-                    result = result.Remove(result.Length - 1);
+            {
+                switch (separator)
+                {
+                    case EngineSparators.Comma:
+                        result = $"{Alpha}, {Red}, {Green}, {Blue}";
+                        break;
+                    case EngineSparators.Space:
+                        result = $"{Alpha} {Red} {Green} {Blue}";
+                        break;
+                    case EngineSparators.VerticalLine:
+                        result = $"{Alpha} | {Red} | {Green} | {Blue}";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(separator), separator, null);
+                }
+            }
             return result;
         }
 
         public string ToString(bool showAlpha)
         {
             return ToString(EngineSparators.Comma, showAlpha);
+        }
+
+        public string ToString(bool showAlpha, bool showAlpfaFirst)
+        {
+            return ToString(EngineSparators.Comma, showAlpha, showAlpfaFirst);
         }
 
         public override string ToString()
