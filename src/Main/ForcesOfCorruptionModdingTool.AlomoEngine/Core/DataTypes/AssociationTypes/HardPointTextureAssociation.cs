@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.AssociationTypes
 {
     public class HardPointTextureAssociation
     {

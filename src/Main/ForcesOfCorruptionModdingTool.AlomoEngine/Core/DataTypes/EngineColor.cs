@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Annotations;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.EventArgs;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes

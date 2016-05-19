@@ -1,4 +1,4 @@
-﻿namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
+﻿namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums
 {
     public enum EngineSparators
     {

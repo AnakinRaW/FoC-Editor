@@ -40,6 +40,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
         public int AI_BuildTaskReservationSeconds { get; set; }
 
+        public double Low_Threat_Reachability_Tolerance { get; set; }
+
+        public double Medium_Threat_Reachability_Tolerance { get; set; }
+
+        public double High_Threat_Reachability_Tolerance { get; set; }
+
 
         public override XmlElement Serialize()
         {
@@ -57,6 +63,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(AI_FogCellsPerThreatCell), AI_FogCellsPerThreatCell.ToString());
             node.SetValueOfLastTagOfName(nameof(AI_SpaceThreatDecayStep), AI_SpaceThreatDecayStep.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(AI_BuildTaskReservationSeconds), AI_BuildTaskReservationSeconds.ToString());
+            node.SetValueOfLastTagOfName(nameof(Low_Threat_Reachability_Tolerance), Low_Threat_Reachability_Tolerance.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Medium_Threat_Reachability_Tolerance), Medium_Threat_Reachability_Tolerance.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(High_Threat_Reachability_Tolerance), High_Threat_Reachability_Tolerance.ToString(CultureInfo.InvariantCulture));
             return node;
         }
 
@@ -75,6 +84,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             AI_FogCellsPerThreatCell = node.GetValueOfLastTagOfName(nameof(AI_FogCellsPerThreatCell)).ToInteger();
             AI_SpaceThreatDecayStep = node.GetValueOfLastTagOfName(nameof(AI_SpaceThreatDecayStep)).ToEngineFloat();
             AI_BuildTaskReservationSeconds = node.GetValueOfLastTagOfName(nameof(AI_BuildTaskReservationSeconds)).ToInteger();
+            Low_Threat_Reachability_Tolerance = node.GetValueOfLastTagOfName(nameof(Low_Threat_Reachability_Tolerance)).ToEngineFloat();
+            Medium_Threat_Reachability_Tolerance = node.GetValueOfLastTagOfName(nameof(Medium_Threat_Reachability_Tolerance)).ToEngineFloat();
+            High_Threat_Reachability_Tolerance = node.GetValueOfLastTagOfName(nameof(High_Threat_Reachability_Tolerance)).ToEngineFloat();
         }
     }
 }

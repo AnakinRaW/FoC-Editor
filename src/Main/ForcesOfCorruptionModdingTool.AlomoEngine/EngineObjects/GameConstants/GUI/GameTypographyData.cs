@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 

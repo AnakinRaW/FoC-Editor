@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
+namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum HardPointType

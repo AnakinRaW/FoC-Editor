@@ -1,8 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
@@ -44,6 +46,13 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
         public string Evil_Side_Leader_Name { get; set; }
         public string Corrupt_Side_Leader_Name { get; set; }
 
+        public EngineStringTupel Raid_Force_Required_Faction { get; set; }
+        public EngineStringTupel Raid_Force_Limited_Object_Category_Mask { get; set; }
+        public int Raid_Force_Max_Limited_Objects { get; set; }
+        public int Raid_Force_Max_Heros { get; set; }
+        [Description("can have as many of these as you want")]
+        public EngineStringTupel Raid_Force_Free_Object_Category_Mask { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -66,6 +75,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(Good_Side_Leader_Name), Good_Side_Leader_Name);
             node.SetValueOfLastTagOfName(nameof(Evil_Side_Leader_Name), Evil_Side_Leader_Name);
             node.SetValueOfLastTagOfName(nameof(Corrupt_Side_Leader_Name), Corrupt_Side_Leader_Name);
+
+            node.SetValueOfLastTagOfName(nameof(Raid_Force_Required_Faction), Raid_Force_Required_Faction.ToString(EngineSparators.VerticalLine));
+            node.SetValueOfLastTagOfName(nameof(Raid_Force_Limited_Object_Category_Mask), Raid_Force_Limited_Object_Category_Mask.ToString(EngineSparators.VerticalLine));
+            node.SetValueOfLastTagOfName(nameof(Raid_Force_Max_Limited_Objects), Raid_Force_Max_Limited_Objects.ToString());
+            node.SetValueOfLastTagOfName(nameof(Raid_Force_Max_Heros), Raid_Force_Max_Heros.ToString());
+            node.SetValueOfLastTagOfName(nameof(Raid_Force_Free_Object_Category_Mask), Raid_Force_Free_Object_Category_Mask.ToString(EngineSparators.VerticalLine));
             return node;
         }
 
@@ -87,6 +102,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             SetupPhaseEnabled = node.GetValueOfLastTagOfName(nameof(SetupPhaseEnabled)).ToEngineBoolean();
             ShowUnitAIPlanAttachment = node.GetValueOfLastTagOfName(nameof(ShowUnitAIPlanAttachment)).ToEngineBoolean();
             AITechLevelProductionTimeWeight = node.GetValueOfLastTagOfName(nameof(AITechLevelProductionTimeWeight)).ToEngineFloat();
+
+            Raid_Force_Required_Faction = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Raid_Force_Required_Faction)));
+            Raid_Force_Limited_Object_Category_Mask = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Raid_Force_Limited_Object_Category_Mask)));
+            Raid_Force_Max_Limited_Objects = node.GetValueOfLastTagOfName(nameof(Raid_Force_Max_Limited_Objects)).ToInteger();
+            Raid_Force_Max_Heros = node.GetValueOfLastTagOfName(nameof(Raid_Force_Max_Heros)).ToInteger();
+            Raid_Force_Free_Object_Category_Mask = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Raid_Force_Free_Object_Category_Mask)));
         }
     }
 }

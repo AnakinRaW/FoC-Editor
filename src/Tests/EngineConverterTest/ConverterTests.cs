@@ -1,5 +1,7 @@
 ﻿using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.AssociationTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EngineConverterTest
@@ -132,6 +134,16 @@ namespace EngineConverterTest
 
             var s = " HARD_POINT_ENGINE  , test  ";
             Assert.AreEqual("HARD_POINT_ENGINE, test", HardPointTextureAssociation.CreateFromString(s).ToString());
+        }
+
+        [TestMethod]
+        public void ShipNameTableTest()
+        {
+            var s =
+                @"Calamari_Cruiser, Data\Mon_Cal_MC80a.txt, Imperial_Star_Destroyer, Data\Impireal_Star_Destroyer.txt, Imperial_Star_Destroyer2, Data\Imperial_Star_DestroyerII.txt,";
+
+            var t = ShipNameTextFileList.CreateFromString(s);
+            Assert.AreEqual(@"Calamari_Cruiser, Data\Mon_Cal_MC80a.txt, Imperial_Star_Destroyer, Data\Impireal_Star_Destroyer.txt, Imperial_Star_Destroyer2, Data\Imperial_Star_DestroyerII.txt", t.ToString());
         }
     }
 }

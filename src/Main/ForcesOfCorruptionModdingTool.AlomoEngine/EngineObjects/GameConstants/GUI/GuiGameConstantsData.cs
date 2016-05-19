@@ -1,8 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
@@ -78,6 +80,16 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
         public EngineFloatTupel Shield_Flash_Scale { get; set; }
         public double Shield_Flash_Duration { get; set; }
 
+        [Description("Colors to use for the reinforcements terrain overlay (a,r,g,b)")]
+        public EngineColor ReinforcementOverlayGoodColor { get; set; }
+        [Description("Colors to use for the reinforcements terrain overlay (a,r,g,b)")]
+        public EngineColor ReinforcementOverlayBadColor { get; set; }
+
+        public double Health_Bar_Scale { get; set; }
+        public double Land_Health_Bar_Scale { get; set; }
+        public double Min_Health_Bar_Scale { get; set; }
+        public int Team_Healthbar_Offset { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -120,6 +132,14 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
             node.SetValueOfLastTagOfName(nameof(Shield_Flash_Scale), Shield_Flash_Scale.ToString());
             node.SetValueOfLastTagOfName(nameof(Shield_Flash_Duration), Shield_Flash_Duration.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(ReinforcementOverlayGoodColor), ReinforcementOverlayGoodColor.ToString(true, true));
+            node.SetValueOfLastTagOfName(nameof(ReinforcementOverlayBadColor), ReinforcementOverlayBadColor.ToString(true, true));
+
+            node.SetValueOfLastTagOfName(nameof(Health_Bar_Scale), Health_Bar_Scale.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Land_Health_Bar_Scale), Land_Health_Bar_Scale.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Min_Health_Bar_Scale), Min_Health_Bar_Scale.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Team_Healthbar_Offset), Team_Healthbar_Offset.ToString());
 
             node = EncyclopediaConstants.Serialize();
 
@@ -166,6 +186,14 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
             Shield_Flash_Scale = EngineFloatTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Shield_Flash_Scale)));
             Shield_Flash_Duration = node.GetValueOfLastTagOfName(nameof(Shield_Flash_Duration)).ToEngineFloat();
+
+            ReinforcementOverlayGoodColor = EngineColor.CreateColorFromStringArgb(node.GetValueOfLastTagOfName(nameof(ReinforcementOverlayGoodColor)));
+            ReinforcementOverlayBadColor = EngineColor.CreateColorFromStringArgb(node.GetValueOfLastTagOfName(nameof(ReinforcementOverlayBadColor)));
+
+            Health_Bar_Scale = node.GetValueOfLastTagOfName(nameof(Health_Bar_Scale)).ToEngineFloat();
+            Land_Health_Bar_Scale = node.GetValueOfLastTagOfName(nameof(Land_Health_Bar_Scale)).ToEngineFloat();
+            Min_Health_Bar_Scale = node.GetValueOfLastTagOfName(nameof(Min_Health_Bar_Scale)).ToEngineFloat();
+            Team_Healthbar_Offset = node.GetValueOfLastTagOfName(nameof(Team_Healthbar_Offset)).ToInteger();
 
             EncyclopediaConstants = new EncyclopediaConstants(Parent);
             EncyclopediaConstants.Deserialize(node);

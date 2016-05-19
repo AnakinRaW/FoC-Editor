@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
 {
@@ -22,7 +22,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
             Data = elements;
         }
 
-        public string[] Data { get; }
+        public string[] Data { get; set; }
 
         public int Size { get; }
 
@@ -40,22 +40,34 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
             return ToString(EngineSparators.Comma);
         }
 
-        public string ToString(EngineSparators separator)
+        public string ToString(EngineSparators separator, bool forceNewLine = false)
         {
             var intArray = Data.Select(value => value.ToString(CultureInfo.InvariantCulture)).ToList();
-
+            if (!forceNewLine)
+            {
+                switch (separator)
+                {
+                    case EngineSparators.Comma:
+                        return string.Join(",", intArray);
+                    case EngineSparators.Space:
+                        return string.Join(" ", intArray);
+                    case EngineSparators.VerticalLine:
+                        return string.Join("|", intArray);
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(separator), separator, null);
+                }
+            }
             switch (separator)
             {
                 case EngineSparators.Comma:
-                    return string.Join(",", intArray);
+                    return string.Join(",\r\n", intArray);
                 case EngineSparators.Space:
-                    return string.Join(" ", intArray);
+                    return string.Join(" \r\n", intArray);
                 case EngineSparators.VerticalLine:
-                    return string.Join("|", intArray);
+                    return string.Join("|\r\n", intArray);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(separator), separator, null);
             }
         }
-
     }
 }

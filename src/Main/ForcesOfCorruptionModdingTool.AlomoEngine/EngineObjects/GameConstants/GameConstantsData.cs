@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
@@ -105,6 +106,41 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         [Description("How closely to tie hull vs. hard point healths together in releation to one another")]
         public double Hull_Vs_Hard_Points_Health_Constraint { get; set; }
 
+        public bool Auto_Rotate_For_Space_Targeting { get; set; }
+
+        public bool In_Game_Cinematics { get; set; }
+
+        public bool Display_Bink_Movie_Frames { get; set; }
+
+        [Description("Per unit probability of destruction during a retreat")]
+        public double Space_Retreat_Attrition_Factor { get; set; }
+        [Description("Per unit probability of destruction during a retreat")]
+        public double Land_Retreat_Attrition_Factor { get; set; }
+        [Description("Per unit probability of destruction during a retreat")]
+        public double Blockade_Run_Attrition_Factor { get; set; }
+
+        public string Demo_Attract_Maps { get; set; }
+        public int Demo_Attract_Start_Timeout_Seconds { get; set; }
+        public int Demo_Attract_Map_Cycle_Delay_Seconds { get; set; }
+        public int Battle_Pending_Timeout_Seconds { get; set; }
+        public string Message_Of_The_Day_URL { get; set; }
+
+        public EngineFloatTupel Battle_Load_Planet_Viewport { get; set; }
+        public EngineFloatTupel Battle_Load_Planet_Direction { get; set; }
+        public EngineFloatTupel Battle_Load_Planet_Ambient { get; set; }
+        public double Saliency_Size { get; set; }
+        public double Saliency_Power { get; set; }
+        public double Saliency_X { get; set; }
+        public double Saliency_Y { get; set; }
+        public double Saliency_Health { get; set; }
+        public double Saliency_Targets { get; set; }
+        public double Saliency_Speed { get; set; }
+
+        public int Star_Wars_Crawl_Start_Fadeout_Frame { get; set; }
+
+        public bool Use_Reinforcement_Points { get; set; }
+
+        public bool Main_Menu_Demo_Attract_Mode { get; set; }
 
         public override XmlElement Serialize()
         {
@@ -166,6 +202,35 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             node.SetValueOfLastTagOfName(nameof(Hull_Vs_Hard_Points_Health_Constraint), Hull_Vs_Hard_Points_Health_Constraint.ToString(CultureInfo.InvariantCulture));
 
+            node.SetValueOfLastTagOfName(nameof(Auto_Rotate_For_Space_Targeting), Auto_Rotate_For_Space_Targeting.ToString());
+            node.SetValueOfLastTagOfName(nameof(In_Game_Cinematics), In_Game_Cinematics.ToString());
+            node.SetValueOfLastTagOfName(nameof(Display_Bink_Movie_Frames), Display_Bink_Movie_Frames.ToString());
+
+            node.SetValueOfLastTagOfName(nameof(Space_Retreat_Attrition_Factor), Space_Retreat_Attrition_Factor.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Land_Retreat_Attrition_Factor), Land_Retreat_Attrition_Factor.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Blockade_Run_Attrition_Factor), Blockade_Run_Attrition_Factor.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Demo_Attract_Maps), Demo_Attract_Maps);
+            node.SetValueOfLastTagOfName(nameof(Demo_Attract_Start_Timeout_Seconds), Demo_Attract_Start_Timeout_Seconds.ToString());
+            node.SetValueOfLastTagOfName(nameof(Demo_Attract_Map_Cycle_Delay_Seconds), Demo_Attract_Map_Cycle_Delay_Seconds.ToString());
+            node.SetValueOfLastTagOfName(nameof(Battle_Pending_Timeout_Seconds), Battle_Pending_Timeout_Seconds.ToString());
+            node.SetValueOfLastTagOfName(nameof(Message_Of_The_Day_URL), Message_Of_The_Day_URL);
+
+            node.SetValueOfLastTagOfName(nameof(Battle_Load_Planet_Viewport), Battle_Load_Planet_Viewport.ToString());
+            node.SetValueOfLastTagOfName(nameof(Battle_Load_Planet_Direction), Battle_Load_Planet_Direction.ToString());
+            node.SetValueOfLastTagOfName(nameof(Battle_Load_Planet_Ambient), Battle_Load_Planet_Ambient.ToString());
+            node.SetValueOfLastTagOfName(nameof(Saliency_Size), Saliency_Size.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Saliency_Power), Saliency_Power.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Saliency_X), Saliency_X.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Saliency_Y), Saliency_Y.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Saliency_Health), Saliency_Health.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Saliency_Targets), Saliency_Targets.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Saliency_Speed), Saliency_Speed.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Star_Wars_Crawl_Start_Fadeout_Frame), Star_Wars_Crawl_Start_Fadeout_Frame.ToString());
+
+            node.SetValueOfLastTagOfName(nameof(Use_Reinforcement_Points), Use_Reinforcement_Points.ToString());
+            node.SetValueOfLastTagOfName(nameof(Main_Menu_Demo_Attract_Mode), Main_Menu_Demo_Attract_Mode.ToString());
             return node;
         }
 
@@ -284,6 +349,52 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             Hull_Vs_Hard_Points_Health_Constraint =
                 node.GetValueOfLastTagOfName(nameof(Hull_Vs_Hard_Points_Health_Constraint)).ToEngineFloat();
+
+            Auto_Rotate_For_Space_Targeting =
+                node.GetValueOfLastTagOfName(nameof(Auto_Rotate_For_Space_Targeting)).ToEngineBoolean();
+
+            In_Game_Cinematics =
+                node.GetValueOfLastTagOfName(nameof(In_Game_Cinematics)).ToEngineBoolean();
+
+            Display_Bink_Movie_Frames =
+                node.GetValueOfLastTagOfName(nameof(Display_Bink_Movie_Frames)).ToEngineBoolean();
+
+            Space_Retreat_Attrition_Factor =
+                node.GetValueOfLastTagOfName(nameof(Space_Retreat_Attrition_Factor)).ToEngineFloat();
+            Land_Retreat_Attrition_Factor =
+                node.GetValueOfLastTagOfName(nameof(Land_Retreat_Attrition_Factor)).ToEngineFloat();
+            Blockade_Run_Attrition_Factor =
+                node.GetValueOfLastTagOfName(nameof(Blockade_Run_Attrition_Factor)).ToEngineFloat();
+
+
+            Demo_Attract_Maps =
+                node.GetValueOfLastTagOfName(nameof(Demo_Attract_Maps));
+            Demo_Attract_Start_Timeout_Seconds =
+                node.GetValueOfLastTagOfName(nameof(Demo_Attract_Start_Timeout_Seconds)).ToInteger();
+            Demo_Attract_Map_Cycle_Delay_Seconds =
+                node.GetValueOfLastTagOfName(nameof(Demo_Attract_Map_Cycle_Delay_Seconds)).ToInteger();
+            Battle_Pending_Timeout_Seconds =
+                node.GetValueOfLastTagOfName(nameof(Battle_Pending_Timeout_Seconds)).ToInteger();
+            Message_Of_The_Day_URL =
+                node.GetValueOfLastTagOfName(nameof(Message_Of_The_Day_URL));
+
+            Battle_Load_Planet_Viewport = EngineFloatTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Battle_Load_Planet_Viewport)));
+            Battle_Load_Planet_Direction = EngineFloatTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Battle_Load_Planet_Direction)));
+            Battle_Load_Planet_Ambient = EngineFloatTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Battle_Load_Planet_Ambient)));
+            Saliency_Size = node.GetValueOfLastTagOfName(nameof(Saliency_Size)).ToEngineFloat();
+            Saliency_Power = node.GetValueOfLastTagOfName(nameof(Saliency_Power)).ToEngineFloat();
+            Saliency_X = node.GetValueOfLastTagOfName(nameof(Saliency_X)).ToEngineFloat();
+            Saliency_Y = node.GetValueOfLastTagOfName(nameof(Saliency_Y)).ToEngineFloat();
+            Saliency_Health = node.GetValueOfLastTagOfName(nameof(Saliency_Health)).ToEngineFloat();
+            Saliency_Targets = node.GetValueOfLastTagOfName(nameof(Saliency_Targets)).ToEngineFloat();
+            Saliency_Speed = node.GetValueOfLastTagOfName(nameof(Saliency_Speed)).ToEngineFloat();
+
+            Star_Wars_Crawl_Start_Fadeout_Frame =
+                node.GetValueOfLastTagOfName(nameof(Star_Wars_Crawl_Start_Fadeout_Frame)).ToInteger();
+
+            Use_Reinforcement_Points = node.GetValueOfLastTagOfName(nameof(Use_Reinforcement_Points)).ToEngineBoolean();
+            Main_Menu_Demo_Attract_Mode = node.GetValueOfLastTagOfName(nameof(Main_Menu_Demo_Attract_Mode)).ToEngineBoolean();
+
         }
     }
 }

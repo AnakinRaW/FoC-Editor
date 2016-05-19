@@ -3,6 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
@@ -169,6 +171,22 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
         public double MaxObstacleCostLand { get; set; }
         public double XYExpansionDistanceLand { get; set; }
 
+        [Description("Global speed modifier to everything with engines, and when they are destroyed")]
+        public double Engines_Disabled_Speed_Modifier { get; set; }
+        public int Crouch_Move_Fire_Angle_Cutoff { get; set; }
+        public int Max_Move_Frame_Delay { get; set; }
+        public double Spread_Out_Spacing_Coefficient { get; set; }
+        public double Max_Formation_Area { get; set; }
+        public double Short_Range_Attack_Formation_Coefficient { get; set; }
+        public double Solo_Attack_Range { get; set; }
+        public double Base_Land_Targeting_Arc_Angle_Coefficient { get; set; }
+        public bool Rotate_Formation_Facing_Moves { get; set; }
+        public bool ShouldUseSpaceIdleMovement { get; set; }
+        public double SpaceIdleMovementSpeed { get; set; }
+        public double SpaceIdlePathCullCoefficient { get; set; }
+        public double IdleMovementFrames { get; set; }
+
+        public EngineStringTupel Preferred_Pathfinder_Types { get; set; }
 
         public override XmlElement Serialize()
         {
@@ -253,6 +271,22 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(MinObstacleCostLand), MinObstacleCostLand.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(MaxObstacleCostLand), MaxObstacleCostLand.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(XYExpansionDistanceLand), XYExpansionDistanceLand.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Engines_Disabled_Speed_Modifier), Engines_Disabled_Speed_Modifier.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Crouch_Move_Fire_Angle_Cutoff), Crouch_Move_Fire_Angle_Cutoff.ToString());
+            node.SetValueOfLastTagOfName(nameof(Max_Move_Frame_Delay), Max_Move_Frame_Delay.ToString());
+            node.SetValueOfLastTagOfName(nameof(Spread_Out_Spacing_Coefficient), Spread_Out_Spacing_Coefficient.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Max_Formation_Area), Max_Formation_Area.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Short_Range_Attack_Formation_Coefficient), Short_Range_Attack_Formation_Coefficient.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Solo_Attack_Range), Solo_Attack_Range.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Base_Land_Targeting_Arc_Angle_Coefficient), Base_Land_Targeting_Arc_Angle_Coefficient.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Rotate_Formation_Facing_Moves), Rotate_Formation_Facing_Moves.ToString());
+            node.SetValueOfLastTagOfName(nameof(ShouldUseSpaceIdleMovement), ShouldUseSpaceIdleMovement.ToString());
+            node.SetValueOfLastTagOfName(nameof(SpaceIdleMovementSpeed), SpaceIdleMovementSpeed.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(SpaceIdlePathCullCoefficient), SpaceIdlePathCullCoefficient.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(IdleMovementFrames), IdleMovementFrames.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Preferred_Pathfinder_Types), Preferred_Pathfinder_Types.ToString(EngineSparators.Comma, true));
             return node;
         }
 
@@ -343,6 +377,22 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             MinObstacleCostLand = node.GetValueOfLastTagOfName(nameof(MinObstacleCostLand)).ToEngineFloat();
             MaxObstacleCostLand = node.GetValueOfLastTagOfName(nameof(MaxObstacleCostLand)).ToEngineFloat();
             XYExpansionDistanceLand = node.GetValueOfLastTagOfName(nameof(XYExpansionDistanceLand)).ToEngineFloat();
+
+            Engines_Disabled_Speed_Modifier = node.GetValueOfLastTagOfName(nameof(Engines_Disabled_Speed_Modifier)).ToEngineFloat();
+            Crouch_Move_Fire_Angle_Cutoff = node.GetValueOfLastTagOfName(nameof(Crouch_Move_Fire_Angle_Cutoff)).ToInteger();
+            Max_Move_Frame_Delay = node.GetValueOfLastTagOfName(nameof(Max_Move_Frame_Delay)).ToInteger();
+            Spread_Out_Spacing_Coefficient = node.GetValueOfLastTagOfName(nameof(Spread_Out_Spacing_Coefficient)).ToEngineFloat();
+            Max_Formation_Area = node.GetValueOfLastTagOfName(nameof(Max_Formation_Area)).ToEngineFloat();
+            Short_Range_Attack_Formation_Coefficient = node.GetValueOfLastTagOfName(nameof(Short_Range_Attack_Formation_Coefficient)).ToEngineFloat();
+            Solo_Attack_Range = node.GetValueOfLastTagOfName(nameof(Solo_Attack_Range)).ToEngineFloat();
+            Base_Land_Targeting_Arc_Angle_Coefficient = node.GetValueOfLastTagOfName(nameof(Base_Land_Targeting_Arc_Angle_Coefficient)).ToEngineFloat();
+            Rotate_Formation_Facing_Moves = node.GetValueOfLastTagOfName(nameof(Rotate_Formation_Facing_Moves)).ToEngineBoolean();
+            ShouldUseSpaceIdleMovement = node.GetValueOfLastTagOfName(nameof(ShouldUseSpaceIdleMovement)).ToEngineBoolean();
+            SpaceIdleMovementSpeed = node.GetValueOfLastTagOfName(nameof(SpaceIdleMovementSpeed)).ToEngineFloat();
+            SpaceIdlePathCullCoefficient = node.GetValueOfLastTagOfName(nameof(SpaceIdlePathCullCoefficient)).ToEngineFloat();
+            IdleMovementFrames = node.GetValueOfLastTagOfName(nameof(IdleMovementFrames)).ToEngineFloat();
+
+            Preferred_Pathfinder_Types = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Preferred_Pathfinder_Types)));
         }
     }
 }

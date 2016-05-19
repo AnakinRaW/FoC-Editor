@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes
 {

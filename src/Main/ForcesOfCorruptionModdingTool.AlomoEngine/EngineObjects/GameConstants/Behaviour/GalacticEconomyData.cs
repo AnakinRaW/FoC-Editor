@@ -58,6 +58,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
         public double TradeRouteMovementFactor { get; set; }
 
+        public double Production_Speed_Mod_Base_Vs_Tech_0 { get; set; }
+        public double Production_Speed_Mod_Base_Vs_Tech_1 { get; set; }
+        public double Production_Speed_Mod_Base_Vs_Tech_2 { get; set; }
+        public double Production_Speed_Mod_Base_Vs_Tech_3 { get; set; }
+        public double Production_Speed_Mod_Base_Vs_Tech_4 { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -84,6 +90,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(MaximumSpecialStructuresSpace), MaximumSpecialStructuresSpace.ToString());
             node.SetValueOfLastTagOfName(nameof(MaximumFleetMovementDistance), MaximumFleetMovementDistance.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(TradeRouteMovementFactor), TradeRouteMovementFactor.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_0), Production_Speed_Mod_Base_Vs_Tech_0.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_1), Production_Speed_Mod_Base_Vs_Tech_1.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_2), Production_Speed_Mod_Base_Vs_Tech_2.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_3), Production_Speed_Mod_Base_Vs_Tech_3.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_4), Production_Speed_Mod_Base_Vs_Tech_4.ToString(CultureInfo.InvariantCulture));
             return node;
         }
 
@@ -119,6 +131,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             MaximumSpecialStructuresSpace = node.GetValueOfLastTagOfName(nameof(MaximumSpecialStructuresSpace)).ToInteger();
             MaximumFleetMovementDistance = node.GetValueOfLastTagOfName(nameof(MaximumFleetMovementDistance)).ToEngineFloat();
             TradeRouteMovementFactor = node.GetValueOfLastTagOfName(nameof(TradeRouteMovementFactor)).ToEngineFloat();
+
+            Production_Speed_Mod_Base_Vs_Tech_0 = node.GetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_0)).ToEngineFloat();
+            Production_Speed_Mod_Base_Vs_Tech_1 = node.GetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_1)).ToEngineFloat();
+            Production_Speed_Mod_Base_Vs_Tech_2 = node.GetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_2)).ToEngineFloat();
+            Production_Speed_Mod_Base_Vs_Tech_3 = node.GetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_3)).ToEngineFloat();
+            Production_Speed_Mod_Base_Vs_Tech_4 = node.GetValueOfLastTagOfName(nameof(Production_Speed_Mod_Base_Vs_Tech_4)).ToEngineFloat();
         }
     }
 }

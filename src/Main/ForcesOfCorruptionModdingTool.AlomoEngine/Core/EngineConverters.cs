@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
 {
@@ -8,7 +9,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
     {
         public static bool ToEngineBoolean(this string s)
         {
-            s = s.Replace(" ", string.Empty);
+            s = s.Trim();
+            s = Regex.Replace(s, @"\t|\n|\r", "");
             string[] trueStrings = { "1", "yes", "true" };
             string[] falseStrings = { "0", "no", "false" };
 

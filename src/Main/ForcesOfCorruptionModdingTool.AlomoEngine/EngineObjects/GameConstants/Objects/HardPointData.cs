@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
+using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.AssociationTypes;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 using ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine;
 
@@ -31,9 +32,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
         public List<HardPointTextureAssociation> HardPoint_Target_Reticle_Friendly_Disabled_Texture { get; set; }
 
-        public List<HardPointTextureAssociation> HardPoint_Target_Reticle_Friendly_Disabled_Tracked_Texture { get; set;
-        }
+        public List<HardPointTextureAssociation> HardPoint_Target_Reticle_Friendly_Disabled_Tracked_Texture { get; set; }
 
+        public double Hardpoint_Recharge_Cutoff_For_Opportunity_Fire { get; set; }
 
         public override XmlElement Serialize()
         {
@@ -65,7 +66,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.AddMultipleTagsFromValueList(nameof(HardPoint_Target_Reticle_Friendly_Disabled_Tracked_Texture),
                 HardPoint_Target_Reticle_Friendly_Disabled_Tracked_Texture.Select(data => data.ToString()).ToList());
 
-
+            node.SetValueOfLastTagOfName(nameof(Hardpoint_Recharge_Cutoff_For_Opportunity_Fire),
+                Hardpoint_Recharge_Cutoff_For_Opportunity_Fire.ToString(CultureInfo.InvariantCulture));
             return node;
         }
 
@@ -112,7 +114,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
                     .Select(HardPointTextureAssociation.CreateFromString)
                     .ToList();
 
-
+            Hardpoint_Recharge_Cutoff_For_Opportunity_Fire =
+                node.GetValueOfLastTagOfName(nameof(Hardpoint_Recharge_Cutoff_For_Opportunity_Fire)).ToEngineFloat();
         }
     }
 }

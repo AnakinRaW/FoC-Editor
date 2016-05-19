@@ -18,7 +18,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public GameConstantsData GameConstantsData { get; private set; }
 
-        public ObjectMaximumMultipliers ObjectMaximumMultipliers { get; private set; }
+        public ObjectMultiplierData ObjectMultiplierData { get; private set; }
 
         public PlayerFactionData PlayerFactionData { get; private set; }
 
@@ -50,6 +50,23 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public PathFindingMovementData PathFindingMovementData { get; set; }
 
+        public AbilityEffectData AbilityEffectData { get; set; }
+
+        public GameObjectConstantData GameObjectConstantData { get; set; }
+
+        public DamageArmorMatrixData DamageArmorMatrixData { get; set; }
+
+        public GalacticGuiUnitAbilityData GalacticGuiUnitAbilityData { get; set; }
+
+        public MultiplayerData MultiplayerData { get; set; }
+
+        public BeamAbilityData BeamAbilityData { get; set; }
+
+        public LocalizationData LocalizationData { get; set; }
+
+        public GameCreditsData GameCreditsData { get; set; }
+
+        public PlanetAbilityData PlanetAbilityData { get; set; }
 
         public override void Deserialize(XmlDocument document)
         {
@@ -60,8 +77,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             GameConstantsData = new GameConstantsData(this);
             GameConstantsData.Deserialize(RootNode);
 
-            ObjectMaximumMultipliers = new ObjectMaximumMultipliers(this);
-            ObjectMaximumMultipliers.Deserialize(RootNode);
+            ObjectMultiplierData = new ObjectMultiplierData(this);
+            ObjectMultiplierData.Deserialize(RootNode);
 
             PlayerFactionData = new PlayerFactionData(this);
             PlayerFactionData.Deserialize(RootNode);
@@ -107,6 +124,33 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             PathFindingMovementData = new PathFindingMovementData(this);
             PathFindingMovementData.Deserialize(RootNode);
+
+            AbilityEffectData = new AbilityEffectData(this);
+            AbilityEffectData.Deserialize(RootNode);
+
+            GameObjectConstantData = new GameObjectConstantData(this);
+            GameObjectConstantData.Deserialize(RootNode);
+
+            DamageArmorMatrixData = new DamageArmorMatrixData(this);
+            DamageArmorMatrixData.Deserialize(RootNode);
+
+            GalacticGuiUnitAbilityData = new GalacticGuiUnitAbilityData(this);
+            GalacticGuiUnitAbilityData.Deserialize(RootNode);
+
+            MultiplayerData = new MultiplayerData(this);
+            MultiplayerData.Deserialize(RootNode);
+
+            BeamAbilityData = new BeamAbilityData(this);
+            BeamAbilityData.Deserialize(RootNode);
+
+            LocalizationData = new LocalizationData(this);
+            LocalizationData.Deserialize(RootNode);
+
+            GameCreditsData = new GameCreditsData(this);
+            GameCreditsData.Deserialize(RootNode);
+
+            PlanetAbilityData = new PlanetAbilityData(this);
+            PlanetAbilityData.Deserialize(RootNode);
         }
 
         public override void Deserialize(XmlElement node)
@@ -118,7 +162,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
         {
             RootNode = DebugHotKeyLoadData.Serialize();
             RootNode = GameConstantsData.Serialize();
-            RootNode = ObjectMaximumMultipliers.Serialize();
+            RootNode = ObjectMultiplierData.Serialize();
             RootNode = PlayerFactionData.Serialize();
             RootNode = ShipLoadVulnerabilityData.Serialize();
             RootNode = GalacticFleetMovementData.Serialize();
@@ -134,6 +178,15 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             RootNode = FowData.Serialize();
             RootNode = AiData.Serialize();
             RootNode = PathFindingMovementData.Serialize();
+            RootNode = AbilityEffectData.Serialize();
+            RootNode = GameObjectConstantData.Serialize();
+            RootNode = DamageArmorMatrixData.Serialize();
+            RootNode = GalacticGuiUnitAbilityData.Serialize();
+            RootNode = MultiplayerData.Serialize();
+            RootNode = BeamAbilityData.Serialize();
+            RootNode = LocalizationData.Serialize();
+            RootNode = GameCreditsData.Serialize();
+            RootNode = PlanetAbilityData.Serialize();
             return RootNode;
         }
     }

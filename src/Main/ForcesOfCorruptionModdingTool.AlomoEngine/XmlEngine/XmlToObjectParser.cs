@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using System.Xml.Serialization;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Interfaces;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.XmlEngine
