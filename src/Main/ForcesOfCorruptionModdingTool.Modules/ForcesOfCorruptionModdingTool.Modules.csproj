@@ -150,9 +150,17 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ForcesOfCorruptionModdingTool.AlomoEngine\ForcesOfCorruptionModdingTool.AlomoEngine.csproj">
+    <ProjectReference Include="..\AlomoEngine.Core\AlomoEngine.Core.csproj">
+      <Project>{4B061BDB-EE61-4638-9BB2-44F260B5135E}</Project>
+      <Name>AlomoEngine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlomoEngine.Xml\AlomoEngine.Xml.csproj">
+      <Project>{1dc76bb2-f39b-4c23-a3bf-b12ec60067aa}</Project>
+      <Name>AlomoEngine.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlomoEngine\AlomoEngine.csproj">
       <Project>{f6d91bd5-f78d-4e3d-9922-bf3177d86d65}</Project>
-      <Name>ForcesOfCorruptionModdingTool.AlomoEngine</Name>
+      <Name>AlomoEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\ForcesOfCorruptionModdingTool.EditorCore\ForcesOfCorruptionModdingTool.EditorCore.csproj">
       <Project>{f098fc86-6636-421a-91eb-e47fb31b4285}</Project>

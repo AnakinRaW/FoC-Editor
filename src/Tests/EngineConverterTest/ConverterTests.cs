@@ -1,7 +1,6 @@
-﻿using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.AssociationTypes;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes.Enums;
+﻿using AlomoEngine.DataTypes;
+using AlomoEngine.DataTypes.AssociationTypes;
+using AlomoEngine.DataTypes.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EngineConverterTest
@@ -113,12 +112,12 @@ namespace EngineConverterTest
             Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
 
             var sa = "Das,Ist ,ein, Test";
-            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(s).ToString());
-            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
+            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(sa).ToString());
+            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(sa).ToString(EngineSparators.Space));
 
             var sb = "Das|Ist  | ein | Test";
-            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(s).ToString());
-            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(s).ToString(EngineSparators.Space));
+            Assert.AreEqual("Das,Ist,ein,Test", EngineStringTupel.CreateFromString(sb).ToString());
+            Assert.AreEqual("Das Ist ein Test", EngineStringTupel.CreateFromString(sb).ToString(EngineSparators.Space));
 
             var s1 = "Das";
             Assert.AreEqual("Das", EngineStringTupel.CreateFromString(s1).ToString());

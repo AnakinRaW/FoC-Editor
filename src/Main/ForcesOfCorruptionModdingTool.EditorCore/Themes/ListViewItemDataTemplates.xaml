@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mod="clr-namespace:ForcesOfCorruptionModdingTool.EditorCore.Mod"
-                    xmlns:saveGame="clr-namespace:ForcesOfCorruptionModdingTool.AlomoEngine.SaveGame;assembly=ForcesOfCorruptionModdingTool.AlomoEngine">
+                    xmlns:saveGame="clr-namespace:AlomoEngine.SaveGame;assembly=AlomoEngine">
 
     <DataTemplate x:Key="IModViewTemplate" DataType="{x:Type mod:IMod}">
         <Grid>

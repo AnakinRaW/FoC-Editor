@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using ForcesOfCorruptionModdingTool.AlomoEngine.SaveGame;
+using AlomoEngine.SaveGame;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Defreezer
 {

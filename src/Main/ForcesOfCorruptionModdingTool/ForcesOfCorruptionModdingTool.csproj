@@ -243,9 +243,9 @@
     <Resource Include="Resources\moddingToolBanner.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ForcesOfCorruptionModdingTool.AlomoEngine\ForcesOfCorruptionModdingTool.AlomoEngine.csproj">
+    <ProjectReference Include="..\AlomoEngine\AlomoEngine.csproj">
       <Project>{f6d91bd5-f78d-4e3d-9922-bf3177d86d65}</Project>
-      <Name>ForcesOfCorruptionModdingTool.AlomoEngine</Name>
+      <Name>AlomoEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\ForcesOfCorruptionModdingTool.EditorCore\ForcesOfCorruptionModdingTool.EditorCore.csproj">
       <Project>{f098fc86-6636-421a-91eb-e47fb31b4285}</Project>

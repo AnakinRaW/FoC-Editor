@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
-using ForcesOfCorruptionModdingTool.AlomoEngine.SaveGame;
+using AlomoEngine.Core;
+using AlomoEngine.SaveGame;
 
 namespace ForcesOfCorruptionModdingTool.Modules.Defreezer
 {
