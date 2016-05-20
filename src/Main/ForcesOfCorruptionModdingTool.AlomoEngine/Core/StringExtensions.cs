@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using ForcesOfCorruptionModdingTool.AlomoEngine.Core.DataTypes;
 
 namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
 {
@@ -21,7 +20,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
         public static List<string> ToEngineList(this string s)
         {
             s = s.Trim();
-            s = Regex.Replace(s, @"\t|\n|\r", "");
+            s = Regex.Replace(s, @"\n|\r", "");
 
             if (s.EndsWith(",") || s.EndsWith("|"))
                 s = s.Remove(s.Length - 1);
@@ -32,9 +31,28 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.Core
             else if (s.Contains("|"))
                 list = s.Split('|').ToList();
             else
-                list = s.Split(' ').ToList();
+                if (s.Contains(" "))
+                    list = s.Split(' ').ToList();
+                else
+                    list = s.Split().ToList();
 
-            return list.Select(val => val.Trim()).ToList();
+            var list1 = new List<string>();
+            foreach (var val in list)
+            {
+                if (string.IsNullOrWhiteSpace(val) || val.Contains(",") || val.Contains("|"))
+                    continue;
+                var tabbed = val.Split("\t".ToCharArray()).ToList();
+                if (tabbed.Count > 1)
+                    list1.AddRange(from tabval in tabbed
+                                   where
+                                       !string.IsNullOrWhiteSpace(tabval) && !tabval.Contains(",")
+                                       && !tabval.Contains("|")
+                                   select tabval.Trim());
+                else
+                    list1.Add(val.Trim());
+
+            }
+            return list1;
 
         }
 

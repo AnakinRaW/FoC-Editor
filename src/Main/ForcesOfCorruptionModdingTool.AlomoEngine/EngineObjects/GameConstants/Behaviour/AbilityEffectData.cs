@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
 using ForcesOfCorruptionModdingTool.AlomoEngine.Core;
@@ -24,6 +23,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
         public double Earthquake_Shake_Speed { get; set; }
         public EngineFloatTupel Earthquake_Shake_Magnitude { get; set; }
 
+        public string Sabotage_Particle_Effect { get; set; }
+        public string Hack_Super_Weapon_Particle_Effect { get; set; }
+        public EngineStringTupel Hack_Super_Weapon_Required_Type { get; set; }
+
+        public int Hack_Super_Weapon_Cost { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -36,6 +41,10 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(Earthquake_Transition_Time), Earthquake_Transition_Time.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Earthquake_Shake_Speed), Earthquake_Shake_Speed.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Earthquake_Shake_Magnitude), Earthquake_Shake_Magnitude.ToString());
+            node.SetValueOfLastTagOfName(nameof(Sabotage_Particle_Effect), Sabotage_Particle_Effect);
+            node.SetValueOfLastTagOfName(nameof(Hack_Super_Weapon_Particle_Effect), Hack_Super_Weapon_Particle_Effect);
+            node.SetValueOfLastTagOfName(nameof(Hack_Super_Weapon_Required_Type), Hack_Super_Weapon_Required_Type.ToString());
+            node.SetValueOfLastTagOfName(nameof(Hack_Super_Weapon_Cost), Hack_Super_Weapon_Cost.ToString());
             return node;
         }
 
@@ -50,6 +59,10 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             Earthquake_Transition_Time = node.GetValueOfLastTagOfName(nameof(Earthquake_Transition_Time)).ToEngineFloat();
             Earthquake_Shake_Speed = node.GetValueOfLastTagOfName(nameof(Earthquake_Shake_Speed)).ToEngineFloat();
             Earthquake_Shake_Magnitude = EngineFloatTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Earthquake_Shake_Magnitude)));
+            Sabotage_Particle_Effect = node.GetValueOfLastTagOfName(nameof(Sabotage_Particle_Effect));
+            Hack_Super_Weapon_Particle_Effect = node.GetValueOfLastTagOfName(nameof(Hack_Super_Weapon_Particle_Effect));
+            Hack_Super_Weapon_Required_Type = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Earthquake_Shake_Speed)));
+            Hack_Super_Weapon_Cost = node.GetValueOfLastTagOfName(nameof(Hack_Super_Weapon_Cost)).ToInteger();
         }
     }
 }

@@ -89,6 +89,13 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
         public double Land_Health_Bar_Scale { get; set; }
         public double Min_Health_Bar_Scale { get; set; }
         public int Team_Healthbar_Offset { get; set; }
+        public double Health_Bar_Spacing { get; set; }
+
+        public EngineColor Good_Ground_Color_Tint { get; set; }
+        public EngineColor High_Ground_Color_Tint { get; set; }
+        public EngineColor Slow_Ground_Color_Tint { get; set; }
+        public EngineColor Lava_Ground_Color_Tint { get; set; }
+        public EngineColor Infantry_Ground_Color_Tint { get; set; }
 
         public override XmlElement Serialize()
         {
@@ -140,6 +147,13 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(Land_Health_Bar_Scale), Land_Health_Bar_Scale.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Min_Health_Bar_Scale), Min_Health_Bar_Scale.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Team_Healthbar_Offset), Team_Healthbar_Offset.ToString());
+            node.SetValueOfLastTagOfName(nameof(Health_Bar_Spacing), Health_Bar_Spacing.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Good_Ground_Color_Tint), Good_Ground_Color_Tint.ToString(false));
+            node.SetValueOfLastTagOfName(nameof(High_Ground_Color_Tint), High_Ground_Color_Tint.ToString(false));
+            node.SetValueOfLastTagOfName(nameof(Slow_Ground_Color_Tint), Slow_Ground_Color_Tint.ToString(false));
+            node.SetValueOfLastTagOfName(nameof(Lava_Ground_Color_Tint), Lava_Ground_Color_Tint.ToString(false));
+            node.SetValueOfLastTagOfName(nameof(Infantry_Ground_Color_Tint), Infantry_Ground_Color_Tint.ToString(false));
 
             node = EncyclopediaConstants.Serialize();
 
@@ -194,6 +208,13 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             Land_Health_Bar_Scale = node.GetValueOfLastTagOfName(nameof(Land_Health_Bar_Scale)).ToEngineFloat();
             Min_Health_Bar_Scale = node.GetValueOfLastTagOfName(nameof(Min_Health_Bar_Scale)).ToEngineFloat();
             Team_Healthbar_Offset = node.GetValueOfLastTagOfName(nameof(Team_Healthbar_Offset)).ToInteger();
+            Health_Bar_Spacing = node.GetValueOfLastTagOfName(nameof(Health_Bar_Spacing)).ToEngineFloat();
+
+            Good_Ground_Color_Tint = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(Good_Ground_Color_Tint)));
+            High_Ground_Color_Tint = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(High_Ground_Color_Tint)));
+            Slow_Ground_Color_Tint = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(Slow_Ground_Color_Tint)));
+            Lava_Ground_Color_Tint = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(Lava_Ground_Color_Tint)));
+            Infantry_Ground_Color_Tint = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(Infantry_Ground_Color_Tint)));
 
             EncyclopediaConstants = new EncyclopediaConstants(Parent);
             EncyclopediaConstants.Deserialize(node);

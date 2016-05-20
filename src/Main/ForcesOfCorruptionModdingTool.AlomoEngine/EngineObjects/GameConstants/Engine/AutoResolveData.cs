@@ -40,6 +40,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
         public double AutoResolveWinnerAttrition { get; set; }
 
+        public double Auto_Resolve_Tactical_Multiplier { get; set; }
+
         
         public override XmlElement Serialize()
         {
@@ -59,6 +61,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(RetreatAutoResolveWinnerAttrition), RetreatAutoResolveWinnerAttrition.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(AutoResolveLoserAttrition), AutoResolveLoserAttrition.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(AutoResolveWinnerAttrition), AutoResolveWinnerAttrition.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Auto_Resolve_Tactical_Multiplier), Auto_Resolve_Tactical_Multiplier.ToString(CultureInfo.InvariantCulture));
 
             return node;
         }
@@ -82,6 +85,7 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             RetreatAutoResolveWinnerAttrition = node.GetValueOfLastTagOfName(nameof(RetreatAutoResolveWinnerAttrition)).ToEngineFloat();
             AutoResolveLoserAttrition = node.GetValueOfLastTagOfName(nameof(AutoResolveLoserAttrition)).ToEngineFloat();
             AutoResolveWinnerAttrition = node.GetValueOfLastTagOfName(nameof(AutoResolveWinnerAttrition)).ToEngineFloat();
+            Auto_Resolve_Tactical_Multiplier = node.GetValueOfLastTagOfName(nameof(Auto_Resolve_Tactical_Multiplier)).ToEngineFloat();
         }
     }
 }

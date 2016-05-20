@@ -45,6 +45,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
         public EngineColor MP_Color_Gray { get; set; }
         public EngineColor MP_Color_Eight { get; set; }
 
+        public EngineStringTupel Quickmatch_Map_Exclusion_List { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -75,6 +77,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(MP_Color_Yellow), MP_Color_Yellow.ToString(false));
             node.SetValueOfLastTagOfName(nameof(MP_Color_Gray), MP_Color_Gray.ToString(false));
             node.SetValueOfLastTagOfName(nameof(MP_Color_Eight), MP_Color_Eight.ToString(false));
+
+            node.SetValueOfLastTagOfName(nameof(Quickmatch_Map_Exclusion_List), Quickmatch_Map_Exclusion_List.ToString(EngineSparators.Comma, true));
             return node;
         }
 
@@ -114,6 +118,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             MP_Color_Yellow = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(MP_Color_Yellow)));
             MP_Color_Gray = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(MP_Color_Gray)));
             MP_Color_Eight = EngineColor.CreateColorFromString(node.GetValueOfLastTagOfName(nameof(MP_Color_Eight)));
+
+            Quickmatch_Map_Exclusion_List = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Quickmatch_Map_Exclusion_List)));
         }
     }
 }

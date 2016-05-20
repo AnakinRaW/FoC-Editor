@@ -188,6 +188,9 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
         public EngineStringTupel Preferred_Pathfinder_Types { get; set; }
 
+        [Description("Clear space required along hyperspace in path for space reinforcements")]
+        public double Space_Reinforcement_Collision_Check_Distance { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -287,6 +290,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             node.SetValueOfLastTagOfName(nameof(IdleMovementFrames), IdleMovementFrames.ToString(CultureInfo.InvariantCulture));
 
             node.SetValueOfLastTagOfName(nameof(Preferred_Pathfinder_Types), Preferred_Pathfinder_Types.ToString(EngineSparators.Comma, true));
+
+            node.SetValueOfLastTagOfName(nameof(Space_Reinforcement_Collision_Check_Distance), Space_Reinforcement_Collision_Check_Distance.ToString(CultureInfo.InvariantCulture));
             return node;
         }
 
@@ -393,6 +398,8 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             IdleMovementFrames = node.GetValueOfLastTagOfName(nameof(IdleMovementFrames)).ToEngineFloat();
 
             Preferred_Pathfinder_Types = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Preferred_Pathfinder_Types)));
+
+            Space_Reinforcement_Collision_Check_Distance = node.GetValueOfLastTagOfName(nameof(Space_Reinforcement_Collision_Check_Distance)).ToEngineFloat();
         }
     }
 }

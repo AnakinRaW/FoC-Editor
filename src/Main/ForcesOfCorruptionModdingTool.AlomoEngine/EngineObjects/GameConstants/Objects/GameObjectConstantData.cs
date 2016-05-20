@@ -47,6 +47,12 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
         public ShipNameTextFileList ShipNameTextFiles { get; set; }
 
+        public int Indigenous_Spawn_Destruction_Reward { get; set; }
+        public double Space_Guard_Range { get; set; }
+        public double Land_Guard_Range { get; set; }
+
+        public double Override_Death_Persistence_Duration { get; set; }
+
 
         public override XmlElement Serialize()
 
@@ -78,6 +84,13 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
 
             node.SetValueOfLastTagOfName(nameof(Object_Visual_Status_Particle_Attach_Bone_Names), Object_Visual_Status_Particle_Attach_Bone_Names.ToString());
             node.SetValueOfLastTagOfName(nameof(ShipNameTextFiles), ShipNameTextFiles.ToString(true));
+
+            node.SetValueOfLastTagOfName(nameof(Indigenous_Spawn_Destruction_Reward), Indigenous_Spawn_Destruction_Reward.ToString());
+
+            node.SetValueOfLastTagOfName(nameof(Space_Guard_Range), Space_Guard_Range.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Land_Guard_Range), Land_Guard_Range.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(Override_Death_Persistence_Duration), Override_Death_Persistence_Duration.ToString(CultureInfo.InvariantCulture));
 
             return node;
         }
@@ -127,6 +140,17 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants.
             Object_Visual_Status_Particle_Attach_Bone_Names = EngineStringTupel.CreateFromString(node.GetValueOfLastTagOfName(nameof(Object_Visual_Status_Particle_Attach_Bone_Names)));
 
             ShipNameTextFiles = ShipNameTextFileList.CreateFromString(node.GetValueOfLastTagOfName(nameof(ShipNameTextFiles)));
+
+            Indigenous_Spawn_Destruction_Reward =
+                node.GetValueOfLastTagOfName(nameof(Indigenous_Spawn_Destruction_Reward)).ToInteger();
+
+            Space_Guard_Range =
+                node.GetValueOfLastTagOfName(nameof(Space_Guard_Range)).ToEngineFloat();
+            Space_Guard_Range =
+                node.GetValueOfLastTagOfName(nameof(Space_Guard_Range)).ToEngineFloat();
+
+            Override_Death_Persistence_Duration =
+                node.GetValueOfLastTagOfName(nameof(Override_Death_Persistence_Duration)).ToEngineFloat();
         }
     }
 }

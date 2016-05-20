@@ -68,6 +68,14 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public PlanetAbilityData PlanetAbilityData { get; set; }
 
+        public CommandBarGuiData CommandBarGuiData { get; set; }
+
+        public BombardmentData BombardmentData { get; set; }
+
+        public BountyAwardData BountyAwardData { get; set; }
+
+        public CorruptionData CorruptionData { get; set; }
+
         public override void Deserialize(XmlDocument document)
         {
             base.Deserialize(document);
@@ -151,6 +159,18 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             PlanetAbilityData = new PlanetAbilityData(this);
             PlanetAbilityData.Deserialize(RootNode);
+
+            CommandBarGuiData = new CommandBarGuiData(this);
+            CommandBarGuiData.Deserialize(RootNode);
+
+            BombardmentData = new BombardmentData(this);
+            BombardmentData.Deserialize(RootNode);
+
+            BountyAwardData = new BountyAwardData(this);
+            BountyAwardData.Deserialize(RootNode);
+
+            CorruptionData = new CorruptionData(this);
+            CorruptionData.Deserialize(RootNode);
         }
 
         public override void Deserialize(XmlElement node)
@@ -187,6 +207,10 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             RootNode = LocalizationData.Serialize();
             RootNode = GameCreditsData.Serialize();
             RootNode = PlanetAbilityData.Serialize();
+            RootNode = CommandBarGuiData.Serialize();
+            RootNode = BombardmentData.Serialize();
+            RootNode = BountyAwardData.Serialize();
+            RootNode = CorruptionData.Serialize();
             return RootNode;
         }
     }

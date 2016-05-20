@@ -142,6 +142,16 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
         public bool Main_Menu_Demo_Attract_Mode { get; set; }
 
+        public bool Land_Base_Destruction_Forces_Retreat { get; set; }
+        public bool Space_Station_Destruction_Forces_Retreat { get; set; }
+
+        public double Sensor_Jamming_Time { get; set; }
+
+        public double First_Strike_Extra_Damage_Percent { get; set; }
+        public string First_Strike_Particle { get; set; }
+        public double Garrisoned_Max_Attack_Distance_Multiplier { get; set; }
+        public int Max_Remote_Bombs_Per_Player { get; set; }
+
         public override XmlElement Serialize()
         {
             var node = Parent.RootNode;
@@ -231,6 +241,17 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
 
             node.SetValueOfLastTagOfName(nameof(Use_Reinforcement_Points), Use_Reinforcement_Points.ToString());
             node.SetValueOfLastTagOfName(nameof(Main_Menu_Demo_Attract_Mode), Main_Menu_Demo_Attract_Mode.ToString());
+
+            node.SetValueOfLastTagOfName(nameof(Land_Base_Destruction_Forces_Retreat), Land_Base_Destruction_Forces_Retreat.ToString());
+            node.SetValueOfLastTagOfName(nameof(Space_Station_Destruction_Forces_Retreat), Space_Station_Destruction_Forces_Retreat.ToString());
+
+            node.SetValueOfLastTagOfName(nameof(Sensor_Jamming_Time), Sensor_Jamming_Time.ToString(CultureInfo.InvariantCulture));
+
+            node.SetValueOfLastTagOfName(nameof(First_Strike_Extra_Damage_Percent), First_Strike_Extra_Damage_Percent.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(First_Strike_Particle), First_Strike_Particle);
+            node.SetValueOfLastTagOfName(nameof(Garrisoned_Max_Attack_Distance_Multiplier), Garrisoned_Max_Attack_Distance_Multiplier.ToString(CultureInfo.InvariantCulture));
+            node.SetValueOfLastTagOfName(nameof(Max_Remote_Bombs_Per_Player), Max_Remote_Bombs_Per_Player.ToString());
+
             return node;
         }
 
@@ -395,6 +416,17 @@ namespace ForcesOfCorruptionModdingTool.AlomoEngine.EngineObjects.GameConstants
             Use_Reinforcement_Points = node.GetValueOfLastTagOfName(nameof(Use_Reinforcement_Points)).ToEngineBoolean();
             Main_Menu_Demo_Attract_Mode = node.GetValueOfLastTagOfName(nameof(Main_Menu_Demo_Attract_Mode)).ToEngineBoolean();
 
+            Land_Base_Destruction_Forces_Retreat = node.GetValueOfLastTagOfName(nameof(Land_Base_Destruction_Forces_Retreat)).ToEngineBoolean();
+            Space_Station_Destruction_Forces_Retreat = node.GetValueOfLastTagOfName(nameof(Space_Station_Destruction_Forces_Retreat)).ToEngineBoolean();
+
+            Sensor_Jamming_Time = node.GetValueOfLastTagOfName(nameof(Sensor_Jamming_Time)).ToEngineFloat();
+
+            First_Strike_Extra_Damage_Percent = node.GetValueOfLastTagOfName(nameof(First_Strike_Extra_Damage_Percent)).ToEngineFloat();
+            First_Strike_Particle = node.GetValueOfLastTagOfName(nameof(First_Strike_Particle));
+            Garrisoned_Max_Attack_Distance_Multiplier = node.GetValueOfLastTagOfName(nameof(Garrisoned_Max_Attack_Distance_Multiplier)).ToEngineFloat();
+            Max_Remote_Bombs_Per_Player = node.GetValueOfLastTagOfName(nameof(Max_Remote_Bombs_Per_Player)).ToInteger();
+
+            
         }
     }
 }

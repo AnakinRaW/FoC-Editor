@@ -70,6 +70,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\DataTypes\AssociationTypes\BountyCategoryAwardAssociation.cs" />
     <Compile Include="Core\DataTypes\PlanetAbilityRgbList.cs" />
     <Compile Include="Core\DataTypes\ShipNameTextFileList.cs" />
     <Compile Include="Core\DataTypes\EngineColor.cs" />
@@ -88,12 +89,15 @@
     <Compile Include="Core\StringExtensions.cs" />
     <Compile Include="EngineObjects\EngineObject.cs" />
     <Compile Include="EngineObjects\GameConstants\Behaviour\AbilityEffectData.cs" />
+    <Compile Include="EngineObjects\GameConstants\Behaviour\BountyAwardData.cs" />
+    <Compile Include="EngineObjects\GameConstants\Behaviour\CorruptionData.cs" />
     <Compile Include="EngineObjects\GameConstants\Behaviour\GalacticGuiUnitAbilityData.cs" />
     <Compile Include="EngineObjects\GameConstants\Engine\AiData.cs" />
     <Compile Include="EngineObjects\GameConstants\Engine\AutoResolveData.cs" />
     <Compile Include="EngineObjects\GameConstants\Engine\DebugHotKeyLoadData.cs" />
     <Compile Include="EngineObjects\GameConstants\Engine\MultiplayerData.cs" />
     <Compile Include="EngineObjects\GameConstants\Engine\PathFindingMovementData.cs" />
+    <Compile Include="EngineObjects\GameConstants\GUI\CommandBarGuiData.cs" />
     <Compile Include="EngineObjects\GameConstants\GUI\EncyclopediaConstants.cs" />
     <Compile Include="EngineObjects\GameConstants\GUI\FowData.cs" />
     <Compile Include="EngineObjects\GameConstants\Behaviour\GalacticEconomyData.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="EngineObjects\GameConstants\GUI\GuiGameConstantsData.cs" />
     <Compile Include="EngineObjects\GameConstants\GUI\LocalizationData.cs" />
     <Compile Include="EngineObjects\GameConstants\Objects\BeamAbilityData.cs" />
+    <Compile Include="EngineObjects\GameConstants\Objects\BombardmentData.cs" />
     <Compile Include="EngineObjects\GameConstants\Objects\DamageArmorMatrixData.cs" />
     <Compile Include="EngineObjects\GameConstants\Objects\GameObjectConstantData.cs" />
     <Compile Include="EngineObjects\GameConstants\Objects\HardPointData.cs" />
