@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="EngineObject.cs" />
     <Compile Include="GameConstants\Behaviour\AbilityEffectData.cs" />
+    <Compile Include="GameConstants\Behaviour\BehaviourGameConstantsData.cs" />
     <Compile Include="GameConstants\Behaviour\BountyAwardData.cs" />
     <Compile Include="GameConstants\Behaviour\CorruptionData.cs" />
     <Compile Include="GameConstants\Behaviour\GalacticEconomyData.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="GameConstants\Engine\AiData.cs" />
     <Compile Include="GameConstants\Engine\AutoResolveData.cs" />
     <Compile Include="GameConstants\Engine\DebugHotKeyLoadData.cs" />
+    <Compile Include="GameConstants\Engine\EngineGameConstantsData.cs" />
     <Compile Include="GameConstants\Engine\GalacticModeCamera.cs" />
     <Compile Include="GameConstants\Engine\GameScrollData.cs" />
     <Compile Include="GameConstants\Engine\MultiplayerData.cs" />
@@ -62,12 +64,14 @@
     <Compile Include="GameConstants\GUI\FowData.cs" />
     <Compile Include="GameConstants\GUI\GameCreditsData.cs" />
     <Compile Include="GameConstants\GUI\GameTypographyData.cs" />
+    <Compile Include="GameConstants\GUI\GeneralGuiData.cs" />
     <Compile Include="GameConstants\GUI\GuiGameConstantsData.cs" />
     <Compile Include="GameConstants\GUI\LocalizationData.cs" />
     <Compile Include="GameConstants\Objects\BeamAbilityData.cs" />
     <Compile Include="GameConstants\Objects\BombardmentData.cs" />
     <Compile Include="GameConstants\Objects\DamageArmorMatrixData.cs" />
-    <Compile Include="GameConstants\Objects\GameObjectConstantData.cs" />
+    <Compile Include="GameConstants\Objects\GameObjectsConstantsData.cs" />
+    <Compile Include="GameConstants\Objects\GeneralObjectData.cs" />
     <Compile Include="GameConstants\Objects\HardPointData.cs" />
     <Compile Include="GameConstants\Objects\ObjectMultiplierData.cs" />
     <Compile Include="GameConstants\Objects\PlanetAbilityData.cs" />

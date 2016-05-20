@@ -9,9 +9,9 @@ using AlomoEngine.Xml;
 namespace AlomoEngine.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GameObjectConstantData : EngineObject
+    public class GeneralObjectData : EngineObject
     {
-        public GameObjectConstantData(IGameXmlFile parent) : base(parent) {}
+        public GeneralObjectData(IGameXmlFile parent) : base(parent) {}
 
         public EngineStringTupel Unit_Command_Rankings_By_Category { get; set; }
 

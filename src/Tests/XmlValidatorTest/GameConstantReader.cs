@@ -26,9 +26,9 @@ namespace XmlValidatorTest
         [TestMethod]
         public void CorrectDataFill()
         {
-            Assert.AreEqual(5, Gc.DebugHotKeyLoadData.Debug_Hot_Key_Load_Map.Count);
-            Assert.AreEqual(1, Gc.DebugHotKeyLoadData.Debug_Hot_Key_Load_Campaign.Count);
-            Assert.AreEqual(4, Gc.DebugHotKeyLoadData.Debug_Hot_Key_Load_Map_Script.Count);
+            Assert.AreEqual(5, Gc.EngineGameConstantsData.DebugHotKeyLoadData.Debug_Hot_Key_Load_Map.Count);
+            Assert.AreEqual(1, Gc.EngineGameConstantsData.DebugHotKeyLoadData.Debug_Hot_Key_Load_Campaign.Count);
+            Assert.AreEqual(4, Gc.EngineGameConstantsData.DebugHotKeyLoadData.Debug_Hot_Key_Load_Map_Script.Count);
             Assert.IsTrue(Gc.GameConstantsData.Strategic_Queue_Tactical_Battles);
         }
     }
