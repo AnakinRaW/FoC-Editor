@@ -1,971 +1,786 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			xmlns:engine="http://alomo-engine.org/elements">
+
+  <xs:import namespace="http://alomo-engine.org/elements" schemaLocation="GlobalEngineElemetns.xsd" />
+
   <xs:element name="GameConstants">
     <xs:complexType>
-      <xs:choice maxOccurs="1" minOccurs="1">
-        <xs:element type="xs:string" name="Debug_Hot_Key_Load_Map"/>
-        <xs:element type="xs:string" name="Debug_Hot_Key_Load_Map_Script"/>
-        <xs:element type="xs:string" name="Debug_Hot_Key_Load_Campaign"/>
-		
-        <xs:element type="engine:EngineBoolean" name="Strategic_Queue_Tactical_Battles"/>
-		
-        <xs:element type="xs:float" name="Object_Max_Speed_Multiplier_Galactic"/>
-        <xs:element type="xs:float" name="Object_Max_Speed_Multiplier_Space"/>
-        <xs:element type="xs:float" name="Object_Max_Speed_Multiplier_Land"/>
-        <xs:element type="xs:float" name="Object_Max_Health_Multiplier_Space"/>
-        <xs:element type="xs:float" name="Object_Max_Health_Multiplier_Land"/>
-		
-        <xs:element type="engine:EngineBoolean" name="Use_Neutral_UI_Color"/>
-        <xs:element type="engine:ARGB" name="Neutral_UI_Color"/>
-        <xs:element type="xs:float" name="Default_Defense_Adjust"/>
-        <xs:element type="xs:float" name="Production_Speed_Factor"/>
-        <xs:element type="xs:string" name="Player_Color"/>
-        <xs:element type="xs:string" name="Enemy_Color"/>
-        <xs:element type="xs:float" name="Elevated_Vulnerability_Duration">
-          <xs:annotation>
-            <xs:documentation>Units are more vulnerable right after being unloaded... time is in Seconds</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Elevated_Vulnerability_Factor"/>
-        <xs:element type="xs:float" name="Space_Elevated_Vulnerability_Duration"/>
-        <xs:element type="xs:float" name="Space_Elevated_Vulnerability_Factor"/>
-        <xs:element type="xs:string" name="Fleet_Movement_Line_Texture_Name"/>
-        <xs:element type="xs:string" name="Fleet_Hyperspace_Band_Texture_Name"/>
-        <xs:element type="xs:string" name="WaypointLineTextureName"/>
-        <xs:element type="xs:string" name="LoopWaypointLineTextureName"/>
-        <xs:element type="xs:string" name="WaypointFlagModelName"/>
-        <xs:element type="xs:float" name="Fleet_Maintenance_Update_Delay_Seconds"/>
-        <xs:element type="xs:float" name="Space_Auto_Resolve_Delay_Seconds"/>
-        <xs:element type="xs:float" name="Land_Auto_Resolve_Delay_Seconds"/>
-        <xs:element type="xs:byte" name="Political_Control_Change_Time_Seconds"/>
-        <xs:element type="xs:float" name="Melee_Cutoff_Range"/>
-        <xs:element type="xs:byte" name="Tactical_Edge_Scroll_Region">
-          <xs:annotation>
-            <xs:documentation>Edge scrolling for tactical modes</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:short" name="Tactical_Max_Scroll_Speed"/>
-        <xs:element type="xs:short" name="Tactical_Min_Scroll_Speed"/>
-        <xs:element type="xs:byte" name="Tactical_Offscreen_Scroll_Region"/>
-        <xs:element type="xs:byte" name="Strategic_Edge_Scroll_Region">
-          <xs:annotation>
-            <xs:documentation>Edge scrolling for strategic mode</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:short" name="Strategic_Max_Scroll_Speed"/>
-        <xs:element type="xs:byte" name="Strategic_Min_Scroll_Speed">
-          <xs:annotation>
-            <xs:documentation>800</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:byte" name="Strategic_Offscreen_Scroll_Region"/>
-        <xs:element type="xs:float" name="Push_Scroll_Speed_Modifier"/>
-        <xs:element type="xs:float" name="Scroll_Deceleration_Factor">
-          <xs:annotation>
-            <xs:documentation>Acceleration on scrolling. The higher the number, the less acceleration will be evident</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Scroll_Acceleration_Factor"/>
-        <xs:element type="xs:string" name="Pay_As_You_Go">
-          <xs:annotation>
-            <xs:documentation>Galactic Economy Data</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Political_Income_Curve">
-          <xs:annotation>
-            <xs:documentation>AJA 9/28/2005 - Disabling increased income per base level.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Progressive_Taxation"/>
-        <xs:element type="xs:float" name="Income_Redistribution"/>
-        <xs:element type="xs:float" name="Credit_Cap_Per_Planet">
-          <xs:annotation>
-            <xs:documentation>No player can ever accumulate more than this number of credits times the number of planets he controls.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Multiplayer_Losing_Team_Bonus_Credit_Percentage">
-          <xs:annotation>
-            <xs:documentation>In tactical multiplayer games, the team with the lower total credit income will share
-	a "bonus" amount of credits every tick based on the difference in total credit income between
-	the two teams times this percentage multiplier:</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Fiscal_Cycle_Time_In_Secs">
-          <xs:annotation>
-            <xs:documentation><![CDATA[no redistribution, simple base income 
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element type="xs:string" name="Debug_Hot_Key_Load_Map" />
+        <xs:element type="xs:string" name="Debug_Hot_Key_Load_Map_Script" />
+        <xs:element type="xs:string" name="Debug_Hot_Key_Load_Campaign" />
 
-	<Political_Income_Curve>0,1, 1,1, 5,1</Political_Income_Curve>
-	<Progressive_Taxation>1,0, 2,0, 5,0, 10,0, 20,0, 30,0</Progressive_Taxation>
-	<Income_Redistribution>0.0</Income_Redistribution>]]></xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:byte" name="Medium_Coin_Stack_Size"/>
-        <xs:element type="xs:short" name="Large_Coin_Stack_Size"/>
-        <xs:element type="xs:float" name="Black_Market_Income_Mult_Min"/>
-        <xs:element type="xs:float" name="Black_Market_Income_Mult_Max">
-          <xs:annotation>
-            <xs:documentation>AJA 09/30/2005 - Removing negative factor from Black Market planetary effect</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:byte" name="Num_Structures_For_Medium_Planet_Name"/>
-        <xs:element type="xs:byte" name="Num_Structures_For_Large_Planet_Name"/>
-        <xs:element type="xs:string" name="Corruption_Particle_Name">
-          <xs:annotation>
-            <xs:documentation>Planetary Corruption Constants</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Corruption_Particle_Line_Name"/>
-        <xs:element type="xs:string" name="Particle_Brightness_Per_Corruption_Level"/>
-        <xs:element type="xs:string" name="Particle_Scale_Per_Corruption_Level"/>
-        <xs:element type="xs:string" name="Particle_Energy_Per_Corruption_Level"/>
-        <xs:element type="xs:float" name="Corruption_Line_Radius"/>
-        <xs:element type="xs:float" name="Corruption_Line_Start_End_Offset"/>
-        <xs:element type="xs:float" name="Corruption_Line_Grow_Seconds"/>
-        <xs:element type="xs:string" name="Corruption_Path_Color"/>
-        <xs:element type="xs:byte" name="Corruption_Path_Width"/>
-        <xs:element type="xs:string" name="Corruption_Path_Offset"/>
-        <xs:element type="xs:float" name="GMC_InitialPitchAngleDegrees">
-          <xs:annotation>
-            <xs:documentation>GMC - Galactic Mode camera 3D galaxy map settings</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="GMC_ZoomedPitchAngleDegrees"/>
-        <xs:element type="xs:float" name="GMC_InitialPullbackDistance"/>
-        <xs:element type="xs:float" name="GMC_ZoomedPullbackPlanetRadiusFraction"/>
-        <xs:element type="xs:string" name="GMC_ZoomedPositionOffsetPlanetRadiusFractions"/>
-        <xs:element type="xs:float" name="GMC_ZoomTime"/>
-        <xs:element type="xs:float" name="GMC_Battle_Zoom_Time"/>
-        <xs:element type="xs:float" name="GMC_Battle_Fade_Time"/>
-        <xs:element type="xs:float" name="Galactic_Right_Button_Scroll_Speed_Factor"/>
-        <xs:element type="xs:float" name="Galactic_Scroll_Plane"/>
-        <xs:element type="xs:string" name="GUI_Move_Command_Ack_Effect"/>
-        <xs:element type="xs:string" name="GUI_Double_Click_Move_Command_Ack_Effect"/>
-        <xs:element type="xs:string" name="GUI_Attack_Move_Command_Ack_Effect"/>
-        <xs:element type="xs:string" name="GUI_Guard_Move_Command_Ack_Effect"/>
-        <xs:element type="xs:string" name="GUI_Attack_Movement_Click_Radar_Event_Name"/>
-        <xs:element type="xs:string" name="GUI_Movement_Click_Radar_Event_Name"/>
-        <xs:element type="xs:string" name="GUI_Movement_Double_Click_Radar_Event_Name"/>
-        <xs:element type="xs:float" name="GUI_Move_Acknowledge_Scale_Land"/>
-        <xs:element type="xs:float" name="GUI_Move_Acknowledge_Scale_Space"/>
-        <xs:element type="xs:float" name="MaximumPoliticalControl"/>
-        <xs:element type="xs:float" name="MaximumStarbaseLevel"/>
-        <xs:element type="xs:float" name="MaximumGroundbaseLevel"/>
-        <xs:element type="xs:float" name="MaximumSpecialStructures"/>
-        <xs:element type="xs:float" name="MaximumSpecialStructuresLand"/>
-        <xs:element type="xs:float" name="MaximumSpecialStructuresSpace"/>
-        <xs:element type="xs:float" name="MaximumFleetMovementDistance"/>
-        <xs:element type="xs:float" name="TradeRouteMovementFactor"/>
-        <xs:element type="xs:short" name="Tooltip_Delay"/>
-        <xs:element type="xs:short" name="Encyclopedia_Delay"/>
-        <xs:element type="xs:short" name="Long_Encyclopedia_Delay"/>
-        <xs:element type="xs:byte" name="Text_Reveal_Rate"/>
-        <xs:element type="xs:float" name="Japanese_Line_Percent"/>
-        <xs:element type="xs:float" name="Japanese_ST_Line_Percent"/>
-        <xs:element type="xs:string" name="AIUsesFogOfWarGalactic"/>
-        <xs:element type="xs:string" name="AIUsesFogOfWarSpace"/>
-        <xs:element type="xs:string" name="AIUsesFogOfWarLand"/>
-        <xs:element type="xs:string" name="SetupPhaseEnabled"/>
-        <xs:element type="xs:string" name="ShowUnitAIPlanAttachment"/>
-        <xs:element type="xs:float" name="AITechLevelProductionTimeWeight"/>
-        <xs:element type="xs:string" name="AlwaysBypassAutoResolve">
-          <xs:annotation>
-            <xs:documentation>Default is NO. Set to YES to always engage in tactical battles and skip auto-resolve battles (even instant overrrun ones).  This is for the late February 2005 consumer test demo</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="AutomaticAutoResolve"/>
-        <xs:element type="xs:float" name="AutoResolveAttritionAllowanceFactor"/>
-        <xs:element type="xs:float" name="AutoResolveTransportLosses"/>
-        <xs:element type="xs:float" name="AutoResolveDisplayTime"/>
-        <xs:element type="xs:string" name="AutoResolveVoteDefaultToTactical"/>
-        <xs:element type="xs:byte" name="AutoResolveVoteDefaultTimeOut"/>
-        <xs:element type="xs:float" name="RetreatAutoResolveLoserAttrition"/>
-        <xs:element type="xs:float" name="RetreatAutoResolveWinnerAttrition"/>
-        <xs:element type="xs:float" name="AutoResolveLoserAttrition"/>
-        <xs:element type="xs:float" name="AutoResolveWinnerAttrition"/>
-        <xs:element type="xs:float" name="Minimum_Tactical_Overrun_Time_In_Secs"/>
-        <xs:element type="xs:string" name="Tactical_Overrun_Multiple"/>
-        <xs:element type="xs:float" name="Space_Retreat_Allowed_Countdown_Seconds">
-          <xs:annotation>
-            <xs:documentation>Permanently reveals FOW when X-1 odds reached. -	&lt;Overrun_Auto_Resolve_Multiple>8.0f&lt;/Overrun_Auto_Resolve_Multiple>   Comment out to disable overrun auto-resolve  How long to countdown before a tactical retreat is allowed</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Land_Retreat_Allowed_Countdown_Seconds"/>
-        <xs:element type="xs:float" name="Space_Capture_Allowed_Countdown_Seconds">
-          <xs:annotation>
-            <xs:documentation>How long to countdown before objects become captureable</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Land_Capture_Allowed_Countdown_Seconds"/>
-        <xs:element type="xs:float" name="GripperCombatGridSnapDistance"/>
-        <xs:element type="xs:string" name="PlayModeSwitchMovies"/>
-        <xs:element type="xs:float" name="MaxInfluenceTransitionAlignmentBonus"/>
-        <xs:element type="xs:float" name="MaxInfluenceTransitionAlignmentPenalty"/>
-        <xs:element type="xs:float" name="MaxCreditIncomeAlignmentBonus"/>
-        <xs:element type="xs:float" name="MaxCreditIncomeAlignmentPenalty"/>
-        <xs:element type="xs:float" name="MaxCombatAccuracyAlignmentBonus"/>
-        <xs:element type="xs:float" name="MaxCombatDamageAlignmentBonus"/>
-        <xs:element type="xs:float" name="MaxCombatSensorRangeAlignmentBonus"/>
-        <xs:element type="xs:byte" name="Max_Galactic_Zoom_Distance">
-          <xs:annotation>
-            <xs:documentation>Galactic Mode camera settings</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:short" name="Min_Galactic_Zoom_Speed"/>
-        <xs:element type="xs:short" name="Max_Galactic_Zoom_Speed"/>
-        <xs:element type="xs:short" name="Galactic_Zoom_Acceleration"/>
-        <xs:element type="xs:float" name="Galactic_Zoom_Light_Level"/>
-        <xs:element type="xs:string" name="Galactic_Zoom_In_Light_Angle"/>
-        <xs:element type="xs:string" name="Galactic_Zoom_Out_Light_Angle"/>
-        <xs:element type="xs:string" name="Galactic_Zoom_In_Station_Offset"/>
-        <xs:element type="xs:float" name="Galactic_Zoom_In_Station_Rotation"/>
-        <xs:element type="xs:string" name="Starting_Galactic_Camera_Position"/>
-        <xs:element type="xs:string" name="Camera_Stop_Left"/>
-        <xs:element type="xs:string" name="Camera_Stop_Right"/>
-        <xs:element type="xs:float" name="Camera_Z_Position"/>
-        <xs:element type="xs:string" name="Credits_Display_Font_Name">
-          <xs:annotation>
-            <xs:documentation>Display of game monetary credits balance</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Credits_Display_Font_Size"/>
-        <xs:element type="xs:string" name="Random_Story_Triggers">
-          <xs:annotation>
-            <xs:documentation>Random story generation</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:byte" name="Random_Story_Max_Triggers"/>
-        <xs:element type="xs:string" name="Random_Story_Rebel_Construction"/>
-        <xs:element type="xs:string" name="Random_Story_Empire_Construction"/>
-        <xs:element type="xs:string" name="Random_Story_Rebel_Destroy"/>
-        <xs:element type="xs:string" name="Random_Story_Empire_Destroy"/>
-        <xs:element type="xs:string" name="Random_Story_Rewards"/>
-        <xs:element type="xs:string" name="Random_Story_Reward_Rebel_Buildable"/>
-        <xs:element type="xs:string" name="Random_Story_Reward_Empire_Buildable"/>
-        <xs:element type="xs:string" name="Random_Story_Reward_Rebel_Unit"/>
-        <xs:element type="xs:string" name="Random_Story_Reward_Empire_Unit"/>
-        <xs:element type="xs:string" name="Space_Tactical_Camera_Locked">
-          <xs:annotation>
-            <xs:documentation>Tactical camera overrides</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Land_Tactical_Camera_Locked">
-          <xs:annotation>
-            <xs:documentation>True for default, Can be False for demo purposes, but not reccomended since locked mode is already quite free</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="ShieldRechargeIntervalInSecs">
-          <xs:annotation>
-            <xs:documentation>True for default, Can be False for demo purposes  Shields and Power Recharge</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="EnergyRechargeIntervalInSecs"/>
-        <xs:element type="xs:float" name="EnergyToShieldExchangeRate"/>
-        <xs:element type="xs:float" name="HardPoint_Target_Reticle_Enemy_Screen_Size">
-          <xs:annotation>
-            <xs:documentation>Hard Point Friendly and Ememy Reticle Textures by Hard Point Type</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="HardPoint_Target_Reticle_Friendly_Screen_Size"/>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Enemy_Texture">
-          <xs:annotation>
-            <xs:documentation></xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Enemy_Tracked_Texture"/>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Texture"/>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Tracked_Texture"/>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Repairing_Texture"/>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Disabled_Texture"/>
-        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Disabled_Tracked_Texture">
-          <xs:annotation>
-            <xs:documentation></xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:byte" name="Terrain_Resurface_Rand">
-          <xs:annotation>
-            <xs:documentation>End Hard Point Friendly and Ememy Reticle Textures by Hard Point Type</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Terrain_Resurface_Tolerance"/>
-        <xs:element type="xs:float" name="Max_Ground_Forces_On_Planet"/>
-        <xs:element type="xs:float" name="Allow_Reinforcement_Percentage_Normalized">
-          <xs:annotation>
-            <xs:documentation>UNUSED - unit cap is now per faction in Factions.xml
-	&lt;Space_Tactical_Unit_Cap>40&lt;/Space_Tactical_Unit_Cap></xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Default_Hero_Respawn_Time"/>
-        <xs:element type="xs:string" name="LandFOWColor"/>
-        <xs:element type="xs:string" name="SpaceFOWColor"/>
-        <xs:element type="xs:string" name="SpaceReinforceFOWColor"/>
-        <xs:element type="xs:string" name="SetupPhaseFOWColor"/>
-        <xs:element type="xs:string" name="SetupPhaseInvalidDragColor"/>
-        <xs:element type="xs:float" name="SpaceFOWHeight"/>
-        <xs:element type="xs:byte" name="SetupPhaseCountdownSeconds"/>
-        <xs:element type="xs:float" name="DesiredLandFOWCellSize"/>
-        <xs:element type="xs:float" name="DesiredSpaceFOWCellSize"/>
-        <xs:element type="xs:float" name="LandFOWRegrowTime"/>
-        <xs:element type="xs:float" name="SpaceFOWRegrowTime"/>
-        <xs:element type="xs:string" name="SpaceReinforceFeedbackOnlyWhileDragging"/>
-        <xs:element type="xs:string" name="Game_Scoring_Script_Name"/>
-        <xs:element type="xs:short" name="Water_Render_Target_Resolution"/>
-        <xs:element type="xs:float" name="Water_Clip_Plane_Offset"/>
-        <xs:element type="xs:string" name="Occlusion_Silhouettes_Enabled"/>
-        <xs:element type="xs:float" name="Laser_Beam_Z_Scale_Factor"/>
-        <xs:element type="xs:float" name="Laser_Kite_Z_Scale_Factor"/>
-        <xs:element type="xs:float" name="Mouse_Over_Highlight_Scale"/>
-        <xs:element type="xs:float" name="AI_SpaceEvaluatorRegionSize"/>
-        <xs:element type="xs:float" name="AI_LandEvaluatorRegionSize"/>
-        <xs:element type="xs:float" name="AI_SpaceThreatDistanceFactor"/>
-        <xs:element type="xs:float" name="AI_LandThreatDistanceFactor"/>
-        <xs:element type="xs:float" name="AI_SpaceThreatTurnRateFactor"/>
-        <xs:element type="xs:float" name="AI_LandThreatTurnRateFactor"/>
-        <xs:element type="xs:float" name="AI_SpaceAreaThreatScaleFactor"/>
-        <xs:element type="xs:float" name="AI_LandAreaThreatScaleFactor"/>
-        <xs:element type="xs:float" name="AI_SpaceThreatLookAheadTime"/>
-        <xs:element type="xs:float" name="AI_LandThreatLookAheadTime"/>
-        <xs:element type="xs:byte" name="AI_FogCellsPerThreatCell"/>
-        <xs:element type="xs:float" name="AI_SpaceThreatDecayStep">
-          <xs:annotation>
-            <xs:documentation>Every tick (currently 5 seconds), subtract this % of shields + health from threat tracking on each unit.
-	Note that this serves for Land threat decay as well.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="AI_BuildTaskReservationSeconds"/>
-        <xs:element type="xs:float" name="MinimumDragSelectDistance"/>
-        <xs:element type="xs:float" name="MinimumDragDistance"/>
-        <xs:element type="xs:float" name="GUI_Flash_Level"/>
-        <xs:element type="xs:float" name="GUI_Flash_Duration"/>
-        <xs:element type="xs:float" name="GUI_Rapid_Flash_Duration"/>
-        <xs:element type="xs:byte" name="GUI_Cycle_Speed"/>
-        <xs:element type="xs:float" name="GUI_Darken_Level"/>
-        <xs:element type="xs:string" name="GUI_Cycle_Color"/>
-        <xs:element type="xs:float" name="GUI_Hilite_Level"/>
-        <xs:element type="xs:float" name="GUI_Planet_Flash_Level"/>
-        <xs:element type="xs:float" name="GUI_Planet_Fade_Duration"/>
-        <xs:element type="xs:string" name="CB_Flash_Duration"/>
-        <xs:element type="xs:byte" name="CB_Flash_Count"/>
-        <xs:element type="xs:string" name="Good_Side_Name"/>
-        <xs:element type="xs:string" name="Evil_Side_Name"/>
-        <xs:element type="xs:string" name="Corrupt_Side_Name"/>
-        <xs:element type="xs:string" name="Good_Side_Leader_Name"/>
-        <xs:element type="xs:string" name="Evil_Side_Leader_Name"/>
-        <xs:element type="xs:string" name="Corrupt_Side_Leader_Name"/>
-        <xs:element type="xs:byte" name="Ships_Per_Stack"/>
-        <xs:element type="xs:byte" name="Encyclopedia_Population_Offset"/>
-        <xs:element type="xs:byte" name="Encyclopedia_Name_Offset"/>
-        <xs:element type="xs:short" name="Encyclopedia_Cost_Offset"/>
-        <xs:element type="xs:byte" name="Encyclopedia_Icon_X_Offset"/>
-        <xs:element type="xs:byte" name="Encyclopedia_Icon_Y_Offset"/>
-        <xs:element type="xs:byte" name="Encyclopedia_Class_Y_Offset"/>
-        <xs:element type="xs:float" name="Encyclopedia_Fade_Rate"/>
-        <xs:element type="xs:float" name="Encyclopedia_Min_Display_Time"/>
-        <xs:element type="xs:float" name="Min_Accuracy_For_Icon"/>
-        <xs:element type="xs:float" name="Min_Sight_Range_For_Icon"/>
-        <xs:element type="xs:string" name="Left_Queue_Tint"/>
-        <xs:element type="xs:string" name="Right_Queue_Tint"/>
-        <xs:element type="xs:byte" name="Icons_Per_Column"/>
-        <xs:element type="xs:string" name="Hint_Text_Color"/>
-        <xs:element type="xs:string" name="System_Text_Color"/>
-        <xs:element type="xs:string" name="Task_Text_Color"/>
-        <xs:element type="xs:string" name="Speech_Text_Color"/>
-        <xs:element type="xs:string" name="CB_Movie_Offset"/>
-        <xs:element type="xs:string" name="CB_Movie_Color"/>
-        <xs:element type="xs:float" name="GUI_Tactical_Countdown_Timers_Screen_X">
-          <xs:annotation>
-            <xs:documentation>Top left positions of vertical countdown timers list - like production, retreat, death star range,  Note: There could be mutliple timers simultaneously in a vertical list</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="GUI_Tactical_Countdown_Timers_Screen_Y"/>
-        <xs:element type="xs:float" name="GUI_Tactical_Countdown_Timers_Screen_Spacing"/>
-        <xs:element type="xs:float" name="GUI_Strategic_Countdown_Timers_Screen_X"/>
-        <xs:element type="xs:float" name="GUI_Strategic_Countdown_Timers_Screen_Y"/>
-        <xs:element type="xs:float" name="GUI_Strategic_Countdown_Timers_Screen_Spacing"/>
-        <xs:element type="xs:short" name="BeaconPlaceDelay"/>
-        <xs:element type="xs:float" name="WaypointLineLandDashLength"/>
-        <xs:element type="xs:float" name="WaypointLineLandGapLength"/>
-        <xs:element type="xs:float" name="WaypointLineLandDashVelocity"/>
-        <xs:element type="xs:float" name="MaxWaypointsPerPath"/>
-        <xs:element type="xs:byte" name="Asteroid_Field_Damage">
-          <xs:annotation>
-            <xs:documentation>Asteroid Field</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Asteroid_Field_Damage_Rate"/>
-        <xs:element type="xs:float" name="SpacePathfindMaxExpansions">
-          <xs:annotation>
-            <xs:documentation>Probability the damage is applied in each frame, [0..1] Pathfinding and Movement</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="CurrentPathCostCoefficientSpace"/>
-        <xs:element type="xs:float" name="SpacePathfindFrameDelayDelta"/>
-        <xs:element type="xs:float" name="SpacePathFailureDistanceCutoffCoefficient"/>
-        <xs:element type="xs:float" name="SpacePathFailureMaxExpansionsCoefficient"/>
-        <xs:element type="xs:float" name="SpacePathFailureRotationExpansionIncrement"/>
-        <xs:element type="xs:float" name="SpacePathFailureForwardExpansionIncrement"/>
-        <xs:element type="xs:float" name="SpacePathingTries"/>
-        <xs:element type="xs:float" name="SpaceStaticObstacleAvoidanceBonusDistance"/>
-        <xs:element type="xs:float" name="MinObstacleCostSpace"/>
-        <xs:element type="xs:float" name="MaxObstacleCostSpace"/>
-        <xs:element type="xs:float" name="ObstacleAreaOverlapForMaxSpace"/>
-        <xs:element type="xs:float" name="XYExpansionDistanceSpace"/>
-        <xs:element type="xs:float" name="MaxRotationsSpace"/>
-        <xs:element type="xs:float" name="MatchFacingDeltaSpace"/>
-        <xs:element type="xs:float" name="OccupationRadiusCoefficientSpace"/>
-        <xs:element type="xs:float" name="DestinationSearchRadiusIncrementSpace"/>
-        <xs:element type="xs:string" name="UseLinearCollisionChecks"/>
-        <xs:element type="xs:float" name="WaitOperatorCostCoefficient"/>
-        <xs:element type="xs:float" name="WaitOperatorBaseFrameTime"/>
-        <xs:element type="xs:float" name="WaitOperatorSpeedCoefficient"/>
-        <xs:element type="xs:float" name="LandWaitOperatorSpeedCoefficient"/>
-        <xs:element type="xs:float" name="SpaceLocomotorFacingLookaheadAcc"/>
-        <xs:element type="xs:float" name="FinalFacing180Penalty"/>
-        <xs:element type="xs:float" name="SpecialAlignedOperatorBonus"/>
-        <xs:element type="xs:float" name="ThreatExpansionDistance"/>
-        <xs:element type="xs:float" name="OffMapCostPenalty"/>
-        <xs:element type="xs:float" name="MaxLandFormationFormupFrames"/>
-        <xs:element type="xs:float" name="SpaceObjectTrackingInterval"/>
-        <xs:element type="xs:float" name="SpaceObjectTrackingTreeCount"/>
-        <xs:element type="xs:string" name="ShouldDisplayPredictionPaths"/>
-        <xs:element type="xs:string" name="ShouldDisplaySyncedPaths"/>
-        <xs:element type="xs:float" name="SyncedFrameInterval"/>
-        <xs:element type="xs:float" name="LandPredictionTimeInterval"/>
-        <xs:element type="xs:float" name="RepushDistance"/>
-        <xs:element type="xs:float" name="MinLandPredictionDistance"/>
-        <xs:element type="xs:string" name="ShouldSkipLandFormup"/>
-        <xs:element type="xs:string" name="ShouldInfantryTeamsSplitAcrossFormations"/>
-        <xs:element type="xs:float" name="VehicleFormationRecruitmentDistance"/>
-        <xs:element type="xs:float" name="InfantryFormationRecruitmentDistance"/>
-        <xs:element type="xs:float" name="CloseEnoughAngleForMoveStart"/>
-        <xs:element type="xs:float" name="DynamicObstacleOverlapPenalty"/>
-        <xs:element type="xs:float" name="DynamicAvoidanceRectangleBound"/>
-        <xs:element type="xs:string" name="ShouldDisplayPotentialPath"/>
-        <xs:element type="xs:float" name="TurnInPlaceSlowdownCorvette"/>
-        <xs:element type="xs:float" name="TurnInPlaceSlowdownFrigate"/>
-        <xs:element type="xs:float" name="TurnInPlaceSlowdownCapital"/>
-        <xs:element type="xs:float" name="FormationMinimumSideError"/>
-        <xs:element type="xs:float" name="FormationMaximumSideError"/>
-        <xs:element type="xs:float" name="ApproximationSmoothCosAngle"/>
-        <xs:element type="xs:float" name="ApproximationForwardDistance"/>
-        <xs:element type="xs:float" name="MinimumStoppedVsStoppedOverlapCoefficient"/>
-        <xs:element type="xs:float" name="MovingVsMovingLookAheadTime"/>
-        <xs:element type="xs:float" name="LandTemporaryDestinationProximity"/>
-        <xs:element type="xs:float" name="LandDestinationProximity"/>
-        <xs:element type="xs:float" name="BetweenFormationSpacing"/>
-        <xs:element type="xs:float" name="Destination_Collision_Query_Extension"/>
-        <xs:element type="xs:byte" name="FramesPerPositionApproximationRebuild"/>
-        <xs:element type="xs:float" name="FramesPerCollisionCheck"/>
-        <xs:element type="xs:float" name="MovementReevaluationFrameCount">
-          <xs:annotation>
-            <xs:documentation>each object only checks for pathfind collisions every 'n' frames</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="DynamicLandComplexityQuota"/>
-        <xs:element type="xs:float" name="DynamicLandQuotaResetInterval"/>
-        <xs:element type="xs:float" name="FinalFormationFacingMinimumAngle"/>
-        <xs:element type="xs:float" name="FinalFormationFacingDeltaCoefficient"/>
-        <xs:element type="xs:float" name="WalkAnimationCutoff"/>
-        <xs:element type="xs:float" name="DoubleClickMoveMaxSpeedRatio"/>
-        <xs:element type="xs:float" name="Fleeing_Infantry_Speed_Bonus"/>
-        <xs:element type="xs:float" name="IdleWalkBlendTime"/>
-        <xs:element type="xs:float" name="CrouchIdleWalkBlendTime"/>
-        <xs:element type="xs:float" name="MoveBlendTime"/>
-        <xs:element type="xs:float" name="CrouchMoveBlendTime"/>
-        <xs:element type="xs:float" name="TeamMoveBlendTime"/>
-        <xs:element type="xs:float" name="TeamCrouchMoveBlendTime"/>
-        <xs:element type="xs:float" name="InfantryTurnBlendTime"/>
-        <xs:element type="xs:float" name="Map_Preview_Image_Size"/>
-        <xs:element type="xs:string" name="Countdowns_Font_Name"/>
-        <xs:element type="xs:byte" name="Countdowns_Font_Size"/>
-        <xs:element type="xs:string" name="In_Game_Message_Default_Font_Name"/>
-        <xs:element type="xs:byte" name="In_Game_Message_Default_Font_Size"/>
-        <xs:element type="xs:string" name="Event_Message_Default_Font_Name"/>
-        <xs:element type="xs:byte" name="Event_Message_Default_Font_Size"/>
-        <xs:element type="xs:string" name="Bink_Player_Caption_Font_Name"/>
-        <xs:element type="xs:byte" name="Bink_Player_Caption_Font_Size"/>
-        <xs:element type="xs:string" name="Tool_Tip_Font_Name"/>
-        <xs:element type="xs:byte" name="Tool_Tip_Font_Size"/>
-        <xs:element type="xs:string" name="Tool_Tip_Small_Font_Name"/>
-        <xs:element type="xs:byte" name="Tool_Tip_Small_Font_Size"/>
-        <xs:element type="xs:string" name="Command_Bar_Default_Font_Name"/>
-        <xs:element type="xs:byte" name="Command_Bar_Default_Font_Size"/>
-        <xs:element type="xs:string" name="Text_Button_Default_Font_Name"/>
-        <xs:element type="xs:byte" name="Text_Button_Default_Font_Size"/>
-        <xs:element type="xs:string" name="Game_Object_Name_Font_Name"/>
-        <xs:element type="xs:byte" name="Game_Object_Name_Font_Size"/>
-        <xs:element type="xs:string" name="Win_Message_Color">
-          <xs:annotation>
-            <xs:documentation>Win/Lose messages at the end of tactical</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Lose_Message_Color">
-          <xs:annotation>
-            <xs:documentation>Note: 255, 200, 120, 255 TAN is way too hard to read on Tattooine</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Win_Lose_Message_Font">
-          <xs:annotation>
-            <xs:documentation>Note: 255, 200, 120, 255 TAN is way too hard to read on Tattooine</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Win_Lose_Message_Font_Size">
-          <xs:annotation>
-            <xs:documentation>MBL: Had to reduce for enlarged message and localization - it will probably have to go multi-line or be even smaller still   &lt;Win_Lose_Message_Font_Size>36&lt;/Win_Lose_Message_Font_Size></xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Battle_Pending_Message_Font">
-          <xs:annotation>
-            <xs:documentation>Strategic Galactic Mode: Tactical battle pending message</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Battle_Pending_Message_Font_Size"/>
-        <xs:element type="xs:string" name="Battle_Pending_Message_Color"/>
-        <xs:element type="xs:float" name="Battle_Pending_Message_Pos_X"/>
-        <xs:element type="xs:float" name="Battle_Pending_Message_Pos_Y">
-          <xs:annotation>
-            <xs:documentation>-1 means center, 0.0+ means use position</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Control_Point_Domination_Victory_Time_In_Secs">
-          <xs:annotation>
-            <xs:documentation>Control Point Domination Victory Condition (Multiplayer Tactical): How long do you need to hold all control points before you win?</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Camera_FX_Manager_Letterbox_Height">
-          <xs:annotation>
-            <xs:documentation>Controls the height of each of the letter box bands done on cinematics as a percentage of the screen</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="LandObjectTrackingInterval">
-          <xs:annotation>
-            <xs:documentation>Land mode space-style pathfinding</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="LandObjectTrackingTreeCount"/>
-        <xs:element type="xs:float" name="MinObstacleCostLand"/>
-        <xs:element type="xs:float" name="MaxObstacleCostLand"/>
-        <xs:element type="xs:float" name="XYExpansionDistanceLand"/>
-        <xs:element type="xs:string" name="Shield_Flash_Scale">
-          <xs:annotation>
-            <xs:documentation>Shield flashing effect</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Shield_Flash_Duration"/>
-        <xs:element type="xs:float" name="Hull_Vs_Hard_Points_Health_Constraint">
-          <xs:annotation>
-            <xs:documentation>How closely to tie hull vs. hard point healths together in releation to one another</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Telekinesis_Hover_Height">
-          <xs:annotation>
-            <xs:documentation>An object being influenced by a telekinesis effect</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Telekinesis_Transition_Time"/>
-        <xs:element type="xs:float" name="Telekinesis_Wobble_Cycle_Time"/>
-        <xs:element type="xs:float" name="Telekinesis_Wobble_Fade_Time"/>
-        <xs:element type="xs:float" name="Telekinesis_Max_Wobble_Angle"/>
-        <xs:element type="xs:float" name="Telekinesis_Max_Bob_Height"/>
-        <xs:element type="xs:float" name="Earthquake_Transition_Time"/>
-        <xs:element type="xs:float" name="Earthquake_Shake_Speed"/>
-        <xs:element type="xs:string" name="Earthquake_Shake_Magnitude"/>
-        <xs:element type="xs:float" name="Low_Threat_Reachability_Tolerance">
-          <xs:annotation>
-            <xs:documentation>AI threat tolerances for the discrete land mode reachability levels</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Medium_Threat_Reachability_Tolerance"/>
-        <xs:element type="xs:float" name="High_Threat_Reachability_Tolerance"/>
-        <xs:element type="xs:string" name="Auto_Rotate_For_Space_Targeting"/>
-        <xs:element type="xs:string" name="In_Game_Cinematics"/>
-        <xs:element type="xs:string" name="Display_Bink_Movie_Frames"/>
-        <xs:element type="xs:float" name="Engines_Disabled_Speed_Modifier">
-          <xs:annotation>
-            <xs:documentation>Global speed modifier to everything with engines, and when they are destroyed</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Crouch_Move_Fire_Angle_Cutoff"/>
-        <xs:element type="xs:float" name="Max_Move_Frame_Delay"/>
-        <xs:element type="xs:float" name="Spread_Out_Spacing_Coefficient"/>
-        <xs:element type="xs:float" name="Max_Formation_Area"/>
-        <xs:element type="xs:float" name="Short_Range_Attack_Formation_Coefficient"/>
-        <xs:element type="xs:float" name="Solo_Attack_Range"/>
-        <xs:element type="xs:float" name="Base_Land_Targeting_Arc_Angle_Coefficient"/>
-        <xs:element type="xs:string" name="Rotate_Formation_Facing_Moves"/>
-        <xs:element type="xs:string" name="ShouldUseSpaceIdleMovement"/>
-        <xs:element type="xs:float" name="SpaceIdleMovementSpeed"/>
-        <xs:element type="xs:float" name="SpaceIdlePathCullCoefficient"/>
-        <xs:element type="xs:float" name="IdleMovementFrames"/>
-        <xs:element type="xs:string" name="ReinforcementOverlayGoodColor">
-          <xs:annotation>
-            <xs:documentation>Colors to use for the reinforcements terrain overlay (a,r,g,b)</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="ReinforcementOverlayBadColor"/>
-        <xs:element type="xs:float" name="Space_Retreat_Attrition_Factor">
-          <xs:annotation>
-            <xs:documentation>Per unit probability of destruction during a retreat</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Land_Retreat_Attrition_Factor"/>
-        <xs:element type="xs:float" name="Blockade_Run_Attrition_Factor"/>
-        <xs:element type="xs:float" name="Production_Speed_Mod_Base_Vs_Tech_0">
-          <xs:annotation>
-            <xs:documentation>Base level vs. object tech level build speed factor: 
-		  A higher level base should be able to build lower level items faster than a lower level base could. 
-		  For example, it should be quicker to build basic troopers on a level 5 base than on a level 1 base. 
-		  Follow these build-time value coefficients initially: Take base level and subtract tech level of item being built. 
-		  The difference, if positive, has the following effect: Difference 0 = 100%, difference 1 = 90%, difference 2 = 75%, 
-		  difference 3 = 55%, difference 4 = 45%. Thus a level 1 base, builds all objects at 100% listed speed. 
-		  A level 5 base builds tech level 1 items in 45% of the time it would take a level 1 base.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Production_Speed_Mod_Base_Vs_Tech_1">
-          <xs:annotation>
-            <xs:documentation>100% if difference (base level 1-5 minus tech level 0-5 - 1) is 0 or less</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Production_Speed_Mod_Base_Vs_Tech_2">
-          <xs:annotation>
-            <xs:documentation>90% if difference is 1</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Production_Speed_Mod_Base_Vs_Tech_3">
-          <xs:annotation>
-            <xs:documentation>75% if difference is 2</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Production_Speed_Mod_Base_Vs_Tech_4">
-          <xs:annotation>
-            <xs:documentation>55% if difference is 3</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Unit_Command_Rankings_By_Category">
-          <xs:annotation>
-            <xs:documentation>45% if difference is 4 or greater General set of filters for ranking (highest to lowest) for multiply selected units and command responses - like select, move, attack, guard, etc.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Space_Collidable_Grid_Cull_Size">
-          <xs:annotation>
-            <xs:documentation>Culling system constants</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Space_Large_Ship_Grid_Cull_Size"/>
-        <xs:element type="xs:string" name="Land_Collidable_Grid_Cull_Size"/>
-        <xs:element type="xs:string" name="Raid_Force_Required_Faction">
-          <xs:annotation>
-            <xs:documentation>Settings to define a "Raid Force" (ie. a land combat force that can bypass space combat)</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Raid_Force_Limited_Object_Category_Mask"/>
-        <xs:element type="xs:float" name="Raid_Force_Max_Limited_Objects"/>
-        <xs:element type="xs:float" name="Raid_Force_Max_Heros"/>
-        <xs:element type="xs:string" name="Raid_Force_Free_Object_Category_Mask"/>
-        <xs:element type="xs:float" name="Health_Low_Percent_Threshold">
-          <xs:annotation>
-            <xs:documentation>can have as many of these as you want  Subjective thresholds for unit health levels - used by game object type SFXEvent triggers</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Health_Critical_Percent_Threshold"/>
-        <xs:element type="xs:float" name="Under_Construction_Damage_Multiplier"/>
-        <xs:element type="xs:string" name="Damage_Types">
-          <xs:annotation>
-            <xs:documentation>ARMOR AND DAMAGE SECTION                                     DAMAGE TYPES to be applied against armor types for damage modifiers IMPORTANT NOTE: these will NOT WORK for special abilities and &lt;Damage_Clone>, &lt;Squash_Damage_Type> and 
-		 &lt;Internal_Damage_Type> tags. 
-		 If you want to create armor vs. damage logic for damge used in those tags, PLEASE come talk to me.
-		 I will have to add a new damage type IN CODE. (We have two different damage type systems, 
-		 and special abilities use the hard-coded one). See Damage_Wampa for example of this.
-		 -Oksana    PLEASE add your new damage types ABOVE this point.
-			 The damage types below are from hard-coded damage enumeration. You can specify Armor type for them if you want
-			 (and understand how and where these are applied).
-			 In the future, we will merge two system together, but for now we have to have this work-around. 
-			 -Oksana			 DO NOT ADD new damage types after this point</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Armor_Types">
-          <xs:annotation>
-            <xs:documentation>ARMOR TYPES that have damage types appliced to them for damage modifiers. These are armor categories for baseline units.
-			  if a unit is "like" an existing one as far as armor (rps) is concerned, then you can reuse the category. To make a 
-			  unit tougher or weaker, change its health or shields. To encourage bringing in a different kind of unit to attack it,
-			  then change the armor type and associated damage-vs-armor value.
-	  T2B and 2M  Shield for Executor  lightly armored vehicles like swamp speeder, land speeder, and pirate skiff  snowspeeder and bombers  Bunkers and pillboxes  Armor for the Executor and other SSDs</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Damage_To_Armor_Mod" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>DAMAGE vs. ARMOR Matrix  Default Damage Type  Fighter lasers  A-Wing lasers  Corellian corvette lasers  Tartan Cruiser lasers  Corellian gunboat lasers  Interdictor lasers  IPV Patrol craft lasers  Space station lasers  Alliance Assault Frigate  Acclamator  Ion Cannon Damage Type - Space Only  Ion Cannon LRG Damage Type - Space Only  Proton Torpedo Damage Type - Space Only - Y-Wing and Tie Bomber  Light Proton Torpedo Damage Type - Space Only  Concussion Missile Damage Type - Space Only  Turbolaser Damage Type - Space Only  Calamari Cruiser turbolasers  Star Destroyer turbolasers  Nebulon B turbolasers  Victory class star destroyer turbolasers  Space station turbolaser  Acclamator turbolasers turbolasers  Hypervelocity Gun Damage Type - Space Only  Planetary Ion Cannon Damage Type - Space Only  Diamond-Boron Missile Damage Type - Space Only  Asteroid Field Damage SPACE ONLY  Damage from Space Station Self-Destruct Explosion SPACE ONLY  Damage from mass driver space turrets, Vengeance other space sources SPACE ONLY  Krayt Damage Blast - used for both space combat and orbital bombardment  Hand-Held Blaster Damage Type - Ground Only  PLEX Missile Damage Type - Ground Only  modded values for damage to vehicles Sniper Rifle Damage Type - Ground Only  Force Lightning Damage Type - Ground Only  Lightsaber Damage Type - Ground Only  Thermal Detonator Damage Type - Ground Only  Rancor claw Damage Type - Ground Only  Wookiee Bowcaster Damage Type - Ground Only  Jawa Ion Rifle Damage Type - Ground Only  Sticky Bomb Damage Type - Ground OnlyGrenade, speeder bike, and Slave I's seismic charge in space  Hero Sticky Bomb Damage Type - Ground Only  Blaster Cannon Damage Type - Ground Only  AT-AT  AT-ST  Blaster Cannon Damage Type - T2B  Flak Pod Damage Type - Ground Only  Anti-infantry turret cannon  Anti-vehicle turret cannon  TIE Mauler  2M repulsortank cannon  Laser Cannon Damage Type - Ground Only  used by AT-AT  air speeder  Laser Cannon Damage Type - Ground Only used by T4B  Ground Proton Torpedo Damage Type - Ground Only  Ground Concussion Missile Damage Type - Ground Only - used by MAL  T4B missiles  Concussion Grenade Damage Type - Ground Only Merc Underworld Grenadiers  SPMA-T Grenade Damage Type - Ground Only  Boming-run Bomb Damage Type - Ground Only  Mauler Detonation Damage Type - Ground Only  Tower Turbolaser Damage Type - Ground Only  Wall Destruction Damage Type - Ground Only  Wampa claw Damage Type - Ground Only  Force Pike Damage Type - Ground Only  Bug Bite Damage Type - Ground Only - Used for swamp bug swarms  Sonic Blaster Damage Type - Ground Only - Used geonosians  Hand Disruptor Cannon - Ground Only - Used by Underworld  Hand Pulse Cannon - Ground Only - Used by Underworld  Vehicle or Infantry Ion Blaster Cannon - Ground Only - Used by Underworld  Destroyer Droid Blaster Cannon - Ground Only - Used by Underworld  Juggernaut Turret Cannon - Ground Only - Used by Empire  Dark Trooper Phase I Sword - Ground Only - Used by Empire  Dark Trooper Phase II Cannon - Ground Only - Used by Empire  Plant Spikes used on Felucia - Ground Only   Used by MZ8 Mobile Pulse Cannon - Ground/Space   Used by Underworld Mass Driver Turrets - Ground Only   Used by Underworld Vornskr Wolves - Ground Only   Used by Exploding Container - Ground Only   Used by Tyber Zann - Ground Only   Used by Underworld MDU - Ground Only   Used by Empire MDU - Ground Only</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Demo_Attract_Maps">
-          <xs:annotation>
-            <xs:documentation>END ARMOR AND DAMAGE SECTION                                         Demo_Attract_Maps>Demo_Attract_Kamino.ted, Demo_Attract_Korriban.ted&lt;/Demo_Attract_Maps</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:short" name="Demo_Attract_Start_Timeout_Seconds"/>
-        <xs:element type="xs:short" name="Demo_Attract_Map_Cycle_Delay_Seconds">
-          <xs:annotation>
-            <xs:documentation>Demo_Attract_Map_Cycle_Delay_Seconds>1000000, 1000, 1000&lt;/Demo_Attract_Map_Cycle_Delay_Seconds</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Battle_Pending_Timeout_Seconds"/>
-        <xs:element type="xs:anyURI" name="Message_Of_The_Day_URL"/>
-        <xs:element type="xs:short" name="Skirmish_Buy_Credits"/>
-        <xs:element type="xs:byte" name="Skirmish_Reinforcement_Delay_Frames"/>
-        <xs:element type="xs:short" name="Distribute_Credit_Quantum"/>
-        <xs:element type="xs:string" name="Diminishing_Firepower"/>
-        <xs:element type="xs:float" name="Ion_Storm_Shield_Disable_Time">
-          <xs:annotation>
-            <xs:documentation>Mild effect &lt;Diminishing_Firepower>0, 1, 1, 1&lt;/Diminishing_Firepower> Turned Off by CR</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Nebula_Ability_Disable_Time"/>
-        <xs:element type="xs:float" name="Force_Ability_Disable_Time"/>
-        <xs:element type="xs:float" name="Depleted_Shield_Disable_Time"/>
-        <xs:element type="xs:float" name="Depleted_Shield_Damage_Increment"/>
-        <xs:element type="xs:float" name="Depleted_Shield_Regen_Cap"/>
-        <xs:element type="xs:string" name="Nebula_Effect_Color">
-          <xs:annotation>
-            <xs:documentation>when ships go into nebula, they are tinted/faded using the following settings</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Base_Shield_Speed_Modifier"/>
-        <xs:element type="xs:string" name="Base_Shield_Vulnerability_Modifier"/>
-        <xs:element type="xs:float" name="Hardpoint_Recharge_Cutoff_For_Opportunity_Fire"/>
-        <xs:element type="xs:string" name="Battle_Load_Planet_Viewport"/>
-        <xs:element type="xs:string" name="Battle_Load_Planet_Direction"/>
-        <xs:element type="xs:string" name="Battle_Load_Planet_Ambient"/>
-        <xs:element type="xs:float" name="Saliency_Size"/>
-        <xs:element type="xs:float" name="Saliency_Power"/>
-        <xs:element type="xs:float" name="Saliency_X"/>
-        <xs:element type="xs:float" name="Saliency_Y"/>
-        <xs:element type="xs:float" name="Saliency_Health"/>
-        <xs:element type="xs:float" name="Saliency_Targets"/>
-        <xs:element type="xs:float" name="Saliency_Speed"/>
-        <xs:element type="xs:float" name="Planet_Reveal_Delay_Time"/>
-        <xs:element type="xs:float" name="Base_Shield_Delay_Time"/>
-        <xs:element type="xs:short" name="Star_Wars_Crawl_Start_Fadeout_Frame"/>
-        <xs:element type="xs:string" name="Activated_Slice_Ability_Names">
-          <xs:annotation>
-            <xs:documentation>We now have special fleet slots in the GUI that represent special actions for a fleet to take when
-	they arrive at a planet. Most of those special actions are tied to special abilities (Raid is the only
-	action that is not). This is the list of special abilities that will cause the corresponding special
-	action slot to be displayed on the zoomed out galactic GUI when dragging a fleet.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Activated_Black_Market_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Sabotage_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Neutralize_Hero_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Siphon_Credits_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_System_Spy_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Destroy_Planet_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Corrupt_Planet_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Remove_Corruption_Ability_Names"/>
-        <xs:element type="xs:string" name="Activated_Hack_Super_Weapon_Ability_Names"/>
-        <xs:element type="xs:string" name="Use_Reinforcement_Points"/>
-        <xs:element type="xs:short" name="Min_Skirmish_Credits">
-          <xs:annotation>
-            <xs:documentation>Multiplayer Data Begin</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:short" name="Max_Skirmish_Credits"/>
-        <xs:element type="xs:float" name="MP_Default_Credits">
-          <xs:annotation>
-            <xs:documentation>Gameplay option defaults</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="MP_Default_Start_Tech_Level"/>
-        <xs:element type="xs:float" name="MP_Default_Max_Tech_Level"/>
-        <xs:element type="xs:float" name="MP_Default_Allow_Auto_Resolve">
-          <xs:annotation>
-            <xs:documentation>Auto_Resolve Values, 0 == Always, 1 == Never, 2 == Ask, 3 == Overwhelming odds</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="MP_Default_Game_Timer"/>
-        <xs:element type="xs:float" name="MP_Default_Win_Condition"/>
-        <xs:element type="xs:float" name="MP_Default_Win_Condition_Int_Param"/>
-        <xs:element type="xs:float" name="MP_Default_Win_Condition_Float_Param"/>
-        <xs:element type="xs:string" name="MP_Default_Allow_Heroes"/>
-        <xs:element type="xs:string" name="MP_Default_Allow_SuperWeapons"/>
-        <xs:element type="xs:string" name="MP_Default_Pre_Built_Base"/>
-        <xs:element type="xs:string" name="MP_Default_Allow_Random_Events"/>
-        <xs:element type="xs:string" name="MP_Default_Free_Starting_Units"/>
-        <xs:element type="xs:string" name="MP_Default_Land_Tactical_Win_Condition"/>
-        <xs:element type="xs:string" name="MP_Default_Space_Tactical_Win_Condition"/>
-        <xs:element type="xs:float" name="Tactical_Build_Time_Multiplier">
-          <xs:annotation>
-            <xs:documentation>Multiplayer Data End  This entry can be used to artificially make build times faster in tactical mode when debugging.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Health_Bar_Scale"/>
-        <xs:element type="xs:float" name="Land_Health_Bar_Scale"/>
-        <xs:element type="xs:float" name="Min_Health_Bar_Scale"/>
-        <xs:element type="xs:byte" name="Team_Healthbar_Offset"/>
-        <xs:element type="xs:string" name="Object_Visual_Status_Particle_Attach_Bone_Names">
-          <xs:annotation>
-            <xs:documentation>Common list of object model bone names to look for when trying to attach visual status particles, like stun, heal, corrupted, invulnerable, etc.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Tractor_Beam_Width"/>
-        <xs:element type="xs:byte" name="Tractor_Beam_Frames"/>
-        <xs:element type="xs:string" name="Tractor_Beam_Texture"/>
-        <xs:element type="xs:string" name="Tractor_Beam_Color"/>
-        <xs:element type="xs:float" name="Energy_Beam_Width"/>
-        <xs:element type="xs:byte" name="Energy_Beam_Frames"/>
-        <xs:element type="xs:string" name="Energy_Beam_Texture"/>
-        <xs:element type="xs:string" name="Energy_Beam_Color"/>
-        <xs:element type="xs:string" name="MP_Color_Blue"/>
-        <xs:element type="xs:string" name="MP_Color_Red"/>
-        <xs:element type="xs:string" name="MP_Color_Green"/>
-        <xs:element type="xs:string" name="MP_Color_Orange"/>
-        <xs:element type="xs:string" name="MP_Color_Cyan"/>
-        <xs:element type="xs:string" name="MP_Color_Purple"/>
-        <xs:element type="xs:string" name="MP_Color_Yellow"/>
-        <xs:element type="xs:string" name="MP_Color_Gray"/>
-        <xs:element type="xs:string" name="MP_Color_Eight"/>
-        <xs:element type="xs:string" name="Localized_Splash_Screen" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Localized splash screen asset names</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Localized_UK_English_Splash_Screen"/>
-        <xs:element type="xs:string" name="Localized_Menu_Overlay" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Localized main menu background overlay asset names</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Preferred_Pathfinder_Types">
-          <xs:annotation>
-            <xs:documentation>Preferred choice of pathfinder for invading. Non-hero units are always preferred</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Credits_Spacing">
-          <xs:annotation>
-            <xs:documentation>Game credits</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Credits_Scroll_Rate"/>
-        <xs:element type="xs:string" name="Credits_Font"/>
-        <xs:element type="xs:string" name="Credits_Header_Top_Color">
-          <xs:annotation>
-            <xs:documentation>12.16.2005 Blue text colors per LucasArts</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Credits_Header_Bottom_Color"/>
-        <xs:element type="xs:string" name="Credits_Top_Color"/>
-        <xs:element type="xs:string" name="Credits_Bottom_Color"/>
-        <xs:element type="xs:float" name="Credits_Font_Size"/>
-        <xs:element type="xs:float" name="Credits_Margin"/>
-        <xs:element type="xs:string" name="Credits_Logo_1_Name"/>
-        <xs:element type="xs:float" name="Credits_Logo_1_Width"/>
-        <xs:element type="xs:float" name="Credits_Logo_1_Height"/>
-        <xs:element type="xs:float" name="Credits_Logo_1_Y_Offset"/>
-        <xs:element type="xs:string" name="Credits_Logo_2_Name"/>
-        <xs:element type="xs:float" name="Credits_Logo_2_Width"/>
-        <xs:element type="xs:float" name="Credits_Logo_2_Height"/>
-        <xs:element type="xs:float" name="Credits_Logo_2_Y_Offset"/>
-        <xs:element type="xs:string" name="Credits_Logo_3_Name"/>
-        <xs:element type="xs:float" name="Credits_Logo_3_Width"/>
-        <xs:element type="xs:float" name="Credits_Logo_3_Height"/>
-        <xs:element type="xs:float" name="Credits_Logo_3_Y_Offset"/>
-        <xs:element type="xs:string" name="ShipNameTextFiles">
-          <xs:annotation>
-            <xs:documentation>Files for custom ship names</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Main_Menu_Demo_Attract_Mode">
-          <xs:annotation>
-            <xs:documentation>Main menu in-game demo/attract playback</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Planet_Ability_Icon_Names"/>
-        <xs:element type="xs:string" name="Planet_Ability_Text_IDs"/>
-        <xs:element type="xs:string" name="Planet_Ability_RGBs"/>
-        <xs:element type="xs:string" name="Droid_Date_Color"/>
-        <xs:element type="xs:string" name="Droid_Text_Color"/>
-        <xs:element type="xs:string" name="Droid_Seperator_Color"/>
-        <xs:element type="xs:string" name="Droid_Encyclopedia_Offset"/>
-        <xs:element type="xs:short" name="Indigenous_Spawn_Destruction_Reward"/>
-        <xs:element type="xs:short" name="Advisor_Hint_Interval"/>
-        <xs:element type="xs:float" name="Advisor_Hint_Duration"/>
-        <xs:element type="xs:string" name="Radar_Colorize_Selected_Units"/>
-        <xs:element type="xs:string" name="Radar_Selected_Units_Color"/>
-        <xs:element type="xs:string" name="Radar_Colorize_Multiplayer_Enemy"/>
-        <xs:element type="xs:string" name="Radar_Multiplayer_Enemy_Color"/>
-        <xs:element type="xs:string" name="Animate_During_Galactic_Mode_Pause"/>
-        <xs:element type="xs:string" name="Land_Base_Destruction_Forces_Retreat">
-          <xs:annotation>
-            <xs:documentation>Control for sub-tactical victory conditions</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Space_Station_Destruction_Forces_Retreat"/>
-        <xs:element type="xs:float" name="Space_Reinforcement_Collision_Check_Distance">
-          <xs:annotation>
-            <xs:documentation>Clear space required along hyperspace in path for space reinforcements</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:float" name="Health_Bar_Spacing"/>
-        <xs:element type="xs:string" name="Good_Ground_Color_Tint"/>
-        <xs:element type="xs:string" name="High_Ground_Color_Tint"/>
-        <xs:element type="xs:string" name="Slow_Ground_Color_Tint"/>
-        <xs:element type="xs:string" name="Lava_Ground_Color_Tint"/>
-        <xs:element type="xs:string" name="Infantry_Ground_Color_Tint"/>
-        <xs:element type="xs:float" name="Max_Bombing_Run_Interval_Seconds"/>
-        <xs:element type="xs:float" name="Min_Bombing_Run_Interval_Seconds"/>
-        <xs:element type="xs:byte" name="Bombing_Run_Reduction_Per_Squadron_Percent"/>
-        <xs:element type="xs:float" name="Space_Guard_Range"/>
-        <xs:element type="xs:float" name="Land_Guard_Range"/>
-        <xs:element type="xs:float" name="Max_Bombard_Interval_Seconds"/>
-        <xs:element type="xs:float" name="Min_Bombard_Interval_Seconds"/>
-        <xs:element type="xs:string" name="Bombardment_Offset"/>
-        <xs:element type="xs:string" name="Bombardment_Distribution"/>
-        <xs:element type="xs:float" name="Override_Death_Persistence_Duration"/>
-        <xs:element type="xs:float" name="Auto_Resolve_Tactical_Multiplier"/>
-        <xs:element type="xs:string" name="Sabotage_Particle_Effect"/>
-        <xs:element type="xs:string" name="Hack_Super_Weapon_Particle_Effect"/>
-        <xs:element type="xs:string" name="Hack_Super_Weapon_Required_Type"/>
-        <xs:element type="xs:float" name="Sensor_Jamming_Time"/>
-        <xs:element type="xs:string" name="Quickmatch_Map_Exclusion_List"/>
-        <xs:element type="xs:float" name="First_Strike_Extra_Damage_Percent"/>
-        <xs:element type="xs:string" name="First_Strike_Particle"/>
-        <xs:element type="xs:float" name="Garrisoned_Max_Attack_Distance_Multiplier"/>
-        <xs:element type="xs:byte" name="Max_Remote_Bombs_Per_Player"/>
-        <xs:element type="xs:string" name="Default_Bounty_By_Category_SP" maxOccurs="unbounded" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>Default bounty awarded for killing units of a given category.  Separate tables for single  player and multiplayer</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Default_Bounty_By_Category_MP" maxOccurs="unbounded" minOccurs="0"/>
-        <xs:element type="xs:float" name="Corruption_Hyperspace_Bonus"/>
-        <xs:element type="xs:string" name="Corruption_Choice_Icon_Name">
-          <xs:annotation>
-            <xs:documentation>The following corruption type-related entries need to be listed in the following order:
-		0.	Corruption_Intimidation
-		1. Corruption_Piracy
-		2. Corruption_Kidnapping
-		3. Corruption_Racketeering
-		4. Corruption_Corrupt_Militia
-		5. Corruption_Bribery
-		6. Corruption_Black_Market
-		7. Corruption_Bonded_Citizens</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element type="xs:string" name="Corruption_Choice_Name"/>
-        <xs:element type="xs:string" name="Corruption_Choice_Benefit"/>
-        <xs:element type="xs:string" name="Corruption_Mission_Requirement_Icon_Name"/>
-        <xs:element type="xs:string" name="Corruption_Choice_Encyclopedia"/>
-        <xs:element type="xs:string" name="Corruption_Choice_Income_Percentage"/>
-        <xs:element type="xs:float" name="Bribery_Fleet_Reveal_Range"/>
-        <xs:element type="xs:string" name="Corruption_Planet_Icon"/>
-        <xs:element type="xs:string" name="Corruption_Planet_Icon_Encyclopedia_Name"/>
-        <xs:element type="xs:string" name="Corruption_Planet_Icon_Encyclopedia_Desc"/>
-        <xs:element type="xs:string" name="Corruption_Encyclopedia_Backdrop"/>
-        <xs:element type="xs:string" name="Corruption_Encyclopedia_Header"/>
-        <xs:element type="xs:string" name="Corruption_Encyclopedia_Complete"/>
-        <xs:element type="xs:string" name="Corruption_Encyclopedia_Incomplete"/>
-        <xs:element type="xs:string" name="Corruption_Encyclopedia_Money_Icon"/>
-        <xs:element type="xs:float" name="Corruption_Encyclopedia_Left_Edge"/>
-        <xs:element type="xs:float" name="Corruption_Encyclopedia_Spacing"/>
-        <xs:element type="xs:float" name="Hack_Super_Weapon_Cost"/>
+        <xs:element type="engine:EngineBoolean" name="Strategic_Queue_Tactical_Battles" />
+
+        <xs:element type="engine:EngineFloat" name="Object_Max_Speed_Multiplier_Galactic" />
+        <xs:element type="engine:EngineFloat" name="Object_Max_Speed_Multiplier_Space" />
+        <xs:element type="engine:EngineFloat" name="Object_Max_Speed_Multiplier_Land" />
+        <xs:element type="engine:EngineFloat" name="Object_Max_Health_Multiplier_Space" />
+        <xs:element type="engine:EngineFloat" name="Object_Max_Health_Multiplier_Land" />
+
+        <xs:element type="engine:EngineBoolean" name="Use_Neutral_UI_Color" />
+        <xs:element type="engine:EngineARGB" name="Neutral_UI_Color" />
+        <xs:element type="engine:EngineFloat" name="Default_Defense_Adjust" />
+        <xs:element type="engine:EngineFloat" name="Production_Speed_Factor" />
+
+        <xs:element type="engine:EngineARGB" name="Player_Color" />
+        <xs:element type="engine:EngineARGB" name="Enemy_Color" />
+
+        <xs:element type="engine:EngineFloat" name="Elevated_Vulnerability_Duration" />
+        <xs:element type="engine:EngineFloat" name="Elevated_Vulnerability_Factor" />
+        <xs:element type="engine:EngineFloat" name="Space_Elevated_Vulnerability_Duration" />
+        <xs:element type="engine:EngineFloat" name="Space_Elevated_Vulnerability_Factor" />
+
+        <xs:element type="xs:string" name="Fleet_Movement_Line_Texture_Name" />
+        <xs:element type="xs:string" name="Fleet_Hyperspace_Band_Texture_Name" />
+        <xs:element type="xs:string" name="WaypointLineTextureName" />
+        <xs:element type="xs:string" name="LoopWaypointLineTextureName" />
+        <xs:element type="xs:string" name="WaypointFlagModelName" />
+
+        <xs:element type="engine:EngineFloat" name="Fleet_Maintenance_Update_Delay_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Space_Auto_Resolve_Delay_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Land_Auto_Resolve_Delay_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Political_Control_Change_Time_Seconds" />
+
+        <xs:element type="engine:EngineFloat" name="Melee_Cutoff_Range" />
+
+        <xs:element type="engine:EngineFloat" name="Tactical_Edge_Scroll_Region" />
+        <xs:element type="engine:EngineFloat" name="Tactical_Max_Scroll_Speed" />
+        <xs:element type="engine:EngineFloat" name="Tactical_Min_Scroll_Speed" />
+        <xs:element type="engine:EngineFloat" name="Tactical_Offscreen_Scroll_Region" />
+
+        <xs:element type="engine:EngineFloat" name="Strategic_Edge_Scroll_Region" />
+        <xs:element type="engine:EngineFloat" name="Strategic_Max_Scroll_Speed" />
+
+        <xs:element type="engine:EngineFloat" name="Strategic_Min_Scroll_Speed" />
+        <xs:element type="engine:EngineFloat" name="Strategic_Offscreen_Scroll_Region" />
+
+        <xs:element type="engine:EngineFloat" name="Push_Scroll_Speed_Modifier" />
+        <xs:element type="engine:EngineFloat" name="Scroll_Deceleration_Factor" />
+        <xs:element type="engine:EngineFloat" name="Scroll_Acceleration_Factor" />
+
+        <xs:element type="engine:EngineBoolean" name="Pay_As_You_Go" />
+        <xs:element type="engine:FloatTupelWithCommaSix" name="Political_Income_Curve" />
+        <xs:element type="engine:FloatTupelWithCommaSix" name="Progressive_Taxation" />
+        <xs:element type="engine:EngineFloat" name="Income_Redistribution" />
+
+        <xs:element type="engine:EngineFloat" name="Credit_Cap_Per_Planet" />
+
+        <xs:element type="engine:EngineFloat" name="Multiplayer_Losing_Team_Bonus_Credit_Percentage" />
+
+        <xs:element type="engine:EngineFloat" name="Fiscal_Cycle_Time_In_Secs" />
+        <xs:element type="xs:integer" name="Medium_Coin_Stack_Size" />
+        <xs:element type="xs:integer" name="Large_Coin_Stack_Size" />
+        <xs:element type="engine:EngineFloat" name="Black_Market_Income_Mult_Min" />
+
+        <xs:element type="engine:EngineFloat" name="Black_Market_Income_Mult_Max" />
+
+        <xs:element type="xs:integer" name="Num_Structures_For_Medium_Planet_Name" />
+        <xs:element type="xs:integer" name="Num_Structures_For_Large_Planet_Name" />
+
+        <xs:element type="xs:string" name="Corruption_Particle_Name" />
+        <xs:element type="xs:string" name="Corruption_Particle_Line_Name" />
+        <xs:element type="engine:FloatTupelWithCommaTwo" name="Particle_Brightness_Per_Corruption_Level" />
+        <xs:element type="engine:FloatTupelWithCommaTwo" name="Particle_Scale_Per_Corruption_Level" />
+        <xs:element type="engine:FloatTupelWithCommaTwo" name="Particle_Energy_Per_Corruption_Level" />
+        <xs:element type="engine:EngineFloat" name="Corruption_Line_Radius" />
+        <xs:element type="engine:EngineFloat" name="Corruption_Line_Start_End_Offset" />
+        <xs:element type="engine:EngineFloat" name="Corruption_Line_Grow_Seconds" />
+        <xs:element type="engine:EngineARGB" name="Corruption_Path_Color" />
+        <xs:element type="xs:integer" name="Corruption_Path_Width" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Corruption_Path_Offset" />
+
+        <xs:element type="engine:EngineFloat" name="GMC_InitialPitchAngleDegrees" />
+        <xs:element type="engine:EngineFloat" name="GMC_ZoomedPitchAngleDegrees" />
+        <xs:element type="engine:EngineFloat" name="GMC_InitialPullbackDistance" />
+        <xs:element type="engine:EngineFloat" name="GMC_ZoomedPullbackPlanetRadiusFraction" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="GMC_ZoomedPositionOffsetPlanetRadiusFractions" />
+        <xs:element type="engine:EngineFloat" name="GMC_ZoomTime" />
+        <xs:element type="engine:EngineFloat" name="GMC_Battle_Zoom_Time" />
+        <xs:element type="engine:EngineFloat" name="GMC_Battle_Fade_Time" />
+
+        <xs:element type="engine:EngineFloat" name="Galactic_Right_Button_Scroll_Speed_Factor" />
+        <xs:element type="engine:EngineFloat" name="Galactic_Scroll_Plane" />
+
+        <xs:element type="xs:string" name="GUI_Move_Command_Ack_Effect" />
+        <xs:element type="xs:string" name="GUI_Double_Click_Move_Command_Ack_Effect" />
+        <xs:element type="xs:string" name="GUI_Attack_Move_Command_Ack_Effect" />
+        <xs:element type="xs:string" name="GUI_Guard_Move_Command_Ack_Effect" />
+
+        <xs:element type="xs:string" name="GUI_Attack_Movement_Click_Radar_Event_Name" />
+        <xs:element type="xs:string" name="GUI_Movement_Click_Radar_Event_Name" />
+        <xs:element type="xs:string" name="GUI_Movement_Double_Click_Radar_Event_Name" />
+
+        <xs:element type="engine:EngineFloat" name="GUI_Move_Acknowledge_Scale_Land" />
+        <xs:element type="engine:EngineFloat" name="GUI_Move_Acknowledge_Scale_Space" />
+
+        <xs:element type="xs:integer" name="MaximumPoliticalControl" />
+        <xs:element type="xs:integer" name="MaximumStarbaseLevel" />
+        <xs:element type="xs:integer" name="MaximumGroundbaseLevel" />
+        <xs:element type="xs:integer" name="MaximumSpecialStructures" />
+        <xs:element type="xs:integer" name="MaximumSpecialStructuresLand" />
+        <xs:element type="xs:integer" name="MaximumSpecialStructuresSpace" />
+        <xs:element type="engine:EngineFloat" name="MaximumFleetMovementDistance" />
+        <xs:element type="engine:EngineFloat" name="TradeRouteMovementFactor" />
+        <xs:element type="xs:integer" name="Tooltip_Delay" />
+        <xs:element type="xs:integer" name="Encyclopedia_Delay" />
+        <xs:element type="xs:integer" name="Long_Encyclopedia_Delay" />
+        <xs:element type="xs:integer" name="Text_Reveal_Rate" />
+        <xs:element type="engine:EngineFloat" name="Japanese_Line_Percent" />
+        <xs:element type="engine:EngineFloat" name="Japanese_ST_Line_Percent" />
+
+        <xs:element type="engine:EngineBoolean" name="AIUsesFogOfWarGalactic" />
+        <xs:element type="engine:EngineBoolean" name="AIUsesFogOfWarSpace" />
+        <xs:element type="engine:EngineBoolean" name="AIUsesFogOfWarLand" />
+        <xs:element type="engine:EngineBoolean" name="SetupPhaseEnabled" />
+        <xs:element type="engine:EngineBoolean" name="ShowUnitAIPlanAttachment" />
+        <xs:element type="engine:EngineFloat" name="AITechLevelProductionTimeWeight" />
+
+        <xs:element type="engine:EngineBoolean" name="AlwaysBypassAutoResolve" />
+
+        <xs:element type="engine:EngineBoolean" name="AutomaticAutoResolve" />
+        <xs:element type="engine:EngineFloat" name="AutoResolveAttritionAllowanceFactor" />
+        <xs:element type="engine:EngineFloat" name="AutoResolveTransportLosses" />
+        <xs:element type="engine:EngineFloat" name="AutoResolveDisplayTime" />
+        <xs:element type="engine:EngineBoolean" name="AutoResolveVoteDefaultToTactical" />
+        <xs:element type="xs:integer" name="AutoResolveVoteDefaultTimeOut" />
+        <xs:element type="engine:EngineFloat" name="RetreatAutoResolveLoserAttrition" />
+        <xs:element type="engine:EngineFloat" name="RetreatAutoResolveWinnerAttrition" />
+        <xs:element type="engine:EngineFloat" name="AutoResolveLoserAttrition" />
+        <xs:element type="engine:EngineFloat" name="AutoResolveWinnerAttrition" />
+        <xs:element type="engine:EngineFloat" name="Minimum_Tactical_Overrun_Time_In_Secs" />
+        <xs:element type="engine:EngineFloat" name="Tactical_Overrun_Multiple" />
+        <xs:element type="engine:EngineFloat" name="Overrun_Auto_Resolve_Multiple" />
+
+        <xs:element type="engine:EngineFloat" name="Space_Retreat_Allowed_Countdown_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Land_Retreat_Allowed_Countdown_Seconds" />
+
+        <xs:element type="engine:EngineFloat" name="Space_Capture_Allowed_Countdown_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Land_Capture_Allowed_Countdown_Seconds" />
+
+        <xs:element type="engine:EngineFloat" name="GripperCombatGridSnapDistance" />
+
+        <xs:element type="engine:EngineBoolean" name="PlayModeSwitchMovies" />
+        <xs:element type="engine:EngineFloat" name="MaxInfluenceTransitionAlignmentBonus" />
+        <xs:element type="engine:EngineFloat" name="MaxInfluenceTransitionAlignmentPenalty" />
+        <xs:element type="engine:EngineFloat" name="MaxCreditIncomeAlignmentBonus" />
+        <xs:element type="engine:EngineFloat" name="MaxCreditIncomeAlignmentPenalty" />
+        <xs:element type="engine:EngineFloat" name="MaxCombatAccuracyAlignmentBonus" />
+        <xs:element type="engine:EngineFloat" name="MaxCombatDamageAlignmentBonus" />
+        <xs:element type="engine:EngineFloat" name="MaxCombatSensorRangeAlignmentBonus" />
+
+        <xs:element type="xs:integer" name="Max_Galactic_Zoom_Distance" />
+        <xs:element type="xs:integer" name="Min_Galactic_Zoom_Speed" />
+        <xs:element type="xs:integer" name="Max_Galactic_Zoom_Speed" />
+        <xs:element type="xs:integer" name="Galactic_Zoom_Acceleration" />
+        <xs:element type="engine:EngineFloat" name="Galactic_Zoom_Light_Level" />
+        <xs:element type="engine:FloatTupelWithSpaceThree" name="Galactic_Zoom_In_Light_Angle" />
+        <xs:element type="engine:FloatTupelWithSpaceThree" name="Galactic_Zoom_Out_Light_Angle" />
+        <xs:element type="engine:FloatTupelWithSpaceThree" name="Galactic_Zoom_In_Station_Offset" />
+        <xs:element type="engine:EngineFloat" name="Galactic_Zoom_In_Station_Rotation" />
+
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Starting_Galactic_Camera_Position" />
+        <xs:element type="engine:EngineFloat" name="Camera_Stop_Left" />
+        <xs:element type="engine:EngineFloat" name="Camera_Stop_Right" />
+        <xs:element type="engine:EngineFloat" name="Camera_Z_Position" />
+
+        <xs:element type="xs:string" name="Credits_Display_Font_Name" />
+        <xs:element type="xs:integer" name="Credits_Display_Font_Size" />
+
+        <xs:element type="xs:string" name="Random_Story_Triggers" />
+        <xs:element type="xs:integer" name="Random_Story_Max_Triggers" />
+        <xs:element type="xs:string" name="Random_Story_Rebel_Construction" />
+        <xs:element type="xs:string" name="Random_Story_Empire_Construction" />
+        <xs:element type="xs:string" name="Random_Story_Rebel_Destroy" />
+        <xs:element type="xs:string" name="Random_Story_Empire_Destroy" />
+        <xs:element type="xs:string" name="Random_Story_Rewards" />
+        <xs:element type="xs:string" name="Random_Story_Reward_Rebel_Buildable" />
+        <xs:element type="xs:string" name="Random_Story_Reward_Empire_Buildable" />
+        <xs:element type="xs:string" name="Random_Story_Reward_Rebel_Unit" />
+        <xs:element type="xs:string" name="Random_Story_Reward_Empire_Unit" />
+
+        <xs:element type="engine:EngineBoolean" name="Space_Tactical_Camera_Locked" />
+        <xs:element type="engine:EngineBoolean" name="Land_Tactical_Camera_Locked" />
+
+        <xs:element type="engine:EngineFloat" name="ShieldRechargeIntervalInSecs" />
+        <xs:element type="engine:EngineFloat" name="EnergyRechargeIntervalInSecs" />
+        <xs:element type="engine:EngineFloat" name="EnergyToShieldExchangeRate" />
+
+        <xs:element type="engine:EngineFloat" name="HardPoint_Target_Reticle_Enemy_Screen_Size" />
+
+        <xs:element type="xs:float" name="HardPoint_Target_Reticle_Friendly_Screen_Size" />
+
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Enemy_Texture" />
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Enemy_Tracked_Texture" />
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Texture" />
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Tracked_Texture" />
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Repairing_Texture" />
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Disabled_Texture" />
+        <xs:element type="xs:string" name="HardPoint_Target_Reticle_Friendly_Disabled_Tracked_Texture" />
+
+        <xs:element type="xs:integer" name="Terrain_Resurface_Rand" />
+        <xs:element type="engine:EngineFloat" name="Terrain_Resurface_Tolerance" />
+
+        <xs:element type="xs:integer" name="Max_Ground_Forces_On_Planet" />
+        <xs:element type="engine:EngineFloat" name="Allow_Reinforcement_Percentage_Normalized" />
+        <xs:element type="engine:EngineFloat" name="Default_Hero_Respawn_Time" />
+        <xs:element type="engine:EngineARGB" name="LandFOWColor" />
+        <xs:element type="engine:EngineARGB" name="SpaceFOWColor" />
+        <xs:element type="engine:EngineARGB" name="SpaceReinforceFOWColor" />
+        <xs:element type="engine:EngineARGB" name="SetupPhaseFOWColor" />
+        <xs:element type="engine:EngineARGB" name="SetupPhaseInvalidDragColor" />
+        <xs:element type="engine:EngineFloat" name="SpaceFOWHeight" />
+        <xs:element type="xs:integer" name="SetupPhaseCountdownSeconds" />
+        <xs:element type="engine:EngineFloat" name="DesiredLandFOWCellSize" />
+        <xs:element type="engine:EngineFloat" name="DesiredSpaceFOWCellSize" />
+
+        <xs:element type="engine:EngineFloat" name="LandFOWRegrowTime" />
+        <xs:element type="engine:EngineFloat" name="SpaceFOWRegrowTime" />
+        <xs:element type="engine:EngineBoolean" name="SpaceReinforceFeedbackOnlyWhileDragging" />
+
+        <xs:element type="xs:string" name="Game_Scoring_Script_Name" />
+
+        <xs:element type="xs:integer" name="Water_Render_Target_Resolution" />
+        <xs:element type="engine:EngineFloat" name="Water_Clip_Plane_Offset" />
+
+        <xs:element type="engine:EngineBoolean" name="Occlusion_Silhouettes_Enabled" />
+        <xs:element type="engine:EngineFloat" name="Laser_Beam_Z_Scale_Factor" />
+        <xs:element type="engine:EngineFloat" name="Laser_Kite_Z_Scale_Factor" />
+        <xs:element type="engine:EngineFloat" name="Mouse_Over_Highlight_Scale" />
+
+        <xs:element type="engine:EngineFloat" name="AI_SpaceEvaluatorRegionSize" />
+        <xs:element type="engine:EngineFloat" name="AI_LandEvaluatorRegionSize" />
+
+        <xs:element type="engine:EngineFloat" name="AI_SpaceThreatDistanceFactor" />
+        <xs:element type="engine:EngineFloat" name="AI_LandThreatDistanceFactor" />
+        <xs:element type="engine:EngineFloat" name="AI_SpaceThreatTurnRateFactor" />
+        <xs:element type="engine:EngineFloat" name="AI_LandThreatTurnRateFactor" />
+        <xs:element type="engine:EngineFloat" name="AI_SpaceAreaThreatScaleFactor" />
+        <xs:element type="engine:EngineFloat" name="AI_LandAreaThreatScaleFactor" />
+
+        <xs:element type="engine:EngineFloat" name="AI_SpaceThreatLookAheadTime" />
+        <xs:element type="engine:EngineFloat" name="AI_LandThreatLookAheadTime" />
+        <xs:element type="xs:integer" name="AI_FogCellsPerThreatCell" />
+
+        <xs:element type="engine:EngineFloat" name="AI_SpaceThreatDecayStep" />
+
+        <xs:element type="engine:EngineFloat" name="AI_BuildTaskReservationSeconds" />
+
+        <xs:element type="engine:EngineFloat" name="MinimumDragSelectDistance" />
+        <xs:element type="engine:EngineFloat" name="MinimumDragDistance" />
+
+        <xs:element type="engine:EngineFloat" name="GUI_Flash_Level" />
+        <xs:element type="engine:EngineFloat" name="GUI_Flash_Duration" />
+        <xs:element type="engine:EngineFloat" name="GUI_Rapid_Flash_Duration" />
+        <xs:element type="engine:EngineFloat" name="GUI_Cycle_Speed" />
+        <xs:element type="engine:EngineFloat" name="GUI_Darken_Level" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="GUI_Cycle_Color" />
+        <xs:element type="engine:EngineFloat" name="GUI_Hilite_Level" />
+        <xs:element type="engine:EngineFloat" name="GUI_Planet_Flash_Level" />
+        <xs:element type="engine:EngineFloat" name="GUI_Planet_Fade_Duration" />
+
+        <xs:element type="engine:EngineFloat" name="CB_Flash_Duration" />
+        <xs:element type="xs:integer" name="CB_Flash_Count" />
+
+        <xs:element type="xs:string" name="Good_Side_Name" />
+        <xs:element type="xs:string" name="Evil_Side_Name" />
+        <xs:element type="xs:string" name="Corrupt_Side_Name" />
+        <xs:element type="xs:string" name="Good_Side_Leader_Name" />
+        <xs:element type="xs:string" name="Evil_Side_Leader_Name" />
+        <xs:element type="xs:string" name="Corrupt_Side_Leader_Name" />
+
+        <xs:element type="xs:integer" name="Ships_Per_Stack" />
+
+        <xs:element type="xs:integer" name="Encyclopedia_Population_Offset" />
+        <xs:element type="xs:integer" name="Encyclopedia_Name_Offset" />
+        <xs:element type="xs:integer" name="Encyclopedia_Cost_Offset" />
+        <xs:element type="xs:integer" name="Encyclopedia_Icon_X_Offset" />
+        <xs:element type="xs:integer" name="Encyclopedia_Icon_Y_Offset" />
+        <xs:element type="xs:integer" name="Encyclopedia_Class_Y_Offset" />
+        <xs:element type="engine:EngineFloat" name="Encyclopedia_Fade_Rate" />
+        <xs:element type="engine:EngineFloat" name="Encyclopedia_Min_Display_Time" />
+
+        <xs:element type="engine:EngineFloat" name="Min_Accuracy_For_Icon" />
+        <xs:element type="engine:EngineFloat" name="Min_Sight_Range_For_Icon" />
+
+        <xs:element type="engine:IntegerTupleWithSpaceFour" name="Left_Queue_Tint" />
+        <xs:element type="engine:IntegerTupleWithSpaceFour" name="Right_Queue_Tint" />
+
+        <xs:element type="xs:integer" name="Icons_Per_Column" />
+        <xs:element type="engine:IntegerTupleWithSpaceThree" name="Hint_Text_Color" />
+        <xs:element type="engine:IntegerTupleWithSpaceThree" name="System_Text_Color" />
+        <xs:element type="engine:IntegerTupleWithSpaceThree" name="Task_Text_Color" />
+        <xs:element type="engine:IntegerTupleWithSpaceThree" name="Speech_Text_Color" />
+
+        <xs:element type="engine:IntegerTupleWithSpaceTwo" name="CB_Movie_Offset" />
+        <xs:element type="engine:IntegerTupleWithSpaceFour" name="CB_Movie_Color" />
+
+        <xs:element type="engine:EngineFloat" name="GUI_Tactical_Countdown_Timers_Screen_X" />
+        <xs:element type="engine:EngineFloat" name="GUI_Tactical_Countdown_Timers_Screen_Y" />
+        <xs:element type="engine:EngineFloat" name="GUI_Tactical_Countdown_Timers_Screen_Spacing" />
+
+        <xs:element type="engine:EngineFloat" name="GUI_Strategic_Countdown_Timers_Screen_X" />
+        <xs:element type="engine:EngineFloat" name="GUI_Strategic_Countdown_Timers_Screen_Y" />
+        <xs:element type="engine:EngineFloat" name="GUI_Strategic_Countdown_Timers_Screen_Spacing" />
+
+        <xs:element type="xs:integer" name="BeaconPlaceDelay" />
+
+        <xs:element type="engine:EngineFloat" name="WaypointLineLandDashLength" />
+        <xs:element type="engine:EngineFloat" name="WaypointLineLandGapLength" />
+        <xs:element type="engine:EngineFloat" name="WaypointLineLandDashVelocity" />
+
+        <xs:element type="xs:integer" name="MaxWaypointsPerPath" />
+
+        <xs:element type="xs:integer" name="Asteroid_Field_Damage" />
+        <xs:element type="engine:EngineFloat" name="Asteroid_Field_Damage_Rate" />
+
+        <xs:element type="xs:integer" name="SpacePathfindMaxExpansions" />
+        <xs:element type="engine:EngineFloat" name="CurrentPathCostCoefficientSpace" />
+
+        <xs:element type="xs:integer" name="SpacePathfindFrameDelayDelta" />
+
+        <xs:element type="engine:EngineFloat" name="SpacePathFailureDistanceCutoffCoefficient" />
+        <xs:element type="engine:EngineFloat" name="SpacePathFailureMaxExpansionsCoefficient" />
+        <xs:element type="engine:EngineFloat" name="SpacePathFailureRotationExpansionIncrement" />
+        <xs:element type="engine:EngineFloat" name="SpacePathFailureForwardExpansionIncrement" />
+        <xs:element type="xs:integer" name="SpacePathingTries" />
+
+        <xs:element type="xs:integer" name="SpaceStaticObstacleAvoidanceBonusDistance" />
+        <xs:element type="engine:EngineFloat" name="MinObstacleCostSpace" />
+        <xs:element type="engine:EngineFloat" name="MaxObstacleCostSpace" />
+        <xs:element type="engine:EngineFloat" name="ObstacleAreaOverlapForMaxSpace" />
+        <xs:element type="engine:EngineFloat" name="XYExpansionDistanceSpace" />
+        <xs:element type="engine:EngineFloat" name="MaxRotationsSpace" />
+        <xs:element type="engine:EngineFloat" name="MatchFacingDeltaSpace" />
+        <xs:element type="engine:EngineFloat" name="OccupationRadiusCoefficientSpace" />
+        <xs:element type="engine:EngineFloat" name="DestinationSearchRadiusIncrementSpace" />
+        <xs:element type="engine:EngineBoolean" name="UseLinearCollisionChecks" />
+        <xs:element type="engine:EngineFloat" name="WaitOperatorCostCoefficient" />
+        <xs:element type="xs:integer" name="WaitOperatorBaseFrameTime" />
+        <xs:element type="engine:EngineFloat" name="WaitOperatorSpeedCoefficient" />
+        <xs:element type="engine:EngineFloat" name="LandWaitOperatorSpeedCoefficient" />
+        <xs:element type="engine:EngineFloat" name="SpaceLocomotorFacingLookaheadAcc" />
+        <xs:element type="engine:EngineFloat" name="FinalFacing180Penalty" />
+        <xs:element type="engine:EngineFloat" name="SpecialAlignedOperatorBonus" />
+        <xs:element type="engine:EngineFloat" name="ThreatExpansionDistance" />
+        <xs:element type="engine:EngineFloat" name="OffMapCostPenalty" />
+        <xs:element type="engine:EngineFloat" name="MaxLandFormationFormupFrames" />
+        <xs:element type="xs:integer" name="SpaceObjectTrackingInterval" />
+        <xs:element type="xs:integer" name="SpaceObjectTrackingTreeCount" />
+        <xs:element type="engine:EngineBoolean" name="ShouldDisplayPredictionPaths" />
+        <xs:element type="engine:EngineBoolean" name="ShouldDisplaySyncedPaths" />
+        <xs:element type="engine:EngineFloat" name="SyncedFrameInterval" />
+        <xs:element type="engine:EngineFloat" name="LandPredictionTimeInterval" />
+        <xs:element type="engine:EngineFloat" name="RepushDistance" />
+        <xs:element type="engine:EngineFloat" name="MinLandPredictionDistance" />
+        <xs:element type="engine:EngineBoolean" name="ShouldSkipLandFormup" />
+        <xs:element type="engine:EngineBoolean" name="ShouldInfantryTeamsSplitAcrossFormations" />
+        <xs:element type="xs:integer" name="VehicleFormationRecruitmentDistance" />
+        <xs:element type="xs:integer" name="InfantryFormationRecruitmentDistance" />
+        <xs:element type="xs:integer" name="CloseEnoughAngleForMoveStart" />
+        <xs:element type="engine:EngineFloat" name="DynamicObstacleOverlapPenalty" />
+        <xs:element type="xs:integer" name="DynamicAvoidanceRectangleBound" />
+        <xs:element type="engine:EngineBoolean" name="ShouldDisplayPotentialPath" />
+
+        <xs:element type="engine:EngineFloat" name="TurnInPlaceSlowdownCorvette" />
+        <xs:element type="engine:EngineFloat" name="TurnInPlaceSlowdownFrigate" />
+        <xs:element type="engine:EngineFloat" name="TurnInPlaceSlowdownCapital" />
+
+        <xs:element type="engine:EngineFloat" name="FormationMinimumSideError" />
+        <xs:element type="engine:EngineFloat" name="FormationMaximumSideError" />
+        <xs:element type="engine:EngineFloat" name="ApproximationSmoothCosAngle" />
+        <xs:element type="engine:EngineFloat" name="ApproximationForwardDistance" />
+        <xs:element type="engine:EngineFloat" name="MinimumStoppedVsStoppedOverlapCoefficient" />
+        <xs:element type="engine:EngineFloat" name="MovingVsMovingLookAheadTime" />
+        <xs:element type="engine:EngineFloat" name="LandTemporaryDestinationProximity" />
+        <xs:element type="engine:EngineFloat" name="LandDestinationProximity" />
+        <xs:element type="engine:EngineFloat" name="BetweenFormationSpacing" />
+
+        <xs:element type="xs:integer" name="Destination_Collision_Query_Extension" />
+
+        <xs:element type="xs:integer" name="FramesPerPositionApproximationRebuild" />
+        <xs:element type="xs:integer" name="FramesPerCollisionCheck" />
+        <xs:element type="xs:integer" name="MovementReevaluationFrameCount" />
+
+        <xs:element type="xs:integer" name="DynamicLandComplexityQuota" />
+        <xs:element type="xs:integer" name="DynamicLandQuotaResetInterval" />
+
+        <xs:element type="engine:EngineFloat" name="FinalFormationFacingMinimumAngle" />
+        <xs:element type="engine:EngineFloat" name="FinalFormationFacingDeltaCoefficient" />
+
+        <xs:element type="engine:EngineFloat" name="WalkAnimationCutoff" />
+
+        <xs:element type="engine:EngineFloat" name="DoubleClickMoveMaxSpeedRatio" />
+
+        <xs:element type="xs:integer" name="Fleeing_Infantry_Speed_Bonus" />
+
+        <xs:element type="engine:EngineFloat" name="IdleWalkBlendTime" />
+        <xs:element type="engine:EngineFloat" name="CrouchIdleWalkBlendTime" />
+        <xs:element type="engine:EngineFloat" name="MoveBlendTime" />
+        <xs:element type="engine:EngineFloat" name="CrouchMoveBlendTime" />
+        <xs:element type="engine:EngineFloat" name="TeamMoveBlendTime" />
+        <xs:element type="engine:EngineFloat" name="TeamCrouchMoveBlendTime" />
+        <xs:element type="engine:EngineFloat" name="InfantryTurnBlendTime" />
+
+        <xs:element type="xs:integer" name="Map_Preview_Image_Size" />
+        <xs:element type="xs:string" name="Countdowns_Font_Name" />
+        <xs:element type="xs:integer" name="Countdowns_Font_Size" />
+        <xs:element type="xs:string" name="In_Game_Message_Default_Font_Name" />
+        <xs:element type="xs:integer" name="In_Game_Message_Default_Font_Size" />
+        <xs:element type="xs:string" name="Event_Message_Default_Font_Name" />
+        <xs:element type="xs:integer" name="Event_Message_Default_Font_Size" />
+        <xs:element type="xs:string" name="Bink_Player_Caption_Font_Name" />
+        <xs:element type="xs:integer" name="Bink_Player_Caption_Font_Size" />
+        <xs:element type="xs:string" name="Tool_Tip_Font_Name" />
+        <xs:element type="xs:integer" name="Tool_Tip_Font_Size" />
+        <xs:element type="xs:string" name="Tool_Tip_Small_Font_Name" />
+        <xs:element type="xs:integer" name="Tool_Tip_Small_Font_Size" />
+        <xs:element type="xs:string" name="Command_Bar_Default_Font_Name" />
+        <xs:element type="xs:integer" name="Command_Bar_Default_Font_Size" />
+        <xs:element type="xs:string" name="Text_Button_Default_Font_Name" />
+        <xs:element type="xs:integer" name="Text_Button_Default_Font_Size" />
+        <xs:element type="xs:string" name="Game_Object_Name_Font_Name" />
+        <xs:element type="xs:integer" name="Game_Object_Name_Font_Size" />
+
+        <xs:element type="engine:EngineARGB" name="Win_Message_Color" />
+        <xs:element type="engine:EngineARGB" name="Lose_Message_Color" />
+        <xs:element type="xs:string" name="Win_Lose_Message_Font" />
+
+        <xs:element type="xs:integer" name="Win_Lose_Message_Font_Size" />
+
+        <xs:element type="xs:string" name="Battle_Pending_Message_Font" />
+        <xs:element type="xs:integer" name="Battle_Pending_Message_Font_Size" />
+        <xs:element type="engine:EngineARGB" name="Battle_Pending_Message_Color" />
+        <xs:element type="engine:EngineFloat" name="Battle_Pending_Message_Pos_X" />
+        <xs:element type="engine:EngineFloat" name="Battle_Pending_Message_Pos_Y" />
+
+        <xs:element type="engine:EngineFloat" name="Control_Point_Domination_Victory_Time_In_Secs" />
+
+        <xs:element type="engine:EngineFloat" name="Camera_FX_Manager_Letterbox_Height" />
+
+        <xs:element type="xs:integer" name="LandObjectTrackingInterval" />
+        <xs:element type="xs:integer" name="LandObjectTrackingTreeCount" />
+        <xs:element type="engine:EngineFloat" name="MinObstacleCostLand" />
+        <xs:element type="engine:EngineFloat" name="MaxObstacleCostLand" />
+        <xs:element type="engine:EngineFloat" name="XYExpansionDistanceLand" />
+
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Shield_Flash_Scale" />
+        <xs:element type="engine:EngineFloat" name="Shield_Flash_Duration" />
+
+        <xs:element type="engine:EngineFloat" name="Hull_Vs_Hard_Points_Health_Constraint" />
+
+        <xs:element type="engine:EngineFloat" name="Telekinesis_Hover_Height" />
+        <xs:element type="engine:EngineFloat" name="Telekinesis_Transition_Time" />
+        <xs:element type="engine:EngineFloat" name="Telekinesis_Wobble_Cycle_Time" />
+        <xs:element type="engine:EngineFloat" name="Telekinesis_Wobble_Fade_Time" />
+        <xs:element type="engine:EngineFloat" name="Telekinesis_Max_Wobble_Angle" />
+        <xs:element type="engine:EngineFloat" name="Telekinesis_Max_Bob_Height" />
+
+        <xs:element type="engine:EngineFloat" name="Earthquake_Transition_Time" />
+        <xs:element type="engine:EngineFloat" name="Earthquake_Shake_Speed" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Earthquake_Shake_Magnitude" />
+
+        <xs:element type="engine:EngineFloat" name="Low_Threat_Reachability_Tolerance" />
+        <xs:element type="engine:EngineFloat" name="Medium_Threat_Reachability_Tolerance" />
+        <xs:element type="engine:EngineFloat" name="High_Threat_Reachability_Tolerance" />
+
+        <xs:element type="engine:EngineBoolean" name="Auto_Rotate_For_Space_Targeting" />
+
+        <xs:element type="engine:EngineBoolean" name="In_Game_Cinematics" />
+        <xs:element type="engine:EngineBoolean" name="Display_Bink_Movie_Frames" />
+
+        <xs:element type="engine:EngineFloat" name="Engines_Disabled_Speed_Modifier" />
+
+        <xs:element type="xs:integer" name="Crouch_Move_Fire_Angle_Cutoff" />
+
+        <xs:element type="xs:integer" name="Max_Move_Frame_Delay" />
+
+        <xs:element type="engine:EngineFloat" name="Spread_Out_Spacing_Coefficient" />
+
+        <xs:element type="engine:EngineFloat" name="Max_Formation_Area" />
+
+        <xs:element type="engine:EngineFloat" name="Short_Range_Attack_Formation_Coefficient" />
+
+        <xs:element type="engine:EngineFloat" name="Solo_Attack_Range" />
+
+        <xs:element type="engine:EngineFloat" name="Base_Land_Targeting_Arc_Angle_Coefficient" />
+
+        <xs:element type="engine:EngineBoolean" name="Rotate_Formation_Facing_Moves" />
+
+        <xs:element type="engine:EngineBoolean" name="ShouldUseSpaceIdleMovement" />
+        <xs:element type="engine:EngineFloat" name="SpaceIdleMovementSpeed" />
+        <xs:element type="engine:EngineFloat" name="SpaceIdlePathCullCoefficient" />
+        <xs:element type="engine:EngineFloat" name="IdleMovementFrames" />
+
+        <xs:element type="engine:EngineARGB" name="ReinforcementOverlayGoodColor" />
+        <xs:element type="engine:EngineARGB" name="ReinforcementOverlayBadColor" />
+
+        <xs:element type="engine:EngineFloat" name="Space_Retreat_Attrition_Factor" />
+        <xs:element type="engine:EngineFloat" name="Land_Retreat_Attrition_Factor" />
+        <xs:element type="engine:EngineFloat" name="Blockade_Run_Attrition_Factor" />
+
+        <xs:element type="engine:EngineFloat" name="Production_Speed_Mod_Base_Vs_Tech_0" />
+        <xs:element type="engine:EngineFloat" name="Production_Speed_Mod_Base_Vs_Tech_1" />
+        <xs:element type="engine:EngineFloat" name="Production_Speed_Mod_Base_Vs_Tech_2" />
+        <xs:element type="engine:EngineFloat" name="Production_Speed_Mod_Base_Vs_Tech_3" />
+        <xs:element type="engine:EngineFloat" name="Production_Speed_Mod_Base_Vs_Tech_4" />
+
+        <xs:element type="xs:string" name="Unit_Command_Rankings_By_Category" />
+
+        <xs:element type="engine:EngineFloat" name="Space_Collidable_Grid_Cull_Size" />
+        <xs:element type="engine:EngineFloat" name="Space_Large_Ship_Grid_Cull_Size" />
+        <xs:element type="engine:EngineFloat" name="Land_Collidable_Grid_Cull_Size" />
+
+        <xs:element type="xs:string" name="Raid_Force_Required_Faction" />
+        <xs:element type="xs:string" name="Raid_Force_Limited_Object_Category_Mask" />
+        <xs:element type="xs:integer" name="Raid_Force_Max_Limited_Objects" />
+        <xs:element type="xs:integer" name="Raid_Force_Max_Heros" />
+        <xs:element type="xs:string" name="Raid_Force_Free_Object_Category_Mask" />
+
+        <xs:element type="engine:EngineFloat" name="Health_Low_Percent_Threshold" />
+        <xs:element type="engine:EngineFloat" name="Health_Critical_Percent_Threshold" />
+
+        <xs:element type="engine:EngineFloat" name="Under_Construction_Damage_Multiplier" />
+
+        <xs:element type="xs:string" name="Damage_Types" />
+
+        <xs:element type="xs:string" name="Armor_Types" />
+
+        <xs:element type="engine:StringStringFloatTupelWithComma" name="Damage_To_Armor_Mod" maxOccurs="unbounded" minOccurs="0" />
+
+        <xs:element type="xs:string" name="Demo_Attract_Maps" />
+        <xs:element type="xs:integer" name="Demo_Attract_Start_Timeout_Seconds" />
+
+        <xs:element type="xs:integer" name="Demo_Attract_Map_Cycle_Delay_Seconds" />
+
+        <xs:element type="xs:integer" name="Battle_Pending_Timeout_Seconds" />
+
+        <xs:element type="xs:anyURI" name="Message_Of_The_Day_URL" />
+
+        <xs:element type="xs:integer" name="Skirmish_Buy_Credits" />
+        <xs:element type="xs:integer" name="Skirmish_Reinforcement_Delay_Frames" />
+        <xs:element type="xs:integer" name="Distribute_Credit_Quantum" />
+
+        <xs:element type="engine:FloatTupelWithCommaTen" name="Diminishing_Firepower" />
+
+        <xs:element type="engine:EngineFloat" name="Ion_Storm_Shield_Disable_Time" />
+        <xs:element type="engine:EngineFloat" name="Nebula_Ability_Disable_Time" />
+        <xs:element type="engine:EngineFloat" name="Force_Ability_Disable_Time" />
+        <xs:element type="engine:EngineFloat" name="Depleted_Shield_Disable_Time" />
+        <xs:element type="engine:EngineFloat" name="Depleted_Shield_Damage_Increment" />
+        <xs:element type="engine:EngineFloat" name="Depleted_Shield_Regen_Cap" />
+
+        <xs:element type="engine:EngineARGB" name="Nebula_Effect_Color" />
+
+        <xs:element type="engine:EngineFloat" name="Base_Shield_Speed_Modifier" />
+        <xs:element type="engine:EngineFloat" name="Base_Shield_Vulnerability_Modifier" />
+
+        <xs:element type="engine:EngineFloat" name="Hardpoint_Recharge_Cutoff_For_Opportunity_Fire" />
+
+        <xs:element type="engine:FloatTupelWithCommaFour" name="Battle_Load_Planet_Viewport" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Battle_Load_Planet_Direction" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Battle_Load_Planet_Ambient" />
+        <xs:element type="engine:EngineFloat" name="Saliency_Size" />
+        <xs:element type="engine:EngineFloat" name="Saliency_Power" />
+        <xs:element type="engine:EngineFloat" name="Saliency_X" />
+        <xs:element type="engine:EngineFloat" name="Saliency_Y" />
+        <xs:element type="engine:EngineFloat" name="Saliency_Health" />
+        <xs:element type="engine:EngineFloat" name="Saliency_Targets" />
+        <xs:element type="engine:EngineFloat" name="Saliency_Speed" />
+
+        <xs:element type="engine:EngineFloat" name="Planet_Reveal_Delay_Time" />
+        <xs:element type="engine:EngineFloat" name="Base_Shield_Delay_Time" />
+
+        <xs:element type="xs:integer" name="Star_Wars_Crawl_Start_Fadeout_Frame" />
+
+        <xs:element type="xs:string" name="Activated_Slice_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Black_Market_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Sabotage_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Neutralize_Hero_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Siphon_Credits_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_System_Spy_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Destroy_Planet_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Corrupt_Planet_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Remove_Corruption_Ability_Names" />
+        <xs:element type="xs:string" name="Activated_Hack_Super_Weapon_Ability_Names" />
+
+        <xs:element type="engine:EngineBoolean" name="Use_Reinforcement_Points" />
+
+        <xs:element type="xs:integer" name="Min_Skirmish_Credits" />
+        <xs:element type="xs:integer" name="Max_Skirmish_Credits" />
+
+        <xs:element type="xs:integer" name="MP_Default_Credits" />
+        <xs:element type="xs:integer" name="MP_Default_Start_Tech_Level" />
+        <xs:element type="xs:integer" name="MP_Default_Max_Tech_Level" />
+
+        <xs:element type="xs:integer" name="MP_Default_Allow_Auto_Resolve" />
+        <xs:element type="xs:integer" name="MP_Default_Game_Timer" />
+        <xs:element type="xs:integer" name="MP_Default_Win_Condition" />
+        <xs:element type="xs:integer" name="MP_Default_Win_Condition_Int_Param" />
+        <xs:element type="engine:EngineFloat" name="MP_Default_Win_Condition_Float_Param" />
+        <xs:element type="engine:EngineBoolean" name="MP_Default_Allow_Heroes" />
+        <xs:element type="engine:EngineBoolean" name="MP_Default_Allow_SuperWeapons" />
+        <xs:element type="engine:EngineBoolean" name="MP_Default_Pre_Built_Base" />
+        <xs:element type="engine:EngineBoolean" name="MP_Default_Allow_Random_Events" />
+        <xs:element type="engine:EngineBoolean" name="MP_Default_Free_Starting_Units" />
+        <xs:element type="xs:string" name="MP_Default_Land_Tactical_Win_Condition" />
+        <xs:element type="xs:string" name="MP_Default_Space_Tactical_Win_Condition" />
+
+        <xs:element type="engine:EngineFloat" name="Tactical_Build_Time_Multiplier" />
+
+        <xs:element type="engine:EngineFloat" name="Health_Bar_Scale" />
+        <xs:element type="engine:EngineFloat" name="Land_Health_Bar_Scale" />
+        <xs:element type="engine:EngineFloat" name="Min_Health_Bar_Scale" />
+
+        <xs:element type="xs:integer" name="Team_Healthbar_Offset" />
+
+        <xs:element type="xs:string" name="Object_Visual_Status_Particle_Attach_Bone_Names" />
+
+        <xs:element type="engine:EngineFloat" name="Tractor_Beam_Width" />
+        <xs:element type="xs:integer" name="Tractor_Beam_Frames" />
+        <xs:element type="xs:string" name="Tractor_Beam_Texture" />
+        <xs:element type="engine:EngineRGB" name="Tractor_Beam_Color" />
+
+        <xs:element type="engine:EngineFloat" name="Energy_Beam_Width" />
+        <xs:element type="xs:integer" name="Energy_Beam_Frames" />
+        <xs:element type="xs:string" name="Energy_Beam_Texture" />
+        <xs:element type="engine:EngineRGB" name="Energy_Beam_Color" />
+
+        <xs:element type="engine:EngineRGB" name="MP_Color_Blue" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Red" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Green" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Orange" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Cyan" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Purple" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Yellow" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Gray" />
+        <xs:element type="engine:EngineRGB" name="MP_Color_Eight" />
+
+        <xs:element type="engine:StringFilePathTupelWithComma" name="Localized_Splash_Screen" maxOccurs="unbounded" minOccurs="0" />
+        <xs:element type="xs:string" name="Localized_UK_English_Splash_Screen" />
+
+        <xs:element type="engine:StringFilePathTupelWithComma" name="Localized_Menu_Overlay" maxOccurs="unbounded" minOccurs="0" />
+
+        <xs:element type="xs:string" name="Preferred_Pathfinder_Types" />
+
+        <xs:element type="engine:EngineFloat" name="Credits_Spacing" />
+        <xs:element type="engine:EngineFloat" name="Credits_Scroll_Rate" />
+        <xs:element type="xs:string" name="Credits_Font" />
+
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Credits_Header_Top_Color" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Credits_Header_Bottom_Color" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Credits_Top_Color" />
+        <xs:element type="engine:FloatTupelWithCommaThree" name="Credits_Bottom_Color" />
+        <xs:element type="xs:integer" name="Credits_Font_Size" />
+        <xs:element type="engine:EngineFloat" name="Credits_Margin" />
+        <xs:element type="xs:string" name="Credits_Logo_1_Name" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_1_Width" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_1_Height" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_1_Y_Offset" />
+        <xs:element type="xs:string" name="Credits_Logo_2_Name" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_2_Width" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_2_Height" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_2_Y_Offset" />
+        <xs:element type="xs:string" name="Credits_Logo_3_Name" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_3_Width" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_3_Height" />
+        <xs:element type="engine:EngineFloat" name="Credits_Logo_3_Y_Offset" />
+
+        <xs:element type="xs:string" name="ShipNameTextFiles" />
+
+        <xs:element type="engine:EngineBoolean" name="Main_Menu_Demo_Attract_Mode" />
+
+        <xs:element type="xs:string" name="Planet_Ability_Icon_Names" />
+
+        <xs:element type="xs:string" name="Planet_Ability_Text_IDs" />
+
+        <xs:element type="xs:string" name="Planet_Ability_RGBs" />
+
+        <xs:element type="engine:EngineRGBSpace" name="Droid_Date_Color" />
+        <xs:element type="engine:EngineRGBSpace" name="Droid_Text_Color" />
+        <xs:element type="engine:EngineRGBSpace" name="Droid_Seperator_Color" />
+        <xs:element type="engine:IntegerTupleWithSpaceTwo" name="Droid_Encyclopedia_Offset" />
+
+        <xs:element type="xs:integer" name="Indigenous_Spawn_Destruction_Reward" />
+
+        <xs:element type="xs:integer" name="Advisor_Hint_Interval" />
+        <xs:element type="engine:EngineFloat" name="Advisor_Hint_Duration" />
+
+        <xs:element type="engine:EngineBoolean" name="Radar_Colorize_Selected_Units" />
+        <xs:element type="engine:EngineARGB" name="Radar_Selected_Units_Color" />
+
+        <xs:element type="engine:EngineBoolean" name="Radar_Colorize_Multiplayer_Enemy" />
+        <xs:element type="engine:EngineRGB" name="Radar_Multiplayer_Enemy_Color" />
+
+        <xs:element type="engine:EngineBoolean" name="Animate_During_Galactic_Mode_Pause" />
+
+        <xs:element type="engine:EngineBoolean" name="Land_Base_Destruction_Forces_Retreat" />
+        <xs:element type="engine:EngineBoolean" name="Space_Station_Destruction_Forces_Retreat" />
+
+        <xs:element type="engine:EngineFloat" name="Space_Reinforcement_Collision_Check_Distance" />
+        <xs:element type="engine:EngineFloat" name="Health_Bar_Spacing" />
+
+        <xs:element type="engine:EngineRGB" name="Good_Ground_Color_Tint" />
+        <xs:element type="engine:EngineRGB" name="High_Ground_Color_Tint" />
+        <xs:element type="engine:EngineRGB" name="Slow_Ground_Color_Tint" />
+        <xs:element type="engine:EngineRGB" name="Lava_Ground_Color_Tint" />
+        <xs:element type="engine:EngineRGB" name="Infantry_Ground_Color_Tint" />
+
+        <xs:element type="engine:EngineFloat" name="Max_Bombing_Run_Interval_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Min_Bombing_Run_Interval_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Bombing_Run_Reduction_Per_Squadron_Percent" />
+        <xs:element type="engine:EngineFloat" name="Space_Guard_Range" />
+        <xs:element type="engine:EngineFloat" name="Land_Guard_Range" />
+
+        <xs:element type="engine:EngineFloat" name="Max_Bombard_Interval_Seconds" />
+        <xs:element type="engine:EngineFloat" name="Min_Bombard_Interval_Seconds" />
+        <xs:element type="engine:IntegerTupleWithSpaceThree" name="Bombardment_Offset" />
+        <xs:element type="xs:string" name="Bombardment_Distribution" />
+
+        <xs:element type="engine:EngineFloat" name="Override_Death_Persistence_Duration" />
+
+        <xs:element type="engine:EngineFloat" name="Auto_Resolve_Tactical_Multiplier" />
+
+        <xs:element type="xs:string" name="Sabotage_Particle_Effect" />
+        <xs:element type="xs:string" name="Hack_Super_Weapon_Particle_Effect" />
+
+        <xs:element type="xs:string" name="Hack_Super_Weapon_Required_Type" />
+
+        <xs:element type="engine:EngineFloat" name="Sensor_Jamming_Time" />
+
+        <xs:element type="xs:string" name="Quickmatch_Map_Exclusion_List" />
+
+        <xs:element type="engine:EngineFloat" name="First_Strike_Extra_Damage_Percent" />
+        <xs:element type="xs:string" name="First_Strike_Particle" />
+        <xs:element type="engine:EngineFloat" name="Garrisoned_Max_Attack_Distance_Multiplier" />
+
+        <xs:element type="xs:integer" name="Max_Remote_Bombs_Per_Player" />
+
+        <xs:element type="engine:StringIntegerTupelWithComma" name="Default_Bounty_By_Category_SP" maxOccurs="unbounded" minOccurs="0" />
+        <xs:element type="engine:StringIntegerTupelWithComma" name="Default_Bounty_By_Category_MP" maxOccurs="unbounded" minOccurs="0" />
+
+        <xs:element type="engine:EngineFloat" name="Corruption_Hyperspace_Bonus" />
+        <xs:element type="xs:string" name="Corruption_Choice_Icon_Name" />
+        <xs:element type="xs:string" name="Corruption_Choice_Name" />
+        <xs:element type="xs:string" name="Corruption_Choice_Benefit" />
+        <xs:element type="xs:string" name="Corruption_Mission_Requirement_Icon_Name" />
+        <xs:element type="xs:string" name="Corruption_Choice_Encyclopedia" />
+        <xs:element type="xs:string" name="Corruption_Choice_Income_Percentage" />
+        <xs:element type="engine:EngineFloat" name="Bribery_Fleet_Reveal_Range" />
+
+        <xs:element type="xs:string" name="Corruption_Planet_Icon" />
+        <xs:element type="xs:string" name="Corruption_Planet_Icon_Encyclopedia_Name" />
+        <xs:element type="xs:string" name="Corruption_Planet_Icon_Encyclopedia_Desc" />
+
+        <xs:element type="xs:string" name="Corruption_Encyclopedia_Backdrop" />
+        <xs:element type="xs:string" name="Corruption_Encyclopedia_Header" />
+        <xs:element type="xs:string" name="Corruption_Encyclopedia_Complete" />
+        <xs:element type="xs:string" name="Corruption_Encyclopedia_Incomplete" />
+        <xs:element type="xs:string" name="Corruption_Encyclopedia_Money_Icon" />
+        <xs:element type="xs:integer" name="Corruption_Encyclopedia_Left_Edge" />
+        <xs:element type="xs:integer" name="Corruption_Encyclopedia_Spacing" />
+
+        <xs:element type="engine:EngineFloat" name="Hack_Super_Weapon_Cost" />
       </xs:choice>
     </xs:complexType>
   </xs:element>
