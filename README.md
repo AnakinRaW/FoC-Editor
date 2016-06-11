@@ -14,7 +14,10 @@ Beside creating the program itself I opened the wiki. Everyone who wants to add 
 
 ## Repository Roadmap
 
-- Executables/ contains stable launchable programs
-- Mockups/ contains GUI mockups used for designing the editor
-- XML Documentation/XSD Schemata/ contains schemata for XML files used by the game. See the Game-wiki for more detaisl about XML Files in this game
-- src\contains the source of the editor
+Executables/ contains stable launchable programs
+
+Mockups/ contains GUI mockups used for designing the editor
+
+XML Documentation/XSD Schemata/ contains schemata for XML files used by the game. See the Game-wiki for more detaisl about XML Files in this game
+
+src\ contains the source of the editor
