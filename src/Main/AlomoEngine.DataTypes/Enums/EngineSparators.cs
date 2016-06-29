@@ -1,4 +1,4 @@
-﻿namespace AlomoEngine.DataTypes.Enums
+﻿namespace AlomoEngine.Xml.DataTypes.Enums
 {
     public enum EngineSparators
     {

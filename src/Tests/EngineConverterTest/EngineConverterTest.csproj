@@ -54,13 +54,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Main\AlomoEngine.DataTypes\AlomoEngine.DataTypes.csproj">
+    <ProjectReference Include="..\..\Main\AlomoEngine.DataTypes\AlomoEngine.Xml.DataTypes.csproj">
       <Project>{C5915930-567D-433A-806D-EC60F5E3303F}</Project>
-      <Name>AlomoEngine.DataTypes</Name>
+      <Name>AlomoEngine.Xml.DataTypes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Main\AlomoEngine.Objects\AlomoEngine.Objects.csproj">
+    <ProjectReference Include="..\..\Main\ForcesOfCorruptionEnvironment.DataTypes\ForcesOfCorruptionEnvironment.DataTypes.csproj">
+      <Project>{396B6844-C113-4E38-B693-A6FC19AF689D}</Project>
+      <Name>ForcesOfCorruptionEnvironment.DataTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Main\ForcesOfCorruptionEnvironment.Objects\ForcesOfCorruptionEnvironment.Objects.csproj">
       <Project>{33c3610c-153e-4220-89c1-057f1867ce7d}</Project>
-      <Name>AlomoEngine.Objects</Name>
+      <Name>ForcesOfCorruptionEnvironment.Objects</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Main\AlomoEngine.Xml\AlomoEngine.Xml.csproj">
       <Project>{1dc76bb2-f39b-4c23-a3bf-b12ec60067aa}</Project>

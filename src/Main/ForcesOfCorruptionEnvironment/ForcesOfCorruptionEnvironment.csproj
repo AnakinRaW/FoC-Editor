@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8861772-A522-48A7-8F69-7EF51CFF1F96}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ForcesOfCorruptionEnvironment</RootNamespace>
+    <AssemblyName>ForcesOfCorruptionEnvironment</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveGame\ISaveGameFile.cs" />
+    <Compile Include="SaveGame\RetailSaveGame.cs" />
+    <Compile Include="SaveGame\SaveGame.cs" />
+    <Compile Include="SaveGame\SteamSaveGame.cs" />
+    <Compile Include="SaveGame\UnitRef.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlomoEngine.Core\AlomoEngine.Core.csproj">
+      <Project>{4b061bdb-ee61-4638-9bb2-44f260b5135e}</Project>
+      <Name>AlomoEngine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlomoEngine.DataTypes\AlomoEngine.Xml.DataTypes.csproj">
+      <Project>{c5915930-567d-433a-806d-ec60f5e3303f}</Project>
+      <Name>AlomoEngine.Xml.DataTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForcesOfCorruptionEnvironment.Objects\ForcesOfCorruptionEnvironment.Objects.csproj">
+      <Project>{33c3610c-153e-4220-89c1-057f1867ce7d}</Project>
+      <Name>ForcesOfCorruptionEnvironment.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlomoEngine.Xml\AlomoEngine.Xml.csproj">
+      <Project>{1dc76bb2-f39b-4c23-a3bf-b12ec60067aa}</Project>
+      <Name>AlomoEngine.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlomoEngine\AlomoEngine.csproj">
+      <Project>{f6d91bd5-f78d-4e3d-9922-bf3177d86d65}</Project>
+      <Name>AlomoEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameManagers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

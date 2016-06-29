@@ -1,4 +1,4 @@
-﻿namespace AlomoEngine.DataTypes.EventArgs
+﻿namespace AlomoEngine.Xml.DataTypes.EventArgs
 {
     public class ColorChangedEventArgs : System.EventArgs
     {

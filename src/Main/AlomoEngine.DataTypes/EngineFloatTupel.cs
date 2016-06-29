@@ -2,9 +2,9 @@
 using System.Globalization;
 using System.Linq;
 using AlomoEngine.Core;
-using AlomoEngine.DataTypes.Enums;
+using AlomoEngine.Xml.DataTypes.Enums;
 
-namespace AlomoEngine.DataTypes
+namespace AlomoEngine.Xml.DataTypes
 {
     public class EngineFloatTupel
     {

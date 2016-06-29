@@ -124,13 +124,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForcesOfCorruptionEnvironment\ForcesOfCorruptionEnvironment.csproj">
+      <Project>{b8861772-a522-48a7-8f69-7ef51cff1f96}</Project>
+      <Name>ForcesOfCorruptionEnvironment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AlomoEngine.Core\AlomoEngine.Core.csproj">
       <Project>{4b061bdb-ee61-4638-9bb2-44f260b5135e}</Project>
       <Name>AlomoEngine.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AlomoEngine\AlomoEngine.csproj">
-      <Project>{f6d91bd5-f78d-4e3d-9922-bf3177d86d65}</Project>
-      <Name>AlomoEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

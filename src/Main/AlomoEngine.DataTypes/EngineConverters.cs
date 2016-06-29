@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace AlomoEngine.DataTypes
+namespace AlomoEngine.Xml.DataTypes
 {
     public static class EngineConverters
     {

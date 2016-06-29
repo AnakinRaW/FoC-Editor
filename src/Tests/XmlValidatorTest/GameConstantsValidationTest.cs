@@ -10,7 +10,7 @@ namespace XmlValidatorTest
         [TestMethod]
         public void TestMethod1()
         {
-            var validator = new XmlValidator(AlomoEngine.Objects.Properties.Resources.Gameconstants.ToStream());
+            var validator = new XmlValidator(ForcesOfCorruptionEnvironment.Objects.Properties.Resources.Gameconstants.ToStream());
 
             Assert.IsTrue(validator.Validate(@"C:\Test\Gameconstants1.xml"));
         }

@@ -3,11 +3,11 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using AlomoEngine.Core;
-using AlomoEngine.DataTypes.Enums;
-using AlomoEngine.DataTypes.EventArgs;
-using AlomoEngine.DataTypes.Properties;
+using AlomoEngine.Xml.DataTypes.Enums;
+using AlomoEngine.Xml.DataTypes.EventArgs;
+using AlomoEngine.Xml.DataTypes.Properties;
 
-namespace AlomoEngine.DataTypes
+namespace AlomoEngine.Xml.DataTypes
 {
     public class EngineColor : INotifyPropertyChanged
     {

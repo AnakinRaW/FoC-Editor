@@ -1,5 +1,5 @@
-﻿using AlomoEngine.Objects.GameConstants;
-using AlomoEngine.Xml;
+﻿using AlomoEngine.Xml;
+using ForcesOfCorruptionEnvironment.Objects.GameConstants;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace XmlValidatorTest

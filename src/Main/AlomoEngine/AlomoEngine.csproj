@@ -70,20 +70,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EngineObject.cs" />
+    <Compile Include="AlomoXmlFile.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SaveGame\ISaveGameFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SaveGame\RetailSaveGame.cs" />
-    <Compile Include="SaveGame\SaveGame.cs" />
-    <Compile Include="SaveGame\SteamSaveGame.cs" />
-    <Compile Include="SaveGame\UnitRef.cs" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

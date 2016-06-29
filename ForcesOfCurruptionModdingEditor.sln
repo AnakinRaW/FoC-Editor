@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25402.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernApplicationFramework_DemoTool", "src\Demos\MAF_DemoTool\ModernApplicationFramework_DemoTool.csproj", "{B888A0AB-20AF-4D14-866F-E4941C3302A9}"
 EndProject
@@ -27,11 +27,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineConverterTest", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlomoEngine.Xml", "src\Main\AlomoEngine.Xml\AlomoEngine.Xml.csproj", "{1DC76BB2-F39B-4C23-A3BF-B12EC60067AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlomoEngine.Objects", "src\Main\AlomoEngine.Objects\AlomoEngine.Objects.csproj", "{33C3610C-153E-4220-89C1-057F1867CE7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForcesOfCorruptionEnvironment.Objects", "src\Main\ForcesOfCorruptionEnvironment.Objects\ForcesOfCorruptionEnvironment.Objects.csproj", "{33C3610C-153E-4220-89C1-057F1867CE7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlomoEngine.Core", "src\Main\AlomoEngine.Core\AlomoEngine.Core.csproj", "{4B061BDB-EE61-4638-9BB2-44F260B5135E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlomoEngine.DataTypes", "src\Main\AlomoEngine.DataTypes\AlomoEngine.DataTypes.csproj", "{C5915930-567D-433A-806D-EC60F5E3303F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlomoEngine.Xml.DataTypes", "src\Main\AlomoEngine.DataTypes\AlomoEngine.Xml.DataTypes.csproj", "{C5915930-567D-433A-806D-EC60F5E3303F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForcesOfCorruptionEnvironment", "src\Main\ForcesOfCorruptionEnvironment\ForcesOfCorruptionEnvironment.csproj", "{B8861772-A522-48A7-8F69-7EF51CFF1F96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForcesOfCorruptionEnvironment.DataTypes", "src\Main\ForcesOfCorruptionEnvironment.DataTypes\ForcesOfCorruptionEnvironment.DataTypes.csproj", "{396B6844-C113-4E38-B693-A6FC19AF689D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +105,16 @@ Global
 		{C5915930-567D-433A-806D-EC60F5E3303F}.Debug|Default.ActiveCfg = Debug|Any CPU
 		{C5915930-567D-433A-806D-EC60F5E3303F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{C5915930-567D-433A-806D-EC60F5E3303F}.Release|Default.ActiveCfg = Debug|Any CPU
+		{B8861772-A522-48A7-8F69-7EF51CFF1F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8861772-A522-48A7-8F69-7EF51CFF1F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8861772-A522-48A7-8F69-7EF51CFF1F96}.Debug|Default.ActiveCfg = Debug|Any CPU
+		{B8861772-A522-48A7-8F69-7EF51CFF1F96}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8861772-A522-48A7-8F69-7EF51CFF1F96}.Release|Default.ActiveCfg = Debug|Any CPU
+		{396B6844-C113-4E38-B693-A6FC19AF689D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396B6844-C113-4E38-B693-A6FC19AF689D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396B6844-C113-4E38-B693-A6FC19AF689D}.Debug|Default.ActiveCfg = Debug|Any CPU
+		{396B6844-C113-4E38-B693-A6FC19AF689D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{396B6844-C113-4E38-B693-A6FC19AF689D}.Release|Default.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +132,8 @@ Global
 		{33C3610C-153E-4220-89C1-057F1867CE7D} = {6980BAA7-B5CA-43A6-8AE3-2C6CB0268465}
 		{4B061BDB-EE61-4638-9BB2-44F260B5135E} = {6980BAA7-B5CA-43A6-8AE3-2C6CB0268465}
 		{C5915930-567D-433A-806D-EC60F5E3303F} = {6980BAA7-B5CA-43A6-8AE3-2C6CB0268465}
+		{B8861772-A522-48A7-8F69-7EF51CFF1F96} = {6980BAA7-B5CA-43A6-8AE3-2C6CB0268465}
+		{396B6844-C113-4E38-B693-A6FC19AF689D} = {6980BAA7-B5CA-43A6-8AE3-2C6CB0268465}
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,6 +1,8 @@
-﻿using AlomoEngine.DataTypes;
-using AlomoEngine.DataTypes.AssociationTypes;
-using AlomoEngine.DataTypes.Enums;
+﻿using AlomoEngine.Xml.DataTypes;
+using AlomoEngine.Xml.DataTypes.Enums;
+using ForcesOfCorruptionEnvironment.DataTypes;
+using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
+using ForcesOfCorruptionEnvironment.DataTypes.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EngineConverterTest
