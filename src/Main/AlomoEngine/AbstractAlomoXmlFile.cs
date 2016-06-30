@@ -3,14 +3,9 @@ using AlomoEngine.Core.Interfaces;
 
 namespace AlomoEngine
 {
-    public abstract class AlomoXmlFile : IAlomoXmlFile
+    public abstract class AbstractAlomoXmlFile : IAlomoXmlFile
     {
-        protected AlomoXmlFile(IAlomoXmlFile parent)
-        {
-            Parent = parent;
-        }
         public string Description { get; set; }
-        public IAlomoXmlFile Parent { get; }
 
         public abstract XmlElement Serialize();
 

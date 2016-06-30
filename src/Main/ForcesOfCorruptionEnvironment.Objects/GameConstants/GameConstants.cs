@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Xml;
 using AlomoEngine;
-using AlomoEngine.Core.Interfaces;
 using ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour;
 using ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine;
 using ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI;
@@ -9,12 +8,8 @@ using ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants
 {
-    public sealed class GameConstants : AlomoXmlFile
+    public sealed class GameConstants : AbstractAlomoXmlFile
     {
-        public GameConstants(IAlomoXmlFile parent) : base(parent) {}
-
-        public GameConstants() : base(null) {}
-
         public EngineGameConstantsData EngineGameConstantsData { get; set; }
 
         public BehaviourGameConstantsData BehaviourGameConstantsData { get; set; }
@@ -24,8 +19,6 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants
         public GameObjectsConstantsData GameObjectsConstantsData { get; set; }
 
         public GameConstantsData GameConstantsData { get; set; }
-
-
 
         public override void Deserialize(XmlDocument document)
         {

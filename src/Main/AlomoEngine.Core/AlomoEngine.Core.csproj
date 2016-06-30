@@ -44,6 +44,8 @@
     <Compile Include="Interfaces\IEngineObject.cs" />
     <Compile Include="Interfaces\IGameEngineManager.cs" />
     <Compile Include="Interfaces\IAlomoXmlFile.cs" />
+    <Compile Include="Interfaces\IHasDescription.cs" />
+    <Compile Include="Interfaces\IXmlSerializable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchAlgorithm.cs" />
     <Compile Include="StringExtensions.cs" />
