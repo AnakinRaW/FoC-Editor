@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class CorruptionData : EngineObject
     {
-        public CorruptionData(IGameXmlFile parent) : base(parent) {}
+        public CorruptionData(IAlomoXmlFile parent) : base(parent) {}
 
         public double Corruption_Hyperspace_Bonus { get; set; }
 

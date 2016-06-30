@@ -43,7 +43,7 @@
     <Compile Include="Interfaces\IEngineFile.cs" />
     <Compile Include="Interfaces\IEngineObject.cs" />
     <Compile Include="Interfaces\IGameEngineManager.cs" />
-    <Compile Include="Interfaces\IGameXmlFile.cs" />
+    <Compile Include="Interfaces\IAlomoXmlFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchAlgorithm.cs" />
     <Compile Include="StringExtensions.cs" />

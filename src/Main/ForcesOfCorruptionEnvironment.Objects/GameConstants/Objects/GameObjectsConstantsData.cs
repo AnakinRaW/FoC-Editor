@@ -6,7 +6,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     public class GameObjectsConstantsData : EngineObject
     {
-        public GameObjectsConstantsData(IGameXmlFile parent) : base(parent) {}
+        public GameObjectsConstantsData(IAlomoXmlFile parent) : base(parent) {}
 
         public ObjectMultiplierData ObjectMultiplierData { get; set; }
 

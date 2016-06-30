@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class BeamAbilityData : EngineObject
     {
-        public BeamAbilityData(IGameXmlFile parent) : base(parent) {}
+        public BeamAbilityData(IAlomoXmlFile parent) : base(parent) {}
 
         public double Tractor_Beam_Width { get; set; }
         public int Tractor_Beam_Frames { get; set; }

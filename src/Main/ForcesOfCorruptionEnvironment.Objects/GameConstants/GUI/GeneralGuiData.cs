@@ -13,7 +13,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GeneralGuiData : EngineObject
     {
-        public GeneralGuiData(IGameXmlFile parent) : base(parent) {}
+        public GeneralGuiData(IAlomoXmlFile parent) : base(parent) {}
 
         public string GUI_Move_Command_Ack_Effect { get; set; }
 

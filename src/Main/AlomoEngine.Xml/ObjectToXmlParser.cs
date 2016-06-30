@@ -7,12 +7,12 @@ namespace AlomoEngine.Xml
 {
     public class ObjectToXmlParser
     {
-        public ObjectToXmlParser(IGameXmlFile file)
+        public ObjectToXmlParser(IAlomoXmlFile file)
         {
             File = file;
         }
 
-        private IGameXmlFile File { get; }
+        private IAlomoXmlFile File { get; }
 
         public void WriteToXml(string path)
         {

@@ -9,7 +9,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GalacticFleetMovementData : EngineObject
     {
-        public GalacticFleetMovementData(IGameXmlFile parent) : base(parent) {}
+        public GalacticFleetMovementData(IAlomoXmlFile parent) : base(parent) {}
 
         public string Fleet_Movement_Line_Texture_Name { get; set; }
 

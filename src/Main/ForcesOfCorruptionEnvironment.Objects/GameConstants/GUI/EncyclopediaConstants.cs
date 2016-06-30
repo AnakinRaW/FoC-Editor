@@ -11,7 +11,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class EncyclopediaConstants : EngineObject
     {
-        public EncyclopediaConstants(IGameXmlFile parent) : base(parent) {}
+        public EncyclopediaConstants(IAlomoXmlFile parent) : base(parent) {}
 
         public int Tooltip_Delay { get; set; }
 

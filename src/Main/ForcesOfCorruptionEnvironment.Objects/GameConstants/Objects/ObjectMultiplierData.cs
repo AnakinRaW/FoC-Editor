@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class ObjectMultiplierData : EngineObject
     {
-        public ObjectMultiplierData(IGameXmlFile parent) : base(parent) {}
+        public ObjectMultiplierData(IAlomoXmlFile parent) : base(parent) {}
 
         public double Object_Max_Speed_Multiplier_Galactic { get; set; }
 

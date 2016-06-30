@@ -14,7 +14,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class HardPointData : EngineObject
     {
-        public HardPointData(IGameXmlFile parent) : base(parent) {}
+        public HardPointData(IAlomoXmlFile parent) : base(parent) {}
 
         public double HardPoint_Target_Reticle_Enemy_Screen_Size { get; set; }
 

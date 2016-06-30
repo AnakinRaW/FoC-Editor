@@ -10,7 +10,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class RandomStoryGenerationData : EngineObject
     {
-        public RandomStoryGenerationData(IGameXmlFile parent) : base(parent) {}
+        public RandomStoryGenerationData(IAlomoXmlFile parent) : base(parent) {}
 
         public EngineStringTupel Random_Story_Triggers { get; set; }
 

@@ -13,7 +13,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GameTypographyData : EngineObject
     {
-        public GameTypographyData(IGameXmlFile parent) : base(parent) {}
+        public GameTypographyData(IAlomoXmlFile parent) : base(parent) {}
 
         public string Credits_Display_Font_Name { get; set; }
 

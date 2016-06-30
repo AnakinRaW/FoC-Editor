@@ -11,7 +11,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class BombardmentData : EngineObject
     {
-        public BombardmentData(IGameXmlFile parent) : base(parent) {}
+        public BombardmentData(IAlomoXmlFile parent) : base(parent) {}
 
         public int Max_Bombing_Run_Interval_Seconds { get; set; }
         public int Min_Bombing_Run_Interval_Seconds { get; set; }

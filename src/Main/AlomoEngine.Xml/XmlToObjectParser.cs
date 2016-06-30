@@ -11,7 +11,7 @@ namespace AlomoEngine.Xml
         {
             if (!File.Exists(path))
                 throw new FileNotFoundException(nameof(path));
-            if (!typeof(IGameXmlFile).IsAssignableFrom(typeof(T)))
+            if (!typeof(IAlomoXmlFile).IsAssignableFrom(typeof(T)))
                 throw new InvalidDataException();
             FilePath = path;
         }
@@ -27,7 +27,7 @@ namespace AlomoEngine.Xml
 
                 var doc = new XmlDocument();
                 doc.Load(FilePath);
-                ((IGameXmlFile)instace).Deserialize(doc);
+                ((IAlomoXmlFile)instace).Deserialize(doc);
                 return instace;
             }
             catch (Exception e)

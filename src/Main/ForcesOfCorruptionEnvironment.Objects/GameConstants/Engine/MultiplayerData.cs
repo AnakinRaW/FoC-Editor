@@ -14,7 +14,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class MultiplayerData : EngineObject
     {
-        public MultiplayerData(IGameXmlFile parent) : base(parent) {}
+        public MultiplayerData(IAlomoXmlFile parent) : base(parent) {}
 
         public int Min_Skirmish_Credits { get; set; }
         public int Max_Skirmish_Credits { get; set; }

@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GalacticModeCamera : EngineObject
     {
-        public GalacticModeCamera(IGameXmlFile parent) : base(parent) {}
+        public GalacticModeCamera(IAlomoXmlFile parent) : base(parent) {}
 
         public double GMC_InitialPitchAngleDegrees { get; set; }
 

@@ -6,7 +6,7 @@ namespace AlomoEngine.Core.Interfaces
     {
         string Description { get; set; }
 
-        IGameXmlFile Parent { get; }
+        IAlomoXmlFile Parent { get; }
 
         XmlElement Serialize();
 

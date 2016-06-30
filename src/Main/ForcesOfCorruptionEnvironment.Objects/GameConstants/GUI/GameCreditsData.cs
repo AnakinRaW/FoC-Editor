@@ -11,7 +11,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GameCreditsData : EngineObject
     {
-        public GameCreditsData(IGameXmlFile parent) : base(parent) {}
+        public GameCreditsData(IAlomoXmlFile parent) : base(parent) {}
 
         public double Credits_Spacing { get; set; }
         public double Credits_Scroll_Rate { get; set; }

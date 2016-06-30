@@ -13,7 +13,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class PathFindingMovementData : EngineObject
     {
-        public PathFindingMovementData(IGameXmlFile parent) : base(parent) {}
+        public PathFindingMovementData(IAlomoXmlFile parent) : base(parent) {}
 
         public int SpacePathfindMaxExpansions { get; set; }
 

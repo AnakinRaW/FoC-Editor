@@ -11,7 +11,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants
 {
     public sealed class GameConstants : AlomoXmlFile
     {
-        public GameConstants(IGameXmlFile parent) : base(parent) {}
+        public GameConstants(IAlomoXmlFile parent) : base(parent) {}
 
         public GameConstants() : base(null) {}
 

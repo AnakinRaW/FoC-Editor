@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AutoResolveData : EngineObject
     {
-        public AutoResolveData(IGameXmlFile parent) : base(parent) {}
+        public AutoResolveData(IAlomoXmlFile parent) : base(parent) {}
 
         public double Space_Auto_Resolve_Delay_Seconds { get; set; }
 

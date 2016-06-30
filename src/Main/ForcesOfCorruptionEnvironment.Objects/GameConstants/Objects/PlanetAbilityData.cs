@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class PlanetAbilityData : EngineObject
     {
-        public PlanetAbilityData(IGameXmlFile parent) : base(parent) {}
+        public PlanetAbilityData(IAlomoXmlFile parent) : base(parent) {}
 
         public EngineStringTupel Planet_Ability_Icon_Names { get; set; }
         public EngineStringTupel Planet_Ability_Text_IDs { get; set; }

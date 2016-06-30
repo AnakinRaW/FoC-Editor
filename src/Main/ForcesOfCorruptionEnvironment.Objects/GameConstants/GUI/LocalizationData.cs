@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class LocalizationData : EngineObject
     {
-        public LocalizationData(IGameXmlFile parent) : base(parent) {}
+        public LocalizationData(IAlomoXmlFile parent) : base(parent) {}
 
         public List<LanguageTextureAssociation> Localized_Splash_Screen { get; set; }
 

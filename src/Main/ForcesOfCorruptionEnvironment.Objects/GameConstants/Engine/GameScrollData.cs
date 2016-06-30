@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GameScrollData : EngineObject
     {
-        public GameScrollData(IGameXmlFile parent) : base(parent) {}
+        public GameScrollData(IAlomoXmlFile parent) : base(parent) {}
 
         public int Tactical_Edge_Scroll_Region { get; set; }
 

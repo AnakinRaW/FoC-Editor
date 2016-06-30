@@ -13,7 +13,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class PlayerFactionData : EngineObject
     {
-        public PlayerFactionData(IGameXmlFile parent) : base(parent) {}
+        public PlayerFactionData(IAlomoXmlFile parent) : base(parent) {}
 
         public bool Use_Neutral_UI_Color { get; set; }
 

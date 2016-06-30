@@ -6,7 +6,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     public class EngineGameConstantsData : EngineObject
     {
-        public EngineGameConstantsData(IGameXmlFile parent) : base(parent) {}
+        public EngineGameConstantsData(IAlomoXmlFile parent) : base(parent) {}
 
         public AiData AiData { get; set; }
         public AutoResolveData AutoResolveData { get; set; }

@@ -15,7 +15,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class DamageArmorMatrixData : EngineObject
     {
-        public DamageArmorMatrixData(IGameXmlFile parent) : base(parent) {}
+        public DamageArmorMatrixData(IAlomoXmlFile parent) : base(parent) {}
 
         [Description("these will NOT WORK for special abilities and <Damage_Clone>, <Squash_Damage_Type> and <Internal_Damage_Type> tags.")]
         public EngineStringTupel Damage_Types { get; set; }

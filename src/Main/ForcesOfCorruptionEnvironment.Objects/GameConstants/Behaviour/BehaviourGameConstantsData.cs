@@ -7,7 +7,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     public class BehaviourGameConstantsData : EngineObject
     {
-        public BehaviourGameConstantsData(IGameXmlFile parent) : base(parent) {}
+        public BehaviourGameConstantsData(IAlomoXmlFile parent) : base(parent) {}
 
         public AbilityEffectData AbilityEffectData { get; set; }
 

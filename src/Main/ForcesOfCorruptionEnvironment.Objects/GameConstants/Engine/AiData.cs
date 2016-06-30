@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AiData : EngineObject
     {
-        public AiData(IGameXmlFile parent) : base(parent) {}
+        public AiData(IAlomoXmlFile parent) : base(parent) {}
 
         public int AI_SpaceEvaluatorRegionSize { get; set; }
 

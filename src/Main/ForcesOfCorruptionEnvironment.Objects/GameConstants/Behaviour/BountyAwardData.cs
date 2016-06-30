@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class BountyAwardData : EngineObject
     {
-        public BountyAwardData(IGameXmlFile parent) : base(parent) {}
+        public BountyAwardData(IAlomoXmlFile parent) : base(parent) {}
 
         public List<BountyCategoryAwardAssociation> Default_Bounty_By_Category_SP { get; set; }
         public List<BountyCategoryAwardAssociation> Default_Bounty_By_Category_MP { get; set; }

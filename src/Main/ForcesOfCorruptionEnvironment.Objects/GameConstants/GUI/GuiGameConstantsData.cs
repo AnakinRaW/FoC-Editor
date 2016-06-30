@@ -8,7 +8,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GuiGameConstantsData : EngineObject
     {
-        public GuiGameConstantsData(IGameXmlFile parent) : base(parent) {}
+        public GuiGameConstantsData(IAlomoXmlFile parent) : base(parent) {}
 
         public EncyclopediaConstants EncyclopediaConstants { get; set; }
         public CommandBarGuiData CommandBarGuiData { get; set; }

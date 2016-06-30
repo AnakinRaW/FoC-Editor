@@ -10,7 +10,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class DebugHotKeyLoadData : EngineObject
     {
-        public DebugHotKeyLoadData(IGameXmlFile parent) : base(parent) { }
+        public DebugHotKeyLoadData(IAlomoXmlFile parent) : base(parent) { }
 
         public List<string> Debug_Hot_Key_Load_Map { get; set; } = new List<string>();
 

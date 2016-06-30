@@ -13,7 +13,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GeneralObjectData : EngineObject
     {
-        public GeneralObjectData(IGameXmlFile parent) : base(parent) {}
+        public GeneralObjectData(IAlomoXmlFile parent) : base(parent) {}
 
         public EngineStringTupel Unit_Command_Rankings_By_Category { get; set; }
 

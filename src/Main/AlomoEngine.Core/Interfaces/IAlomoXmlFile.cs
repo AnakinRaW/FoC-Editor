@@ -2,7 +2,7 @@
 
 namespace AlomoEngine.Core.Interfaces
 {
-    public interface IGameXmlFile: IEngineObject
+    public interface IAlomoXmlFile: IEngineObject
     {
         XmlElement RootNode { get; set; }
 

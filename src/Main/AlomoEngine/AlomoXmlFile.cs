@@ -3,14 +3,14 @@ using AlomoEngine.Core.Interfaces;
 
 namespace AlomoEngine
 {
-    public abstract class AlomoXmlFile : IGameXmlFile
+    public abstract class AlomoXmlFile : IAlomoXmlFile
     {
-        protected AlomoXmlFile(IGameXmlFile parent)
+        protected AlomoXmlFile(IAlomoXmlFile parent)
         {
             Parent = parent;
         }
         public string Description { get; set; }
-        public IGameXmlFile Parent { get; }
+        public IAlomoXmlFile Parent { get; }
 
         public abstract XmlElement Serialize();
 

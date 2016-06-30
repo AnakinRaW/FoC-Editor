@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GameConstantsData : EngineObject
     {
-        public GameConstantsData(IGameXmlFile parent) : base(parent) { }
+        public GameConstantsData(IAlomoXmlFile parent) : base(parent) { }
 
         [Description("When a land or space conflict occurs, allow pausing of Strategic/Galactic and not jump right into tactical battle until player(s) are ready")]
         public bool Strategic_Queue_Tactical_Battles { get; set; }

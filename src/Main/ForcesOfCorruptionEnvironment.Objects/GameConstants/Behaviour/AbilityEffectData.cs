@@ -11,7 +11,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AbilityEffectData : EngineObject
     {
-        public AbilityEffectData(IGameXmlFile parent) : base(parent) {}
+        public AbilityEffectData(IAlomoXmlFile parent) : base(parent) {}
 
         public double Telekinesis_Hover_Height { get; set; }
         public double Telekinesis_Transition_Time { get; set; }

@@ -11,7 +11,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class PlanetaryCorruptionConstants : EngineObject
     {
-        public PlanetaryCorruptionConstants(IGameXmlFile parent) : base(parent) { }
+        public PlanetaryCorruptionConstants(IAlomoXmlFile parent) : base(parent) { }
 
         public string Corruption_Particle_Name { get; set; }
 

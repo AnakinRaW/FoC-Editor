@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class CommandBarGuiData : EngineObject
     {
-        public CommandBarGuiData(IGameXmlFile parent) : base(parent) {}
+        public CommandBarGuiData(IAlomoXmlFile parent) : base(parent) {}
 
         public EngineColor Droid_Date_Color { get; set; }
         public EngineColor Droid_Text_Color { get; set; }

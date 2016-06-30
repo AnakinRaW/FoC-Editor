@@ -14,7 +14,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
     public class FowData : EngineObject
     {
         private bool _use_Overrun_Auto_Resolve_Multiple;
-        public FowData(IGameXmlFile parent) : base(parent) {}
+        public FowData(IAlomoXmlFile parent) : base(parent) {}
 
         public int Minimum_Tactical_Overrun_Time_In_Secs { get; set; }
 

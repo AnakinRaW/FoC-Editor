@@ -12,7 +12,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class GalacticEconomyData : EngineObject
     {
-        public GalacticEconomyData(IGameXmlFile parent) : base(parent) {}
+        public GalacticEconomyData(IAlomoXmlFile parent) : base(parent) {}
 
         public bool Pay_As_You_Go { get; set; }
 

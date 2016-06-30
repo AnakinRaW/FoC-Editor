@@ -6,7 +6,7 @@ namespace AlomoEngine
 {
     public abstract class EngineObject : IEngineObject
     {
-        protected EngineObject(IGameXmlFile parent)
+        protected EngineObject(IAlomoXmlFile parent)
         {
             if (parent == null)
                 throw new ArgumentNullException(nameof(parent));
@@ -15,7 +15,7 @@ namespace AlomoEngine
 
         public string Description { get; set; }
 
-        public IGameXmlFile Parent { get; }
+        public IAlomoXmlFile Parent { get; }
 
         public abstract XmlElement Serialize();
 
