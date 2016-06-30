@@ -13,9 +13,9 @@ using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class DamageArmorMatrixData : EngineObject
+    public class DamageArmorMatrixData : XmlTagCategory
     {
-        public DamageArmorMatrixData(IAlomoXmlFile parent) : base(parent) {}
+        public DamageArmorMatrixData(IAlomoXmlFile file) : base(file) {}
 
         [Description("these will NOT WORK for special abilities and <Damage_Clone>, <Squash_Damage_Type> and <Internal_Damage_Type> tags.")]
         public EngineStringTupel Damage_Types { get; set; }
@@ -30,7 +30,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Damage_Types), Damage_Types.ToString(EngineSparators.Comma, true));
             node.SetValueOfLastTagOfName(nameof(Armor_Types), Armor_Types.ToString(EngineSparators.Comma, true));
 

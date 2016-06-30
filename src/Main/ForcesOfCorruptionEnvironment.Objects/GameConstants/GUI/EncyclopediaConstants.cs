@@ -9,9 +9,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class EncyclopediaConstants : EngineObject
+    public class EncyclopediaConstants : XmlTagCategory
     {
-        public EncyclopediaConstants(IAlomoXmlFile parent) : base(parent) {}
+        public EncyclopediaConstants(IAlomoXmlFile file) : base(file) {}
 
         public int Tooltip_Delay { get; set; }
 
@@ -43,7 +43,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Tooltip_Delay), Tooltip_Delay.ToString());
             node.SetValueOfLastTagOfName(nameof(Encyclopedia_Delay), Encyclopedia_Delay.ToString());
             node.SetValueOfLastTagOfName(nameof(Long_Encyclopedia_Delay), Long_Encyclopedia_Delay.ToString());

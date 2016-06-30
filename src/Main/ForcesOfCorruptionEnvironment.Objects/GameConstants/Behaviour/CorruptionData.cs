@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class CorruptionData : EngineObject
+    public class CorruptionData : XmlTagCategory
     {
-        public CorruptionData(IAlomoXmlFile parent) : base(parent) {}
+        public CorruptionData(IAlomoXmlFile file) : base(file) {}
 
         public double Corruption_Hyperspace_Bonus { get; set; }
 
@@ -37,7 +37,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Corruption_Hyperspace_Bonus), Corruption_Hyperspace_Bonus.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Corruption_Choice_Icon_Name), Corruption_Choice_Icon_Name.ToString(EngineSparators.Space, true));
             node.SetValueOfLastTagOfName(nameof(Corruption_Choice_Name), Corruption_Choice_Name.ToString(EngineSparators.Space, true));

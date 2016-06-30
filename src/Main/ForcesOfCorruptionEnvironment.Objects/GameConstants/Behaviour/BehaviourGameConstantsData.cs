@@ -5,9 +5,9 @@ using ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
-    public class BehaviourGameConstantsData : EngineObject
+    public class BehaviourGameConstantsData : XmlTagCategory
     {
-        public BehaviourGameConstantsData(IAlomoXmlFile parent) : base(parent) {}
+        public BehaviourGameConstantsData(IAlomoXmlFile file) : base(file) {}
 
         public AbilityEffectData AbilityEffectData { get; set; }
 
@@ -36,34 +36,34 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
             ShipLoadVulnerabilityData.Serialize();
             GalacticFleetMovementData.Serialize();
             GalacticEconomyData.Serialize();
-            return Parent.RootNode;
+            return File.RootNode;
         }
 
         public override void Deserialize(XmlElement node)
         {
-            ShipLoadVulnerabilityData = new ShipLoadVulnerabilityData(Parent);
+            ShipLoadVulnerabilityData = new ShipLoadVulnerabilityData(File);
             ShipLoadVulnerabilityData.Deserialize(node);
 
-            GalacticFleetMovementData = new GalacticFleetMovementData(Parent);
+            GalacticFleetMovementData = new GalacticFleetMovementData(File);
             GalacticFleetMovementData.Deserialize(node);
 
 
-            GalacticEconomyData = new GalacticEconomyData(Parent);
+            GalacticEconomyData = new GalacticEconomyData(File);
             GalacticEconomyData.Deserialize(node);
 
-            RandomStoryGenerationData = new RandomStoryGenerationData(Parent);
+            RandomStoryGenerationData = new RandomStoryGenerationData(File);
             RandomStoryGenerationData.Deserialize(node);
 
-            AbilityEffectData = new AbilityEffectData(Parent);
+            AbilityEffectData = new AbilityEffectData(File);
             AbilityEffectData.Deserialize(node);
 
-            GalacticGuiUnitAbilityData = new GalacticGuiUnitAbilityData(Parent);
+            GalacticGuiUnitAbilityData = new GalacticGuiUnitAbilityData(File);
             GalacticGuiUnitAbilityData.Deserialize(node);
 
-            BountyAwardData = new BountyAwardData(Parent);
+            BountyAwardData = new BountyAwardData(File);
             BountyAwardData.Deserialize(node);
 
-            CorruptionData = new CorruptionData(Parent);
+            CorruptionData = new CorruptionData(File);
             CorruptionData.Deserialize(node);
         }
     }

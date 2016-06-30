@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GameScrollData : EngineObject
+    public class GameScrollData : XmlTagCategory
     {
-        public GameScrollData(IAlomoXmlFile parent) : base(parent) {}
+        public GameScrollData(IAlomoXmlFile file) : base(file) {}
 
         public int Tactical_Edge_Scroll_Region { get; set; }
 
@@ -44,7 +44,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
 
             node.SetValueOfLastTagOfName(nameof(Tactical_Edge_Scroll_Region), Tactical_Edge_Scroll_Region.ToString());
             node.SetValueOfLastTagOfName(nameof(Tactical_Max_Scroll_Speed), Tactical_Max_Scroll_Speed.ToString());

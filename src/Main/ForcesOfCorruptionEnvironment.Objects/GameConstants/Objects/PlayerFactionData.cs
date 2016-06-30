@@ -11,9 +11,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class PlayerFactionData : EngineObject
+    public class PlayerFactionData : XmlTagCategory
     {
-        public PlayerFactionData(IAlomoXmlFile parent) : base(parent) {}
+        public PlayerFactionData(IAlomoXmlFile file) : base(file) {}
 
         public bool Use_Neutral_UI_Color { get; set; }
 
@@ -55,7 +55,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Use_Neutral_UI_Color), Use_Neutral_UI_Color.ToString());
             node.SetValueOfLastTagOfName(nameof(Neutral_UI_Color), Neutral_UI_Color.ToString());
             node.SetValueOfLastTagOfName(nameof(Default_Defense_Adjust), Default_Defense_Adjust.ToString(CultureInfo.InvariantCulture));

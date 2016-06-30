@@ -4,18 +4,18 @@ using AlomoEngine.Core.Interfaces;
 
 namespace AlomoEngine
 {
-    public abstract class EngineObject : IEngineObject
+    public abstract class XmlTagCategory : IXmlTagCategory
     {
-        protected EngineObject(IAlomoXmlFile parent)
+        protected XmlTagCategory(IAlomoXmlFile file)
         {
-            if (parent == null)
-                throw new ArgumentNullException(nameof(parent));
-            Parent = parent;
+            if (file == null)
+                throw new ArgumentNullException(nameof(file));
+            File = file;
         }
 
         public string Description { get; set; }
 
-        public IAlomoXmlFile Parent { get; }
+        public IAlomoXmlFile File { get; }
 
         public abstract XmlElement Serialize();
 

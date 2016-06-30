@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GameConstantsData : EngineObject
+    public class GameConstantsData : XmlTagCategory
     {
-        public GameConstantsData(IAlomoXmlFile parent) : base(parent) { }
+        public GameConstantsData(IAlomoXmlFile file) : base(file) { }
 
         [Description("When a land or space conflict occurs, allow pausing of Strategic/Galactic and not jump right into tactical battle until player(s) are ready")]
         public bool Strategic_Queue_Tactical_Battles { get; set; }
@@ -154,7 +154,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Strategic_Queue_Tactical_Battles), Strategic_Queue_Tactical_Battles.ToString());
             node.SetValueOfLastTagOfName(nameof(Fleet_Maintenance_Update_Delay_Seconds), Fleet_Maintenance_Update_Delay_Seconds.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Political_Control_Change_Time_Seconds), Political_Control_Change_Time_Seconds.ToString());

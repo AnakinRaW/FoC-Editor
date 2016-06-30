@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class CommandBarGuiData : EngineObject
+    public class CommandBarGuiData : XmlTagCategory
     {
-        public CommandBarGuiData(IAlomoXmlFile parent) : base(parent) {}
+        public CommandBarGuiData(IAlomoXmlFile file) : base(file) {}
 
         public EngineColor Droid_Date_Color { get; set; }
         public EngineColor Droid_Text_Color { get; set; }
@@ -32,7 +32,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Droid_Date_Color), Droid_Date_Color.ToString(EngineSparators.Space, false));
             node.SetValueOfLastTagOfName(nameof(Droid_Text_Color), Droid_Text_Color.ToString(EngineSparators.Space, false));
             node.SetValueOfLastTagOfName(nameof(Droid_Seperator_Color), Droid_Seperator_Color.ToString(EngineSparators.Space, false));

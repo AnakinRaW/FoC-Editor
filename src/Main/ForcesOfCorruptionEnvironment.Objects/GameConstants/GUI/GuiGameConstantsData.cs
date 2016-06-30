@@ -6,9 +6,9 @@ using AlomoEngine.Core.Interfaces;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GuiGameConstantsData : EngineObject
+    public class GuiGameConstantsData : XmlTagCategory
     {
-        public GuiGameConstantsData(IAlomoXmlFile parent) : base(parent) {}
+        public GuiGameConstantsData(IAlomoXmlFile file) : base(file) {}
 
         public EncyclopediaConstants EncyclopediaConstants { get; set; }
         public CommandBarGuiData CommandBarGuiData { get; set; }
@@ -29,30 +29,30 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
             GeneralGuiData.Serialize();
             
 
-            return Parent.RootNode;
+            return File.RootNode;
         }
 
         public override void Deserialize(XmlElement node)
         {
-            EncyclopediaConstants = new EncyclopediaConstants(Parent);
+            EncyclopediaConstants = new EncyclopediaConstants(File);
             EncyclopediaConstants.Deserialize(node);
 
-            CommandBarGuiData = new CommandBarGuiData(Parent);
+            CommandBarGuiData = new CommandBarGuiData(File);
             CommandBarGuiData.Deserialize(node);
 
-            FowData = new FowData(Parent);
+            FowData = new FowData(File);
             FowData.Deserialize(node);
 
-            GameCreditsData = new GameCreditsData(Parent);
+            GameCreditsData = new GameCreditsData(File);
             GameCreditsData.Deserialize(node);
 
-            GameTypographyData = new GameTypographyData(Parent);
+            GameTypographyData = new GameTypographyData(File);
             GameTypographyData.Deserialize(node);
 
-            LocalizationData = new LocalizationData(Parent);
+            LocalizationData = new LocalizationData(File);
             LocalizationData.Deserialize(node);
 
-            GeneralGuiData = new GeneralGuiData(Parent);
+            GeneralGuiData = new GeneralGuiData(File);
             GeneralGuiData.Deserialize(node);
         }
     }

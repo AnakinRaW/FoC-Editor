@@ -11,9 +11,9 @@ using ForcesOfCorruptionEnvironment.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GeneralObjectData : EngineObject
+    public class GeneralObjectData : XmlTagCategory
     {
-        public GeneralObjectData(IAlomoXmlFile parent) : base(parent) {}
+        public GeneralObjectData(IAlomoXmlFile file) : base(file) {}
 
         public EngineStringTupel Unit_Command_Rankings_By_Category { get; set; }
 
@@ -58,7 +58,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
         public override XmlElement Serialize()
 
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Unit_Command_Rankings_By_Category), Unit_Command_Rankings_By_Category.ToString());
             node.SetValueOfLastTagOfName(nameof(Space_Collidable_Grid_Cull_Size), Space_Collidable_Grid_Cull_Size.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Space_Large_Ship_Grid_Cull_Size), Space_Large_Ship_Grid_Cull_Size.ToString(CultureInfo.InvariantCulture));

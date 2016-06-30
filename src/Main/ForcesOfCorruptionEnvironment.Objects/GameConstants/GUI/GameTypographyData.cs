@@ -11,9 +11,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GameTypographyData : EngineObject
+    public class GameTypographyData : XmlTagCategory
     {
-        public GameTypographyData(IAlomoXmlFile parent) : base(parent) {}
+        public GameTypographyData(IAlomoXmlFile file) : base(file) {}
 
         public string Credits_Display_Font_Name { get; set; }
 
@@ -97,7 +97,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Credits_Display_Font_Name), Credits_Display_Font_Name);
             node.SetValueOfLastTagOfName(nameof(Credits_Display_Font_Size), Credits_Display_Font_Size.ToString());
 

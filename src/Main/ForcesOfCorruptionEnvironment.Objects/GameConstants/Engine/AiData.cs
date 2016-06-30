@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class AiData : EngineObject
+    public class AiData : XmlTagCategory
     {
-        public AiData(IAlomoXmlFile parent) : base(parent) {}
+        public AiData(IAlomoXmlFile file) : base(file) {}
 
         public int AI_SpaceEvaluatorRegionSize { get; set; }
 
@@ -50,7 +50,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(AI_SpaceEvaluatorRegionSize), AI_SpaceEvaluatorRegionSize.ToString());
             node.SetValueOfLastTagOfName(nameof(AI_LandEvaluatorRegionSize), AI_LandEvaluatorRegionSize.ToString());
             node.SetValueOfLastTagOfName(nameof(AI_SpaceThreatDistanceFactor), AI_SpaceThreatDistanceFactor.ToString(CultureInfo.InvariantCulture));

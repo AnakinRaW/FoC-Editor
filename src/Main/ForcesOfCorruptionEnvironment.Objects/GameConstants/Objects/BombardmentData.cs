@@ -9,9 +9,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class BombardmentData : EngineObject
+    public class BombardmentData : XmlTagCategory
     {
-        public BombardmentData(IAlomoXmlFile parent) : base(parent) {}
+        public BombardmentData(IAlomoXmlFile file) : base(file) {}
 
         public int Max_Bombing_Run_Interval_Seconds { get; set; }
         public int Min_Bombing_Run_Interval_Seconds { get; set; }
@@ -23,7 +23,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
 
             node.SetValueOfLastTagOfName(nameof(Max_Bombing_Run_Interval_Seconds), Max_Bombing_Run_Interval_Seconds.ToString());
             node.SetValueOfLastTagOfName(nameof(Min_Bombing_Run_Interval_Seconds), Min_Bombing_Run_Interval_Seconds.ToString());

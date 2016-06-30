@@ -12,9 +12,9 @@ using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class HardPointData : EngineObject
+    public class HardPointData : XmlTagCategory
     {
-        public HardPointData(IAlomoXmlFile parent) : base(parent) {}
+        public HardPointData(IAlomoXmlFile file) : base(file) {}
 
         public double HardPoint_Target_Reticle_Enemy_Screen_Size { get; set; }
 
@@ -38,7 +38,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
 
             node.SetValueOfLastTagOfName(nameof(HardPoint_Target_Reticle_Enemy_Screen_Size),
                 HardPoint_Target_Reticle_Enemy_Screen_Size.ToString(CultureInfo.InvariantCulture));

@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class AutoResolveData : EngineObject
+    public class AutoResolveData : XmlTagCategory
     {
-        public AutoResolveData(IAlomoXmlFile parent) : base(parent) {}
+        public AutoResolveData(IAlomoXmlFile file) : base(file) {}
 
         public double Space_Auto_Resolve_Delay_Seconds { get; set; }
 
@@ -46,7 +46,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
         
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
 
             node.SetValueOfLastTagOfName(nameof(Space_Auto_Resolve_Delay_Seconds), Space_Auto_Resolve_Delay_Seconds.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Land_Auto_Resolve_Delay_Seconds), Land_Auto_Resolve_Delay_Seconds.ToString(CultureInfo.InvariantCulture));

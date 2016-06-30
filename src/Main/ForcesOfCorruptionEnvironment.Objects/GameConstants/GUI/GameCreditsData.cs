@@ -9,9 +9,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GameCreditsData : EngineObject
+    public class GameCreditsData : XmlTagCategory
     {
-        public GameCreditsData(IAlomoXmlFile parent) : base(parent) {}
+        public GameCreditsData(IAlomoXmlFile file) : base(file) {}
 
         public double Credits_Spacing { get; set; }
         public double Credits_Scroll_Rate { get; set; }
@@ -42,7 +42,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Credits_Spacing), Credits_Spacing.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Credits_Scroll_Rate), Credits_Scroll_Rate.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Credits_Font), Credits_Font);

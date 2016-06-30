@@ -7,9 +7,9 @@ using AlomoEngine.Xml;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GalacticFleetMovementData : EngineObject
+    public class GalacticFleetMovementData : XmlTagCategory
     {
-        public GalacticFleetMovementData(IAlomoXmlFile parent) : base(parent) {}
+        public GalacticFleetMovementData(IAlomoXmlFile file) : base(file) {}
 
         public string Fleet_Movement_Line_Texture_Name { get; set; }
 
@@ -23,7 +23,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Fleet_Movement_Line_Texture_Name), Fleet_Movement_Line_Texture_Name);
             node.SetValueOfLastTagOfName(nameof(Fleet_Hyperspace_Band_Texture_Name), Fleet_Hyperspace_Band_Texture_Name);
             node.SetValueOfLastTagOfName(nameof(WaypointLineTextureName), WaypointLineTextureName);

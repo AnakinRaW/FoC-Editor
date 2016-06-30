@@ -9,9 +9,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class PlanetaryCorruptionConstants : EngineObject
+    public class PlanetaryCorruptionConstants : XmlTagCategory
     {
-        public PlanetaryCorruptionConstants(IAlomoXmlFile parent) : base(parent) { }
+        public PlanetaryCorruptionConstants(IAlomoXmlFile file) : base(file) { }
 
         public string Corruption_Particle_Name { get; set; }
 
@@ -37,7 +37,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
         
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Corruption_Particle_Name), Corruption_Particle_Name);
             node.SetValueOfLastTagOfName(nameof(Corruption_Particle_Line_Name), Corruption_Particle_Line_Name);
             node.SetValueOfLastTagOfName(nameof(Particle_Brightness_Per_Corruption_Level), Particle_Brightness_Per_Corruption_Level.ToString());

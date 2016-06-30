@@ -4,9 +4,9 @@ using AlomoEngine.Core.Interfaces;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
-    public class GameObjectsConstantsData : EngineObject
+    public class GameObjectsConstantsData : XmlTagCategory
     {
-        public GameObjectsConstantsData(IAlomoXmlFile parent) : base(parent) {}
+        public GameObjectsConstantsData(IAlomoXmlFile file) : base(file) {}
 
         public ObjectMultiplierData ObjectMultiplierData { get; set; }
 
@@ -36,33 +36,33 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
             BeamAbilityData.Serialize();
             PlanetAbilityData.Serialize();
             BombardmentData.Serialize();
-            return Parent.RootNode;
+            return File.RootNode;
         }
 
         public override void Deserialize(XmlElement node)
         {
-            ObjectMultiplierData = new ObjectMultiplierData(Parent);
+            ObjectMultiplierData = new ObjectMultiplierData(File);
             ObjectMultiplierData.Deserialize(node);
 
-            PlayerFactionData = new PlayerFactionData(Parent);
+            PlayerFactionData = new PlayerFactionData(File);
             PlayerFactionData.Deserialize(node);
 
-            PlanetaryCorruptionConstants = new PlanetaryCorruptionConstants(Parent);
+            PlanetaryCorruptionConstants = new PlanetaryCorruptionConstants(File);
             PlanetaryCorruptionConstants.Deserialize(node);
 
-            HardPointData = new HardPointData(Parent);
+            HardPointData = new HardPointData(File);
             HardPointData.Deserialize(node);
 
-            DamageArmorMatrixData = new DamageArmorMatrixData(Parent);
+            DamageArmorMatrixData = new DamageArmorMatrixData(File);
             DamageArmorMatrixData.Deserialize(node);
 
-            BeamAbilityData = new BeamAbilityData(Parent);
+            BeamAbilityData = new BeamAbilityData(File);
             BeamAbilityData.Deserialize(node);
 
-            PlanetAbilityData = new PlanetAbilityData(Parent);
+            PlanetAbilityData = new PlanetAbilityData(File);
             PlanetAbilityData.Deserialize(node);
 
-            BombardmentData = new BombardmentData(Parent);
+            BombardmentData = new BombardmentData(File);
             BombardmentData.Deserialize(node);
         }
     }

@@ -8,9 +8,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GalacticGuiUnitAbilityData : EngineObject
+    public class GalacticGuiUnitAbilityData : XmlTagCategory
     {
-        public GalacticGuiUnitAbilityData(IAlomoXmlFile parent) : base(parent) {}
+        public GalacticGuiUnitAbilityData(IAlomoXmlFile file) : base(file) {}
 
         public EngineStringTupel Activated_Slice_Ability_Names { get; set; }
         public EngineStringTupel Activated_Black_Market_Ability_Names { get; set; }
@@ -25,7 +25,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Activated_Slice_Ability_Names), Activated_Slice_Ability_Names.ToString());
             node.SetValueOfLastTagOfName(nameof(Activated_Black_Market_Ability_Names), Activated_Black_Market_Ability_Names.ToString());
             node.SetValueOfLastTagOfName(nameof(Activated_Sabotage_Ability_Names), Activated_Sabotage_Ability_Names.ToString());

@@ -9,9 +9,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class AbilityEffectData : EngineObject
+    public class AbilityEffectData : XmlTagCategory
     {
-        public AbilityEffectData(IAlomoXmlFile parent) : base(parent) {}
+        public AbilityEffectData(IAlomoXmlFile file) : base(file) {}
 
         public double Telekinesis_Hover_Height { get; set; }
         public double Telekinesis_Transition_Time { get; set; }
@@ -31,7 +31,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Telekinesis_Hover_Height), Telekinesis_Hover_Height.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Telekinesis_Transition_Time), Telekinesis_Transition_Time.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Telekinesis_Wobble_Cycle_Time), Telekinesis_Wobble_Cycle_Time.ToString(CultureInfo.InvariantCulture));

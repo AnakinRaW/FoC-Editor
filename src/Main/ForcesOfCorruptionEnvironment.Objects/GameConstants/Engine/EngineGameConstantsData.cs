@@ -4,9 +4,9 @@ using AlomoEngine.Core.Interfaces;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
-    public class EngineGameConstantsData : EngineObject
+    public class EngineGameConstantsData : XmlTagCategory
     {
-        public EngineGameConstantsData(IAlomoXmlFile parent) : base(parent) {}
+        public EngineGameConstantsData(IAlomoXmlFile file) : base(file) {}
 
         public AiData AiData { get; set; }
         public AutoResolveData AutoResolveData { get; set; }
@@ -25,30 +25,30 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
             GameScrollData.Serialize();
             MultiplayerData.Serialize();
             PathFindingMovementData.Serialize();
-            return Parent.RootNode;
+            return File.RootNode;
         }
 
         public override void Deserialize(XmlElement node)
         {
-            AiData = new AiData(Parent);
+            AiData = new AiData(File);
             AiData.Deserialize(node);
 
-            AutoResolveData = new AutoResolveData(Parent);
+            AutoResolveData = new AutoResolveData(File);
             AutoResolveData.Deserialize(node);
 
-            DebugHotKeyLoadData = new DebugHotKeyLoadData(Parent);
+            DebugHotKeyLoadData = new DebugHotKeyLoadData(File);
             DebugHotKeyLoadData.Deserialize(node);
 
-            GalacticModeCamera = new GalacticModeCamera(Parent);
+            GalacticModeCamera = new GalacticModeCamera(File);
             GalacticModeCamera.Deserialize(node);
 
-            GameScrollData = new GameScrollData(Parent);
+            GameScrollData = new GameScrollData(File);
             GameScrollData.Deserialize(node);
 
-            MultiplayerData = new MultiplayerData(Parent);
+            MultiplayerData = new MultiplayerData(File);
             MultiplayerData.Deserialize(node);
 
-            PathFindingMovementData = new PathFindingMovementData(Parent);
+            PathFindingMovementData = new PathFindingMovementData(File);
             PathFindingMovementData.Deserialize(node);
         }
     }

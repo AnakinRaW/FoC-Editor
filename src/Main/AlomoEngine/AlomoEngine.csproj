@@ -70,7 +70,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EngineObject.cs" />
+    <Compile Include="XmlTagCategory.cs" />
     <Compile Include="AbstractAlomoXmlFile.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

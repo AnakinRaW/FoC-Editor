@@ -10,9 +10,9 @@ using ForcesOfCorruptionEnvironment.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class PlanetAbilityData : EngineObject
+    public class PlanetAbilityData : XmlTagCategory
     {
-        public PlanetAbilityData(IAlomoXmlFile parent) : base(parent) {}
+        public PlanetAbilityData(IAlomoXmlFile file) : base(file) {}
 
         public EngineStringTupel Planet_Ability_Icon_Names { get; set; }
         public EngineStringTupel Planet_Ability_Text_IDs { get; set; }
@@ -21,7 +21,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Planet_Ability_Icon_Names), Planet_Ability_Icon_Names.ToString(EngineSparators.Comma, true));
             node.SetValueOfLastTagOfName(nameof(Planet_Ability_Text_IDs), Planet_Ability_Text_IDs.ToString(EngineSparators.Comma, true));
             node.SetValueOfLastTagOfName(nameof(Planet_Ability_RGBs), Planet_Ability_RGBs.ToString(true));

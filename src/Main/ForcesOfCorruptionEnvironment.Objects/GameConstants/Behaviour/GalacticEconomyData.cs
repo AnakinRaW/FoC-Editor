@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GalacticEconomyData : EngineObject
+    public class GalacticEconomyData : XmlTagCategory
     {
-        public GalacticEconomyData(IAlomoXmlFile parent) : base(parent) {}
+        public GalacticEconomyData(IAlomoXmlFile file) : base(file) {}
 
         public bool Pay_As_You_Go { get; set; }
 
@@ -66,7 +66,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Pay_As_You_Go), Pay_As_You_Go.ToString());
             node.SetValueOfLastTagOfName(nameof(Political_Income_Curve), Political_Income_Curve.ToString());
             node.SetValueOfLastTagOfName(nameof(Progressive_Taxation), Progressive_Taxation.ToString());

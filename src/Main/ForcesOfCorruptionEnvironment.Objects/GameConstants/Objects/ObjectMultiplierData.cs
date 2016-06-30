@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class ObjectMultiplierData : EngineObject
+    public class ObjectMultiplierData : XmlTagCategory
     {
-        public ObjectMultiplierData(IAlomoXmlFile parent) : base(parent) {}
+        public ObjectMultiplierData(IAlomoXmlFile file) : base(file) {}
 
         public double Object_Max_Speed_Multiplier_Galactic { get; set; }
 
@@ -53,7 +53,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Object_Max_Speed_Multiplier_Galactic), Object_Max_Speed_Multiplier_Galactic.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Object_Max_Speed_Multiplier_Space), Object_Max_Speed_Multiplier_Space.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Object_Max_Speed_Multiplier_Land), Object_Max_Speed_Multiplier_Land.ToString(CultureInfo.InvariantCulture));

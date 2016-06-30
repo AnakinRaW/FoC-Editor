@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GalacticModeCamera : EngineObject
+    public class GalacticModeCamera : XmlTagCategory
     {
-        public GalacticModeCamera(IAlomoXmlFile parent) : base(parent) {}
+        public GalacticModeCamera(IAlomoXmlFile file) : base(file) {}
 
         public double GMC_InitialPitchAngleDegrees { get; set; }
 
@@ -59,7 +59,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(GMC_InitialPitchAngleDegrees), GMC_InitialPitchAngleDegrees.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(GMC_ZoomedPitchAngleDegrees), GMC_ZoomedPitchAngleDegrees.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(GMC_InitialPullbackDistance), GMC_InitialPullbackDistance.ToString(CultureInfo.InvariantCulture));

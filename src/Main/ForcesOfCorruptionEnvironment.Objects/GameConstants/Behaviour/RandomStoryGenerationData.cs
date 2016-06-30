@@ -8,9 +8,9 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class RandomStoryGenerationData : EngineObject
+    public class RandomStoryGenerationData : XmlTagCategory
     {
-        public RandomStoryGenerationData(IAlomoXmlFile parent) : base(parent) {}
+        public RandomStoryGenerationData(IAlomoXmlFile file) : base(file) {}
 
         public EngineStringTupel Random_Story_Triggers { get; set; }
 
@@ -36,7 +36,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Random_Story_Triggers), Random_Story_Triggers.ToString());
             node.SetValueOfLastTagOfName(nameof(Random_Story_Rewards), Random_Story_Rewards.ToString());
             node.SetValueOfLastTagOfName(nameof(Random_Story_Max_Triggers), Random_Story_Max_Triggers.ToString());

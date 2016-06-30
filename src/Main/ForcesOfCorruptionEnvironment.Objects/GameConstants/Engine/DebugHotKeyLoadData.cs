@@ -8,9 +8,9 @@ using AlomoEngine.Xml;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class DebugHotKeyLoadData : EngineObject
+    public class DebugHotKeyLoadData : XmlTagCategory
     {
-        public DebugHotKeyLoadData(IAlomoXmlFile parent) : base(parent) { }
+        public DebugHotKeyLoadData(IAlomoXmlFile file) : base(file) { }
 
         public List<string> Debug_Hot_Key_Load_Map { get; set; } = new List<string>();
 
@@ -20,7 +20,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
 
             node.AddMultipleTagsFromValueList(nameof(Debug_Hot_Key_Load_Map), Debug_Hot_Key_Load_Map);
 

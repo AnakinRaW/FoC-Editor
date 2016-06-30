@@ -11,9 +11,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class PathFindingMovementData : EngineObject
+    public class PathFindingMovementData : XmlTagCategory
     {
-        public PathFindingMovementData(IAlomoXmlFile parent) : base(parent) {}
+        public PathFindingMovementData(IAlomoXmlFile file) : base(file) {}
 
         public int SpacePathfindMaxExpansions { get; set; }
 
@@ -193,7 +193,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(SpacePathfindMaxExpansions), SpacePathfindMaxExpansions.ToString());
             node.SetValueOfLastTagOfName(nameof(CurrentPathCostCoefficientSpace), CurrentPathCostCoefficientSpace.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(SpacePathfindFrameDelayDelta), SpacePathfindFrameDelayDelta.ToString());

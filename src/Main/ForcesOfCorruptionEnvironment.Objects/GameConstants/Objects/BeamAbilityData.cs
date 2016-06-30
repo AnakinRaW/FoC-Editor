@@ -10,9 +10,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class BeamAbilityData : EngineObject
+    public class BeamAbilityData : XmlTagCategory
     {
-        public BeamAbilityData(IAlomoXmlFile parent) : base(parent) {}
+        public BeamAbilityData(IAlomoXmlFile file) : base(file) {}
 
         public double Tractor_Beam_Width { get; set; }
         public int Tractor_Beam_Frames { get; set; }
@@ -26,7 +26,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Tractor_Beam_Width), Tractor_Beam_Width.ToString(CultureInfo.InvariantCulture));
             node.SetValueOfLastTagOfName(nameof(Tractor_Beam_Frames), Tractor_Beam_Frames.ToString());
             node.SetValueOfLastTagOfName(nameof(Tractor_Beam_Texture), Tractor_Beam_Texture);

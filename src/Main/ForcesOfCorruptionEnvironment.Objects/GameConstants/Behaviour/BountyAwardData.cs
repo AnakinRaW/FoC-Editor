@@ -10,16 +10,16 @@ using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class BountyAwardData : EngineObject
+    public class BountyAwardData : XmlTagCategory
     {
-        public BountyAwardData(IAlomoXmlFile parent) : base(parent) {}
+        public BountyAwardData(IAlomoXmlFile file) : base(file) {}
 
         public List<BountyCategoryAwardAssociation> Default_Bounty_By_Category_SP { get; set; }
         public List<BountyCategoryAwardAssociation> Default_Bounty_By_Category_MP { get; set; }
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.AddMultipleTagsFromValueList(nameof(Default_Bounty_By_Category_SP),
                 Default_Bounty_By_Category_SP.Select(data => data.ToString()).ToList());
             node.AddMultipleTagsFromValueList(nameof(Default_Bounty_By_Category_MP),

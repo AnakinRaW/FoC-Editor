@@ -10,9 +10,9 @@ using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class LocalizationData : EngineObject
+    public class LocalizationData : XmlTagCategory
     {
-        public LocalizationData(IAlomoXmlFile parent) : base(parent) {}
+        public LocalizationData(IAlomoXmlFile file) : base(file) {}
 
         public List<LanguageTextureAssociation> Localized_Splash_Screen { get; set; }
 
@@ -22,7 +22,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.AddMultipleTagsFromValueList(nameof(Localized_Splash_Screen),
                             Localized_Splash_Screen.Select(data => data.ToString()).ToList());
             node.SetValueOfLastTagOfName(nameof(Localized_UK_English_Splash_Screen), Localized_UK_English_Splash_Screen);

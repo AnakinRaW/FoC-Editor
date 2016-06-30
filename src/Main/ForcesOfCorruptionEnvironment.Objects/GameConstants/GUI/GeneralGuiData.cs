@@ -11,9 +11,9 @@ using AlomoEngine.Xml.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GeneralGuiData : EngineObject
+    public class GeneralGuiData : XmlTagCategory
     {
-        public GeneralGuiData(IAlomoXmlFile parent) : base(parent) {}
+        public GeneralGuiData(IAlomoXmlFile file) : base(file) {}
 
         public string GUI_Move_Command_Ack_Effect { get; set; }
 
@@ -97,7 +97,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
 
             node.SetValueOfLastTagOfName(nameof(GUI_Move_Command_Ack_Effect), GUI_Move_Command_Ack_Effect);
             node.SetValueOfLastTagOfName(nameof(GUI_Double_Click_Move_Command_Ack_Effect), GUI_Double_Click_Move_Command_Ack_Effect);

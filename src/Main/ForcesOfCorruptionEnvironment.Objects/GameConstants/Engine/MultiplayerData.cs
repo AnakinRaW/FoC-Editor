@@ -12,9 +12,9 @@ using ForcesOfCorruptionEnvironment.DataTypes.Enums;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class MultiplayerData : EngineObject
+    public class MultiplayerData : XmlTagCategory
     {
-        public MultiplayerData(IAlomoXmlFile parent) : base(parent) {}
+        public MultiplayerData(IAlomoXmlFile file) : base(file) {}
 
         public int Min_Skirmish_Credits { get; set; }
         public int Max_Skirmish_Credits { get; set; }
@@ -50,7 +50,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Min_Skirmish_Credits), Min_Skirmish_Credits.ToString());
             node.SetValueOfLastTagOfName(nameof(Max_Skirmish_Credits), Max_Skirmish_Credits.ToString());
             node.SetValueOfLastTagOfName(nameof(MP_Default_Credits), MP_Default_Credits.ToString());

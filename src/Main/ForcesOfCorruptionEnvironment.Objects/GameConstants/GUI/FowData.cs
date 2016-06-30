@@ -11,10 +11,10 @@ using AlomoEngine.Xml.DataTypes;
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class FowData : EngineObject
+    public class FowData : XmlTagCategory
     {
         private bool _use_Overrun_Auto_Resolve_Multiple;
-        public FowData(IAlomoXmlFile parent) : base(parent) {}
+        public FowData(IAlomoXmlFile file) : base(file) {}
 
         public int Minimum_Tactical_Overrun_Time_In_Secs { get; set; }
 
@@ -47,7 +47,7 @@ namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 
         public override XmlElement Serialize()
         {
-            var node = Parent.RootNode;
+            var node = File.RootNode;
             node.SetValueOfLastTagOfName(nameof(Minimum_Tactical_Overrun_Time_In_Secs), Minimum_Tactical_Overrun_Time_In_Secs.ToString());
             node.SetValueOfLastTagOfName(nameof(Tactical_Overrun_Multiple), Tactical_Overrun_Multiple.ToString(CultureInfo.InvariantCulture));
             if (_use_Overrun_Auto_Resolve_Multiple)
