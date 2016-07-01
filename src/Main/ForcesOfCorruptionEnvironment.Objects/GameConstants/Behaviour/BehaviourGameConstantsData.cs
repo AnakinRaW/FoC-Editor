@@ -1,11 +1,11 @@
 ﻿using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
-    public class BehaviourGameConstantsData : XmlTagCategory
+    public class BehaviourGameConstantsData : AbstractXmlTagCategory
     {
         public BehaviourGameConstantsData(IAlomoXmlFile file) : base(file) {}
 

@@ -53,6 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="XmlChildParser.cs" />
+    <Compile Include="XmlFileReader.cs" />
     <Compile Include="GameConstantSave.cs" />
     <Compile Include="GameConstantsValidationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

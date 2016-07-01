@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAlomoXmlObject.cs" />
     <Compile Include="Interfaces\IEngineFile.cs" />
+    <Compile Include="Interfaces\IHasChild.cs" />
     <Compile Include="Interfaces\IXmlTagCategory.cs" />
     <Compile Include="Interfaces\IGameEngineManager.cs" />
     <Compile Include="Interfaces\IAlomoXmlFile.cs" />

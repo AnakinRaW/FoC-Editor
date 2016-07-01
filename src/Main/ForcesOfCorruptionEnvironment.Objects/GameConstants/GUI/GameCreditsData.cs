@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GameCreditsData : XmlTagCategory
+    public class GameCreditsData : AbstractXmlTagCategory
     {
         public GameCreditsData(IAlomoXmlFile file) : base(file) {}
 

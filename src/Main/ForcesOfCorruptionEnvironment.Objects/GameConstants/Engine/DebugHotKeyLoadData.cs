@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class DebugHotKeyLoadData : XmlTagCategory
+    public class DebugHotKeyLoadData : AbstractXmlTagCategory
     {
         public DebugHotKeyLoadData(IAlomoXmlFile file) : base(file) { }
 

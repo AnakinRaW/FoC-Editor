@@ -3,17 +3,17 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
 using AlomoEngine.Xml.DataTypes.Enums;
+using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class DamageArmorMatrixData : XmlTagCategory
+    public class DamageArmorMatrixData : AbstractXmlTagCategory
     {
         public DamageArmorMatrixData(IAlomoXmlFile file) : base(file) {}
 

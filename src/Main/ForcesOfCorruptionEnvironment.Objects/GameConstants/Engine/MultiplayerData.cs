@@ -2,17 +2,17 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
 using AlomoEngine.Xml.DataTypes.Enums;
+using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.DataTypes.Enums;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class MultiplayerData : XmlTagCategory
+    public class MultiplayerData : AbstractXmlTagCategory
     {
         public MultiplayerData(IAlomoXmlFile file) : base(file) {}
 

@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GuiGameConstantsData : XmlTagCategory
+    public class GuiGameConstantsData : AbstractXmlTagCategory
     {
         public GuiGameConstantsData(IAlomoXmlFile file) : base(file) {}
 

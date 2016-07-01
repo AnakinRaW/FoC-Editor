@@ -2,7 +2,7 @@
 
 namespace AlomoEngine.Core.Interfaces
 {
-    public interface IAlomoXmlFile : IXmlSerializable ,IHasDescription
+    public interface IAlomoXmlFile : IXmlSerializable ,IHasDescription, IHasChild
     {
         XmlElement RootNode { get; set; }
 

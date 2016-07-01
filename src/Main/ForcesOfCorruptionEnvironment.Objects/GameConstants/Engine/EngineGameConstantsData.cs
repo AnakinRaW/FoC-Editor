@@ -1,10 +1,10 @@
 ﻿using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
-    public class EngineGameConstantsData : XmlTagCategory
+    public class EngineGameConstantsData : AbstractXmlTagCategory
     {
         public EngineGameConstantsData(IAlomoXmlFile file) : base(file) {}
 

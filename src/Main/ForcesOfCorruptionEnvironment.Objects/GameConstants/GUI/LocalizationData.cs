@@ -2,15 +2,15 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
+using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class LocalizationData : XmlTagCategory
+    public class LocalizationData : AbstractXmlTagCategory
     {
         public LocalizationData(IAlomoXmlFile file) : base(file) {}
 

@@ -1,16 +1,16 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
 using AlomoEngine.Xml.DataTypes.Enums;
+using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.DataTypes;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class PlanetAbilityData : XmlTagCategory
+    public class PlanetAbilityData : AbstractXmlTagCategory
     {
         public PlanetAbilityData(IAlomoXmlFile file) : base(file) {}
 

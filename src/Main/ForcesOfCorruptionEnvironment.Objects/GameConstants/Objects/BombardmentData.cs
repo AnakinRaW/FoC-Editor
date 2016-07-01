@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
 using AlomoEngine.Xml.DataTypes.Enums;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class BombardmentData : XmlTagCategory
+    public class BombardmentData : AbstractXmlTagCategory
     {
         public BombardmentData(IAlomoXmlFile file) : base(file) {}
 

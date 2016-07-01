@@ -2,16 +2,16 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
+using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.DataTypes;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GeneralObjectData : XmlTagCategory
+    public class GeneralObjectData : AbstractXmlTagCategory
     {
         public GeneralObjectData(IAlomoXmlFile file) : base(file) {}
 

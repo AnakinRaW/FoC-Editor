@@ -2,11 +2,11 @@
 using System.Xml;
 using AlomoEngine.Core.Interfaces;
 
-namespace AlomoEngine
+namespace AlomoEngine.Xml.Layout
 {
-    public abstract class XmlTagCategory : IXmlTagCategory
+    public abstract class AbstractXmlTagCategory : IXmlTagCategory
     {
-        protected XmlTagCategory(IAlomoXmlFile file)
+        protected AbstractXmlTagCategory(IAlomoXmlFile file)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file));

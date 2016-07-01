@@ -3,15 +3,15 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.GUI
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class FowData : XmlTagCategory
+    public class FowData : AbstractXmlTagCategory
     {
         private bool _use_Overrun_Auto_Resolve_Multiple;
         public FowData(IAlomoXmlFile file) : base(file) {}

@@ -2,16 +2,16 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
 using AlomoEngine.Xml.DataTypes.Enums;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Engine
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class PathFindingMovementData : XmlTagCategory
+    public class PathFindingMovementData : AbstractXmlTagCategory
     {
         public PathFindingMovementData(IAlomoXmlFile file) : base(file) {}
 

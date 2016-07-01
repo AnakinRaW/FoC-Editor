@@ -2,15 +2,15 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class ObjectMultiplierData : XmlTagCategory
+    public class ObjectMultiplierData : AbstractXmlTagCategory
     {
         public ObjectMultiplierData(IAlomoXmlFile file) : base(file) {}
 

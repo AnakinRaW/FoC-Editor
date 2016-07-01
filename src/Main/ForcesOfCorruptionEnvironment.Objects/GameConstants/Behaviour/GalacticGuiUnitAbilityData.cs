@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Xml;
-using AlomoEngine;
 using AlomoEngine.Core.Interfaces;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.DataTypes;
+using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Behaviour
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class GalacticGuiUnitAbilityData : XmlTagCategory
+    public class GalacticGuiUnitAbilityData : AbstractXmlTagCategory
     {
         public GalacticGuiUnitAbilityData(IAlomoXmlFile file) : base(file) {}
 
