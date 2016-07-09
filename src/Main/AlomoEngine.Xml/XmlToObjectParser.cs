@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Core.Interfaces.FileLayout;
 
 namespace AlomoEngine.Xml
 {

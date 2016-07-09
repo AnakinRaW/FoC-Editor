@@ -1,5 +1,6 @@
 ﻿using System.Xml;
 using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Core.Interfaces.FileLayout;
 using AlomoEngine.Xml.Layout;
 
 namespace ForcesOfCorruptionEnvironment.Objects.GameConstants.Objects

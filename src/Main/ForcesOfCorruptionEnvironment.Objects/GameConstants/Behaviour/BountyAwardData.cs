@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml;
 using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Core.Interfaces.FileLayout;
 using AlomoEngine.Xml;
 using AlomoEngine.Xml.Layout;
 using ForcesOfCorruptionEnvironment.DataTypes.AssociationTypes;

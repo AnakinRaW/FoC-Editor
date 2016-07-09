@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
-using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Core.Interfaces.FileLayout;
 
 namespace AlomoEngine.Xml.Layout
 {

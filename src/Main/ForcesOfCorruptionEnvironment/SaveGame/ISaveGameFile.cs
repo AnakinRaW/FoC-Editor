@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Core.Interfaces.Engine;
 
 namespace ForcesOfCorruptionEnvironment.SaveGame
 {

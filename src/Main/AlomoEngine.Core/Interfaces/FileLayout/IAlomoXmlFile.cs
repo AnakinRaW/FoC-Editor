@@ -1,6 +1,7 @@
 ﻿using System.Xml;
+using AlomoEngine.Core.Interfaces.XML;
 
-namespace AlomoEngine.Core.Interfaces
+namespace AlomoEngine.Core.Interfaces.FileLayout
 {
     public interface IAlomoXmlFile : IXmlSerializable ,IHasDescription, IHasChild
     {

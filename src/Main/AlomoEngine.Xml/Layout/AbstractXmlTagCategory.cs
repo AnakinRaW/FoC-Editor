@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml;
-using AlomoEngine.Core.Interfaces;
+using AlomoEngine.Core.Interfaces.FileLayout;
 
 namespace AlomoEngine.Xml.Layout
 {

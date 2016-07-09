@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlomoEngine.Core.Interfaces
+namespace AlomoEngine.Core.Interfaces.Engine
 {
     public interface IEngineFile : IDisposable
     {

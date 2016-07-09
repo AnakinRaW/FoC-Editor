@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace AlomoEngine.Core.Interfaces
+namespace AlomoEngine.Core.Interfaces.XML
 {
     public interface IXmlSerializable
     {
