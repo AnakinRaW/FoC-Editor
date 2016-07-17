@@ -1,4 +1,4 @@
-﻿using AlomoEngine.Core;
+﻿using AlomoEngine.Core.Extensions;
 using AlomoEngine.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

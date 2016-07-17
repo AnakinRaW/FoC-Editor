@@ -1,8 +1,9 @@
 using System.IO;
+using AlomoEngine.Core.Enums;
 
-namespace AlomoEngine.FilesystemWatcher
+namespace AlomoEngine.Core.Classes
 {
-    public class FilesystemWatcherSettings
+    public sealed class FilesystemWatcherSettings
     {
         public EventFilers EventFilers { get; set; }
 

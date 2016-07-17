@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using AlomoEngine.Core.Interfaces.FileLayout;
 
@@ -42,6 +43,27 @@ namespace AlomoEngine.Xml.Layout
                 return;
 
             AddChildRange(content);
+        }
+
+        public void Dispose()
+        {
+            
+        }
+
+        public string FilePath { get; protected set; }
+        public string Name { get; protected set; }
+
+        public void Open(string path)
+        {
+            if (!File.Exists(path))
+                throw new FileNotFoundException(nameof(path));
+            FilePath = path;
+            Name = Path.GetFileNameWithoutExtension(path);
+        }
+
+        public void Save(string path)
+        {
+            throw new NotImplementedException();
         }
     }
 }

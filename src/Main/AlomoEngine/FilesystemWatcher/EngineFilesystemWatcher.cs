@@ -4,11 +4,14 @@ using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using AlomoEngine.Core.Classes;
+using AlomoEngine.Core.Enums;
+using AlomoEngine.Core.Interfaces.Engine;
 
 namespace AlomoEngine.FilesystemWatcher
 {
     [SuppressMessage("ReSharper", "DelegateSubtraction")]
-    public class EngineFilesystemWatcher : IDisposable
+    public class EngineFilesystemWatcher : IEngineFilesystemWatcher
     {
         private readonly List<FileSystemWatcher> _watcherList;
 

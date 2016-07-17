@@ -57,6 +57,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Main\AlomoEngine.Core\AlomoEngine.Core.csproj">
+      <Project>{4b061bdb-ee61-4638-9bb2-44f260b5135e}</Project>
+      <Name>AlomoEngine.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Main\AlomoEngine\AlomoEngine.csproj">
       <Project>{F6D91BD5-F78D-4E3D-9922-BF3177D86D65}</Project>
       <Name>AlomoEngine</Name>

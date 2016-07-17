@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Forms;
+using AlomoEngine.Core.Classes;
+using AlomoEngine.Core.Enums;
 using AlomoEngine.FilesystemWatcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

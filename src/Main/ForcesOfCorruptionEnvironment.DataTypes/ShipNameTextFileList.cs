@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AlomoEngine.Core;
+using AlomoEngine.Core.Extensions;
 
 namespace ForcesOfCorruptionEnvironment.DataTypes
 {

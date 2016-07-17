@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
-using AlomoEngine.Core;
+using AlomoEngine.Core.Extensions;
 using AlomoEngine.Xml.DataTypes.Enums;
 using AlomoEngine.Xml.DataTypes.EventArgs;
 using AlomoEngine.Xml.DataTypes.Properties;

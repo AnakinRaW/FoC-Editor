@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml;
 using System.Xml.Schema;
-using AlomoEngine.Core;
+using AlomoEngine.Core.Extensions;
 
 namespace AlomoEngine.Xml
 {

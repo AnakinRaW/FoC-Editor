@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace AlomoEngine.Core
+namespace AlomoEngine.Core.Extensions
 {
     public static class StringExtensions
     {

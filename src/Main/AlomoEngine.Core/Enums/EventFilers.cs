@@ -1,6 +1,6 @@
 using System;
 
-namespace AlomoEngine.FilesystemWatcher
+namespace AlomoEngine.Core.Enums
 {
     [Flags]
     public enum EventFilers

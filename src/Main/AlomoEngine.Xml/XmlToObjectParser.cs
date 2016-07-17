@@ -27,6 +27,7 @@ namespace AlomoEngine.Xml
 
                 var doc = new XmlDocument();
                 doc.Load(FilePath);
+                ((IAlomoXmlFile)instace).Open(FilePath);
                 ((IAlomoXmlFile)instace).Deserialize(doc);
                 return instace;
             }

@@ -8,8 +8,6 @@ namespace AlomoEngine.Core.Interfaces.Engine
 
         string Name { get; }
 
-        byte[] ByteArray { get; set; }
-
         void Open(string path);
 
         void Save(string path);

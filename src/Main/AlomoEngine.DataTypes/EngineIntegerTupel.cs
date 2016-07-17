@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using AlomoEngine.Core;
+using AlomoEngine.Core.Extensions;
 using AlomoEngine.Xml.DataTypes.Enums;
 
 namespace AlomoEngine.Xml.DataTypes

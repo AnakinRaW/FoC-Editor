@@ -73,9 +73,7 @@
     <Compile Include="EngineTypes\AlomoXmlFile.cs" />
     <Compile Include="FilesystemWatcher\EngineFilesystemWatcher.cs" />
     <Compile Include="FilesystemWatcher\EngineFilesystemWathcerExceptions.cs" />
-    <Compile Include="FilesystemWatcher\EventFilers.cs" />
     <Compile Include="FilesystemWatcher\FileSystemWatcherAlreadyExistsException.cs" />
-    <Compile Include="FilesystemWatcher\FilesystemWatcherSettings.cs" />
     <Compile Include="FilesystemWatcher\FilesystemWathcerNotFoundException.cs" />
     <Compile Include="Managers\XmlManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
