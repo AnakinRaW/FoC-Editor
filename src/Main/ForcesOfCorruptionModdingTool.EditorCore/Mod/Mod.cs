@@ -27,10 +27,7 @@ namespace ForcesOfCorruptionModdingTool.EditorCore.Mod
                 return;
 
             var icon = Directory.GetFiles(ModRootDirectory, "*.ico", SearchOption.TopDirectoryOnly).FirstOrDefault();
-            if (icon == null)
-                IconSource = null;
-            else
-                IconSource = new Uri(icon);
+            IconSource = icon == null ? null : new Uri(icon);
         }
 
 

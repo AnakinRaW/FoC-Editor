@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using AlomoEngine.Core.Classes;
+using AlomoEngine.Core.Interfaces.Engine;
+using AlomoEngine.EngineTypes;
+using AlomoEngine.Xml;
 
 namespace AlomoEngine.Managers
 {
@@ -16,6 +20,8 @@ namespace AlomoEngine.Managers
         public override void Initialize()
         {     
             var files = GetAllFilePaths();
+            var p = new XmlToObjectParser<AlomoXmlFile>(files);
+            Files = new ObservableCollection<IEngineFile>(p.ParseRange());
         }
     }
 }

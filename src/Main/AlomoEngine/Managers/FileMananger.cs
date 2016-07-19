@@ -18,7 +18,7 @@ namespace AlomoEngine.Managers
         }
         public abstract void Initialize();
 
-        public ObservableCollection<IEngineFile> Files { get; }
+        public ObservableCollection<IEngineFile> Files { get; protected set; }
 
         public ICollection<string> GetAllFilePaths()
         {

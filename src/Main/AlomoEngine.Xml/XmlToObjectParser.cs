@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using AlomoEngine.Core.Interfaces.FileLayout;
@@ -16,8 +17,14 @@ namespace AlomoEngine.Xml
             FilePath = path;
         }
 
+        public XmlToObjectParser(ICollection<string> pathCollection)
+        {
+            PathCollection = pathCollection;
+        }
 
-        private string FilePath { get; }
+        private string FilePath { get; set; }
+
+        private ICollection<string> PathCollection { get; }
 
         public T Parse()
         {
@@ -35,6 +42,19 @@ namespace AlomoEngine.Xml
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        public IEnumerable<T> ParseRange()
+        {
+            if (PathCollection == null)
+                throw new NullReferenceException(nameof(PathCollection));
+            if (PathCollection?.Count == 0)
+                throw new ArgumentException(nameof(PathCollection));
+            foreach (var path in PathCollection)
+            {
+                FilePath = path;
+                yield return Parse();
+            }  
         }
     }
 }
