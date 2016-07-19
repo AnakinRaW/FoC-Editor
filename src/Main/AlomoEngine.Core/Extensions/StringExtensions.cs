@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -71,6 +72,11 @@ namespace AlomoEngine.Core.Extensions
                     into list1
                     where list1.Count == 2
                     select new KeyValuePair<string, string>(list1[0].Trim(), list1[1].Trim())).ToList();
+        }
+
+        public static bool Contains(this string source, string toCheck, StringComparison comp)
+        {
+            return source != null && toCheck != null && source.IndexOf(toCheck, comp) >= 0;
         }
     }
 }

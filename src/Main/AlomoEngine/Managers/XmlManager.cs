@@ -1,14 +1,21 @@
 ﻿using System;
-using AlomoEngine.Core.Interfaces.Engine;
-using AlomoEngine.FilesystemWatcher;
+using AlomoEngine.Core.Classes;
 
 namespace AlomoEngine.Managers
 {
-    public class XmlManager : EngineFilesystemWatcher, IFileManager
+    public sealed class XmlManager : FileMananger
     {
-        public void Initialize()
+        public XmlManager(FilesystemWatcherSettings settings) : base(settings)
         {
-            throw new NotImplementedException();
+            if (string.Equals(settings.Filter, "*.xml", StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException("The settings must be limited to .xml files");
+        }
+
+        public override string[] SupportedExtensions => new[] {"*.xml"};
+
+        public override void Initialize()
+        {     
+            var files = GetAllFilePaths();
         }
     }
 }

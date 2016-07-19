@@ -21,6 +21,8 @@ namespace AlomoEngine.Core.Interfaces.Engine
 
         ICollection<string> GetPaths();
 
+        ICollection<FileSystemWatcher> GetWatchers();
+
         bool PathExists(string path);
 
         void RegisterEvent(FileSystemWatcher watcher, EventFilers filter);

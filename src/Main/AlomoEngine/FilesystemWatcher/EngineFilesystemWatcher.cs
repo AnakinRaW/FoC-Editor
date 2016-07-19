@@ -115,7 +115,21 @@ namespace AlomoEngine.FilesystemWatcher
 
         public ICollection<string> GetPaths()
         {
-            return _watcherList.Select(watcher => watcher.Path).ToList();
+            var paths = new List<string>();
+            foreach (var watcher in _watcherList)
+            {
+                paths.Add(watcher.Path);
+                if (!watcher.IncludeSubdirectories)
+                    continue;
+                var folders = Directory.GetDirectories(watcher.Path, "*", SearchOption.AllDirectories);
+                paths.AddRange(folders);
+            }
+            return paths;
+        }
+
+        public ICollection<FileSystemWatcher> GetWatchers()
+        {
+            return new List<FileSystemWatcher>(_watcherList);
         }
 
         public bool PathExists(string path)
@@ -171,22 +185,22 @@ namespace AlomoEngine.FilesystemWatcher
         }
 
 
-        private void Watcher_Changed(object sender, FileSystemEventArgs e)
+        protected virtual void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
             _onChangedHandler?.Invoke(this, e);
         }
 
-        private void Watcher_Created(object sender, FileSystemEventArgs e)
+        protected virtual void Watcher_Created(object sender, FileSystemEventArgs e)
         {
             _onCreatedHandler?.Invoke(this, e);
         }
 
-        private void Watcher_Deleted(object sender, FileSystemEventArgs e)
+        protected virtual void Watcher_Deleted(object sender, FileSystemEventArgs e)
         {
             _onDeletedHandler?.Invoke(this, e);
         }
 
-        private void Watcher_Renamed(object sender, RenamedEventArgs e)
+        protected virtual void Watcher_Renamed(object sender, RenamedEventArgs e)
         {
             _onRenamedHandler?.Invoke(this, e);
         }

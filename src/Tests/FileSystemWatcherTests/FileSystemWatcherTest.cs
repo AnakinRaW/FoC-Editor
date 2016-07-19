@@ -83,5 +83,12 @@ namespace FileSystemWatcherTests
         {
             MessageBox.Show(@"Testing");
         }
+
+
+        [TestMethod]
+        public void GetPaths()
+        {
+            Assert.AreEqual(2, _watcher.GetPaths().Count);
+        }
     }
 }

@@ -75,8 +75,10 @@
     <Compile Include="FilesystemWatcher\EngineFilesystemWathcerExceptions.cs" />
     <Compile Include="FilesystemWatcher\FileSystemWatcherAlreadyExistsException.cs" />
     <Compile Include="FilesystemWatcher\FilesystemWathcerNotFoundException.cs" />
+    <Compile Include="Managers\FileMananger.cs" />
     <Compile Include="Managers\XmlManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
